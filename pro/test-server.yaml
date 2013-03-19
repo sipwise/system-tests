@@ -1,0 +1,39 @@
+disk-free:
+    /:
+        max-used  : 80%
+        max-inodes: 80%
+
+running-processes:
+    should-run:
+        - /bin/bash /usr/sbin/ngcp-kamctl proxy fifo get_statistics :dialog::active_dialogs
+        - /bin/sh -c /usr/bin/logger -p daemon.info -t csc
+        - /bin/sh -c /usr/bin/logger -p daemon.info -t oss
+        - /bin/sh /usr/bin/mysqld_safe
+        - collectd -C /etc/collectd/collectd.conf -f
+        - heartbeat: master control process
+        - rate-o-mat
+        - udevd --daemon
+        - /usr/bin/logger -p daemon.info -t csc
+        - /usr/bin/logger -p daemon.info -t oss
+        - /usr/bin/mediator -D /var/run/mediator.pid
+        - /usr/bin/redis-server /etc/redis/redis.conf
+        - /usr/lib/heartbeat/ipfail
+        - /usr/sbin/acpid
+        - /usr/sbin/apache2
+        - /usr/sbin/asterisk -n
+        - /usr/sbin/collectdmon -P /var/run/collectdmon.pid -- -C /etc/collectd/collectd.conf
+        - /usr/sbin/cron
+        - /usr/sbin/exim4
+        - /usr/sbin/glusterfsd -p /var/run/glusterfsd.pid -f /etc/glusterfs/glusterfsd.vol --log-file /var/log/glusterfs/gluster
+        - /usr/sbin/glusterfs --log-level=NORMAL --volfile=/etc/glusterfs/glusterfs.vol /mnt/glusterfs
+        - /usr/sbin/haveged -w 1024
+        - /usr/sbin/kamailio -f /etc/kamailio/lb/kamailio.cfg -P /var/run/kamailio/kamailio.lb.pid
+        - /usr/sbin/kamailio -f /etc/kamailio/proxy/kamailio.cfg -P /var/run/kamailio/kamailio.proxy.pid
+        - /usr/sbin/mediaproxy-ng
+        - /usr/sbin/monit -c /etc/monit/monitrc -s /var/lib/monit/monit.state
+        - /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --user=mysql --log-error=/var/log/mysql/mysqld.err --pid-file
+        - /usr/sbin/ntpd -p /var/run/ntpd.pid
+        - /usr/sbin/rsyslogd -c5
+        - /usr/sbin/sems -P /var/run/sems/sems.pid -u sems -g sems -f /etc/sems/sems.conf
+        - /usr/sbin/snmpd -Lsd -Lf /dev/null -u snmp -g snmp -I -smux -p /var/run/snmpd.pid
+        - /usr/sbin/sshd
