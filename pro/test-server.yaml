@@ -2,6 +2,11 @@ disk-free:
     /:
         max-used  : 80%
         max-inodes: 80%
+# Enable as soon http://bugs.debian.org/703428 is fixed and available
+#    /mnt/glusterfs:
+#        max-used  : 50%
+#        max-inodes: 50%
+
 
 running-processes:
     should-run:
