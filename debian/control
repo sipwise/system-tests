@@ -1,0 +1,19 @@
+Source: ngcp-system-tests
+Section: admin
+Priority: extra
+Maintainer: Sipwise Development Team <support@sipwise.com>
+Build-Depends: debhelper (>= 8)
+Standards-Version: 3.9.4
+Homepage: http://sipwise.com/
+
+Package: ngcp-system-tests
+Architecture: all
+Depends: libfilesys-diskspace-perl,
+         libproc-processtable-perl,
+         libtest-server-perl,
+         ${misc:Depends},
+         ${perl:Depends}
+Description: run system tests against NGCP systems
+ This package provides test scripts to check the system
+ state of the SIP based Open Source Class5 VoIP soft-switch platform
+ by Sipwise.com.

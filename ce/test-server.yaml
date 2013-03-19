@@ -1,0 +1,33 @@
+disk-free:
+    /:
+        max-used  : 80%
+        max-inodes: 80%
+
+running-processes:
+    should-run:
+        - /bin/sh -c /usr/bin/logger -p daemon.info -t csc
+        - /bin/sh -c /usr/bin/logger -p daemon.info -t oss
+        - /bin/sh -c /usr/bin/logger -p daemon.info -t oss
+        - /bin/sh /usr/bin/mysqld_safe
+        - collectd -C /etc/collectd/collectd.conf -f
+        - nginx
+        - rate-o-mat
+        - startpar -f -- ngcp-rate-o-mat
+        - /usr/bin/logger -p daemon.info -t csc
+        - /usr/bin/logger -p daemon.info -t oss
+        - /usr/bin/logger -p daemon.info -t oss
+        - /usr/bin/mediator -D /var/run/mediator.pid -i 10 -h localhost -o 3306 -u kamailio
+        - /usr/sbin/acpid
+        - /usr/sbin/apache2
+        - /usr/sbin/asterisk -n
+        - /usr/sbin/collectdmon -P /var/run/collectdmon.pid -- -C /etc/collectd/collectd.con
+        - /usr/sbin/cron
+        - /usr/sbin/exim4 -bd -q30m
+        - /usr/sbin/kamailio -f /etc/kamailio/lb/kamailio.cfg -P /var/run/kamailio/kamailio.lb.pid
+        - /usr/sbin/kamailio -f /etc/kamailio/proxy/kamailio.cfg -P /var/run/kamailio/kamailio.proxy.pid
+        - /usr/sbin/mediaproxy-ng
+        - /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --user=mysql --log-error=/var/log/mysql/mysqld.err --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock --port=3306
+        - /usr/sbin/ntpd -p /var/run/ntpd.pid
+        - /usr/sbin/rsyslogd
+        - /usr/sbin/sems -P /var/run/sems/sems.pid -u sems -g sems -f /etc/sems/sems.conf
+        - /usr/sbin/sshd

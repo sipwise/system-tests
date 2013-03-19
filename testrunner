@@ -1,0 +1,25 @@
+#!/bin/bash
+
+REPORT_DIRECTORY='reports/'
+
+if [ $# -lt 1 ] ; then
+  echo "Usage: $0 </path/to/test/directory/>" >&2
+  echo
+  echo "Usage example: $0 /usr/share/ngcp-tests/ce/"
+  exit 1
+fi
+
+if ! [ -d "$1" ] ; then
+  echo "$1 is not a directory" >&2
+  exit 1
+fi
+
+rm -rf "${REPORT_DIRECTORY}"
+mkdir "${REPORT_DIRECTORY}"
+
+for test in ${1}/*.t ; do
+  perl "$test" > "${REPORT_DIRECTORY}/$(basename ${test}).tap"
+done
+
+tar acf reports.tar.gz "${REPORT_DIRECTORY}"
+echo "Generated reports.tar.gz"
