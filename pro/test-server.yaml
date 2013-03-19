@@ -42,3 +42,49 @@ running-processes:
         - /usr/sbin/sems
         - /usr/sbin/snmpd
         - /usr/sbin/sshd
+
+open-ports:
+    connect:
+        localhost:
+            22: ssh
+            25: exim4
+            80: http
+            # 23: ntpd # TODO udp
+            # 161: snmpd TODO udp
+            443: https
+            # 694: heartbeat # TODO udp
+            1443: https
+            # 2222: mediaproxy # TODO udp
+            # 2223: mediaproxy # TODO udp
+            2443: https
+            2812: monit
+            3306: mysqld
+            # 4569: asterisk # TODO udp
+            # 5040: sems # TODO udp
+            5062: kamailio
+            # 5070: asterisk # TODO udp
+            # 5080: sems # TODO udp
+            6996: glusterfs
+            8000: kamailio
+            8090: sems
+            # 25826: collectd + kamailio # TODO udp
+            # 40297: collectd # TODO udp
+            # 45673: heartbeat # TODO udp
+            # 48296: collectd + kamailio # TODO udp
+            # 50474: heartbeat # TODO udp
+        192.168.255.251:
+            22: ssh
+            80: http
+            443: https
+            1443: https
+            3306: mysql
+            6379: redis-server
+        192.168.255.252:
+            22: ssh
+            80: http
+            443: https
+            1443: https
+            3306: mysql
+            6379: redis-server
+        deb.sipwise.com:
+            80: http

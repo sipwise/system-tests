@@ -3,7 +3,7 @@ Upstream-Name: ngcp-system-tests
 Source: http://github.com/sipwise/system-tests/
 Upstream-Contact: Michael Prokop <mprokop@sipwise.com>
 
-Files: {ce,pro}/01_hostname-and-interfaces.t ce/01_running-processes.t ce/02_disk-free.t
+Files: {ce,pro}/01_hostname-and-interfaces.t ce/01_running-processes.t ce/02_disk-free.t pro/03_open-ports.t
 Copyright: Jozef Kutej <jozef@kutej.net>
 License: Artistic or GPL-1+
 
