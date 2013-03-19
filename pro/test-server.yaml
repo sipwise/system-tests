@@ -88,3 +88,14 @@ open-ports:
             6379: redis-server
         deb.sipwise.com:
             80: http
+
+sites-ok:
+    sites:
+        https://localhost/login/:
+            title: "Sipwise NGCP CSC"
+            content: "Self-Administration Login"
+        https://localhost:1443/:
+            title: "Sipwise NGCP admin interface"
+            content: "Sipwise NGCP Administration Interface"
+        https://localhost:2443/SOAP/Provisioning.wsdl:
+            content: "xmlns:tns=\"http://dev.sipwise.com/SOAP/Provisioning\""
