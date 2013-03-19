@@ -18,7 +18,7 @@ rm -rf "${REPORT_DIRECTORY}"
 mkdir "${REPORT_DIRECTORY}"
 
 for test in ${1}/*.t ; do
-  perl "$test" > "${REPORT_DIRECTORY}/$(basename ${test}).tap"
+  perl "$test" > "${REPORT_DIRECTORY}/$(basename ${test}).tap" 2>&1
 done
 
 tar acf reports.tar.gz "${REPORT_DIRECTORY}"
