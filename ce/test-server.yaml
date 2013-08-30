@@ -11,9 +11,13 @@ running-processes:
         - collectd -C /etc/collectd/collectd.conf -f
         - nginx
         - rate-o-mat
+        - /sbin/getty 38400 tty1
         - startpar -f -- ngcp-rate-o-mat
+        - udevd --daemon
         - /usr/bin/logger -p daemon.info -t csc
+        - /usr/bin/logger -p daemon.info -t ngcp-panel
         - /usr/bin/logger -p daemon.info -t oss
+        - /usr/bin/lua5.1 /usr/bin/prosody
         - /usr/bin/mediator
         - /usr/sbin/acpid
         - /usr/sbin/apache2
