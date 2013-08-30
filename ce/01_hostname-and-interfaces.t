@@ -18,7 +18,7 @@ if resolv to some hostname.
 use strict;
 use warnings;
 
-use Test::More 'tests' => 5;
+use Test::More 'tests' => 3;
 use Test::Differences;
 
 use List::MoreUtils 'any';
@@ -46,7 +46,7 @@ sub main {
 		diag 'fqdn hostname  - ', $hostname_fqdn
 			if $ENV{TEST_VERBOSE};
 
-		is($hostname_short, $hostname_fqdn, 'short hostname should be the same as fqdn');
+		is($hostname_short . '.', $hostname_fqdn, 'short hostname should be the same as fqdn (ignoring trailing dot)');
 
 		# short hostname from fqdn
 		my ($short) = split /\./, $hostname_fqdn;
@@ -60,44 +60,6 @@ sub main {
 			$hostname_short_ip,
 			$hostname_fqdn_ip,
 			'ip-s of short hostname and fqdn should be the same - '.$hostname_fqdn_ip,
-		);
-	}
-
-	SKIP: {
-		skip 'fqdn not found', 2
-			if not defined $hostname_fqdn_ip;
-
-		# get interfaces
-		my %if_named = %{interfaces()};
-
-		skip 'no interfaces found', 2
-			if not keys %if_named;
-
-		ok(
-			(any { $_->{'ip'} eq $hostname_fqdn_ip } values %if_named ),
-			'there should be at leas one interface with hostname ip - '.$hostname_fqdn_ip,
-		);
-
-		# loop through all interfaces
-		foreach my $ifname (keys %if_named) {
-			my $iface = $if_named{$ifname};
-
-			# resolv interface ip to hostnames
-			$iface->{'hostname'} = resolv($iface->{'ip'});
-			diag 'if ', $ifname, ' ip ', $iface->{'ip'}, ' resolves to ', $iface->{'hostname'}
-				if $ENV{TEST_VERBOSE};
-		}
-
-		# check if every interface has a hostname set (different from the ip)
-		eq_or_diff(
-			[ map {
-					$_->{'hostname'}
-					&& ($_->{'hostname'} ne $_->{'ip'})
-					? $_->{'ip'}
-					: 'not resolving'
-				} values %if_named ],
-			[ map { $_->{'ip'} } values %if_named ],
-			'every interface ip should resolv to a name',
 		);
 	}
 
