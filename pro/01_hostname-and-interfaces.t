@@ -46,7 +46,7 @@ sub main {
 		diag 'fqdn hostname  - ', $hostname_fqdn
 			if $ENV{TEST_VERBOSE};
 
-		isnt($hostname_short, $hostname_fqdn, 'short hostname should not be the same as fqdn');
+		is($hostname_short, $hostname_fqdn, 'short hostname should be the same as fqdn');
 
 		# short hostname from fqdn
 		my ($short) = split /\./, $hostname_fqdn;

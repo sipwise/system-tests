@@ -26,6 +26,7 @@ use Test::Differences;
 use YAML::Syck 'LoadFile';
 use FindBin '$Bin';
 
+BEGIN { $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0 }
 
 eval "use Test::WWW::Mechanize";
 plan 'skip_all' => "need Test::WWW::Mechanize to run web tests" if $@;

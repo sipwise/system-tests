@@ -10,32 +10,35 @@ disk-free:
 
 running-processes:
     should-run:
-        - /bin/bash /usr/sbin/ngcp-kamctl proxy fifo get_statistics :dialog::active_dialogs
         - /bin/sh -c /usr/bin/logger -p daemon.info -t csc
         - /bin/sh -c /usr/bin/logger -p daemon.info -t oss
         - /bin/sh /usr/bin/mysqld_safe
         - collectd -C /etc/collectd/collectd.conf -f
         - "heartbeat: master control process"
         - rate-o-mat
+        - /sbin/getty 38400 tty1
         - udevd --daemon
         - /usr/bin/logger -p daemon.info -t csc
+        - /usr/bin/logger -p daemon.info -t ngcp-panel
         - /usr/bin/logger -p daemon.info -t oss
+        - /usr/bin/lua5.1 /usr/bin/prosody
         - /usr/bin/mediator
+        - /usr/bin/monit
         - /usr/bin/redis-server
-        - /usr/lib/heartbeat/ipfail
+        - /usr/lib64/heartbeat/ipfail
         - /usr/sbin/acpid
         - /usr/sbin/apache2
         - /usr/sbin/asterisk -n
         - /usr/sbin/collectdmon
         - /usr/sbin/cron
         - /usr/sbin/exim4
-        - /usr/sbin/glusterfsd
+        - /usr/sbin/glusterd
         - /usr/sbin/glusterfs
+        - /usr/sbin/glusterfsd
         - /usr/sbin/haveged -w 1024
         - /usr/sbin/kamailio -f /etc/kamailio/lb/kamailio.cfg -P /var/run/kamailio/kamailio.lb.pid
         - /usr/sbin/kamailio -f /etc/kamailio/proxy/kamailio.cfg -P /var/run/kamailio/kamailio.proxy.pid
         - /usr/sbin/mediaproxy-ng
-        - /usr/sbin/monit
         - /usr/sbin/mysqld
         - /usr/sbin/ntpd
         - /usr/sbin/rsyslogd
@@ -61,11 +64,13 @@ open-ports:
             3306: mysqld
             # 4569: asterisk # TODO udp
             # 5040: sems # TODO udp
+            5060: kamailio
             5062: kamailio
             # 5070: asterisk # TODO udp
             # 5080: sems # TODO udp
+            5222: prosody
+            5269: prosody
             6996: glusterfs
-            8000: kamailio
             8090: sems
             # 25826: collectd + kamailio # TODO udp
             # 40297: collectd # TODO udp
@@ -95,7 +100,6 @@ sites-ok:
             title: "Sipwise NGCP CSC"
             content: "Self-Administration Login"
         https://localhost:1443/:
-            title: "Sipwise NGCP admin interface"
-            content: "Sipwise NGCP Administration Interface"
+            content: "Admin Sign In"
         https://localhost:2443/SOAP/Provisioning.wsdl:
             content: "xmlns:tns=\"http://dev.sipwise.com/SOAP/Provisioning\""
