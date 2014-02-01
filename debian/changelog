@@ -1,3 +1,24 @@
+ngcp-system-tests (0.01~dev+0~mr3.2.1) unstable; urgency=low
+
+  [ Michael Prokop ]
+  * [00e95e0] Also send stderr to TAP output
+  * [9ca24d2] Initial test-server configuration file for PRO systems
+  * [4f435d3] Reduce should-run process arguments + quote heartbeat cmdline
+  * [5f00380] Adjust copyright, give proper credits to Jozef Kutej
+  * [da263e7] Document #703428 for glusterfs check
+  * [e7e41d0] Add test for open ports
+  * [c6442cc] Provide test to check web sites
+  * [a9d756b] Mark test scripts executables
+  * [65579f4] Simplify debian/copyright
+  * [4cecefb] Provide debian/source/format
+  * [dabbe0a] Make 01_hostname-and-interfaces.t useful on our current CE systems
+  * [4c10d8e] Add ngcp-panel logger, getty, udev and prosody processes to process test
+  * [3685dfc] Adopt PRO tests for 3.0 release
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Sat, 01 Feb 2014 20:00:19 +0100
+
 ngcp-system-tests (0.01~dev) unstable; urgency=low
 
   * Initial release.
