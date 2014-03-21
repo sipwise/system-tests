@@ -1,4 +1,4 @@
-ngcp-system-tests (0.01~dev+0~mr3.3) unstable; urgency=low
+ngcp-system-tests (0.2.0.0+0~mr3.3.0.0) unstable; urgency=low
 
   [ Michael Prokop ]
   * [00e95e0] Also send stderr to TAP output
@@ -17,7 +17,9 @@ ngcp-system-tests (0.01~dev+0~mr3.3) unstable; urgency=low
 
   [ Sipwise Jenkins Builder ]
 
- -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Sat, 01 Feb 2014 20:00:06 +0100
+  [ Alexander Lutay ]
+
+ -- Alexander Lutay <alutay@sipwise.com>  Fri, 21 Mar 2014 09:57:15 +0100
 
 ngcp-system-tests (0.01~dev) unstable; urgency=low
 
