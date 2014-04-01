@@ -96,10 +96,21 @@ open-ports:
 
 sites-ok:
     sites:
+        http://localhost:8081/nginx_status:
+            content: "Active connections"
+        http://localhost/login/?lang=en:
+            title: "Sipwise NGCP CSC"
+            content: "Self-Administration Login"
+        http://localhost:1443/:
+            content: "Subscriber Sign In"
+        http://localhost:1443/login/admin:
+            content: "Admin Sign In"
         https://localhost/login/:
             title: "Sipwise NGCP CSC"
             content: "Self-Administration Login"
         https://localhost:1443/:
+            content: "Subscriber Sign In"
+        https://localhost:1443/login/admin:
             content: "Admin Sign In"
         https://localhost:2443/SOAP/Provisioning.wsdl:
             content: "xmlns:tns=\"http://dev.sipwise.com/SOAP/Provisioning\""
