@@ -10,24 +10,32 @@ disk-free:
 
 running-processes:
     should-run:
-        - /bin/sh -c /usr/bin/logger -p daemon.info -t csc
         - /bin/sh -c /usr/bin/logger -p daemon.info -t oss
         - /bin/sh /usr/bin/mysqld_safe
         - collectd -C /etc/collectd/collectd.conf -f
         - "heartbeat: master control process"
+        - "heartbeat: read: ping"
+        - "heartbeat: write: ping"
+        - "heartbeat: FIFO reader"
+        - "ha_logd: write process"
+        - "ha_logd: read process"
+        - /usr/sbin/hb_watchdog
         - rate-o-mat
-        - /sbin/getty 38400 tty1
+        - /sbin/getty 38400 tty
         - udevd --daemon
-        - /usr/bin/logger -p daemon.info -t csc
-        - /usr/bin/logger -p daemon.info -t ngcp-panel
         - /usr/bin/logger -p daemon.info -t oss
-        - /usr/bin/lua5.1 /usr/bin/prosody
+        - lua5.1 /usr/bin/prosody
         - /usr/bin/mediator
         - /usr/bin/monit
         - /usr/bin/redis-server
+        - /usr/bin/voisniff-ng
         - /usr/lib64/heartbeat/ipfail
         - /usr/sbin/acpid
         - /usr/sbin/apache2
+        - /usr/sbin/nginx
+        - perl-fcgi
+        - "perl-fcgi-pm \[csc\]"
+        - "perl-fcgi-pm \[NGCP::Panel\]"
         - /usr/sbin/asterisk -n
         - /usr/sbin/collectdmon
         - /usr/sbin/cron
@@ -38,6 +46,7 @@ running-processes:
         - /usr/sbin/haveged -w 1024
         - /usr/sbin/kamailio -f /etc/kamailio/lb/kamailio.cfg -P /var/run/kamailio/kamailio.lb.pid
         - /usr/sbin/kamailio -f /etc/kamailio/proxy/kamailio.cfg -P /var/run/kamailio/kamailio.proxy.pid
+        # keep it here for now, will be relaced to rtpengine
         - /usr/sbin/mediaproxy-ng
         - /usr/sbin/mysqld
         - /usr/sbin/ntpd
@@ -45,6 +54,10 @@ running-processes:
         - /usr/sbin/sems
         - /usr/sbin/snmpd
         - /usr/sbin/sshd
+        - /usr/sbin/faxgetty
+        - /usr/sbin/faxq
+        - /usr/sbin/hfaxd
+        - /usr/sbin/ngcp-iaxmodem
 
 open-ports:
     connect:
