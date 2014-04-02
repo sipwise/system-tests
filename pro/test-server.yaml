@@ -70,6 +70,8 @@ open-ports:
             443: https
             # 694: heartbeat # TODO udp
             1443: https
+            2443: https
+            1444: https
             # 2222: mediaproxy # TODO udp
             # 2223: mediaproxy # TODO udp
             2443: https
@@ -83,7 +85,7 @@ open-ports:
             # 5080: sems # TODO udp
             5222: prosody
             5269: prosody
-            6996: glusterfs
+            24009: glusterfsd
             8090: sems
             # 25826: collectd + kamailio # TODO udp
             # 40297: collectd # TODO udp
@@ -105,6 +107,8 @@ open-ports:
             3306: mysql
             6379: redis-server
         deb.sipwise.com:
+            80: http
+        debian.sipwise.com:
             80: http
 
 sites-ok:
