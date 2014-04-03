@@ -59,6 +59,7 @@ sub main {
 
 	# loop through ports that needs to be working
 	foreach my $host (keys %$connect) {
+		my ($result)="";
 		my $net_service = Test::Net::Service->new(
 			'host' => $host
 		);
@@ -77,27 +78,22 @@ sub main {
 				Proto    => $proto,
 			);
 
-			if ($proto eq "udp") {      ## UDP Socket
-				my ($result)=$netstat=~/\w+\s+\d+\s+\d+\s+[\d.:]+:$port\s+[\d:.]+:\*/;
-				if ($service eq 'closed') {
-					ok( !$result, "connect to $host port $port/$proto ($service) is filtered" );
-				} else {
-					ok( $result, "connect to $host port $port/$proto ($service)" );
-				};
-				next;
+			if ($proto eq "udp") {
+				($result)=$netstat=~/\w+\s+\d+\s+\d+\s+[\d.:]+:$port\s+[\d:.]+:\*/;
+			} else {
+				($result)=$socket;
 			};
 
-
-			# TCP socket: check for closed ports
+			# check for closed ports
 			if ($service eq 'closed') {
-				ok( !$socket, "connect to $service on $host port $port/$proto ($service) is filtered" );
+				ok( !$result, "connect to $service on $host port $port/$proto ($service) is filtered" );
 				next;
 			}
 
-			ok( $socket, "connect to $service on $host port $port/$proto ($service)" );
+			ok( $result, "connect to $service on $host port $port/$proto ($service)" );
 
 			# skip rest if we failed to connect
-			if (not defined $socket) {
+			if (not defined $result) {
 				SKIP: {
 					skip 'skipping service check if port open failed', 1;
 				}
@@ -105,7 +101,7 @@ sub main {
 			}
 
 			# skip rest if servis was not specified
-			if (not $service) {
+			if (not $result) {
 				SKIP: {
 					skip 'skipping service check no service defined', 1;
 				}
