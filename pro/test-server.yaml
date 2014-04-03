@@ -89,10 +89,7 @@ open-ports:
             5040/udp: sems
             5070/udp: asterisk
             5080/udp: sems
-            5222: prosody
-            5269: prosody
             7777/udp: closed  # test for closed UDP port check, nothing there
-            24009: glusterfsd
             25826/udp: collectd
         192.168.255.251:
             22: ssh
