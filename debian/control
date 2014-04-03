@@ -12,6 +12,7 @@ Depends: libfilesys-diskspace-perl,
          libproc-processtable-perl,
          libtest-server-perl,
          libtest-www-mechanize-perl,
+         net-tools,
          perl-modules,
          ${misc:Depends},
          ${perl:Depends}
