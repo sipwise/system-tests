@@ -37,6 +37,7 @@ my $config = LoadFile($Bin.'/test-server.yaml');
 plan 'skip_all' => "no configuration sections for 'open-ports'"
 	if (not $config or not $config->{'open-ports'});
 
+my $netstat=`netstat -anu`;
 
 exit main();
 
@@ -65,6 +66,10 @@ sub main {
 		foreach my $port (keys %{$connect->{$host}}) {
 			my $service = $connect->{$host}->{$port} || '';
 			my $proto   = 'tcp';
+			if ($port =~ /([0-9]+)\/(.*)/smg) {
+				$port    = $1;
+				$proto   = $2;
+			};
 
 			my $socket = IO::Socket::INET->new(
 				PeerAddr => $host,
@@ -72,30 +77,24 @@ sub main {
 				Proto    => $proto,
 			);
 
-			# check for closed ports
+			if ($proto eq "udp") {      ## UDP Socket
+				my ($result)=$netstat=~/\w+\s+\d+\s+\d+\s+[\d.:]+:$port\s+[\d:.]+:\*/;
+				if ($service eq 'closed') {
+					ok( !$result, "connect to $host port $port/$proto ($service) is filtered" );
+				} else {
+					ok( $result, "connect to $host port $port/$proto ($service)" );
+				};
+				next;
+			};
+
+
+			# TCP socket: check for closed ports
 			if ($service eq 'closed') {
-				ok(
-					!$socket,
-					'connect to '
-					.$host
-					.' port '
-					.$port
-					.'/'
-					.$proto
-					.' filtered'
-				);
+				ok( !$socket, "connect to $service on $host port $port/$proto ($service) is filtered" );
 				next;
 			}
 
-			ok(
-				$socket,
-				'connect to '
-				.$host
-				.' port '
-				.$port
-				.'/'
-				.$proto
-			);
+			ok( $socket, "connect to $service on $host port $port/$proto ($service)" );
 
 			# skip rest if we failed to connect
 			if (not defined $socket) {
@@ -130,13 +129,7 @@ sub main {
 						'service' => $service
 					)
 				},
-				'check '
-				.$service
-				.' service default response with proto '
-				.$proto
-				.' port '
-				.$port
-				.' on host '
+				"check $service service default response with proto $proto port $port on host"
 			);
 		}
 	}

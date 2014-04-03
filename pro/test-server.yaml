@@ -62,36 +62,38 @@ running-processes:
 open-ports:
     connect:
         localhost:
+            # TCP ports list
             22: ssh
             25: exim4
             80: http
-            # 23: ntpd # TODO udp
-            # 161: snmpd TODO udp
-            443: https
-            # 694: heartbeat # TODO udp
+            443: https$
             1443: https
-            2443: https
             1444: https
-            # 2222: mediaproxy # TODO udp
-            # 2223: mediaproxy # TODO udp
             2443: https
             2812: monit
             3306: mysqld
-            # 4569: asterisk # TODO udp
-            # 5040: sems # TODO udp
             5060: kamailio
             5062: kamailio
-            # 5070: asterisk # TODO udp
-            # 5080: sems # TODO udp
             5222: prosody
             5269: prosody
-            24009: glusterfsd
             8090: sems
-            # 25826: collectd + kamailio # TODO udp
-            # 40297: collectd # TODO udp
-            # 45673: heartbeat # TODO udp
-            # 48296: collectd + kamailio # TODO udp
-            # 50474: heartbeat # TODO udp
+            7777: closed  # test for closed TCP port check, nothing there
+            24009: glusterfsd
+            # UDP ports list
+            123/udp: ntpd
+            161/udp: snmpd
+            694/udp: heartbeat
+            2222/udp: mediaproxy
+            2223/udp: mediaproxy
+            4569/udp: asterisk
+            5040/udp: sems
+            5070/udp: asterisk
+            5080/udp: sems
+            5222: prosody
+            5269: prosody
+            7777/udp: closed  # test for closed UDP port check, nothing there
+            24009: glusterfsd
+            25826/udp: collectd
         192.168.255.251:
             22: ssh
             80: http
