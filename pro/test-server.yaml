@@ -46,8 +46,7 @@ running-processes:
         - /usr/sbin/haveged -w 1024
         - /usr/sbin/kamailio -f /etc/kamailio/lb/kamailio.cfg -P /var/run/kamailio/kamailio.lb.pid
         - /usr/sbin/kamailio -f /etc/kamailio/proxy/kamailio.cfg -P /var/run/kamailio/kamailio.proxy.pid
-        # keep it here for now, will be relaced to rtpengine
-        - /usr/sbin/mediaproxy-ng
+        - /usr/sbin/rtpengine
         - /usr/sbin/mysqld
         - /usr/sbin/ntpd
         - /usr/sbin/rsyslogd
@@ -83,8 +82,8 @@ open-ports:
             123/udp: ntpd
             161/udp: snmpd
             694/udp: heartbeat
-            2222/udp: mediaproxy
-            2223/udp: mediaproxy
+            2222/udp: rtpengine
+            2223/udp: rtpengine
             4569/udp: asterisk
             5040/udp: sems
             5070/udp: asterisk
