@@ -10,24 +10,31 @@ disk-free:
 
 running-processes:
     should-run:
-        - /bin/sh -c /usr/bin/logger -p daemon.info -t csc
         - /bin/sh -c /usr/bin/logger -p daemon.info -t oss
         - /bin/sh /usr/bin/mysqld_safe
         - collectd -C /etc/collectd/collectd.conf -f
         - "heartbeat: master control process"
+        - "heartbeat: read: ping"
+        - "heartbeat: write: ping"
+        - "heartbeat: FIFO reader"
+        - "ha_logd: write process"
+        - "ha_logd: read process"
         - rate-o-mat
-        - /sbin/getty 38400 tty1
+        - /sbin/getty 38400 tty
         - udevd --daemon
-        - /usr/bin/logger -p daemon.info -t csc
-        - /usr/bin/logger -p daemon.info -t ngcp-panel
         - /usr/bin/logger -p daemon.info -t oss
-        - /usr/bin/lua5.1 /usr/bin/prosody
+        - lua5.1 /usr/bin/prosody
         - /usr/bin/mediator
         - /usr/bin/monit
         - /usr/bin/redis-server
+        - /usr/bin/voisniff-ng
         - /usr/lib64/heartbeat/ipfail
         - /usr/sbin/acpid
         - /usr/sbin/apache2
+        - /usr/sbin/nginx
+        - perl-fcgi
+        - "perl-fcgi-pm \[csc\]"
+        - "perl-fcgi-pm \[NGCP::Panel\]"
         - /usr/sbin/asterisk -n
         - /usr/sbin/collectdmon
         - /usr/sbin/cron
@@ -49,34 +56,35 @@ running-processes:
 open-ports:
     connect:
         localhost:
+            # TCP ports list
             22: ssh
             25: exim4
             80: http
-            # 23: ntpd # TODO udp
-            # 161: snmpd TODO udp
-            443: https
-            # 694: heartbeat # TODO udp
+            443: https$
             1443: https
-            # 2222: mediaproxy # TODO udp
-            # 2223: mediaproxy # TODO udp
+            1444: https
             2443: https
             2812: monit
             3306: mysqld
-            # 4569: asterisk # TODO udp
-            # 5040: sems # TODO udp
             5060: kamailio
             5062: kamailio
-            # 5070: asterisk # TODO udp
-            # 5080: sems # TODO udp
             5222: prosody
             5269: prosody
-            6996: glusterfs
             8090: sems
-            # 25826: collectd + kamailio # TODO udp
-            # 40297: collectd # TODO udp
-            # 45673: heartbeat # TODO udp
-            # 48296: collectd + kamailio # TODO udp
-            # 50474: heartbeat # TODO udp
+            7777: closed  # test for closed TCP port check, nothing there
+            24009: glusterfsd
+            # UDP ports list
+            123/udp: ntpd
+            161/udp: snmpd
+            694/udp: heartbeat
+            2222/udp: mediaproxy-ng
+            2223/udp: mediaproxy-ng
+            4569/udp: asterisk
+            5040/udp: sems
+            5070/udp: asterisk
+            5080/udp: sems
+            7777/udp: closed  # test for closed UDP port check, nothing there
+            25826/udp: collectd
         192.168.255.251:
             22: ssh
             80: http
@@ -93,13 +101,26 @@ open-ports:
             6379: redis-server
         deb.sipwise.com:
             80: http
+        debian.sipwise.com:
+            80: http
 
 sites-ok:
     sites:
+        http://localhost:8081/nginx_status:
+            content: "Active connections"
+        http://localhost/login/?lang=en:
+            title: "Sipwise NGCP CSC"
+            content: "Self-Administration Login"
+        http://localhost:1443/:
+            content: "Subscriber Sign In"
+        http://localhost:1443/login/admin:
+            content: "Admin Sign In"
         https://localhost/login/:
             title: "Sipwise NGCP CSC"
             content: "Self-Administration Login"
         https://localhost:1443/:
+            content: "Subscriber Sign In"
+        https://localhost:1443/login/admin:
             content: "Admin Sign In"
         https://localhost:2443/SOAP/Provisioning.wsdl:
             content: "xmlns:tns=\"http://dev.sipwise.com/SOAP/Provisioning\""
