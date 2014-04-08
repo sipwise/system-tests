@@ -64,6 +64,7 @@ sub main {
 	}
 
 	SKIP: {
+
 		skip 'fqdn not found', 2
 			if not defined $hostname_fqdn_ip;
 
@@ -87,6 +88,9 @@ sub main {
 			diag 'if ', $ifname, ' ip ', $iface->{'ip'}, ' resolves to ', $iface->{'hostname'}
 				if $ENV{TEST_VERBOSE};
 		}
+
+		skip 'DNS resolve check as requested via env SKIP_DNS_CHECK_TEST=true', 1
+			if $ENV{SKIP_DNS_CHECK_TEST};
 
 		# check if every interface has a hostname set (different from the ip)
 		eq_or_diff(
