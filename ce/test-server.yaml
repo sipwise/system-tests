@@ -9,7 +9,7 @@ running-processes:
         - collectd -C /etc/collectd/collectd.conf -f
         - nginx
         - rate-o-mat
-        - /sbin/getty 38400 tty1
+        - /sbin/getty 38400 tty
         - udevd --daemon
         - /usr/bin/logger -p daemon.info -t oss
         - lua5.1 /usr/bin/prosody
