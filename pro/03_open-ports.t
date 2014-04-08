@@ -37,6 +37,7 @@ my $config = LoadFile($Bin.'/test-server.yaml');
 plan 'skip_all' => "no configuration sections for 'open-ports'"
 	if (not $config or not $config->{'open-ports'});
 
+my $netstat=`netstat -anu`;
 
 exit main();
 
@@ -58,6 +59,7 @@ sub main {
 
 	# loop through ports that needs to be working
 	foreach my $host (keys %$connect) {
+		my ($result)="";
 		my $net_service = Test::Net::Service->new(
 			'host' => $host
 		);
@@ -65,6 +67,10 @@ sub main {
 		foreach my $port (keys %{$connect->{$host}}) {
 			my $service = $connect->{$host}->{$port} || '';
 			my $proto   = 'tcp';
+			if ($port =~ /([0-9]+)\/(.*)/smg) {
+				$port    = $1;
+				$proto   = $2;
+			};
 
 			my $socket = IO::Socket::INET->new(
 				PeerAddr => $host,
@@ -72,33 +78,22 @@ sub main {
 				Proto    => $proto,
 			);
 
+			if ($proto eq "udp") {
+				($result)=$netstat=~/\w+\s+\d+\s+\d+\s+[\d.:]+:$port\s+[\d:.]+:\*/;
+			} else {
+				($result)=$socket;
+			};
+
 			# check for closed ports
 			if ($service eq 'closed') {
-				ok(
-					!$socket,
-					'connect to '
-					.$host
-					.' port '
-					.$port
-					.'/'
-					.$proto
-					.' filtered'
-				);
+				ok( !$result, "connect to $service on $host port $port/$proto ($service) is filtered" );
 				next;
 			}
 
-			ok(
-				$socket,
-				'connect to '
-				.$host
-				.' port '
-				.$port
-				.'/'
-				.$proto
-			);
+			ok( $result, "connect to $service on $host port $port/$proto ($service)" );
 
 			# skip rest if we failed to connect
-			if (not defined $socket) {
+			if (not defined $result) {
 				SKIP: {
 					skip 'skipping service check if port open failed', 1;
 				}
@@ -106,7 +101,7 @@ sub main {
 			}
 
 			# skip rest if servis was not specified
-			if (not $service) {
+			if (not $result) {
 				SKIP: {
 					skip 'skipping service check no service defined', 1;
 				}
@@ -130,13 +125,7 @@ sub main {
 						'service' => $service
 					)
 				},
-				'check '
-				.$service
-				.' service default response with proto '
-				.$proto
-				.' port '
-				.$port
-				.' on host '
+				"check $service service default response with proto $proto port $port on host"
 			);
 		}
 	}
