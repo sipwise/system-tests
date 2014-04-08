@@ -5,22 +5,21 @@ disk-free:
 
 running-processes:
     should-run:
-        - /bin/sh -c /usr/bin/logger -p daemon.info -t csc
-        - /bin/sh -c /usr/bin/logger -p daemon.info -t oss
         - /bin/sh /usr/bin/mysqld_safe
         - collectd -C /etc/collectd/collectd.conf -f
         - nginx
         - rate-o-mat
-        - /sbin/getty 38400 tty1
-        - startpar -f -- ngcp-rate-o-mat
+        - /sbin/getty 38400 tty
         - udevd --daemon
-        - /usr/bin/logger -p daemon.info -t csc
-        - /usr/bin/logger -p daemon.info -t ngcp-panel
         - /usr/bin/logger -p daemon.info -t oss
-        - /usr/bin/lua5.1 /usr/bin/prosody
+        - lua5.1 /usr/bin/prosody
         - /usr/bin/mediator
         - /usr/sbin/acpid
         - /usr/sbin/apache2
+        - /usr/sbin/nginx
+        - perl-fcgi
+        - "perl-fcgi-pm \[csc\]"
+        - "perl-fcgi-pm \[NGCP::Panel\]"
         - /usr/sbin/asterisk -n
         - /usr/sbin/collectdmon
         - /usr/sbin/cron
