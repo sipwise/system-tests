@@ -1,3 +1,16 @@
+ngcp-system-tests (0.1.2.1+0~mr3.2.2.1) unstable; urgency=low
+
+  [ Alexander Lutay ]
+  * [f0866e7] MT#6389 Update list of CE service for mr3.2
+  * [417d577] MT#6389 Update list of PRO service for mr3.2
+  * [0956f57] MT#6389 Add disk free space check for pro
+  * [abed689] MT#6389 Add support of UDP ports check
+  * [e8e5407] MT#6389 Add ability to stip DNS check via SKIP_DNS_CHECK_TEST
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 13 May 2014 12:12:23 +0200
+
 ngcp-system-tests (0.1.2.0+0~mr3.2.2.0) unstable; urgency=low
 
   * New release.
