@@ -21,7 +21,7 @@ running-processes:
         - "ha_logd: read process"
         - /usr/sbin/hb_watchdog
         - rate-o-mat
-        - /sbin/getty 38400 tty
+        - getty
         - udevd
         - /usr/bin/logger -p daemon.info -t oss
         - lua5.1 /usr/bin/prosody
