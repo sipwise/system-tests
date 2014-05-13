@@ -22,7 +22,7 @@ running-processes:
         - /usr/sbin/hb_watchdog
         - rate-o-mat
         - /sbin/getty 38400 tty
-        - udevd --daemon
+        - udevd
         - /usr/bin/logger -p daemon.info -t oss
         - lua5.1 /usr/bin/prosody
         - /usr/bin/mediator
