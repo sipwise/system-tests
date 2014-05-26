@@ -1,3 +1,28 @@
+ngcp-system-tests (0.2.1.0+0~mr3.3.1.0) unstable; urgency=low
+
+  [ Michael Prokop ]
+  * [4e8a8e2] MT#6511 Bump Standards-Version to 3.9.5
+  * [48e9ce9] MT#6807 Check for udevd process without "--daemon" args
+  * [19f247d] MT#6807 Adjust getty check for usage with systemd
+
+  [ Alexander Lutay ]
+  * [239bf3b] MT#6389 03_sites-ok.t config has been updated
+  * [b2ac87f] MT#6389 Add disk free space check for pro
+  * [9e890dc] MT#6389 Processlist actualized for trunk/mr3.3
+  * [1e54492] MT#6389 Update list of opened ports
+  * [aaabef0] MT#6389 Add support of UDP ports check
+  * [4c44815] MT#6389 Removed ports duplicates
+  * [e468dc9] MT#6389 Fixed tests count calculation
+  * [1cf342e] MT#6389 Update CE list of running processes
+  * [965f915] MT#6389 Add dependency for netstat
+  * [61d17a7] MT#6389 Renamed mediaproxy-ng to rtpengine
+  * [349e516] MT#6389 Add ability to stip DNS check via SKIP_DNS_CHECK_TEST
+  * [0b86f03] MT#6389 Do not check exect tty number (check general avialability)
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 26 May 2014 16:03:58 +0200
+
 ngcp-system-tests (0.2.0.0+0~mr3.3.0.0) unstable; urgency=low
 
   [ Michael Prokop ]
