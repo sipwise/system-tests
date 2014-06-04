@@ -7,10 +7,10 @@ echo "1..1"
 
 if [ -d ${CORE_DIR} ]; then
 	if [[ $NUM_FILES > 0 ]]; then
-		echo "not ok ${CORE_DIR} not empty"
+		echo "not ok 1 - ${CORE_DIR} not empty"
 	else
-		echo "ok ${CORE_DIR} empty"
+		echo "ok 1 - ${CORE_DIR} empty"
 	fi
 else
-	echo "ok no ${CORE_DIR}"
+	echo "ok 1 - no ${CORE_DIR}"
 fi
