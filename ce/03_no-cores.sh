@@ -1,7 +1,7 @@
 #!/bin/bash
 SYSCTL="/sbin/sysctl"
 CORE_DIR=$(dirname $(${SYSCTL} kernel.core_pattern | awk '{print $3}'| sed -e "s_'__g"))
-CORE_FILES=$(ls -1 -m ${CORE_DIR})
+CORE_FILES=$(ls -m -w 100000 ${CORE_DIR})
 NUM_FILES=$(ls -1 ${CORE_DIR}|wc -l)
 
 echo "1..1"
