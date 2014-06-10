@@ -50,7 +50,7 @@ running-processes:
         - /usr/sbin/mysqld
         - /usr/sbin/ntpd
         - /usr/sbin/rsyslogd
-        - /usr/sbin/sems
+        - /usr/sbin/ngcp-sems
         - /usr/sbin/snmpd
         - /usr/sbin/sshd
         - /usr/sbin/faxgetty
@@ -75,7 +75,7 @@ open-ports:
             5062: kamailio
             5222: prosody
             5269: prosody
-            8090: sems
+            8090: ngcp-sems
             7777: closed  # test for closed TCP port check, nothing there
             24009: glusterfsd
             # UDP ports list
@@ -85,9 +85,9 @@ open-ports:
             2222/udp: rtpengine
             2223/udp: rtpengine
             4569/udp: asterisk
-            5040/udp: sems
+            5040/udp: ngcp-sems
             5070/udp: asterisk
-            5080/udp: sems
+            5080/udp: ngcp-sems
             7777/udp: closed  # test for closed UDP port check, nothing there
             25826/udp: collectd
         192.168.255.251:

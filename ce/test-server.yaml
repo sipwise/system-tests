@@ -30,5 +30,5 @@ running-processes:
         - /usr/sbin/mysqld
         - /usr/sbin/ntpd
         - /usr/sbin/rsyslogd
-        - /usr/sbin/sems
+        - /usr/sbin/ngcp-sems
         - /usr/sbin/sshd
