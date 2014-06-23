@@ -1,0 +1,1 @@
+../ce/03_files_availability.sh
