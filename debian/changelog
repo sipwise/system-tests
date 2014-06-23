@@ -1,3 +1,12 @@
+ngcp-system-tests (0.2.1.2+0~mr3.3.1.2) unstable; urgency=low
+
+  [ Alexander Lutay ]
+  * [e18453a] MT#6659 Add check of basic files avialability
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 23 Jun 2014 20:05:35 +0200
+
 ngcp-system-tests (0.2.1.1+0~mr3.3.1.1) unstable; urgency=low
 
   * New release.
