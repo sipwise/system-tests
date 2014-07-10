@@ -1,3 +1,20 @@
+ngcp-system-tests (0.3.1.0+0~mr3.4.1.0) unstable; urgency=low
+
+  [ Victor Seva ]
+  * [807cb9b] MT#7333 add support for bash tests. Add no-cores test
+
+  [ Alexander Lutay ]
+  * [1fe5910] MT#7333 Fixed TAP output for 03_no-cores.sh
+  * [384a145] MT#7333 Fixed Jenkins exception in case of absolute path
+  * [182a1bd] MT#7333 Show list of cores if they exist
+  * [76064bd] MT#7333 Don't care about windows size, always one line
+  * [101bb7c] MT#7349 Rename sems to ngcp-sems in tests
+  * [08819aa] MT#6659 Add check of basic files avialability
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 10 Jul 2014 15:39:37 +0200
+
 ngcp-system-tests (0.3.0.0+0~mr3.4.0.0) unstable; urgency=low
 
   [ Michael Prokop ]
