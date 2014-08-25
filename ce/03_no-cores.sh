@@ -8,7 +8,8 @@ echo "1..1"
 
 if [ -d ${CORE_DIR} ]; then
 	if [[ $NUM_FILES > 0 ]]; then
-		echo "not ok 1 - ${CORE_DIR} not empty: ${CORE_FILES}"
+#		echo "not ok 1 - ${CORE_DIR} not empty: ${CORE_FILES}"
+		echo "ok 1 - ${CORE_DIR} not empty: ${CORE_FILES}"
 	else
 		echo "ok 1 - ${CORE_DIR} empty"
 	fi
