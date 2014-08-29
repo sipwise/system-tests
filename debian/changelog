@@ -1,3 +1,12 @@
+ngcp-system-tests (0.3.3.0+0~mr3.4.3.0) unstable; urgency=low
+
+  [ Alexander Lutay ]
+  * [15c64e8] MT#8041 Disable cores check test until sems is not fixed
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Fri, 29 Aug 2014 16:27:43 +0200
+
 ngcp-system-tests (0.3.2.0+0~mr3.4.2.0) unstable; urgency=low
 
   * New release.
