@@ -53,10 +53,6 @@ running-processes:
         - /usr/sbin/ngcp-sems
         - /usr/sbin/snmpd
         - /usr/sbin/sshd
-        - /usr/sbin/faxgetty
-        - /usr/sbin/faxq
-        - /usr/sbin/hfaxd
-        - /usr/sbin/ngcp-iaxmodem
 
 open-ports:
     connect:
