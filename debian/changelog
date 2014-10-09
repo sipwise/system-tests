@@ -1,3 +1,13 @@
+ngcp-system-tests (0.4.1.0+0~mr3.5.1.0) unstable; urgency=low
+
+  [ Alexander Lutay ]
+  * [6cd875c] MT#8041 Disable cores check test until sems is not fixed
+  * [75a0abc] MT#8895 hylafax and iaxmodem are disabled by default in PRO
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 09 Oct 2014 16:57:09 +0200
+
 ngcp-system-tests (0.4.0.0+0~mr3.5.0.0) unstable; urgency=low
 
   [ Victor Seva ]
