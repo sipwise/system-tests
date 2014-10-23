@@ -34,7 +34,6 @@ running-processes:
         - /usr/sbin/apache2
         - /usr/sbin/nginx
         - perl-fcgi
-        - "perl-fcgi-pm \[csc\]"
         - "perl-fcgi-pm \[NGCP::Panel\]"
         - /usr/sbin/asterisk -n
         - /usr/sbin/collectdmon
