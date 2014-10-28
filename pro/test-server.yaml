@@ -87,16 +87,10 @@ open-ports:
             25826/udp: collectd
         192.168.255.251:
             22: ssh
-            80: http
-            443: https
-            1443: https
             3306: mysql
             6379: redis-server
         192.168.255.252:
             22: ssh
-            80: http
-            443: https
-            1443: https
             3306: mysql
             6379: redis-server
         deb.sipwise.com:
@@ -108,19 +102,25 @@ sites-ok:
     sites:
         http://localhost:8081/nginx_status:
             content: "Active connections"
-        http://localhost/login/?lang=en:
-            title: "Sipwise NGCP CSC"
-            content: "Self-Administration Login"
-        http://localhost:1443/:
-            content: "Subscriber Sign In"
-        http://localhost:1443/login/admin:
-            content: "Admin Sign In"
-        https://localhost/login/:
-            title: "Sipwise NGCP CSC"
-            content: "Self-Administration Login"
-        https://localhost:1443/:
-            content: "Subscriber Sign In"
-        https://localhost:1443/login/admin:
-            content: "Admin Sign In"
         https://localhost:2443/SOAP/Provisioning.wsdl:
             content: "xmlns:tns=\"http://dev.sipwise.com/SOAP/Provisioning\""
+
+        # ngcp http
+        http://localhost/:
+            content: "Subscriber Sign In"
+        http://localhost:1443/login/subscriber:
+            content: "Subscriber Sign In"
+        http://localhost:1443/:
+            content: "Admin Sign In"
+        http://localhost/login/admin:
+            content: "Admin Sign In"
+
+        # the same tests as above through httpS
+        http://localhost/:
+            content: "Subscriber Sign In"
+        http://localhost:1443/login/subscriber:
+            content: "Subscriber Sign In"
+        http://localhost:1443/:
+            content: "Admin Sign In"
+        http://localhost/login/admin:
+            content: "Admin Sign In"
