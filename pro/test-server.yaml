@@ -10,7 +10,6 @@ disk-free:
 
 running-processes:
     should-run:
-        - /bin/sh -c /usr/bin/logger -p daemon.info -t oss
         - /bin/sh /usr/bin/mysqld_safe
         - collectd -C /etc/collectd/collectd.conf -f
         - "heartbeat: master control process"
@@ -23,7 +22,6 @@ running-processes:
         - rate-o-mat
         - getty
         - udevd
-        - /usr/bin/logger -p daemon.info -t oss
         - lua5.1 /usr/bin/prosody
         - /usr/bin/mediator
         - /usr/bin/monit
@@ -31,7 +29,6 @@ running-processes:
         - /usr/bin/voisniff-ng
         - /usr/lib64/heartbeat/ipfail
         - /usr/sbin/acpid
-        - /usr/sbin/apache2
         - /usr/sbin/nginx
         - perl-fcgi
         - "perl-fcgi-pm \[NGCP::Panel\]"
