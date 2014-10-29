@@ -30,7 +30,14 @@ use YAML::Syck 'LoadFile';
 eval "use Proc::ProcessTable";
 plan 'skip_all' => "need Proc::ProcessTable to run processes tests" if $@;
 
-my $config = LoadFile($Bin.'/test-server.yaml');
+my $file_config = $Bin.'/test-server.yaml';
+if ($Bin =~ m{/.+(ce|pro)$}) {
+	my $cfg_tt2 = "/etc/ngcp-tests/test-server_$1.yaml";
+	if (-r $cfg_tt2) {
+		$file_config = $cfg_tt2;
+	}
+}
+my $config = LoadFile($file_config);
 plan 'skip_all' => "no configuration sections for 'running-processes'"
 	if (not $config or not $config->{'running-processes'});
 
