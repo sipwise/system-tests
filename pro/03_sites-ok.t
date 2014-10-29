@@ -31,7 +31,14 @@ BEGIN { $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0 }
 eval "use Test::WWW::Mechanize";
 plan 'skip_all' => "need Test::WWW::Mechanize to run web tests" if $@;
 
-my $config = LoadFile($Bin.'/test-server.yaml');
+my $file_config;
+if ($Bin =~ m{/.+(ce|pro)$}) {
+	my $cfg_tt2 = "/etc/ngcp-tests/test-server_$1.yaml";
+	if (-r $cfg_tt2) {
+		$file_config = $cfg_tt2;
+	}
+}
+my $config = LoadFile($file_config);
 plan 'skip_all' => "no configuration sections for 'sites-ok'"
 	if (not $config or not $config->{'sites-ok'});
 
