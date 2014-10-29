@@ -1,17 +1,43 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.role='proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out
+-%]
+[% argv.host=hostname; argv.role='lb';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_lb = out
+-%]
+[% argv.host=hostname; argv.role='mgmt';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_mgmt = out
+-%]
+[% argv.host=hostname; argv.role='db';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_db = out
+-%]
+[% argv.host=hostname; argv.role='rtp';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_rtp = out
+-%]
 disk-free:
     /:
         max-used  : 80%
         max-inodes: 80%
-# Enable as soon http://bugs.debian.org/703428 is fixed and available
-#    /mnt/glusterfs:
-#        max-used  : 50%
-#        max-inodes: 50%
-
 
 running-processes:
     should-run:
-        - /bin/sh /usr/bin/mysqld_safe
+        - getty
+        - udevd
+        - /usr/sbin/acpid
+        - /usr/sbin/collectdmon
         - collectd -C /etc/collectd/collectd.conf -f
+        - /usr/sbin/cron
+        - /usr/sbin/exim4
+        - /usr/sbin/mysqld
+        - /bin/sh /usr/bin/mysqld_safe
+        - /usr/sbin/ntpd
+        - /usr/sbin/rsyslogd
+        - /usr/sbin/sshd
         - "heartbeat: master control process"
         - "heartbeat: read: ping"
         - "heartbeat: write: ping"
@@ -19,36 +45,48 @@ running-processes:
         - "ha_logd: write process"
         - "ha_logd: read process"
         - /usr/sbin/hb_watchdog
-        - rate-o-mat
-        - getty
-        - udevd
-        - lua5.1 /usr/bin/prosody
-        - /usr/bin/mediator
         - /usr/bin/monit
-        - /usr/bin/redis-server
+[% IF (is_proxy || is_lb) && voisniff.daemon.start == 'yes' -%]
         - /usr/bin/voisniff-ng
+[% END -%]
         - /usr/lib64/heartbeat/ipfail
-        - /usr/sbin/acpid
-        - /usr/sbin/nginx
-        - perl-fcgi
-        - "perl-fcgi-pm \[NGCP::Panel\]"
-        - /usr/sbin/asterisk -n
-        - /usr/sbin/collectdmon
-        - /usr/sbin/cron
-        - /usr/sbin/exim4
         - /usr/sbin/glusterd
         - /usr/sbin/glusterfs
         - /usr/sbin/glusterfsd
         - /usr/sbin/haveged -w 1024
-        - /usr/sbin/kamailio -f /etc/kamailio/lb/kamailio.cfg -P /var/run/kamailio/kamailio.lb.pid
-        - /usr/sbin/kamailio -f /etc/kamailio/proxy/kamailio.cfg -P /var/run/kamailio/kamailio.proxy.pid
-        - /usr/sbin/rtpengine
-        - /usr/sbin/mysqld
-        - /usr/sbin/ntpd
-        - /usr/sbin/rsyslogd
-        - /usr/sbin/ngcp-sems
         - /usr/sbin/snmpd
-        - /usr/sbin/sshd
+[% IF is_rtp || is_proxy || is_db -%]
+        - /usr/bin/redis-server
+[% END -%]
+[% IF is_mgmt -%]
+[% IF ossbss.frontend == 'apache' -%]
+        - /usr/sbin/apache2
+        - /usr/bin/logger -p daemon.info -t oss
+[% ELSIF ossbss.frontend == 'fcgi' -%]
+        - "perl-fcgi-pm \[Sipwise::Provisioning\]"
+[% END -%]
+        - /usr/sbin/nginx
+[% IF www_csc.enable == 'yes' -%]
+        - perl-fcgi
+[% END -%]
+        - "perl-fcgi-pm \[NGCP::Panel\]"
+[% END -%]
+[% IF is_proxy -%]
+        - /usr/sbin/asterisk -n
+        - /usr/sbin/kamailio -f /etc/kamailio/proxy/kamailio.cfg -P /var/run/kamailio/kamailio.proxy.pid
+        - /usr/sbin/ngcp-sems
+        - lua5.1 /usr/bin/prosody
+        - /usr/bin/mediator
+[% IF rateomat.enable == "yes" -%]
+        - rate-o-mat
+[% END -%]
+[% END -%]
+[% IF is_lb -%]
+        - /usr/sbin/kamailio -f /etc/kamailio/lb/kamailio.cfg -P /var/run/kamailio/kamailio.lb.pid
+[% END -%]
+[% IF is_rtp -%]
+        - /usr/sbin/rtpengine
+[% END -%]
 
 open-ports:
     connect:
@@ -56,51 +94,73 @@ open-ports:
             # TCP ports list
             22: ssh
             25: exim4
+[% IF is_mgmt -%]
             80: http
             443: https$
             1443: https
             1444: https
+[% IF ossbss.frontend != 'no' -%]
             2443: https
+[% END -%]
+[% END -%]
             2812: monit
             3306: mysqld
+[% IF is_lb -%]
             5060: kamailio
+[% END -%]
+[% IF is_proxy -%]
             5062: kamailio
             5222: prosody
             5269: prosody
             8090: ngcp-sems
+            4569/udp: asterisk
+            5040/udp: ngcp-sems
+            5070/udp: asterisk
+            5080/udp: ngcp-sems
+[% END -%]
             7777: closed  # test for closed TCP port check, nothing there
             24009: glusterfsd
             # UDP ports list
             123/udp: ntpd
             161/udp: snmpd
             694/udp: heartbeat
+[% IF is_rtp -%]
             2222/udp: rtpengine
             2223/udp: rtpengine
-            4569/udp: asterisk
-            5040/udp: ngcp-sems
-            5070/udp: asterisk
-            5080/udp: ngcp-sems
+[% END -%]
             7777/udp: closed  # test for closed UDP port check, nothing there
             25826/udp: collectd
         192.168.255.251:
             22: ssh
             3306: mysql
+[% IF is_rtp || is_proxy || is_db -%]
             6379: redis-server
+[% END -%]
         192.168.255.252:
             22: ssh
             3306: mysql
+[% IF is_rtp || is_proxy || is_db -%]
             6379: redis-server
+[% END -%]
         deb.sipwise.com:
             80: http
         debian.sipwise.com:
             80: http
 
 sites-ok:
+[% IF is_mgmt -%]
     sites:
         http://localhost:8081/nginx_status:
             content: "Active connections"
+[% IF ossbss.frontend == 'apache' -%]
         https://localhost:2443/SOAP/Provisioning.wsdl:
             content: "xmlns:tns=\"http://dev.sipwise.com/SOAP/Provisioning\""
+[% ELSIF ossbss.frontend == 'fcgi' -%]
+        https://localhost:2443/SOAP/Provisioning.wsdl:
+            content: "401 Authorization Required"
+        https://ngcpsoap:s04pt3st@localhost:2443/SOAP/Provisioning.wsdl:
+            content: "xmlns:tns=\"http://dev.sipwise.com/SOAP/Provisioning\""
+[% END -%]
 
         # ngcp http
         http://localhost/:
@@ -121,3 +181,6 @@ sites-ok:
             content: "Admin Sign In"
         http://localhost/login/admin:
             content: "Admin Sign In"
+[% ELSE -%]
+    sites:
+[% END -%]
