@@ -33,7 +33,14 @@ use FindBin '$Bin';
 eval "use IO::Socket::INET";
 plan 'skip_all' => "need IO::Socket::INET to run ports open tests" if $@;
 
-my $config = LoadFile($Bin.'/test-server.yaml');
+my $file_config;
+if ($Bin =~ m{/.+(ce|pro)$}) {
+	my $cfg_tt2 = "/etc/ngcp-tests/test-server_$1.yaml";
+	if (-r $cfg_tt2) {
+		$file_config = $cfg_tt2;
+	}
+}
+my $config = LoadFile($file_config);
 plan 'skip_all' => "no configuration sections for 'open-ports'"
 	if (not $config or not $config->{'open-ports'});
 
