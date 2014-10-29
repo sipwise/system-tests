@@ -32,7 +32,14 @@ use Test::Server::Util qw(parse_size format_size);
 eval "use Filesys::DiskSpace";
 plan 'skip_all' => "need Filesys::DiskSpace to run disk free tests" if $@;
 
-my $config = LoadFile($Bin.'/test-server.yaml');
+my $file_config;
+if ($Bin =~ m{/.+(ce|pro)$}) {
+	my $cfg_tt2 = "/etc/ngcp-tests/test-server_$1.yaml";
+	if (-r $cfg_tt2) {
+		$file_config = $cfg_tt2;
+	}
+}
+my $config = LoadFile($file_config);
 
 # by default check root filesystem
 $config->{'disk-free'} = { '/' => undef }
