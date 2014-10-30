@@ -1,3 +1,18 @@
+ngcp-system-tests (0.5.1.0+0~mr3.6.1.0) unstable; urgency=low
+
+  [ Alexander Lutay ]
+  * [517ae12] MT#9677 Removed old selfcare availability check since mr3.6+
+  * [80abeab] MT#9837 Updated tests accordingly to trunk changes
+  * [cdf84d7] MT#9837 Removed Apache and ossbss deamons since mr3.6+
+  * [1e1d0ff] MT#7505 Add .gitreview file for system-tests
+
+  [ Victor Seva ]
+  * [d65ac02] MT#9547 load config from template in order to select tests
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 30 Oct 2014 17:32:50 +0100
+
 ngcp-system-tests (0.5.0.0+0~mr3.6.0.0) unstable; urgency=low
 
   [ Alexander Lutay ]
