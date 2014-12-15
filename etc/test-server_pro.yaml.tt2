@@ -125,7 +125,6 @@ open-ports:
             161/udp: snmpd
             694/udp: heartbeat
 [% IF is_rtp -%]
-            2222/udp: rtpengine
             2223/udp: rtpengine
 [% END -%]
             7777/udp: closed  # test for closed UDP port check, nothing there
