@@ -1,3 +1,12 @@
+ngcp-system-tests (0.7.0.0+0~mr3.8.0.0) unstable; urgency=low
+
+  [ Alexander Lutay ]
+  * [2e192df] MT#10585 Stops testing port 2222 on PRO (no longer used)
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 07 Jan 2015 21:42:12 +0100
+
 ngcp-system-tests (0.6.0.0+0~mr3.7.0.0) unstable; urgency=low
 
   [ Alexander Lutay ]
