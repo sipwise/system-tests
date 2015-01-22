@@ -19,6 +19,27 @@
   PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
   is_rtp = out
 -%]
+[- IF PRO -]
+[% argv.host=hostname; argv.type='sip_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   sip_proxy_ips = out
+-%]
+[% argv.host=hostname; argv.type='sip_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   sip_ext_ips = out
+-%]
+[% IF !sip_ext_ips.size -%]
+[% argv.host=hostname; argv.type='sip_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   sip_ext_ips = out;
+-%]
+[% END -%]
+[- ELSE -]
+[% argv.host=hostname; argv.type='sip_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   sip_ext_ips = out
+-%]
+[- END -]
 disk-free:
     /:
         max-used  : 80%
@@ -110,8 +131,6 @@ open-ports:
 [% END -%]
 [% IF is_proxy -%]
             5062: kamailio
-            5222: prosody
-            5269: prosody
             8090: ngcp-sems
             4569/udp: asterisk
             5040/udp: ngcp-sems
@@ -140,6 +159,16 @@ open-ports:
             3306: mysql
 [% IF is_rtp || is_proxy || is_db -%]
             6379: redis-server
+[% END -%]
+[% IF is_proxy -%]
+[% IF is_lb -%]
+[% ips = sip_ext_ips -%]
+[% ELSE -%]
+[% ips = sip_proxy_ips -%]
+[% END -%]
+        [% ips.0 -%]:
+            5222: prosody
+            5269: prosody
 [% END -%]
         deb.sipwise.com:
             80: http
