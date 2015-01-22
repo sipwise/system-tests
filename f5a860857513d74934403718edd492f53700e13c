@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba3e81b7_b0fbd846",
+        "filename": "etc/test-server_pro.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2015-01-22T15:37:05Z",
+      "side": 1,
+      "message": "no need END here",
+      "revId": "f5a860857513d74934403718edd492f53700e13c",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
