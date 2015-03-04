@@ -1,3 +1,12 @@
+ngcp-system-tests (0.6.1.2+0~mr3.7.1.2) unstable; urgency=low
+
+  [ Alexander Lutay ]
+  * [d6cdfb1] MT#11069 Backport Prosody ports from f2b1bba8 + 1bbfb40e templates.git
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 04 Mar 2015 19:07:57 +0100
+
 ngcp-system-tests (0.6.1.1+0~mr3.7.1.1) unstable; urgency=low
 
   * New release.
