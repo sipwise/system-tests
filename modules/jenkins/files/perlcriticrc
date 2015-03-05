@@ -1,42 +1,34 @@
 # HEADER: managed by puppet, do NOT edit manually!
 
-verbose = %f line %l col %c\n    [%s] %p (%e) = %m\n    %r\n
-    # the ouput format, another nice one is 8, the [%s] is the severity
+# NOTE: when switching the output format we also need to adjust perlcritic_tap accordingly
+# verbose = %f line %l col %c\n    [%s] %p (%e) = %m\n    %r\n
+# the ouput format, another nice one is 8, the [%s] is the severity
 severity  = 2
 theme = security || (pbp && bugs) || cosmetic || sipwise
 
-# This is optional, define your own colors if you like:
-#colour-severity-5 = magenta
-#colour-severity-4 = red
-#colour-severity-3 = yellow
-#colour-severity-2 = blue
-#colour-severity-1 = black
-
 [Documentation::RequirePodSections]
-#lib_sections = NAME | VERSION | SYNOPSIS | DESCRIPTION | INTERFACE | Composition | Attributes | Methods | Exports | DIAGNOSTICS | CONFIGURATION AND ENVIRONMENT | DEPENDENCIES | INCOMPATIBILITIES | BUGS AND LIMITATIONS | TO DO | AUTHOR | SEE ALSO
 add_themes = sipwise
 lib_sections = NAME | DESCRIPTION | LICENSE | AUTHOR
-# lets keep this simple for now
+# let's keep this simple for now
 
-[Bangs::ProhibitCommentedOutCode]
-commentedcoderegex = \$(?!Id)[A-Za-z_].*=/
-add_themes = sipwise
-# should not trigger on the RCS variable
+## MISSING Perl dependencies:
+#[Bangs::ProhibitCommentedOutCode]
+#commentedcoderegex = \$(?!Id)[A-Za-z_].*=/
+#add_themes = sipwise
+## should not trigger on the RCS variable
 
-[Perl::Critic::Policy::Tics::ProhibitLongLines]
-add_themes = sipwise
-base_max    = 100
-hard_max    = 160
-pct_allowed = 50
-# terminal width
+## MISSING Perl dependencies:
+#[Perl::Critic::Policy::Tics::ProhibitLongLines]
+#add_themes = sipwise
+#base_max    = 100
+#hard_max    = 160
+#pct_allowed = 50
+## terminal width
 
 [InputOutput::RequireCheckedSyscalls]
 add_themes = sipwise
 functions = :builtins
 exclude_functions = print
-
-[-Modules::RequireExplicitInclusion]
-# we dont want this
 
 [BuiltinFunctions::ProhibitStringyEval]
 allow_includes = 0
@@ -53,16 +45,27 @@ severity = 1
 # not really important, since this is redundant with perl5i (Sipwise::Base)
 
 ##### Other exclusions
+# not: only relevant with perlcritic 1.117-2 from wheezy,
+[-Miscellanea::RequireRcsKeywords]
 
-# [-Subroutines::RequireFinalReturn]
-# this is actually a good thing
-[-CodeLayout::ProhibitHashBarewords]
-# meh, it's super annoying
-[-Lax::ProhibitStringyEval::ExceptForRequire]
-# already covered through BuiltinFunctions::ProhibitStringyEval::allow_includes
 [-ControlStructures::ProhibitPostfixControls]
 [-ControlStructures::ProhibitUnlessBlocks]
-[-RegularExpressions::RequireLineBoundaryMatching]
 [-RegularExpressions::RequireDotMatchAnything]
+[-RegularExpressions::RequireLineBoundaryMatching]
 [-ValuesAndExpressions::ProhibitEmptyQuotes]
 [-ValuesAndExpressions::ProhibitNoisyQuotes]
+
+## MISSING Perl dependencies:
+
+# [-Subroutines::RequireFinalReturn]
+# end every path through a subroutine with an explicit return statement.
+
+# [-CodeLayout::ProhibitHashBarewords]
+# forces (single) quotes on all hash keys barewords.
+
+# [-Lax::ProhibitStringyEval::ExceptForRequire]
+# stringy eval is bad, but it's okay just to "require"
+# already covered through BuiltinFunctions::ProhibitStringyEval::allow_includes
+
+# [-RegularExpressions::RequireLineBoundaryMatching]
+# always use the /m modifier with regular expressions.
