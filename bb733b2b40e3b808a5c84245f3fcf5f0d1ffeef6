@@ -16,6 +16,24 @@
       "revId": "bb733b2b40e3b808a5c84245f3fcf5f0d1ffeef6",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_0b14bdf3",
+        "filename": "ce/04_template_files.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2015-06-22T10:24:27Z",
+      "side": 1,
+      "message": "Jenkins job isn\u0027t available, but added this files as well (plus one more which might be used as well)",
+      "parentUuid": "1a2f8d8d_8b5e6d11",
+      "revId": "bb733b2b40e3b808a5c84245f3fcf5f0d1ffeef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
