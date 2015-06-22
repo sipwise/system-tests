@@ -3,7 +3,7 @@
 i=1
 
 tmpfile=$(mktemp)
-find /etc/ngcp-config/templates/ -type f ! -iname "*.dpkg-*" -name *.tt2 -print0 |xargs -0 dpkg -S >/dev/null 2>"$tmpfile"
+find /etc/ngcp-config/templates/ -type f ! \( -name "*.dpkg-dist" -o -name "*.dpkg-old" -o -name "*.dpkg-new" \) -print0 |xargs -0 dpkg -S >/dev/null 2>"$tmpfile"
 
 if ! [ -s "$tmpfile" ] ; then
   echo "1..1"
