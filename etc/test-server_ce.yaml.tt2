@@ -49,11 +49,7 @@ running-processes:
         - "perl-fcgi-pm \[Sipwise::Provisioning\]"
 [% END -%]
         - /usr/sbin/nginx
-[% IF www_csc.enable == 'yes' -%]
-        - perl-fcgi
-[% END -%]
         - "perl-fcgi-pm \[NGCP::Panel\]"
-[% END -%]
 [% IF is_proxy -%]
         - /usr/sbin/asterisk -n
         - /usr/sbin/kamailio -f /etc/kamailio/proxy/kamailio.cfg -P /var/run/kamailio/kamailio.proxy.pid
