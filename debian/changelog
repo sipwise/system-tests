@@ -1,3 +1,17 @@
+ngcp-system-tests (0.9.0.0+0~mr4.1.0.0) unstable; urgency=low
+
+  [ Michael Prokop ]
+  * [f7dc79d] MT#485 Check for files in /etc/ngcp-config/templates that don't belong to any package
+  * [f52f248] MT#485 Improve file filter to ignore only "*.dpkg-{dist,old,new}
+
+  [ Alexander Lutay ]
+  * [da2ed7d] MT#485 Fix 04_template_files.sh, ignore files '*.dpkg-*', e.g. dpkg-bak/dpkg-old/...
+  * [b0c1785] MT#13909 Cleanup www_csc.enable option usage
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 13 Jul 2015 15:38:29 +0200
+
 ngcp-system-tests (0.8.0.0+0~mr4.0.0.0) unstable; urgency=low
 
   [ Alexander Lutay ]
