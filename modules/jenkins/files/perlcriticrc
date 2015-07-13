@@ -35,10 +35,10 @@ allow_includes = 0
 # use Module::Runtime for includes
 
 [TestingAndDebugging::RequireUseStrict]
-equivalent_modules = strictures Sipwise::Base HTML::FormHandler::Moose
+equivalent_modules = strictures Sipwise::Base HTML::FormHandler::Moose Mojo::Base
 
 [TestingAndDebugging::RequireUseWarnings]
-equivalent_modules = strictures Sipwise::Base HTML::FormHandler::Moose
+equivalent_modules = strictures Sipwise::Base HTML::FormHandler::Moose Mojo::Base
 
 [Modules::RequireEndWithOne]
 severity = 1
