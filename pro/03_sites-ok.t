@@ -39,8 +39,12 @@ if ($Bin =~ m{/.+(ce|pro)$}) {
 	}
 }
 my $config = LoadFile($file_config);
-plan 'skip_all' => "no configuration sections for 'sites-ok'"
-	if (not $config or not $config->{'sites-ok'});
+do {
+	fail("no configuration sections for 'sites-ok'");
+	done_testing();
+	exit 1;
+} if (not $config or not $config->{'sites-ok'});
+
 
 
 exit main();

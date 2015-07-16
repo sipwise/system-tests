@@ -41,8 +41,11 @@ if ($Bin =~ m{/.+(ce|pro)$}) {
 	}
 }
 my $config = LoadFile($file_config);
-plan 'skip_all' => "no configuration sections for 'open-ports'"
-	if (not $config or not $config->{'open-ports'});
+do {
+	fail("no configuration sections for 'open-ports'");
+	done_testing();
+	exit 1;
+} if (not $config or not $config->{'open-ports'});
 
 my $netstat=`netstat -anu`;
 
