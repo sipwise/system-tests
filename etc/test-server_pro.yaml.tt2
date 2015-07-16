@@ -108,7 +108,10 @@ open-ports:
             80: http
             443: https$
             1443: https
+[% IF pbx.enable == 'yes' -%]
             1444: https
+            1445: http
+[% END -%]
 [% IF ossbss.frontend != 'no' -%]
             2443: https
 [% END -%]
