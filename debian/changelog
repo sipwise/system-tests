@@ -1,3 +1,15 @@
+ngcp-system-tests (0.8.2.0+0~mr4.0.2.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [87e24d3] MT#11027 Do not check autoprov port 1444 if PBX is not enabled
+
+  [ Victor Seva ]
+  * [a71de66] MT#13909 fix commit b0c1785e988e5
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 23 Jul 2015 00:15:20 +0200
+
 ngcp-system-tests (0.8.1.0+0~mr4.0.1.0) unstable; urgency=low
 
   [ Michael Prokop ]
