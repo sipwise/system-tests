@@ -1,0 +1,19 @@
+[% TAGS [- -] -%]
+{
+    "dns": {
+        "localhost": {
+            "resolveable": true,
+            "addrs": [
+                "127.0.0.1"
+            ],
+            "timeout": 500
+        },
+        "spce": {
+            "resolveable": true,
+            "addrs": [
+                "127.0.0.2"
+            ],
+            "timeout": 500
+        }
+    }
+}
