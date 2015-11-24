@@ -1,0 +1,139 @@
+{
+    "group": {
+        "cdrexport": {
+            "exists": true,
+            "gid": "10001"
+        },
+        "daemon": {
+            "exists": true,
+            "gid": "1"
+        },
+        "kamailio": {
+            "exists": true
+        },
+        "mysql": {
+            "exists": true
+        },
+        "ntp": {
+            "exists": true
+        },
+        "prosody": {
+            "exists": true
+        },
+        "redis": {
+            "exists": true
+        },
+        "root": {
+            "exists": true,
+            "gid": "0"
+        },
+        "sems": {
+            "exists": true
+        },
+        "sipwise": {
+            "exists": true,
+            "gid": "10000"
+        },
+        "ssh": {
+            "exists": true
+        },
+        "ssl-cert": {
+            "exists": true
+        },
+        "sudo": {
+            "exists": true
+        },
+        "www-data": {
+            "exists": true
+        }
+    },
+    "user": {
+        "": {
+            "exists": false
+        },
+        "cdrexport": {
+            "exists": true,
+            "uid": "10001",
+            "gid": "10001",
+            "groups": [
+                "cdrexport"
+            ],
+            "home": "/home/jail/home/cdrexport"
+        },
+        "kamailio": {
+            "exists": true,
+            "groups": [
+                "kamailio",
+                "ssl-cert"
+            ],
+            "home": "/var/run/kamailio"
+        },
+        "mysql": {
+            "exists": true,
+            "groups": [
+                "mysql"
+            ],
+            "home": "/nonexistent"
+        },
+        "nobody": {
+            "exists": true,
+            "groups": [
+                "nogroup"
+            ],
+            "home": "/nonexistent"
+        },
+        "prosody": {
+            "exists": true,
+            "groups": [
+                "prosody",
+                "ssl-cert"
+            ],
+            "home": "/var/lib/prosody"
+        },
+        "proxy": {
+            "exists": true,
+            "groups": [
+                "proxy"
+            ],
+            "home": "/bin"
+        },
+        "redis": {
+            "exists": true,
+            "groups": [
+                "redis"
+            ],
+            "home": "/var/lib/redis"
+        },
+        "sems": {
+            "exists": true,
+            "groups": [
+                "sems"
+            ],
+            "home": "/var/run/ngcp-sems"
+        },
+        "sipwise": {
+            "exists": true,
+            "uid": "10000",
+            "gid": "10000",
+            "groups": [
+                "sipwise"
+            ],
+            "home": "/var/sipwise"
+        },
+        "sshd": {
+            "exists": true,
+            "groups": [
+                "nogroup"
+            ],
+            "home": "/var/run/sshd"
+        },
+        "www-data": {
+            "exists": true,
+            "groups": [
+                "ssl-cert",
+                "www-data"
+            ],
+            "home": "/var/www"
+        }
+    }
+}
