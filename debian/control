@@ -8,12 +8,9 @@ Homepage: http://sipwise.com/
 
 Package: ngcp-system-tests
 Architecture: all
-Depends: libfilesys-diskspace-perl,
-         libproc-processtable-perl,
-         libtest-server-perl,
-         libtest-www-mechanize-perl,
+Depends: curl,
          net-tools,
-         perl-modules,
+         procps,
          ${misc:Depends},
          ${perl:Depends}
 Description: run system tests against NGCP systems
