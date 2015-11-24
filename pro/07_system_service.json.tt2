@@ -1,0 +1,99 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.role='mgmt';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_mgmt = out
+-%]
+{
+    "service": {
+        "acpid": {
+            "enabled": true,
+            "running": true
+        },
+        "asterisk": {
+            "enabled": false,
+            "running": true
+        },
+        "collectd": {
+            "enabled": true,
+            "running": true
+        },
+        "cron": {
+            "enabled": true,
+            "running": true
+        },
+        "exim4": {
+            "enabled": true,
+            "running": true
+        },
+        "io-scheduler": {
+            "enabled": true,
+            "running": true
+        },
+        "kamailio-lb": {
+            "enabled": false,
+            "running": true
+        },
+        "kamailio-proxy": {
+            "enabled": false,
+            "running": true
+        },
+        "mediator": {
+            "enabled": false,
+            "running": true
+        },
+        "motd": {
+            "enabled": true,
+            "running": true
+        },
+        "mysql": {
+            "enabled": true,
+            "running": true
+        },
+[% IF is_mgmt && ossbss.frontend != 'no' -%]
+        "ngcp-ossbss": {
+            "enabled": true,
+            "running": true
+        },
+[% END -%]
+        "ngcp-panel": {
+            "enabled": true,
+            "running": true
+        },
+        "ngcp-rate-o-mat": {
+            "enabled": false,
+            "running": true
+        },
+        "ngcp-rtpengine-daemon": {
+            "enabled": false,
+            "running": true
+        },
+        "ngcp-sems": {
+            "enabled": false,
+            "running": true
+        },
+        "nginx": {
+            "enabled": true,
+            "running": true
+        },
+        "ntp": {
+            "enabled": true,
+            "running": true
+        },
+        "prosody": {
+            "enabled": false,
+            "running": true
+        },
+        "redis-server": {
+            "enabled": true,
+            "running": true
+        },
+        "rsyslog": {
+            "enabled": true,
+            "running": true
+        },
+        "ssh": {
+            "enabled": true,
+            "running": true
+        }
+    }
+}
