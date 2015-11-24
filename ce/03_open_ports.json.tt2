@@ -1,0 +1,44 @@
+[%
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'
+   hostname = out
+
+   argv.host=hostname; argv.type='web_ext'
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'
+   web_ext_ips = out
+
+   IF !web_ext_ips.size
+    argv.host=hostname; argv.type='web_ext'
+     PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'
+     web_ext_ips = out
+   END
+
+   argv.host=hostname; argv.type='web_int'
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host'
+   web_int_ips = out
+
+   IF !web_int_ips.size
+     argv.host=hostname; argv.type='web_int'
+     PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host'
+     web_int_ips = out
+   END
+
+   argv.host=hostname; argv.type='ha_int'
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_iface'
+   host_ha_iface = out
+
+   argv.host=peername; argv.type='ha_int'
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_iface'
+   peer_ha_iface = out
+-%]
+
+{
+    "port": {
+        "tcp:443": {
+            "listening": true,
+            "ip": "[% web_ext_ips.0 -%]"
+        },
+        "tcp:1443": {
+            "listening": true,
+            "ip": "[% web_int_ips.0 -%]"
+        },
+}
