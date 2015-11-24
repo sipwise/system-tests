@@ -1,0 +1,14 @@
+[% TAGS [- -] -%]
+{
+    "package": {
+        "ngcp-ngcp-ce": {
+            "installed": false
+        },
+        "ngcp-ngcp-pro": {
+            "installed": true
+        },
+        "ngcp-ngcp-carrier": {
+            "installed": false
+        }
+    }
+}
