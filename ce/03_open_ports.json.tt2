@@ -1,0 +1,23 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+   hostname = out
+-%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_ext_ips = out;
+-%]
+[% argv.host=hostname; argv.type='web_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_int_ips = out;
+-%]
+{
+    "port": {
+        "tcp:443": {
+            "listening": true,
+            "ip": "[% web_ext_ips.0 -%]"
+        },
+        "tcp:1443": {
+            "listening": true,
+            "ip": "[% web_int_ips.0 -%]"
+        }
+    }
+}

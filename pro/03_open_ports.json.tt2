@@ -1,0 +1,191 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.role='proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out
+-%]
+[% argv.host=hostname; argv.role='lb';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_lb = out
+-%]
+[% argv.host=hostname; argv.role='mgmt';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_mgmt = out
+-%]
+[% argv.host=hostname; argv.role='db';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_db = out
+-%]
+[% argv.host=hostname; argv.role='rtp';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_rtp = out
+-%]
+[% argv.host=hostname; argv.type='sip_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   sip_ext_ips = out
+-%]
+[% IF !sip_ext_ips.size -%]
+[% argv.host=hostname; argv.type='sip_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   sip_ext_ips = out;
+-%]
+[% END -%]
+[% argv.host=hostname; argv.type='ha_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_iface';
+   host_ha_iface = out
+-%]
+{
+    "port": {
+[% IF is_mgmt -%]
+        "tcp:1443": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+[% END -%]
+[% IF is_mgmt && pbx.enable == 'yes' -%]
+        "tcp:1444": {
+            "listening": false
+        },
+        "tcp:1445": {
+            "listening": false
+        },
+[% END -%]
+        "tcp:22": {
+            "listening": true,
+            "ip": "0.0.0.0"
+        },
+        "tcp:22": {
+            "listening": true,
+            "ip": "[% hosts.$hostname.$host_ha_iface.ip %]"
+        },
+        "tcp:24009": {
+            "listening": true,
+            "ip": "0.0.0.0"
+        },
+[% IF is_mgmt && ossbss.frontend != 'no' -%]
+        "tcp:2443": {
+            "listening": true,
+            "ip": "[% sip_ext_ips.0 -%]"
+        },
+[% END -%]
+        "tcp:25": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "tcp:2812": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "tcp:3306": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "tcp:3306": {
+            "listening": true,
+            "ip": "[% hosts.$hostname.$host_ha_iface.ip %]"
+        },
+[% IF is_mgmt -%]
+        "tcp:443": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+[% END -%]
+        "tcp:52222": {
+            "listening": false,
+            "comment": "self-test"
+        },
+[% IF is_lb -%]
+        "tcp:5060": {
+            "listening": true,
+            "ip": "[% sip_ext_ips.0 -%]"
+        },
+[% END -%]
+[% IF is_proxy -%]
+        "tcp:5062": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "tcp:5222": {
+            "listening": true,
+            "ip": "[% sip_ext_ips.0 -%]"
+        },
+        "tcp:5269": {
+            "listening": true,
+            "ip": "[% sip_ext_ips.0 -%]"
+        },
+        "tcp:5280": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "tcp:5281": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "tcp:5582": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "tcp:8090": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "udp:4569": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "udp:5040": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "udp:5070": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "udp:5080": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+[% END -%]
+[% IF is_rtp || is_proxy || is_db -%]
+        "tcp:6379": {
+            "listening": true,
+            "ip": "[% hosts.$hostname.$host_ha_iface.ip %]"
+        },
+[% END -%]
+        "tcp:7777": {
+            "listening": false
+        },
+        "udp:7777": {
+            "listening": false
+        },
+[% IF is_mgmt -%]
+        "tcp:80": {
+            "listening": false
+        },
+[% END -%]
+        "udp:123": {
+            "listening": true,
+            "ip": "0.0.0.0"
+        },
+        "udp:161": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+[% IF is_rtp -%]
+        "udp:2223": {
+            "listening": false
+        },
+[% END -%]
+        "udp:25826": {
+            "listening": true,
+            "ip": "127.0.0.1"
+        },
+        "udp:[% heartbeat.port ? heartbeat.port : '694' %]": {
+            "listening": true,
+            "ip": "0.0.0.0"
+        },
+        "udp:22": {
+            "listening": true,
+            "comment": "last record to keep JSON valid"
+        }
+    }
+}
