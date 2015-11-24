@@ -1,0 +1,14 @@
+{
+    "command": {
+        "false": {
+            "exit-status": "1",
+            "stdout": [],
+            "stderr": []
+        },
+        "true": {
+            "exit-status": "0",
+            "stdout": [],
+            "stderr": []
+        }
+    }
+}

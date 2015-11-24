@@ -1,32 +1,44 @@
 #!/bin/bash
 
+set -e
+
 REPORT_DIRECTORY='reports/'
 
+usage() {
+  printf "Usage: %s <type CE/PRO>\n\n" "$0" >&2
+  printf "Usage example: %s CE\n" "$0" >&2
+}
+
 if [ $# -lt 1 ] ; then
-  echo "Usage: $0 </path/to/test/directory/>" >&2
-  echo
-  echo "Usage example: $0 /usr/share/ngcp-tests/ce/"
+  usage
   exit 1
 fi
 
-if ! [ -d "$1" ] ; then
-  echo "$1 is not a directory" >&2
-  exit 1
+TYPE=$(echo "$1"| tr '[:upper:]' '[:lower:]')
+case "${TYPE}" in
+  ce|pro) echo "Requested system tests for supported type '${TYPE}', continue..." ;;
+  *) echo "ERRRO: Unknown type '$1'" >&2 ; usage ; exit 1 ;;
+esac
+
+if [ ! -x /usr/sbin/goss ] ; then
+  echo "Downloading goss and installing as /usr/sbin/goss"
+  curl -L https://deb.sipwise.com/files/goss-0.0.16-linux-amd64 > /usr/sbin/goss
+  chmod +x /usr/sbin/goss
 fi
 
 echo "Rebuilding test configs in /etc/ngcp-test/"
 ngcpcfg build /etc/ngcp-test/*
 
 rm -rf "${REPORT_DIRECTORY}"
-mkdir "${REPORT_DIRECTORY}"
+mkdir -p "${REPORT_DIRECTORY}"
+TAP_RESULTS="${REPORT_DIRECTORY}/goss_${TYPE}_results.tap"
 
-for test in ${1}/*.t ; do
-  perl "$test" > "${REPORT_DIRECTORY}/$(basename ${test}).tap" 2>&1
-done
+# TODO: add --format=tap when TAP formater will be supported
+if goss -g "/etc/ngcp-tests/${TYPE}/goss.json" validate ; then
+  echo "1..1" > "${TAP_RESULTS}" 2>&1
+  echo "ok 1 - no error were found" >> "${TAP_RESULTS}" 2>&1
+else
+  echo "1..1" > "${TAP_RESULTS}" 2>&1
+  echo "not ok 1 - found errors, run test manually" >> "${TAP_RESULTS}" 2>&1
+fi
 
-for test in ${1}/*.sh ; do
-	$test > "${REPORT_DIRECTORY}/$(basename ${test}).tap" 2>&1
-done
-
-tar acf reports.tar.gz "${REPORT_DIRECTORY}"
-echo "Generated reports.tar.gz"
