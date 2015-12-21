@@ -1,0 +1,77 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_ext_ips = out
+-%]
+[% argv.host=hostname; argv.type='web_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_int_ips = out
+-%]
+{
+    "command": {
+        "curl --insecure -L http://[% web_ext_ips.0 -%]/": {
+            "exit-status": "0",
+            "stdout": [
+                "/Subscriber Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L http://[% web_int_ips.0 -%]/login/admin": {
+            "exit-status": "0",
+            "stdout": [
+                "/Admin Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L http://[% web_int_ips.0 -%]:1443": {
+            "exit-status": "0",
+            "stdout": [
+                "/Admin Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L http://[% web_ext_ips.0 -%]:1443/login/subscriber": {
+            "exit-status": "0",
+            "stdout": [
+                "/Subscriber Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L https://[% web_ext_ips.0 -%]/": {
+            "exit-status": "0",
+            "stdout": [
+                "/Subscriber Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L https://[% web_int_ips.0 -%]/login/admin": {
+            "exit-status": "0",
+            "stdout": [
+                "/Admin Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L https://[% web_int_ips.0 -%]:1443": {
+            "exit-status": "0",
+            "stdout": [
+                "/Admin Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L https://[% web_ext_ips.0 -%]:1443/login/subscriber": {
+            "exit-status": "0",
+            "stdout": [
+                "/Subscriber Sign In/"
+            ],
+            "stderr": []
+        },
+
+        "curl -L http://localhost:8081/nginx_status": {
+            "exit-status": "0",
+            "stdout": [
+                "/Active connections: [0-9]+/"
+            ],
+            "stderr": []
+        }
+    }
+}
