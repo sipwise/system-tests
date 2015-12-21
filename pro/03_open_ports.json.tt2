@@ -60,17 +60,9 @@
             "listening": true,
             "ip": "127.0.0.1"
         },
-        "tcp:443": {
-            "listening": true,
-            "ip": "[% web_ext_ips.0 -%]"
-        },
         "tcp:1443": {
             "listening": true,
             "ip": "127.0.0.1"
-        },
-        "tcp:1443": {
-            "listening": true,
-            "ip": "[% web_int_ips.0 -%]"
         },
 [% END -%]
 [% IF is_mgmt && pbx.enable == 'yes' -%]
