@@ -12,6 +12,7 @@
         "07_system_service.json": {},
         "08_system_ports.json": {},
         "09_system_dns.json": {},
+        "10_sites_ok.json": {},
         "99_dummy.json": {}
     }
 }
