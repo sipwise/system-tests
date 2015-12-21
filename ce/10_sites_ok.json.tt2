@@ -1,0 +1,107 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   web_ext_ips = out
+-%]
+[% IF !web_ext_ips.size -%]
+[% argv.host=hostname; argv.type='web_ext';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_ext_ips = out;
+-%]
+[% END -%]
+[% argv.host=hostname; argv.type='web_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   web_int_ips = out
+-%]
+[% IF !web_int_ips.size -%]
+[% argv.host=hostname; argv.type='web_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   web_int_ips = out;
+-%]
+[% END -%]
+{
+    "command": {
+        "curl --insecure -L http://[% web_ext_ips.0 -%]/": {
+            "exit-status": "0",
+            "stdout": [
+                "/Subscriber Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L http://[% web_int_ips.0 -%]/login/admin": {
+            "exit-status": "0",
+            "stdout": [
+                "/Admin Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L http://[% web_int_ips.0 -%]:1443": {
+            "exit-status": "0",
+            "stdout": [
+                "/Admin Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L http://[% web_ext_ips.0 -%]:1443/login/subscriber": {
+            "exit-status": "0",
+            "stdout": [
+                "/Subscriber Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L https://[% web_ext_ips.0 -%]/": {
+            "exit-status": "0",
+            "stdout": [
+                "/Subscriber Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L https://[% web_int_ips.0 -%]/login/admin": {
+            "exit-status": "0",
+            "stdout": [
+                "/Admin Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L https://[% web_int_ips.0 -%]:1443": {
+            "exit-status": "0",
+            "stdout": [
+                "/Admin Sign In/"
+            ],
+            "stderr": []
+        },
+        "curl --insecure -L https://[% web_ext_ips.0 -%]:1443/login/subscriber": {
+            "exit-status": "0",
+            "stdout": [
+                "/Subscriber Sign In/"
+            ],
+            "stderr": []
+        },
+
+[% IF ossbss.frontend == 'apache' -%]
+        "curl --insecure -L https://[% web_ext_ips.0 -%]:2443/SOAP/Provisioning.wsdl": {
+            "exit-status": "0",
+            "stdout": [
+                "/xmlns:tns=\"http://dev.sipwise.com/SOAP/Provisioning\"/"
+            ],
+            "stderr": []
+        },
+[% ELSIF ossbss.frontend == 'fcgi' -%]
+        "curl --insecure -L https://ngcpsoap:s04pt3st@[% web_ext_ips.0 -%]:2443/SOAP/Provisioning.wsdl": {
+            "exit-status": "0",
+            "stdout": [
+                "/xmlns:tns=\"http://dev.sipwise.com/SOAP/Provisioning\"/"
+            ],
+            "stderr": []
+        },
+[% END -%]
+
+        "curl -L http://localhost:8081/nginx_status": {
+            "exit-status": "0",
+            "stdout": [
+                "/Active connections: [0-9]+/"
+            ],
+            "stderr": []
+        }
+    }
+}
