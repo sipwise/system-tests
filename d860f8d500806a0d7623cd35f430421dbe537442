@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_42f939c7",
+        "filename": "ce/10_sites_ok.json.tt2",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2015-12-22T08:41:17Z",
+      "side": 1,
+      "message": "can you, please, add the checks that we only respond to /api/ at web_int?",
+      "revId": "d860f8d500806a0d7623cd35f430421dbe537442",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
