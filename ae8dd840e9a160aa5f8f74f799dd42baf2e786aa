@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_02581155",
+        "filename": "ce/08_system_ports.json.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2015-12-22T13:12:26Z",
+      "side": 1,
+      "message": "Would it make sense to sort list of ports here (22, 443 + 1443 therefore)?",
+      "revId": "ae8dd840e9a160aa5f8f74f799dd42baf2e786aa",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_e2364503",
+        "filename": "testrunner",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2015-12-22T13:12:26Z",
+      "side": 1,
+      "message": "I\u0027d say don\u0027t redirect output of usage() to stderr, instead use \"usage \u003e\u00262\" in lines 13 20 instead so usage function can be reused for something like \"testrunner --help\" in the future?",
+      "revId": "ae8dd840e9a160aa5f8f74f799dd42baf2e786aa",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_4225b9c0",
+        "filename": "testrunner",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2015-12-22T13:12:26Z",
+      "side": 1,
+      "message": "The 2\u003e\u00261 don\u0027t make any sense to me, same for lines 39, 41 + 42",
+      "revId": "ae8dd840e9a160aa5f8f74f799dd42baf2e786aa",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_a2403d57",
+        "filename": "testrunner",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2015-12-22T13:12:26Z",
+      "side": 1,
+      "message": "either \"no error was found\" or \"no errors were found\"? :)",
+      "revId": "ae8dd840e9a160aa5f8f74f799dd42baf2e786aa",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
