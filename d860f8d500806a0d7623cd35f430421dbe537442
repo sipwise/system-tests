@@ -16,6 +16,24 @@
       "revId": "d860f8d500806a0d7623cd35f430421dbe537442",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_62e4750d",
+        "filename": "ce/10_sites_ok.json.tt2",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2015-12-22T11:23:40Z",
+      "side": 1,
+      "message": "I cannot as web_int and web_ext is pointing to the same interface. Added REST API initial tests to cover current state.\n\nI need to merge new framework to make tests back to green state, then we can improve tests itself.",
+      "parentUuid": "7a96c907_42f939c7",
+      "revId": "d860f8d500806a0d7623cd35f430421dbe537442",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
