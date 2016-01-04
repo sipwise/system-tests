@@ -113,14 +113,14 @@
         "curl --insecure -L http://[% web_ext_ips.0 -%]/api/": {
             "exit-status": "0",
             "stdout": [
-                "/Authorization required/"
+                "/404 Not Found/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://[% web_ext_ips.0 -%]/api/": {
             "exit-status": "0",
             "stdout": [
-                "/Authorization required/"
+                "/404 Not Found/"
             ],
             "stderr": []
         },
@@ -128,14 +128,14 @@
         "curl --insecure -L http://administrator:administrator@[% web_int_ips.0 -%]/api/": {
             "exit-status": "0",
             "stdout": [
-                "/Authorization required/"
+                "/404 Not Found/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://administrator:administrator@[% web_int_ips.0 -%]/api/": {
             "exit-status": "0",
             "stdout": [
-                "/Sipwise NGCP HTTP API documentation/"
+                "/404 Not Found/"
             ],
             "stderr": []
         },
