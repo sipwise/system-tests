@@ -1,3 +1,15 @@
+ngcp-system-tests (0.10.1.1+0~mr4.2.1.1) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [844b2d5] MT#16429 Switch system-tests to goss
+  * [081e9cc] MT#16429 Disable ngcp-panel port check 443/1443 for web_ext IP
+  * [9b4fd2d] MT#16429 Add goss based sites-ok check
+  * [106f352] MT#16429 MT#8041 Disable cores check test until sems is not fixed
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 14 Jan 2016 23:45:35 +0100
+
 ngcp-system-tests (0.10.1.0+0~mr4.2.1.0) unstable; urgency=medium
 
   * New release.
