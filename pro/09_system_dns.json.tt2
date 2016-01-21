@@ -1,12 +1,6 @@
 {
     "dns": {
-        "localhost": {
-            "resolveable": true,
-            "addrs": [
-                "127.0.0.1"
-            ],
-            "timeout": 500
-        },
+[% IF sipwise.system_tester.skip_dns_check_test != "true" -%]
         "sp1": {
             "resolveable": true,
             "addrs": [
@@ -18,6 +12,14 @@
             "resolveable": true,
             "addrs": [
                 "192.168.255.252"
+            ],
+            "timeout": 500
+        },
+[% END -%]
+        "localhost": {
+            "resolveable": true,
+            "addrs": [
+                "127.0.0.1"
             ],
             "timeout": 500
         }
