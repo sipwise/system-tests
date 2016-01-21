@@ -26,6 +26,21 @@ if [ ! -x /usr/sbin/goss ] ; then
   chmod +x /usr/sbin/goss
 fi
 
+host_yml_file="/etc/ngcp-config/config.$(hostname).yml"
+if [ -n "${SKIP_DNS_CHECK_TEST}" ] || [ "${SKIP_STRICT_HOSTNAME_TEST}" ] ; then
+  echo "Configuring host specific YML config: ${host_yml_file}"
+  cat > "${host_yml_file}" << EOF
+---
+sipwise:
+  system_tester:
+    skip_dns_check_test: ${SKIP_DNS_CHECK_TEST:-false}
+    skip_strict_hostname_test: ${SKIP_STRICT_HOSTNAME_TEST:-false}
+EOF
+else
+  # remove the file if exist from the previous run
+  rm -f "${host_yml_file}"
+fi
+
 echo "Rebuilding test configs in /etc/ngcp-test/"
 ngcpcfg build /etc/ngcp-test/*
 
@@ -42,3 +57,4 @@ else
   echo "not ok 1 - found errors, run test manually" >> "${TAP_RESULTS}"
 fi
 
+rm -f "${host_yml_file}"
