@@ -55,18 +55,6 @@
         "exim4": {
             "running": true
         },
-        "faxgetty": {
-            "running": true
-        },
-        "faxq": {
-            "running": true
-        },
-        "hfaxd": {
-            "running": true
-        },
-        "getty": {
-            "running": true
-        },
         "glusterfs": {
             "running": true
         },
@@ -91,7 +79,7 @@
         "monit": {
             "running": true
         },
-        "ngcp-iaxmodem": {
+        "ngcp-faxserver": {
             "running": true
         },
         "ngcp-sems": {

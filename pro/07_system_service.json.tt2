@@ -167,17 +167,10 @@
             "running": true
         },
 [% END -%]
-[% IF faxserver.hylafax.start == "yes" -%]
-        "ngcp-hylafaxplus": {
-            "enabled": false,
-            "running": false,
-            "comment": "ngcp-hylafaxplus init script doesn't support 'status', skip as going to be removed"
-        },
-[% END -%]
-[% IF faxserver.type == 'software' && faxserver.iaxmodem.start == "yes" -%]
-        "ngcp-iaxmodem": {
-            "enabled": false,
-            "running": true
+[% IF faxserver.enable == "yes" -%]
+        "ngcp-faxserver": {
+            "enabled": true,
+            "running": true,
         },
 [% END -%]
 [% IF redis.enabled == "yes" -%]
