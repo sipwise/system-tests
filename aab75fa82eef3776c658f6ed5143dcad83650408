@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_616f9393",
+        "filename": "pro/07_system_service.json.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2016-02-03T15:18:54Z",
+      "side": 1,
+      "message": "enable means - should start by init system:\n\n\u003e Service: ngcp-faxserver: enabled: doesn\u0027t match, expect: [true] found: [false]\n\nMonit start it, so please use false here.",
+      "revId": "aab75fa82eef3776c658f6ed5143dcad83650408",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_41728f7d",
+        "filename": "pro/07_system_service.json.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2016-02-03T15:18:54Z",
+      "side": 1,
+      "message": "goss on Go it very strict to JSON punctuation.\nIt doesn\u0027t allow to have comma on last parameter:\n\n\u003e /usr/share/ngcp-tests/testrunner pro\n\u003e ...\n\u003e Error: invalid character \u0027}\u0027 looking for beginning of object key string\n\n\nPlease remove it.",
+      "range": {
+        "startLine": 173,
+        "startChar": 27,
+        "endLine": 173,
+        "endChar": 28
+      },
+      "revId": "aab75fa82eef3776c658f6ed5143dcad83650408",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
