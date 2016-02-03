@@ -140,7 +140,7 @@
             "listening": true,
             "ip": "127.0.0.1"
         },
-        "udp:4569": {
+        "tcp:5038": {
             "listening": true,
             "ip": "127.0.0.1"
         },
