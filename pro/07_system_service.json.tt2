@@ -114,12 +114,6 @@
             "enabled": true,
             "running": true
         },
-[% IF is_mgmt && ossbss.frontend != 'no' -%]
-        "ngcp-ossbss": {
-            "enabled": true,
-            "running": true
-        },
-[% END -%]
 [% IF www_admin.enabled == 'yes' -%]
         "ngcp-panel": {
             "enabled": true,

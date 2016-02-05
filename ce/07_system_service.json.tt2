@@ -44,10 +44,6 @@
             "enabled": true,
             "running": true
         },
-        "ngcp-ossbss": {
-            "enabled": true,
-            "running": true
-        },
         "ngcp-rate-o-mat": {
             "enabled": true,
             "running": true
