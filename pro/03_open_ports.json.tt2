@@ -87,12 +87,6 @@
             "listening": true,
             "ip": "0.0.0.0"
         },
-[% IF is_mgmt && ossbss.frontend != 'no' -%]
-        "tcp:2443": {
-            "listening": true,
-            "ip": "[% web_ext_ips.0 -%]"
-        },
-[% END -%]
         "tcp:25": {
             "listening": true,
             "ip": "127.0.0.1"
