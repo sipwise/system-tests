@@ -22,7 +22,7 @@ esac
 
 if [ ! -x /usr/sbin/goss ] ; then
   echo "Downloading goss and installing as /usr/sbin/goss"
-  curl -L https://deb.sipwise.com/files/goss-0.0.16-linux-amd64 > /usr/sbin/goss
+  curl -L https://deb.sipwise.com/files/goss-0.0.22-linux-amd64 > /usr/sbin/goss
   chmod +x /usr/sbin/goss
 fi
 
