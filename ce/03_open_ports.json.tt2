@@ -13,11 +13,11 @@
     "port": {
         "tcp:443": {
             "listening": true,
-            "ip": "[% web_ext_ips.0 -%]"
+            "ip": ["[% web_ext_ips.0 -%]"]
         },
         "tcp:1443": {
             "listening": true,
-            "ip": "[% web_int_ips.0 -%]"
+            "ip": ["[% web_int_ips.0 -%]"]
         }
     }
 }
