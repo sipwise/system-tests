@@ -1,28 +1,28 @@
 {
     "command": {
         "pgrep -c -f '[l]ua5.1 /usr/bin/prosody'": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "1"
             ],
             "stderr": []
         },
         "pgrep -c -f '[p]erl-fcgi-pm \\[NGCP::Panel\\]'": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "1"
             ],
             "stderr": []
         },
         "pgrep -n -f '[k]amailio.*kamailio.proxy.pid'": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/[0-9]+/"
             ],
             "stderr": []
         },
         "pgrep -n -f '[k]amailio.*kamailio.lb.pid'": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/[0-9]+/"
             ],
