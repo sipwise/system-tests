@@ -3,7 +3,7 @@
 [% IF 1 -%]
         "echo 'skip test'": {
             "comment": "See MT#8041 Disable cores check test until sems is not fixed",
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "skip test"
             ],
