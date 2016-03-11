@@ -6,7 +6,7 @@
             "stderr": []
         },
         "true": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [],
             "stderr": []
         }
