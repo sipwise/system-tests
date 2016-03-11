@@ -1,1 +1,14 @@
-../ce/99_dummy.json.tt2
+{
+    "command": {
+        "false": {
+            "exit-status": 1,
+            "stdout": [],
+            "stderr": []
+        },
+        "true": {
+            "exit-status": 0,
+            "stdout": [],
+            "stderr": []
+        }
+    }
+}

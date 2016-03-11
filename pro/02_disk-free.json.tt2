@@ -1,1 +1,18 @@
-../ce/02_disk-free.json.tt2
+{
+    "command": {
+        "df --output=pcent / | tail -1": {
+            "exit-status": 0,
+            "stdout": [
+                "/[0-9]%|[0-7][0-9]%/"
+            ],
+            "stderr": []
+        },
+        "df --output=ipcent / | tail -1": {
+            "exit-status": 0,
+            "stdout": [
+                "/[0-9]%|[0-7][0-9]%/"
+            ],
+            "stderr": []
+        }
+    }
+}
