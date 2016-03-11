@@ -2,11 +2,11 @@
     "group": {
         "cdrexport": {
             "exists": true,
-            "gid": "10001"
+            "gid": 10001
         },
         "daemon": {
             "exists": true,
-            "gid": "1"
+            "gid": 1
         },
         "kamailio": {
             "exists": true
@@ -25,14 +25,14 @@
         },
         "root": {
             "exists": true,
-            "gid": "0"
+            "gid": 0
         },
         "sems": {
             "exists": true
         },
         "sipwise": {
             "exists": true,
-            "gid": "10000"
+            "gid": 10000
         },
         "ssh": {
             "exists": true
@@ -53,8 +53,8 @@
         },
         "cdrexport": {
             "exists": true,
-            "uid": "10001",
-            "gid": "10001",
+            "uid": 10001,
+            "gid": 10001,
             "groups": [
                 "cdrexport"
             ],
@@ -113,8 +113,8 @@
         },
         "sipwise": {
             "exists": true,
-            "uid": "10000",
-            "gid": "10000",
+            "uid": 10000,
+            "gid": 10000,
             "groups": [
                 "sipwise"
             ],

@@ -22,14 +22,14 @@
 {
     "command": {
         "curl --insecure -L http://[% web_ext_ips.0 -%]/": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Subscriber Sign In/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://[% web_ext_ips.0 -%]/": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Subscriber Sign In/"
             ],
@@ -37,14 +37,14 @@
         },
 
         "curl --insecure -L http://[% web_int_ips.0 -%]/login/admin": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Admin Sign In/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://[% web_int_ips.0 -%]/login/admin": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Admin Sign In/"
             ],
@@ -52,14 +52,14 @@
         },
 
         "curl --insecure -L http://[% web_int_ips.0 -%]:1443": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Admin Sign In/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://[% web_int_ips.0 -%]:1443": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Admin Sign In/"
             ],
@@ -67,14 +67,14 @@
         },
 
         "curl --insecure -L http://[% web_ext_ips.0 -%]:1443/login/subscriber": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Subscriber Sign In/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://[% web_ext_ips.0 -%]:1443/login/subscriber": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Subscriber Sign In/"
             ],
@@ -82,28 +82,28 @@
         },
 
         "curl --insecure -L http://[% web_int_ips.0 -%]:1443/api/": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Authorization required/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://[% web_int_ips.0 -%]:1443/api/": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Authorization required/"
             ],
             "stderr": []
         },
         "curl --insecure -L http://administrator:administrator@[% web_int_ips.0 -%]:1443/api/": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Authorization required/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://administrator:administrator@[% web_int_ips.0 -%]:1443/api/": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Sipwise NGCP HTTP API documentation/"
             ],
@@ -111,14 +111,14 @@
         },
 
         "curl --insecure -L http://[% web_ext_ips.0 -%]/api/": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/404 Not Found/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://[% web_ext_ips.0 -%]/api/": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/404 Not Found/"
             ],
@@ -126,14 +126,14 @@
         },
 
         "curl --insecure -L http://administrator:administrator@[% web_int_ips.0 -%]/api/": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/404 Not Found/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://administrator:administrator@[% web_int_ips.0 -%]/api/": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/404 Not Found/"
             ],
@@ -141,7 +141,7 @@
         },
 
         "curl -L http://localhost:8081/nginx_status": {
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "/Active connections: [0-9]+/"
             ],

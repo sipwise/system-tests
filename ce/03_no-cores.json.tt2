@@ -3,7 +3,7 @@
 [% IF 1 -%]
         "echo 'skip test'": {
             "comment": "See MT#8041 Disable cores check test until sems is not fixed",
-            "exit-status": "0",
+            "exit-status": 0,
             "stdout": [
                 "skip test"
             ],
@@ -11,7 +11,7 @@
         }
 [% ELSE -%]
         "ls -la /var/cores/core.*": {
-            "exit-status": "2",
+            "exit-status": 2,
             "stdout": [],
             "stderr": [
                 "ls: cannot access /var/cores/core.*: No such file or directory"

@@ -1,1 +1,17 @@
-../ce/08_system_ports.json.tt2
+{
+    "port": {
+        "tcp:1443": {
+            "listening": true
+        },
+        "tcp:22": {
+            "listening": true
+        },
+        "tcp:443": {
+            "listening": true
+        },
+        "tcp6:80": {
+	    "comment": "why Ipv4 is not here?",
+            "listening": true
+        }
+    }
+}
