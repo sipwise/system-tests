@@ -20,16 +20,16 @@ case "${TYPE}" in
   *) echo "ERRRO: Unknown type '$1'" >&2 ; usage >&2 ; exit 1 ;;
 esac
 
-if [ ! -x "/usr/sbin/goss" ] ; then
-  goss="goss-mika-git804995a8_with_tap_and_junit"
+goss="goss-mika-git804995a8_with_tap_and_junit"
 
+if [ ! -x "/usr/sbin/${goss}" ] ; then
   echo "Downloading goss and installing as /usr/sbin/${goss}"
   curl -L "https://deb.sipwise.com/files/${goss}" > "/usr/sbin/${goss}"
   chmod +x "/usr/sbin/${goss}"
-
-  ln -sf "/usr/sbin/${goss}" /usr/sbin/goss
 fi
 
+rm -f /usr/sbin/goss
+ln -s "/usr/sbin/${goss}" /usr/sbin/goss
 
 host_yml_file="/etc/ngcp-config/config.$(hostname).yml"
 if [ -n "${SKIP_DNS_CHECK_TEST}" ] || [ -n "${SKIP_STRICT_HOSTNAME_TEST}" ] ; then
