@@ -1,3 +1,29 @@
+ngcp-system-tests (0.12.0.0+0~mr4.4.0.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [ddd3277] MT#16429 Switch system-tests to goss
+  * [f72490b] MT#16429 Disable ngcp-panel port check 443/1443 for web_ext IP
+  * [d29bdbb] MT#16429 Add goss based sites-ok check
+  * [3f68481] MT#17055 voisniff supports action status now, re-enabe tests
+  * [f697561] MT#16273 Fix tests after spliting ngcp-panel and REST API
+  * [6e97e15] MT#16429 MT#8041 Disable cores check test until sems is not fixed
+  * [bdf0d12] MT#16755 Add support SKIP_DNS_CHECK_TEST and SKIP_STRICT_HOSTNAME_TEST env variables
+  * [eaf3b9d] MT#17213 Update goss to 0.0.22
+  * [7d47bc8] MT#17213 Fix eaf3b9d: update goss after ngcp-upgrade
+  * [0ffa3a4] MT#17213 Fix 3831f7: Revert testrunner changes which prevent fetching new goss file after NGCP upgrade
+
+  [ Kirill Solomko ]
+  * [d32e74f] MT#16017 removed hylafax/iaxmodem tests, added ngcp-faxserver
+  * [ab72990] MT#14675 removed ossbss tests
+
+  [ Michael Prokop ]
+  * [bf48c29] MT#17699 Bump Standards-Version to 3.9.7
+  * [3831f71] MT#17213 Update to goss based on v0.1.1 + TAP + junit support
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 21 Mar 2016 22:36:34 +0100
+
 ngcp-system-tests (0.11.0.0+0~mr4.3.0.0) unstable; urgency=medium
 
   * New release.
