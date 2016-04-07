@@ -82,7 +82,7 @@ running-processes:
         - "perl-fcgi-pm \[NGCP::Panel\]"
 [% END -%]
 [% IF is_proxy -%]
-        - /usr/sbin/asterisk -n
+        - /usr/sbin/asterisk
         - /usr/sbin/kamailio -f /etc/kamailio/proxy/kamailio.cfg -P /var/run/kamailio/kamailio.proxy.pid
         - /usr/sbin/ngcp-sems
         - lua5.1 /usr/bin/prosody
