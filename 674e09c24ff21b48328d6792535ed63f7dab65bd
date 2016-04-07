@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_c2e8cc7e",
+        "filename": "etc/test-server_ce.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000020
+      },
+      "writtenOn": "2016-04-07T14:21:06Z",
+      "side": 1,
+      "message": "Here we have removal of -n but commit message states different - added option \u0027-g\u0027",
+      "range": {
+        "startLine": 58,
+        "startChar": 20,
+        "endLine": 58,
+        "endChar": 28
+      },
+      "revId": "674e09c24ff21b48328d6792535ed63f7dab65bd",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
