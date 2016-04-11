@@ -191,7 +191,7 @@
 [% END -%]
 [% IF (is_proxy || is_lb || is_rtp) && voisniff.daemon.start == 'yes' -%]
         "voisniff-ng": {
-            "enabled": true,
+            "enabled": false,
             "running": true
         },
 [% END -%]
