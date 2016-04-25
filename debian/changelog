@@ -1,3 +1,12 @@
+ngcp-system-tests (0.7.7.0+0~mr3.8.7.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [b1433e1] MT#18907 We have added option '-g' to asterisk, update test
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 25 Apr 2016 14:12:55 +0200
+
 ngcp-system-tests (0.7.6.0+0~mr3.8.6.0) unstable; urgency=medium
 
   * New release.
