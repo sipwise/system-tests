@@ -1,3 +1,12 @@
+ngcp-system-tests (0.10.2.1+0~mr4.2.2.1) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [64f886b] MT#16755 Add support SKIP_DNS_CHECK_TEST and SKIP_STRICT_HOSTNAME_TEST env variables
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 25 Apr 2016 09:37:47 +0200
+
 ngcp-system-tests (0.10.2.0+0~mr4.2.2.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
