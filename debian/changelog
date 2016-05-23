@@ -1,3 +1,15 @@
+ngcp-system-tests (0.13.0.0+0~mr4.5.0.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [92dabda] MT#18815 Fix system-tests for PRO after switch to template of sipwise.list
+
+  [ Victor Seva ]
+  * [27f65cc] MT#18039 PRO: voisniff will be started by monit
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 23 May 2016 19:08:41 +0200
+
 ngcp-system-tests (0.12.0.0+0~mr4.4.0.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
