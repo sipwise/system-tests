@@ -113,14 +113,14 @@
         "curl --insecure -L http://[% web_ext_ips.0 -%]/api/": {
             "exit-status": 0,
             "stdout": [
-                "/404 Not Found/"
+                "/Authorization required/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://[% web_ext_ips.0 -%]/api/": {
             "exit-status": 0,
             "stdout": [
-                "/404 Not Found/"
+                "/Authorization required/"
             ],
             "stderr": []
         },
@@ -128,16 +128,78 @@
         "curl --insecure -L http://administrator:administrator@[% web_int_ips.0 -%]/api/": {
             "exit-status": 0,
             "stdout": [
-                "/404 Not Found/"
+                "/Authorization required/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://administrator:administrator@[% web_int_ips.0 -%]/api/": {
             "exit-status": 0,
             "stdout": [
-                "/404 Not Found/"
+                "/Authorization required/"
             ],
             "stderr": []
+        },
+
+        "curl --insecure -L http://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@127.0.0.1:1442/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "/Authorization required/"
+            ],
+            "stderr": []
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L http://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@127.0.0.1:1442/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "/Authorization required/"
+            ],
+            "stderr": []
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@127.0.0.1:1442/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "/Sipwise NGCP HTTP API documentation/"
+            ],
+            "stderr": []
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://fakeuser:[% rest_api.auth_system.password %]@127.0.0.1:1442/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "/Authorization required/"
+            ],
+            "stderr": []
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:wrongpassword@127.0.0.1:1442/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "/Authorization required/"
+            ],
+            "stderr": []
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://administrator:administrator@127.0.0.1:1442/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "Authorization required."
+            ],
+            "stderr": []
+            "timeout": 10000
+        },
+
+
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% web_ext_ips.0 -%]:1442/api/": {
+            "exit-status": 7,
+            "stdout": [],
+            "stderr": [
+                "/port 1442: Connection refused/"
+            ],
+            "timeout": 10000
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% web_int_ips.0 -%]:1442/api/": {
+            "exit-status": 7,
+            "stdout": [],
+            "stderr": [
+                "/port 1442: Connection refused/"
+            ],
+            "timeout": 10000
         },
 
         "curl -L http://localhost:8081/nginx_status": {
