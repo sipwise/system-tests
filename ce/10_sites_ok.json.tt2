@@ -19,6 +19,24 @@
    web_int_ips = out;
 -%]
 [% END -%]
+[%
+   argv.host=hostname; argv.type='api_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+   api_int_ips = out;
+
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   api_int_ips = out.merge(api_int_ips);
+
+   argv.role='mgmt';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+   is_mgmt = out;
+
+   argv.role='li';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+   is_li = out;
+   is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enabled == 'yes';
+-%]
+
 {
     "command": {
         "curl --insecure -L http://[% web_ext_ips.0 -%]/": {
@@ -113,14 +131,14 @@
         "curl --insecure -L http://[% web_ext_ips.0 -%]/api/": {
             "exit-status": 0,
             "stdout": [
-                "/404 Not Found/"
+                "/Authorization required/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://[% web_ext_ips.0 -%]/api/": {
             "exit-status": 0,
             "stdout": [
-                "/404 Not Found/"
+                "/Authorization required/"
             ],
             "stderr": []
         },
@@ -128,16 +146,79 @@
         "curl --insecure -L http://administrator:administrator@[% web_int_ips.0 -%]/api/": {
             "exit-status": 0,
             "stdout": [
-                "/404 Not Found/"
+                "/Authorization required/"
             ],
             "stderr": []
         },
         "curl --insecure -L https://administrator:administrator@[% web_int_ips.0 -%]/api/": {
             "exit-status": 0,
             "stdout": [
-                "/404 Not Found/"
+                "/Authorization required/"
             ],
             "stderr": []
+        },
+
+[% IF www_admin.enabled == 'yes' && (is_mgmt || is_li_enabled) -%]
+        "curl --insecure -L http://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% api_int_ips.0 -%]:[% www_admin.http_csc.port %]/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "/Authorization required/"
+            ],
+            "stderr": []
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L http://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% api_int_ips.0 -%]:[% www_admin.http_csc.port %]/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "/Authorization required/"
+            ],
+            "stderr": []
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% api_int_ips.0 -%]:[% www_admin.http_csc.port %]/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "/Sipwise NGCP HTTP API documentation/"
+            ],
+            "stderr": []
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://fakeuser:[% rest_api.auth_system.password %]@[% api_int_ips.0 -%]:[% www_admin.http_csc.port %]/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "/Authorization required/"
+            ],
+            "stderr": []
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:wrongpassword@[% api_int_ips.0 -%]:[% www_admin.http_csc.port %]/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "/Authorization required/"
+            ],
+            "stderr": []
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://administrator:administrator@[% api_int_ips.0 -%]:[% www_admin.http_csc.port %]/api/": {
+            "exit-status": 0,
+            "stdout": [
+                "Authorization required."
+            ],
+            "stderr": [],
+            "timeout": 10000
+        },
+[% END -%]
+
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% web_ext_ips.0 -%]:[% www_admin.http_csc.port %]/api/": {
+            "exit-status": 7,
+            "stdout": [],
+            "stderr": [
+                "/port [% www_admin.http_csc.port %]: Connection refused/"
+            ],
+            "timeout": 10000
+        },
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% web_int_ips.0 -%]:[% www_admin.http_csc.port %]/api/": {
+            "exit-status": 7,
+            "stdout": [],
+            "stderr": [
+                "/port [% www_admin.http_csc.port %]: Connection refused/"
+            ],
+            "timeout": 10000
         },
 
         "curl -L http://localhost:8081/nginx_status": {
