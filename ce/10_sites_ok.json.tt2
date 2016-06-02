@@ -190,7 +190,7 @@
         "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://administrator:administrator@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
             "exit-status": 0,
             "stdout": [
-                "Authorization required."
+                "/Authorization required/"
             ],
             "stderr": [],
             "timeout": 10000
@@ -203,23 +203,6 @@
             "stderr": []
         },
 [% END -%]
-
-        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% web_ext_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
-            "exit-status": 7,
-            "stdout": [],
-            "stderr": [
-                "/port [% www_admin.http_system.port %]: Connection refused/"
-            ],
-            "timeout": 10000
-        },
-        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% web_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
-            "exit-status": 7,
-            "stdout": [],
-            "stderr": [
-                "/port [% www_admin.http_system.port %]: Connection refused/"
-            ],
-            "timeout": 10000
-        },
 
         "curl -L http://localhost:8081/nginx_status": {
             "exit-status": 0,
