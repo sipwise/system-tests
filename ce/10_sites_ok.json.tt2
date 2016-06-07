@@ -89,14 +89,16 @@
             "stdout": [
                 "/Subscriber Sign In/"
             ],
-            "stderr": []
+            "stderr": [],
+            "timeout": 30000
         },
         "curl --insecure -L https://[% web_ext_ips.0 -%]:1443/login/subscriber": {
             "exit-status": 0,
             "stdout": [
                 "/Subscriber Sign In/"
             ],
-            "stderr": []
+            "stderr": [],
+            "timeout": 30000
         },
 
         "curl --insecure -L http://[% web_int_ips.0 -%]:1443/api/": {
