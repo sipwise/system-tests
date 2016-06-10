@@ -127,7 +127,8 @@
             "stdout": [
                 "/Sipwise NGCP HTTP API documentation/"
             ],
-            "stderr": []
+            "stderr": [],
+            "timeout": 30000
         },
 
         "curl --insecure -L http://[% web_ext_ips.0 -%]/api/": {
