@@ -175,7 +175,7 @@
         },
 
 [% IF www_admin.enabled == 'yes' && (is_mgmt || is_li_enabled) -%]
-        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
             "exit-status": 0,
             "stdout": [
                 "/Sipwise NGCP HTTP API documentation/"
@@ -183,7 +183,7 @@
             "stderr": [],
             "timeout": 30000
         },
-        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L http://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L http://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
             "exit-status": 0,
             "stdout": [
                 "/Authorization required/"
@@ -191,7 +191,7 @@
             "stderr": [],
             "timeout": 10000
         },
-        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://fakeuser:[% rest_api.auth_system.password %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://fakeuser:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
             "exit-status": 0,
             "stdout": [
                 "/Authorization required/"
@@ -199,7 +199,7 @@
             "stderr": [],
             "timeout": 10000
         },
-        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% rest_api.auth_system.login %]:wrongpassword@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
+        "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% credentials.rest_api.auth_system.u %]:wrongpassword@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
             "exit-status": 0,
             "stdout": [
                 "/Authorization required/"
@@ -215,7 +215,7 @@
             "stderr": [],
             "timeout": 10000
         },
-        "curl --insecure -L https://[% rest_api.auth_system.login %]:[% rest_api.auth_system.password %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
+        "curl --insecure -L https://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/": {
             "exit-status": 0,
             "stdout": [
                 "/Authorization required/"
