@@ -13,6 +13,7 @@
         "08_system_ports.json": {},
         "09_system_dns.json": {},
         "10_sites_ok.json": {},
+        "11_mysql_paswords.json": {},
         "99_dummy.json": {}
     }
 }

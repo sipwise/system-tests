@@ -1,0 +1,27 @@
+[% 
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out
+
+   argv.role='db';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+   is_db = out;
+-%]
+
+{
+    "command": {
+[% IF is_db -%]
+        mysql -Bs mysql -e 'select User,Host,Password from user where (Password="" or  Password="!") and User!="root"': {
+            "comment": "There must be no users without password (root is an exception here, customer must set it later)"
+            "exit-status": 0,
+            "stdout": [],
+            "stderr": []
+        },
+[% END -%]
+        "echo dummy": {
+            "exit-status": 0,
+            "stdout": [
+                "dummy"
+            ],
+            "stderr": []
+        }
+    }
+}
