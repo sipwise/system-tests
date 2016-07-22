@@ -1,0 +1,10 @@
+{
+    "command": {
+        mysql -Bs mysql -e 'SELECT User,Host,Password FROM user WHERE (Password = "" or Password LIKE "!%") AND User != "root"': {
+            "comment": "There must be no users without password (root is an exception here, customer must set it later)"
+            "exit-status": 0,
+            "stdout": [],
+            "stderr": []
+        }
+    }
+}
