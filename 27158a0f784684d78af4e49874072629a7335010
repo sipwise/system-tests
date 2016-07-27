@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aade967_f56e0296",
+        "filename": "ce/11_mysql_paswords.json.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2016-07-27T05:51:56Z",
+      "side": 1,
+      "message": "spaces please for more readability",
+      "range": {
+        "startLine": 3,
+        "startChar": 109,
+        "endLine": 3,
+        "endChar": 111
+      },
+      "revId": "27158a0f784684d78af4e49874072629a7335010",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
