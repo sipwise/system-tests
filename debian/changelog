@@ -1,3 +1,20 @@
+ngcp-system-tests (0.13.1.0+0~mr4.5.1.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [98de07b] MT#19765 Fix REST API test for recently enabled subscriber REST API
+  * [d6c579a] MT#17801 Add test for internal REST API auth on api_int:1442
+  * [3269029] MT#17801 Fix d6c579a1: on newly installed PRO web_ext/web_int also listen localhost, which fail the test
+  * [ab5f618] MT#17801 Increase timeout for subscriber REST/API
+  * [8216184] MT#17801 Improve ab5f618: add one more REST API slow query timeout
+  * [0e9ebbf] MT#17801 Increase timeout for subscriber REST/API (ngcp-panel/rest api is slow to start :-( )
+
+  [ Kirill Solomko ]
+  * [ea3acb6] MT#21227 adjust rest_api login/pass for the new constants.yml credentials schema
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 01 Aug 2016 16:39:56 +0200
+
 ngcp-system-tests (0.13.0.0+0~mr4.5.0.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
