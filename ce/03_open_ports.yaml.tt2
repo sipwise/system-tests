@@ -9,15 +9,11 @@
    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
    web_int_ips = out;
 -%]
-{
-    "port": {
-        "tcp:443": {
-            "listening": true,
-            "ip": ["[% web_ext_ips.0 -%]"]
-        },
-        "tcp:1443": {
-            "listening": true,
-            "ip": ["[% web_int_ips.0 -%]"]
-        }
-    }
-}
+port:
+  tcp:443:
+      listening: true
+      ip: ["[% web_ext_ips.0 -%]"]
+
+  tcp:1443:
+      listening: true
+      ip: ["[% web_int_ips.0 -%]"]

@@ -1,0 +1,49 @@
+file:
+
+  /etc/apt/sources.list.d/sipwise.list:
+    exists: true
+    mode: "0444"
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+
+  /etc/ngcp-config/config.yml:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+
+  /etc/ngcp-config/constants.yml:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+
+  /etc/ngcp-config/network.yml:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+
+  /etc/ngcp_version:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+
+  /etc/sipwise_ngcp_version:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+    contains: []
