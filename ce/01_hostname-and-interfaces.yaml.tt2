@@ -1,0 +1,35 @@
+command:
+  hostname:
+    exit-status: 0
+
+[% IF sipwise.system_tester.skip_strict_hostname_test != "true" %]
+  hostname:
+    exit-status: 0
+    stdout:
+      - "spce"
+    stderr: []
+
+  hostname --fqdn:
+    exit-status: 0
+    stdout:
+      - "spce."
+    stderr: []
+
+  hostname --short:
+    exit-status: 0
+    stdout:
+      - "spce"
+    stderr: []
+
+[% END -%]
+  "[ $(hostname --short). = $(hostname --fqdn) ]":
+    title: "short hostname should be the same as fqdn (ignoring trailing dot)"
+    exit-status: 0
+    stdout: []
+    stderr: []
+
+  "[ $(resolveip -s $(hostname --fqdn)) = $(resolveip -s $(hostname --short)) ]":
+    title: "ip-s of short hostname and fqdn should be the same"
+    exit-status: 0
+    stdout: []
+    stderr: []
