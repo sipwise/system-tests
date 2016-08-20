@@ -1,0 +1,13 @@
+port:
+  tcp:1443:
+    listening: true
+
+  tcp:22:
+    listening: true
+
+  tcp:443:
+    listening: true
+
+  tcp6:80:
+    # why Ipv4 is not here?
+    listening: true

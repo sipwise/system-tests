@@ -1,0 +1,6 @@
+command:
+  "ls -la /var/cores/core.*":
+    exit-status: 2
+    stdout: []
+    stderr:
+      - "ls: cannot access /var/cores/core.*: No such file or directory"
