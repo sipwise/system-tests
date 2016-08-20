@@ -20,7 +20,7 @@ case "${TYPE}" in
   *) echo "ERRRO: Unknown type '$1'" >&2 ; usage >&2 ; exit 1 ;;
 esac
 
-goss="goss-mika-git804995a8_with_tap_and_junit"
+goss="goss-0.2.3-linux-amd64"
 
 if [ ! -x "/usr/sbin/${goss}" ] ; then
   echo "Downloading goss and installing as /usr/sbin/${goss}"
@@ -54,7 +54,7 @@ mkdir -p "${REPORT_DIRECTORY}"
 TAP_RESULTS="${REPORT_DIRECTORY}/goss_${TYPE}_results.tap"
 
 # TODO: add --format=tap when TAP formater will be supported
-if goss -g "/etc/ngcp-tests/${TYPE}/goss.json" validate ; then
+if goss -g "/etc/ngcp-tests/${TYPE}/goss.yaml" validate ; then
   echo "1..1" > "${TAP_RESULTS}"
   echo "ok 1 - no errors were found" >> "${TAP_RESULTS}"
 else

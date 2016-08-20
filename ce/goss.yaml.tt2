@@ -1,0 +1,15 @@
+gossfile:
+  01_running-processes.yaml: {}
+  01_hostname-and-interfaces.yaml: {}
+  02_disk-free.yaml: {}
+  03_files_availability.yaml: {}
+  03_no-cores.yaml: {}
+  03_open_ports.yaml: {}
+  04_template_files.yaml: {}
+  05_system_users.yaml: {}
+  06_system_packages.yaml: {}
+  07_system_service.yaml: {}
+  08_system_ports.yaml: {}
+  09_system_dns.yaml: {}
+  10_sites_ok.yaml: {}
+  99_dummy.yaml: {}
