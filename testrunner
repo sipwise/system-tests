@@ -48,18 +48,11 @@ fi
 
 echo "Rebuilding test configs in /etc/ngcp-test/"
 ngcpcfg build /etc/ngcp-test/*
+rm -f "${host_yml_file}"
 
 rm -rf "${REPORT_DIRECTORY}"
 mkdir -p "${REPORT_DIRECTORY}"
 TAP_RESULTS="${REPORT_DIRECTORY}/goss_${TYPE}_results.tap"
 
-# TODO: add --format=tap when TAP formater will be supported
-if goss -g "/etc/ngcp-tests/${TYPE}/goss.yaml" validate ; then
-  echo "1..1" > "${TAP_RESULTS}"
-  echo "ok 1 - no errors were found" >> "${TAP_RESULTS}"
-else
-  echo "1..1" > "${TAP_RESULTS}"
-  echo "not ok 1 - found errors, run test manually" >> "${TAP_RESULTS}"
-fi
+goss -g "/etc/ngcp-tests/${TYPE}/goss.json" validate --format tap > "${TAP_RESULTS}"
 
-rm -f "${host_yml_file}"
