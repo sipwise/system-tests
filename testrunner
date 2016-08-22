@@ -54,5 +54,6 @@ rm -rf "${REPORT_DIRECTORY}"
 mkdir -p "${REPORT_DIRECTORY}"
 TAP_RESULTS="${REPORT_DIRECTORY}/goss_${TYPE}_results.tap"
 
-goss -g "/etc/ngcp-tests/${TYPE}/goss.yaml" validate --format tap > "${TAP_RESULTS}"
+goss -g "/etc/ngcp-tests/${TYPE}/goss.yaml" validate --format tap | tee "${TAP_RESULTS}"
 
+exit ${PIPESTATUS[0]}
