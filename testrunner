@@ -20,6 +20,15 @@ case "${TYPE}" in
   *) echo "ERRRO: Unknown type '$1'" >&2 ; usage >&2 ; exit 1 ;;
 esac
 
+if ls -la /var/cores/core.* >/dev/null 2>&1 ; then
+  echo "============== NOTE: CORE DUMP DETECTED ================="
+  echo "= Removing known cores to prevent failing for [:||||:]  ="
+  echo "= Removing ngcp-panel cores, see MT#21791: /var/cores/core.perl-fcgi.sig11*"
+  ls -la /var/cores/core.perl-fcgi.sig11*
+  rm -f /var/cores/core.perl-fcgi.sig11*
+  echo "======================== DONE ==========================="
+fi
+
 goss="goss-0.2.3-linux-amd64"
 
 if [ ! -x "/usr/sbin/${goss}" ] ; then
