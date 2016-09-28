@@ -32,6 +32,14 @@ file:
     filetype: file
     contains: []
 
+  /etc/ngcp-config/.git:
+    exists: true
+    mode: "0700"
+    owner: root
+    group: root
+    filetype: directory
+    contains: []
+
   /etc/ngcp-config/cfg_schema.db:
     exists: true
     mode: "0644"
