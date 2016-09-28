@@ -33,7 +33,7 @@ if ls /var/cores/core.* >/dev/null 2>&1 ; then
   echo "========================== DONE =============================="
 fi
 
-goss="goss-0.2.3-linux-amd64"
+goss="goss-0.2.4-linux-amd64"
 
 if [ ! -x "/usr/sbin/${goss}" ] ; then
   echo "Downloading goss and installing as /usr/sbin/${goss}"
