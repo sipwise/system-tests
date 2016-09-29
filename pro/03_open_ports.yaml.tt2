@@ -98,7 +98,7 @@ port:
 
   tcp:3306:
     listening: true
-    ip: ["0.0.0.0"]
+    ip: ["::"]
 
 [% IF is_lb -%]
   tcp:5060:
