@@ -1,3 +1,18 @@
+ngcp-system-tests (0.13.2.1+0~mr4.5.2.1) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [e7cce39] MT#8041 Enable cores check back (sems should not produce cores anymore)
+  * [fa5dab2] MT#22125 Migrate tests to yaml format and update goss on v0.2.3
+  * [fe5be5f] MT#22125 Switch system-tests to TAP output
+  * [d0686bb] MT#22125 Fix 1462a16: fix typo in filename
+  * [a6da624] MT#22125 Improve Jenkins job log output, use tee
+  * [be43126] MT#21791 Do not fail system-tests on already reported cores
+  * [a670b94] MT#17801 Increase timeout for subscriber REST/API
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 10 Oct 2016 16:21:21 +0200
+
 ngcp-system-tests (0.13.2.0+0~mr4.5.2.0) unstable; urgency=medium
 
   * New release.
