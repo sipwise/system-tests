@@ -1,3 +1,12 @@
+ngcp-system-tests (0.12.2.2+0~mr4.4.2.2) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [89c26fc] TT#4162 Increase curl timeout for mr4.4* for REST API access
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 10 Oct 2016 12:15:09 +0200
+
 ngcp-system-tests (0.12.2.1+0~mr4.4.2.1) unstable; urgency=medium
 
   * New release.
