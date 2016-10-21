@@ -1,3 +1,29 @@
+ngcp-system-tests (5.0.0.0+0~mr5.0.0.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [b362f60] MT#8041 Enable cores check back (sems should not produce cores anymore)
+  * [71ba85f] MT#21227 Add MySQL check to validate passwords for all users
+  * [c20168b] Revert "MT#21227 Add MySQL check to validate passwords for all users"
+  * [7d88933] MT#22125 Migrate tests to yaml format and update goss on v0.2.3
+  * [1462a16] MT#22125 Switch system-tests to TAP output
+  * [cba3e96] MT#22125 Fix 1462a16: fix typo in filename
+  * [382f12a] MT#22125 Improve Jenkins job log output, use tee
+  * [3e7b256] MT#21791 Do not fail system-tests on already reported cores
+  * [3cb60fc] MT#22709 Fix perms for /etc/ngcp-config/constants.yml it is 0600 now
+  * [695c263] MT#19043 Add more tests for default content of /etc/ngcp-config
+  * [212d3da] MT#19043 Fix typo in perms for /etc/ngcp-config/ssl/
+  * [3eb710d] MT#19043 Fix 695c263: some data is not available on CE (yet?)
+  * [c2071dd] MT#19043 Add test to check /etc/ngcp-config/.git
+  * [03b144f] MT#19043 Check perms 0755 on /etc/ngcp-config/ssl for PRO only
+  * [554c55c] TT#3380 Update goss to v.0.2.4 for all system-tests
+  * [3d28187] MT#22905 Revert "MT#19043 Check perms 0755 on /etc/ngcp-config/ssl for PRO only"
+  * [f446d5c] MT#17801 Increase timeout for subscriber REST/API
+
+  [ Kirill Solomko ]
+  * [18070ba] MT#22031 change mysql home to /var/lib/mysql
+
+ -- Alexander Lutay <alutay@sipwise.com>  Fri, 21 Oct 2016 15:05:53 +0200
+
 ngcp-system-tests (0.14.0.0+0~mr5.0.0.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
