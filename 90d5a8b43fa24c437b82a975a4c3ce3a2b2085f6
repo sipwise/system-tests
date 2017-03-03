@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba068154_1c48ab5a",
+        "filename": "ce/05_system_users.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-03-03T09:28:26Z",
+      "side": 1,
+      "message": "I didn\u0027t know that it is possible!!!!\nAAAAAAAAAaaaaaaaaaaaaaaaaaa...........\n\nI know how to fix https://sipwise.attask-ondemand.com/task/view?ID\u003d58137717001759ab9962894ed9448b83\n\nTHANK YOU!",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "90d5a8b43fa24c437b82a975a4c3ce3a2b2085f6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
