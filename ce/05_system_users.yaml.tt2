@@ -79,7 +79,10 @@ user:
     exists: true
     groups:
       - mysql
-    home: "/nonexistent"
+    home:
+      or:
+      - "/var/lib/mysql"
+      - "/nonexistent"
 
   nobody:
     exists: true
