@@ -1,8 +1,10 @@
 group:
   cdrexport:
     exists: true
-    gid: 10001
-
+    gid:
+      or:
+        - 1001
+        - 10001
   daemon:
     exists: true
     gid: 1
@@ -31,7 +33,10 @@ group:
 
   sipwise:
     exists: true
-    gid: 10000
+    gid:
+      or:
+        - 1000
+        - 10000
 
   ssh:
     exists: true
@@ -51,8 +56,14 @@ user:
 
   cdrexport:
     exists: true
-    uid: 10001
-    gid: 10001
+    uid:
+      or:
+        - 1001
+        - 10001
+    gid:
+      or:
+        - 1001
+        - 10001
     groups:
       - cdrexport
     home: "/home/jail/home/cdrexport"
@@ -103,8 +114,14 @@ user:
 
   sipwise:
     exists: true
-    uid: 10000
-    gid: 10000
+    uid:
+      or:
+        - 1000
+        - 10000
+    gid:
+      or:
+        - 1000
+        - 10000
     groups:
       - sipwise
     home: "/var/sipwise"
