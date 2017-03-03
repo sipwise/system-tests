@@ -3,4 +3,4 @@ command:
     exit-status: 2
     stdout: []
     stderr:
-      - "ls: cannot access /var/cores/core.*: No such file or directory"
+      - "/ls: cannot access '??/var/cores/core.*'??: No such file or directory/"
