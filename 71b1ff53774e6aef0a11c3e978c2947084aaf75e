@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba068154_29957040",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2017-03-03T12:20:52Z",
+      "side": 1,
+      "message": "Without enough coffee that\u0027s hard to parse. ;)\nWhat about something like:\n\n\"Freshly installed systems use IDs 10000/10001 nowadays ,\nwhile systems that are upgraded from old(er) releases use IDs 1000/1001.",
+      "revId": "71b1ff53774e6aef0a11c3e978c2947084aaf75e",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
