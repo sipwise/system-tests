@@ -39,10 +39,6 @@ service:
     running: true
 
 [% END -%]
-  collectd:
-    enabled: true
-    running: true
-
 [% IF turnserver.enabled == 'yes' -%]
   coturn:
     enabled: false
