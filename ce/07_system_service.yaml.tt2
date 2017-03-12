@@ -7,10 +7,6 @@ service:
     enabled: true
     running: true
 
-  collectd:
-    enabled: true
-    running: true
-
   cron:
     enabled: true
     running: true

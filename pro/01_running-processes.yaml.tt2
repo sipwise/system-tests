@@ -31,12 +31,6 @@ process:
   asterisk:
     running: true
 
-  collectd:
-    running: true
-
-  collectdmon:
-    running: true
-
   cron:
     running: true
 
