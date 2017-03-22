@@ -1,3 +1,17 @@
+ngcp-system-tests (5.3.0.0+0~mr5.3.0.0) unstable; urgency=medium
+
+  [ Michael Prokop ]
+  * [d84d12a] TT#12307 Adjust coreutils's `ls` output comparison for Debian/stretch
+  * [9c2db02] TT#12307 mysql user on stretch uses /nonexistent as its home
+  * [edf56d0] TT#12307 Check for existing of /var/cores/core.perl-fcgi.sig11* before moving them
+
+  [ Alexander Lutay ]
+  * [284abaa] TT#5161 sipwise/cdrexport user/group id can be 1000/10000
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 22 Mar 2017 11:04:01 +0100
+
 ngcp-system-tests (5.2.0.0+0~mr5.2.0.0) unstable; urgency=medium
 
   * New release.
