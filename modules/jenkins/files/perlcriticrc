@@ -30,6 +30,7 @@ max_elsif = 15
 severity = 4
 # Let's keep this simple for now.
 lib_sections = NAME | DESCRIPTION | LICENSE | AUTHOR
+script_sections = NAME | SYNOPSIS | DESCRIPTION | LICENSE | AUTHOR
 
 # Not active, severity 1
 [InputOutput::RequireCheckedSyscalls]
