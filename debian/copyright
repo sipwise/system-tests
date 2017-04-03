@@ -1,29 +1,28 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://github.com/sipwise/system-tests/
 Upstream-Name: ngcp-system-tests
-Source: http://github.com/sipwise/system-tests/
 Upstream-Contact: Michael Prokop <mprokop@sipwise.com>
 
-Files: ce/*.t pro/*.t
-Copyright: Jozef Kutej <jozef@kutej.net>
-License: Artistic or GPL-1+
-
-Files: debian/*
-Copyright: 2013, Michael Prokop <mprokop@sipwise.com>
-           2013, Sipwise GmbH, Austria
+Files:
+ *
+Copyright:
+ Jozef Kutej <jozef@kutej.net>
+ 2013, Michael Prokop <mprokop@sipwise.com>
+ 2013-2017, Sipwise GmbH, Austria
 License: Artistic or GPL-1+
 
 License: Artistic
  This program is free software; you can redistribute it and/or modify
  it under the terms of the Artistic License, which comes with Perl.
- .
+Comment:
  On Debian systems, the complete text of the Artistic License can be
- found in `/usr/share/common-licenses/Artistic'.
+ found in '/usr/share/common-licenses/Artistic'.
 
 License: GPL-1+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 1, or (at your option)
  any later version.
- .
+Comment:
  On Debian systems, the complete text of version 1 of the GNU General
- Public License can be found in `/usr/share/common-licenses/GPL-1'.
+ Public License can be found in '/usr/share/common-licenses/GPL-1'.

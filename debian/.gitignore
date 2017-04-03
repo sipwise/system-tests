@@ -1,0 +1,5 @@
+*.log
+*.substvars
+/debhelper-build-stamp
+/files
+/ngcp-system-tests/
