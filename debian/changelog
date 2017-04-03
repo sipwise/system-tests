@@ -1,3 +1,12 @@
+ngcp-system-tests (5.2.1.1+0~mr5.2.1.1) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [8195b2e] TT#12759 Make tap-test happy for system-tests on building mr5.2
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 03 Apr 2017 14:36:31 +0200
+
 ngcp-system-tests (5.2.1.0+0~mr5.2.1.0) unstable; urgency=medium
 
   [ Michael Prokop ]
