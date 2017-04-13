@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1969be_3ac81b74",
+        "filename": "pro/01_running-processes.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-04-13T13:18:02Z",
+      "side": 1,
+      "message": "system-tools.git master branch support jessie/stretch only, no need to add wheezy here IMHO. Drop this.",
+      "range": {
+        "startLine": 103,
+        "startChar": 37,
+        "endLine": 103,
+        "endChar": 70
+      },
+      "revId": "3ddcef50554a3721e3288aad8a094cba22cf5591",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
