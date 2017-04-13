@@ -100,8 +100,13 @@ process:
   snmpd:
     running: true
 
+{{if (or (eq .Env.DEBIAN_RELEASE "8") (eq .Env.DEBIAN_RELEASE "7") )}}
   udevd:
     running: true
+{{else}}
+  systemd-udevd:
+    running: true
+{{end}}
 
   voisniff-ng:
     running: true

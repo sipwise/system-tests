@@ -33,7 +33,7 @@ if ls /var/cores/core.perl-fcgi.sig11* >/dev/null 2>&1 ; then
   echo "========================== DONE =============================="
 fi
 
-goss="goss-0.2.4-linux-amd64"
+goss="goss-0.3.1-linux-amd64"
 
 if [ ! -x "/usr/sbin/${goss}" ] ; then
   echo "Downloading goss and installing as /usr/sbin/${goss}"
@@ -67,6 +67,7 @@ rm -rf "${REPORT_DIRECTORY}"
 mkdir -p "${REPORT_DIRECTORY}"
 TAP_RESULTS="${REPORT_DIRECTORY}/goss_${TYPE}_results.tap"
 
-goss -g "/etc/ngcp-tests/${TYPE}/goss.yaml" validate --format tap | tee "${TAP_RESULTS}"
+DEBIAN_RELEASE=$(sed -e 's/\([0-9]*\)\..*/\1/' /etc/debian_version)
+DEBIAN_RELEASE=$DEBIAN_RELEASE goss -g "/etc/ngcp-tests/${TYPE}/goss.yaml" validate --format tap | tee "${TAP_RESULTS}"
 
 exit "${PIPESTATUS[0]}"
