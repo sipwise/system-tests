@@ -133,7 +133,10 @@ user:
     exists: true
     groups:
       - nogroup
-    home: "/var/run/sshd"
+    home:
+      or:
+        - "/var/run/sshd"
+        - "/run/sshd"
 
   www-data:
     exists: true
