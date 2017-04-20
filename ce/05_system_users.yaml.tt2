@@ -113,7 +113,10 @@ user:
     exists: true
     groups:
       - sems
-    home: "/var/run/ngcp-sems"
+    home:
+      or:
+        - "/var/run/ngcp-sems"
+        - "/var/run/sems"
 
   sipwise:
     exists: true
