@@ -1,3 +1,12 @@
+ngcp-system-tests (5.1.3.0+0~mr5.1.3.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [3e55682] TT#5161 sipwise/cdrexport user/group id can be 1000/10000
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 25 Apr 2017 14:28:12 +0200
+
 ngcp-system-tests (5.1.2.0+0~mr5.1.2.0) unstable; urgency=medium
 
   * New release.
