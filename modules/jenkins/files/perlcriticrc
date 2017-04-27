@@ -2,8 +2,8 @@
 
 # NOTE: When switching the output format we also need to adjust perlcritic_tap
 # accordingly:
-# verbose = %f line %l col %c\n    [%s] %p (%e) = %m\n    %r\n
-# The ouput format, another nice one is 8, the [%s] is the severity.
+verbose = %l:%c [%s] %p = %m (with Sipwise overrides from <https://gerrit.mgm.sipwise.com/gitweb?p=puppet-sipwise.git;a=blob;f=modules/jenkins/files/perlcriticrc>) near '%r'\n
+
 severity  = 4
 
 program-extensions = .pl .t
