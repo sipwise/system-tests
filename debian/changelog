@@ -1,3 +1,15 @@
+ngcp-system-tests (0.13.4.3+0~mr4.5.4.3) unstable; urgency=medium
+
+  [ Michael Prokop ]
+  * [b847dac] TT#12307 mysql user on stretch uses /nonexistent as its home
+
+  [ Alexander Lutay ]
+  * [f0bf9aa] TT#14808 Allow old home '/var/run/sems' for POSIX user sems
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 03 May 2017 16:46:49 +0200
+
 ngcp-system-tests (0.13.4.2+0~mr4.5.4.2) unstable; urgency=medium
 
   [ Alexander Lutay ]
