@@ -1,3 +1,12 @@
+ngcp-system-tests (5.0.2.3+0~mr5.0.2.3) unstable; urgency=medium
+
+  [ Michael Prokop ]
+  * [08143bc] TT#12307 Check for existing of /var/cores/core.perl-fcgi.sig11* before moving them
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 04 May 2017 13:15:50 +0200
+
 ngcp-system-tests (5.0.2.2+0~mr5.0.2.2) unstable; urgency=medium
 
   [ Alexander Lutay ]
