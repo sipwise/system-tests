@@ -75,6 +75,14 @@ service:
     enabled: true
     running: true
 
+  influxdb:
+    enabled: true
+    running: true
+
+  influxdb-relay:
+    enabled: true
+    running: true
+
 [% IF is_lb && kamailio.lb.start == "yes" -%]
   kamailio-lb:
     enabled: false
@@ -130,12 +138,26 @@ service:
 
 [% END -%]
 [% IF sems.enabled == "yes" -%]
-
   ngcp-sems:
     enabled: false
     running: true
 
 [% END -%]
+[% IF is_mgmt -%]
+  ngcp-snmp-agent:
+    enabled: true
+    running: true
+
+[% ELSE -%]
+  ngcp-snmp-agent:
+    enabled: false
+    running: false
+
+[% END -%]
+  ngcp-witnessd:
+    enabled: true
+    running: true
+
 [% IF nginx.enabled == 'yes' -%]
   nginx:
     enabled: true
@@ -186,6 +208,10 @@ service:
     running: true
 
 [% END -%]
+  snmpd:
+    enabled: true
+    running: true
+
 [% IF (is_proxy || is_lb || is_rtp) && voisniff.daemon.start == 'yes' -%]
   voisniff-ng:
     enabled: false
@@ -205,5 +231,9 @@ service:
 
 [% END -%]
   ssh:
+    enabled: true
+    running: true
+
+  telegraf:
     enabled: true
     running: true
