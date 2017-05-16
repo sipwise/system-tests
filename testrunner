@@ -9,6 +9,10 @@ usage() {
   printf "Usage example: %s CE\n" "$0"
 }
 
+diag() {
+  echo "$@" 2>&1
+}
+
 if [ $# -lt 1 ] ; then
   usage >&2
   exit 1
@@ -16,27 +20,27 @@ fi
 
 TYPE=$(echo "$1"| tr '[:upper:]' '[:lower:]')
 case "${TYPE}" in
-  ce|pro) echo "Requested system tests for supported type '${TYPE}', continue..." ;;
+  ce|pro) diag "Requested system tests for supported type '${TYPE}', continue..." ;;
   *) echo "ERRRO: Unknown type '$1'" >&2 ; usage >&2 ; exit 1 ;;
 esac
 
 if ls /var/cores/core.perl-fcgi.sig11* >/dev/null 2>&1 ; then
-  echo "================== NOTE: CORE DUMP DETECTED =================="
-  echo "= Removing known cores to prevent failing for the known issues:"
-  echo "= 1) MT#21791: Renaming ngcp-panel cores /var/cores/core.perl-fcgi.sig11*"
+  diag "================== NOTE: CORE DUMP DETECTED =================="
+  diag "= Removing known cores to prevent failing for the known issues:"
+  diag "= 1) MT#21791: Renaming ngcp-panel cores /var/cores/core.perl-fcgi.sig11*"
   ls -la /var/cores/core.perl-fcgi.sig11*
   for file in /var/cores/core.perl-fcgi.sig11* ; do
     mv "${file}" /var/cores/RENAMED_"$(basename "${file}")"
   done
-  echo "= New cores names are:"
+  diag "= New cores names are:"
   ls -la /var/cores/RENAMED_core.perl-fcgi.sig11*
-  echo "========================== DONE =============================="
+  diag "========================== DONE =============================="
 fi
 
 goss="goss-0.3.1-linux-amd64"
 
 if [ ! -x "/usr/sbin/${goss}" ] ; then
-  echo "Downloading goss and installing as /usr/sbin/${goss}"
+  diag "Downloading goss and installing as /usr/sbin/${goss}"
   curl -L "https://deb.sipwise.com/files/${goss}" > "/usr/sbin/${goss}"
   chmod +x "/usr/sbin/${goss}"
 fi
@@ -46,7 +50,7 @@ ln -s "/usr/sbin/${goss}" /usr/sbin/goss
 
 host_yml_file="/etc/ngcp-config/config.$(hostname).yml"
 if [ -n "${SKIP_DNS_CHECK_TEST}" ] || [ -n "${SKIP_STRICT_HOSTNAME_TEST}" ] ; then
-  echo "Configuring host specific YML config: ${host_yml_file}"
+  diag "Configuring host specific YML config: ${host_yml_file}"
   cat > "${host_yml_file}" << EOF
 ---
 sipwise:
@@ -59,8 +63,8 @@ else
   rm -f "${host_yml_file}"
 fi
 
-echo "Rebuilding test configs in /etc/ngcp-test/"
-ngcpcfg build /etc/ngcp-test/*
+diag "Rebuilding test configs in /etc/ngcp-test/"
+ngcpcfg build /etc/ngcp-test/* 2>&1
 rm -f "${host_yml_file}"
 
 rm -rf "${REPORT_DIRECTORY}"
