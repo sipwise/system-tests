@@ -46,6 +46,12 @@ process:
   heartbeat:
     running: true
 
+  influxd:
+    running: true
+
+  influxdb-relay:
+    running: true
+
   kamailio:
     running: true
 
@@ -65,6 +71,12 @@ process:
     running: true
 
   ngcp-sems:
+    running: true
+
+  ngcp-snmp-agent:
+    running: true
+
+  ngcp-witnessd:
     running: true
 
   nginx:
@@ -92,6 +104,9 @@ process:
     running: true
 
   snmpd:
+    running: true
+
+  telegraf:
     running: true
 
 {{if eq .Env.DEBIAN_RELEASE "8"}}
