@@ -46,6 +46,30 @@
       "revId": "eac09eaf5734d0c575894df795ccaafb8eaf7185",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1371a2_1809f595",
+        "filename": "pro/03_open_ports.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-05-16T12:42:26Z",
+      "side": 1,
+      "message": "It is hard to create a comments in yaml, only:\n  \n  comment: something\n\nMaybe worth to add them here.\n\nRe influxdb what is the first release we _start_ influxdb on NGCP by default?\n\nYes, yellow zone is fine.\n\nBTW, new service should be added to system-test as well. AFAIK there is no influxdb/telegraf checks in this repo.",
+      "parentUuid": "3a1371a2_98cde560",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 51
+      },
+      "revId": "eac09eaf5734d0c575894df795ccaafb8eaf7185",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
