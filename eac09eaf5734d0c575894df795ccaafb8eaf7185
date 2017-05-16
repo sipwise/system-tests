@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1371a2_f8e69943",
+        "filename": "pro/03_open_ports.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-05-16T10:14:02Z",
+      "side": 1,
+      "message": "It fails now, because influxd is listening all IPs which is not secure and must be addressed. Carrier installation has very secure model. Process should listen necessary interface only (IMHO localhost and/or ha_int(_shared) IP(s)):\n\ntcp6       0      0 :::8086                 :::*                    LISTEN      1548/influxd",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 51
+      },
+      "revId": "eac09eaf5734d0c575894df795ccaafb8eaf7185",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
