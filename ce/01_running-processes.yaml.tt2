@@ -34,6 +34,8 @@ process:
     running: true
   getty:
     running: true
+  influxd:
+    running: true
   kamailio:
     running: true
   mediator:
@@ -44,6 +46,8 @@ process:
     running: true
   ngcp-sems:
     running: true
+  ngcp-witnessd:
+    running: false
   nginx:
     running: true
   ntpd:
@@ -59,6 +63,8 @@ process:
   rtpengine:
     running: true
   sshd:
+    running: true
+  telegraf:
     running: true
 {{if eq .Env.DEBIAN_RELEASE "8"}}
   udevd:
