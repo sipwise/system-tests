@@ -22,6 +22,30 @@
       "revId": "eac09eaf5734d0c575894df795ccaafb8eaf7185",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1371a2_98cde560",
+        "filename": "pro/03_open_ports.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-16T12:37:01Z",
+      "side": 1,
+      "message": "Ah right, I missed this because it had no comment! :)\n\nThis has been this way since the introduction of influxdb, if it\u0027s too open then we need to fix this indeed, and probably for all involved releases. We might want to add credentials to access the influxdb also, but that can be done during the yellow zone I guess.",
+      "parentUuid": "3a1371a2_f8e69943",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 51
+      },
+      "revId": "eac09eaf5734d0c575894df795ccaafb8eaf7185",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
