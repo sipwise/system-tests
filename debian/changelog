@@ -1,3 +1,25 @@
+ngcp-system-tests (5.4.0.0+0~mr5.4.0.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [a2b006f] TT#12759 Make tap-test happy for system-tests on building mr5.2
+  * [68bbc9c] TT#12307 Update SSHd home path to support both jessie and stretch
+  * [424bd26] TT#14808 Allow old home '/var/run/sems' for POSIX user sems
+  * [7de2588] TT#2450 Replace collectd ports with influxd/influxdb-relay
+
+  [ Guillem Jover ]
+  * [b19d712] TT#5420 Update packaging
+  * [08b99e5] TT#5420 Fix copyright notices
+  * [7c45caf] TT#2450 Abolish collectd
+  * [bba1189] TT#16315 Add tests for monitoring daemons
+  * [27afbbf] TT#16317 Improve testrunner TAP output
+
+  [ Michael Prokop ]
+  * [0070a9d] TT#12307 Debian/stretch uses systemd-udevd instead of udevd, requires new goss versions
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 16 May 2017 21:46:28 +0200
+
 ngcp-system-tests (5.3.0.0+0~mr5.3.0.0) unstable; urgency=medium
 
   [ Michael Prokop ]
