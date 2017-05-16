@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1371a2_5817ed51",
+        "filename": "ce/07_system_service.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-05-16T15:55:48Z",
+      "side": 1,
+      "message": "no telegraf here?",
+      "revId": "796e0b729115481767bc9b3c60bedd926731967c",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
