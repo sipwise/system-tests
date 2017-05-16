@@ -178,9 +178,13 @@ port:
     ip: ["127.0.0.1"]
 
 [% END -%]
-  udp:25826:
+  udp:8086:
     listening: true
     ip: ["[% hosts.$hostname.$host_ha_iface.ip %]"]
+
+  udp:9096:
+    listening: true
+    ip: ["127.0.0.1"]
 
   udp:[% heartbeat.port ? heartbeat.port : '694' %]:
     listening: true
