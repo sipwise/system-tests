@@ -17,3 +17,11 @@ port:
   tcp:1443:
       listening: true
       ip: ["[% web_int_ips.0 -%]"]
+
+  tcp:8083:
+    listening: true
+    ip: ["[% hosts.$hostname.$host_ha_iface.ip %]"]
+
+  tcp:8086:
+    listening: true
+    ip: ["[% hosts.$hostname.$host_ha_iface.ip %]"]
