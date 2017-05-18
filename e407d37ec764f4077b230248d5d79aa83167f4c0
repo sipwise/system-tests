@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a106d94_e376f205",
+        "filename": "ce/03_open_ports.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-05-18T07:29:24Z",
+      "side": 1,
+      "message": "Is 9096 not available on CE?",
+      "revId": "e407d37ec764f4077b230248d5d79aa83167f4c0",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
