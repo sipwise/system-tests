@@ -16,6 +16,24 @@
       "revId": "e407d37ec764f4077b230248d5d79aa83167f4c0",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a106d94_666e90cb",
+        "filename": "ce/03_open_ports.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-18T11:55:50Z",
+      "side": 1,
+      "message": "Nope, that the influxdb-relay port only available in PRO/CARRIER.",
+      "parentUuid": "1a106d94_e376f205",
+      "revId": "e407d37ec764f4077b230248d5d79aa83167f4c0",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
