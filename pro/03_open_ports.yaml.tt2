@@ -53,6 +53,10 @@
    web_int_ips = out;
 -%]
 [% END -%]
+[% argv.host=hostname; argv.type='ha_int';
+   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+   ha_int_ips = out;
+-%]
 
 port:
 
@@ -155,7 +159,7 @@ port:
 [% IF is_rtp || is_proxy || is_db -%]
   tcp:6379:
     listening: true
-    ip: ["[% hosts.$hostname.$host_ha_iface.ip %]"]
+    ip: ["[% ha_int_ips.0 %]"]
 
 [% END -%]
   tcp:7777:
@@ -180,11 +184,11 @@ port:
 [% END -%]
   tcp:8083:
     listening: true
-    ip: ["[% hosts.$hostname.$host_ha_iface.ip %]"]
+    ip: ["[% ha_int_ips.0 %]"]
 
   tcp:8086:
     listening: true
-    ip: ["[% hosts.$hostname.$host_ha_iface.ip %]"]
+    ip: ["[% ha_int_ips.0 %]"]
 
   tcp:9096:
     listening: true
