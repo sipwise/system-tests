@@ -1,0 +1,199 @@
+[%
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+  hostname = out;
+
+  argv.host = hostname;
+  argv.role = 'proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out;
+
+  argv.host = hostname;
+  argv.role = 'lb';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_lb = out;
+
+  argv.host = hostname;
+  argv.role = 'mgmt';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_mgmt = out;
+
+  argv.host = hostname;
+  argv.role = 'db';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_db = out;
+
+  argv.host = hostname;
+  argv.role = 'rtp';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_rtp = out;
+
+  argv.host = hostname;
+  argv.type = 'sip_ext';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+  sip_ext_ips = out;
+
+  IF !sip_ext_ips.size;
+    argv.host = hostname;
+    argv.type = 'sip_ext';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+    sip_ext_ips = out;
+  END;
+
+  argv.host = hostname;
+  argv.type = 'web_ext';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+  web_ext_ips = out;
+
+  IF !web_ext_ips.size;
+    argv.host = hostname;
+    argv.type = 'web_ext';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+    web_ext_ips = out;
+  END;
+
+  argv.host = hostname;
+  argv.type = 'web_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+  web_int_ips = out;
+
+  IF !web_int_ips.size;
+    argv.host = hostname;
+    argv.type = 'web_int';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+    web_int_ips = out;
+  END;
+
+  argv.host = hostname;
+  argv.type = 'ha_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+  ha_int_ips = out;
+-%]
+[% PERL -%]
+    my $node_state = qx(ngcp-check_active -v);
+    chomp $node_state;
+
+    $stash->set(node_state => $node_state);
+[% END -%]
+
+port:
+
+[% IF is_mgmt -%]
+  # Nginx (IPv6 due to listening on all address families)
+  tcp6:80:
+    listening: true
+
+  # Nginx HTTPS (NGCP Panel)
+  tcp:443:
+    listening: true
+    ip: ["[% web_ext_ips.0 -%]"]
+
+  # Nginx HTTPS (NGCP Panel Admin)
+  tcp:1443:
+    listening: true
+    ip: ["[% web_int_ips.0 -%]"]
+
+[% END -%]
+[% IF is_mgmt && pbx.enable == 'yes' -%]
+  # HTTPS PBX autoprovisioning
+  tcp:1444:
+    listening: true
+    ip: ["[% web_ext_ips.0 -%]"]
+
+  # HTTP PBX autoprovisioning
+  tcp:1445:
+    listening: true
+    ip: ["[% web_ext_ips.0 -%]"]
+
+[% END -%]
+  # MySQL
+  tcp:3306:
+    listening: true
+    ip: ["[% general.ngcp_type == 'spce' ? '127.0.0.1' : '0.0.0.0' %]"]
+
+[% IF is_lb -%]
+  # Kamailio load-balancer
+  tcp:5060:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 -%]"]
+
+[% END -%]
+[% IF is_proxy -%]
+  # Kamailio proxy
+  tcp:5062:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["127.0.0.1"]
+
+  # Prosody
+  tcp:5222:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 -%]"]
+
+  # Prosody
+  tcp:5269:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 -%]"]
+
+  # Prosody
+  tcp:5280:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["127.0.0.1"]
+
+  # Prosody
+  tcp:5281:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["127.0.0.1"]
+
+  # Prosody
+  tcp:5582:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["127.0.0.1"]
+
+  # SEMS
+  tcp:8090:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["127.0.0.1"]
+
+  # Asterisk
+  tcp:5038:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["127.0.0.1"]
+
+  # SEMS
+  udp:5040:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["127.0.0.1"]
+
+  # Asterisk
+  udp:5070:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["127.0.0.1"]
+
+  # SEMS
+  udp:5080:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["127.0.0.1"]
+
+[% END -%]
+[% IF is_rtp || is_proxy || is_db -%]
+  # Redis
+  tcp:6379:
+    listening: true
+    ip: ["[% ha_int_ips.0 %]"]
+
+[% END -%]
+[% IF is_rtp -%]
+  # rtpengine
+  udp:2223:
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    ip: ["127.0.0.1"]
+
+[% END -%]
+  # InfluxDB Admin
+  tcp6:8083:
+    listening: true
+    ip: ["::"]
+
+  # InfluxDb Query
+  tcp6:8086:
+    listening: true
+    ip: ["::"]

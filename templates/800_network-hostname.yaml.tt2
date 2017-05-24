@@ -1,0 +1,49 @@
+command:
+  hostname:
+    exit-status: 0
+
+[% IF sipwise.system_tester.skip_strict_hostname_test != "true" %]
+  hostname:
+    exit-status: 0
+    stdout:
+      - [% general.ngcp_type == 'spce' ? "spce" : "/sp[1,2]/" %]
+    stderr: []
+
+  "hostname --fqdn":
+    exit-status: 0
+    stdout:
+      - [% general.ngcp_type == 'spce' ? "spce." : "/sp[1,2]/" %]
+    stderr: []
+
+  "hostname --short":
+    exit-status: 0
+    stdout:
+      - [% general.ngcp_type == 'spce' ? "spce" : "/sp[1,2]/" %]
+    stderr: []
+
+[% END -%]
+[% IF general.ngcp_type == 'spce' -%]
+  "[ $(hostname --short). = $(hostname --fqdn) ]":
+    title: "short hostname should be the same as fqdn (ignoring trailing dot)"
+    exit-status: 0
+    stdout: []
+    stderr: []
+[% ELSIF general.ngcp_type == 'sppro' -%]
+  "[ $(hostname --short) = $(hostname --fqdn) ]":
+    title: "short hostname should be the same as fqdn"
+    exit-status: 0
+    stdout: []
+    stderr: []
+[% ELSIF general.ngcp_type == 'carrier' -%]
+  "[ $(hostname --short) = $(cat /etc/hostname) ]":
+    title: "short hostname should be the same as /etc/hostname"
+    exit-status: 0
+    stdout: []
+    stderr: []
+
+[% END -%]
+  "[ $(resolveip -s $(hostname --fqdn)) = $(resolveip -s $(hostname --short)) ]":
+    title: "ip-s of short hostname and fqdn should be the same"
+    exit-status: 0
+    stdout: []
+    stderr: []

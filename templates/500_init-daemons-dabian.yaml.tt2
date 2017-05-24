@@ -1,0 +1,45 @@
+service:
+
+  acpid:
+    enabled: true
+    running: true
+
+  cron:
+    enabled: true
+    running: true
+
+  exim4:
+    enabled: true
+    running: true
+
+  io-scheduler:
+    enabled: true
+    running: true
+
+  influxdb:
+    enabled: true
+    running: true
+
+  motd:
+    enabled: true
+    running: true
+
+  mysql:
+    enabled: true
+    running: true
+
+  ntp:
+    enabled: true
+    running: true
+
+  rsyslog:
+    enabled: true
+    running: true
+
+  ssh:
+    enabled: true
+    running: true
+
+  telegraf:
+    enabled: true
+    running: true
