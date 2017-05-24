@@ -22,10 +22,10 @@ port:
       listening: true
       ip: ["[% web_int_ips.0 -%]"]
 
-  tcp:8083:
+  tcp6:8083:
     listening: true
-    ip: ["[% ha_int_ips.0 %]"]
+    ip: ["::"]
 
-  tcp:8086:
+  tcp6:8086:
     listening: true
-    ip: ["[% ha_int_ips.0 %]"]
+    ip: ["::"]

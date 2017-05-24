@@ -182,13 +182,13 @@ port:
     ip: ["127.0.0.1"]
 
 [% END -%]
-  tcp:8083:
+  tcp6:8083:
     listening: true
-    ip: ["[% ha_int_ips.0 %]"]
+    ip: ["::"]
 
-  tcp:8086:
+  tcp6:8086:
     listening: true
-    ip: ["[% ha_int_ips.0 %]"]
+    ip: ["::"]
 
   tcp:9096:
     listening: true
