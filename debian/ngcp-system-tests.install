@@ -1,3 +1,2 @@
-ce/*       /etc/ngcp-config/templates/etc/ngcp-tests/ce/
-pro/*      /etc/ngcp-config/templates/etc/ngcp-tests/pro/
-testrunner /usr/share/ngcp-tests/
+templates/*   /etc/ngcp-config/templates/etc/ngcp-tests/
+testrunner    /usr/share/ngcp-tests/

@@ -4,25 +4,9 @@ set -e
 
 REPORT_DIRECTORY='reports/'
 
-usage() {
-  printf "Usage: %s <type CE/PRO>\n\n" "$0"
-  printf "Usage example: %s CE\n" "$0"
-}
-
 diag() {
   echo "$@" 2>&1
 }
-
-if [ $# -lt 1 ] ; then
-  usage >&2
-  exit 1
-fi
-
-TYPE=$(echo "$1"| tr '[:upper:]' '[:lower:]')
-case "${TYPE}" in
-  ce|pro) diag "Requested system tests for supported type '${TYPE}', continue..." ;;
-  *) echo "ERRRO: Unknown type '$1'" >&2 ; usage >&2 ; exit 1 ;;
-esac
 
 if ls /var/cores/core.perl-fcgi.sig11* >/dev/null 2>&1 ; then
   diag "================== NOTE: CORE DUMP DETECTED =================="
@@ -69,9 +53,9 @@ rm -f "${host_yml_file}"
 
 rm -rf "${REPORT_DIRECTORY}"
 mkdir -p "${REPORT_DIRECTORY}"
-TAP_RESULTS="${REPORT_DIRECTORY}/goss_${TYPE}_results.tap"
+TAP_RESULTS="${REPORT_DIRECTORY}/goss_results.tap"
 
 DEBIAN_RELEASE=$(sed -e 's/\([0-9]*\)\..*/\1/' /etc/debian_version)
-DEBIAN_RELEASE=$DEBIAN_RELEASE goss -g "/etc/ngcp-tests/${TYPE}/goss.yaml" validate --format tap | tee "${TAP_RESULTS}"
+DEBIAN_RELEASE=$DEBIAN_RELEASE goss -g "/etc/ngcp-tests/goss.yaml" validate --format tap | tee "${TAP_RESULTS}"
 
 exit "${PIPESTATUS[0]}"

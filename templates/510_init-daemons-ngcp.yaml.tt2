@@ -1,0 +1,177 @@
+[%
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+  hostname = out;
+
+  argv.host = hostname;
+  argv.role = 'proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out;
+
+  argv.host = hostname;
+  argv.role = 'lb';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_lb = out;
+
+  argv.host = hostname;
+  argv.role = 'mgmt';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_mgmt = out;
+
+  argv.host = hostname;
+  argv.role = 'db';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_db = out;
+
+  argv.host = hostname;
+  argv.role = 'rtp';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_rtp = out;
+-%]
+
+service:
+[% IF asterisk.enabled == "yes" -%]
+
+  asterisk:
+    enabled: false
+    running: [% is_proxy ? 'true' : 'false' %]
+[% END -%]
+[% IF intercept.enabled == "yes" -%]
+
+  captagent:
+    enabled: false
+    running: [% is_proxy || is_rtp ? 'true' : 'false' %]
+[% END -%]
+[% IF turnserver.enabled == 'yes' -%]
+
+  coturn:
+    enabled: false
+    running: [% is_rtp ? 'true' : 'false' %]
+[% END -%]
+[% IF bootenv.dhcp.enable == 'yes' -%]
+
+  dnsmasq:
+    enabled: false
+    running: [% is_mgmt ? 'true' : 'false' %]
+[% END -%]
+[% IF haproxy.enable == "yes" -%]
+
+  haproxy:
+    enabled: false
+    running: [% is_lb ? 'true' : 'false' %]
+[% END -%]
+[% IF heartbeat.hb_watchdog.enable == 'yes' -%]
+
+  hb_watchdog:
+    enabled: true
+    running: true
+[% END -%]
+[% IF kamailio.lb.start == "yes" -%]
+
+  kamailio-lb:
+    enabled: false
+    running: [% is_lb ? 'true' : 'false' %]
+[% END -%]
+[% IF kamailio.proxy.start == "yes" -%]
+
+  kamailio-proxy:
+    enabled: false
+    running: [% is_proxy ? 'true' : 'false' %]
+[% END -%]
+[% IF mediator.enabled == 'yes' -%]
+
+  mediator:
+    enabled: false
+    running: [% is_proxy ? 'true' : 'false' %]
+[% END -%]
+[% IF www_admin.enabled == 'yes' -%]
+
+  ngcp-panel:
+    enabled: [% is_mgmt ? 'true' : 'false' %]
+    running: [% is_mgmt ? 'true' : 'false' %]
+[% END -%]
+[% IF rateomat.enable == "yes" -%]
+
+  ngcp-rate-o-mat:
+    enabled: false
+    running: [% is_proxy ? 'true' : 'false' %]
+[% END -%]
+[% IF rtpproxy.enabled == "yes" -%]
+
+  ngcp-rtpengine-daemon:
+    enabled: false
+    running: [% is_rtp ? 'true' : 'false' %]
+[% END -%]
+[% IF sems.enabled == "yes" -%]
+
+  ngcp-sems:
+    enabled: false
+    running: [% is_proxy ? 'true' : 'false' %]
+[% END -%]
+
+  ngcp-snmp-agent:
+    enabled: [% is_mgmt ? 'true' : 'false' %]
+    running: [% is_mgmt ? 'true' : 'false' %]
+
+  ngcp-witnessd:
+    enabled: true
+    running: true
+[% IF nginx.enabled == 'yes' -%]
+
+  nginx:
+    enabled: [% is_mgmt ? 'true' : 'false' %]
+    running: [% is_mgmt ? 'true' : 'false' %]
+[% END -%]
+[% IF prosody.enabled == 'yes' -%]
+
+  prosody:
+    enabled: false
+    running: [% is_proxy ? 'true' : 'false' %]
+[% END -%]
+[% IF pushd.enable == "yes" -%]
+
+  ngcp-pushd:
+    enabled: true
+    running: [% is_lb ? 'true' : 'false' %]
+[% END -%]
+[% IF faxserver.enable == "yes" -%]
+
+  ngcp-faxserver:
+    enabled: false
+    running: [% is_proxy ? 'true' : 'false' %]
+[% END -%]
+[% IF redis.enabled == "yes" -%]
+
+  redis-server:
+    enabled: true
+    running: [% (is_rtp || is_proxy || is_db) ? 'true' : 'false' %]
+[% END -%]
+[% IF ldap.enabled == "yes" -%]
+
+  slapd:
+    enabled: false
+    running: [% is_mgmt ? 'true' : 'false' %]
+[% END -%]
+[% IF pbx.enable == "yes" -%]
+
+  sems-pbx:
+    enabled: false
+    running: [% is_proxy ? 'true' : 'false' %]
+[% END -%]
+[% IF voisniff.daemon.start == 'yes' -%]
+
+  voisniff-ng:
+    enabled: false
+    running: [% (is_proxy || is_lb || is_rtp) ? 'true' : 'false' %]
+[% END -%]
+[% IF is_mgmt && general.ngcp_type == 'carrier' -%]
+
+  ngcpcfg-api:
+    enabled: false
+    running: true
+[% END -%]
+[% IF general.ngcp_type == 'carrier' -%]
+
+  elasticsearch:
+    enabled: true
+    running: [% (is_db || is_mgmt) ? 'true' : 'false' %]
+[% END -%]
