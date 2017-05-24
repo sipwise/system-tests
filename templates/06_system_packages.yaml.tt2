@@ -1,0 +1,11 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_ngcp_type'; ngcp_type = out -%]
+
+package:
+  ngcp-ngcp-ce:
+    installed: [% ngcp_type == 'spce' ? 'true' : 'false' %]
+
+  ngcp-ngcp-pro:
+    installed: [% ngcp_type == 'sppro' ? 'true' : 'false' %]
+
+  ngcp-ngcp-carrier:
+    installed: [% ngcp_type == 'carrier' ? 'true' : 'false' %]
