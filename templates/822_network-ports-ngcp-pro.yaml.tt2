@@ -1,0 +1,25 @@
+port:
+  # glusterfs
+  tcp:24009:
+    listening: true
+    ip: ["0.0.0.0"]
+
+  # Monit
+  tcp:2812:
+    listening: true
+    ip: ["127.0.0.1"]
+
+  # snmpd
+  udp:161:
+    listening: true
+    ip: ["127.0.0.1"]
+
+  # InfluxDB Relay
+  tcp:9096:
+    listening: true
+    ip: ["127.0.0.1"]
+
+  # Heartbeat
+  udp:[% heartbeat.port ? heartbeat.port : '694' %]:
+    listening: true
+    ip: ["0.0.0.0"]

@@ -1,0 +1,54 @@
+group:
+  cdrexport:
+    exists: true
+    gid:
+      or:
+        - 1001
+        - 10001
+  sems:
+    exists: true
+
+  sipwise:
+    exists: true
+    gid:
+      or:
+        - 1000
+        - 10000
+
+user:
+  cdrexport:
+    exists: true
+    uid:
+      or:
+        - 1001
+        - 10001
+    gid:
+      or:
+        - 1001
+        - 10001
+    groups:
+      - cdrexport
+    home: "/home/jail/home/cdrexport"
+
+  sems:
+    exists: true
+    groups:
+      - sems
+    home:
+      or:
+        - "/var/run/ngcp-sems"
+        - "/var/run/sems"
+
+  sipwise:
+    exists: true
+    uid:
+      or:
+        - 1000
+        - 10000
+    gid:
+      or:
+        - 1000
+        - 10000
+    groups:
+      - sipwise
+    home: "/var/sipwise"

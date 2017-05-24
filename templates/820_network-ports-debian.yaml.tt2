@@ -1,0 +1,23 @@
+port:
+  # OpenSSH
+  tcp:22:
+    listening: true
+    ip: ["0.0.0.0"]
+
+  # Exim MTA
+  tcp:25:
+    listening: true
+    ip: ["127.0.0.1"]
+
+  # ntpd
+  udp:123:
+    listening: true
+    ip: ["0.0.0.0"]
+
+  # Check for a closed port, nothing there.
+  tcp:7777:
+    listening: false
+
+  # Check for a closed port, nothing there.
+  udp:7777:
+    listening: false

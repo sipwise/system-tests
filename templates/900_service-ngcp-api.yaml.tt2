@@ -1,41 +1,54 @@
-[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
-[% argv.host=hostname; argv.type='web_ext';
-   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
-   web_ext_ips = out
--%]
-[% IF !web_ext_ips.size -%]
-[% argv.host=hostname; argv.type='web_ext';
-   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
-   web_ext_ips = out;
--%]
-[% END -%]
-[% argv.host=hostname; argv.type='web_int';
-   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
-   web_int_ips = out
--%]
-[% IF !web_int_ips.size -%]
-[% argv.host=hostname; argv.type='web_int';
-   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
-   web_int_ips = out;
--%]
-[% END -%]
 [%
-   argv.host=hostname; argv.type='api_int';
-   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
-   api_int_ips = out;
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+  hostname = out;
 
-   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
-   api_int_ips = out.merge(api_int_ips);
+  argv.host = hostname;
+  argv.type = 'web_ext';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+  web_ext_ips = out;
 
-   argv.role='mgmt';
-   PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-   is_mgmt = out;
+  IF !web_ext_ips.size;
+    argv.host = hostname;
+    argv.type = 'web_ext';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+    web_ext_ips = out;
+  END;
 
-   argv.role='li';
-   PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-   is_li = out;
-   is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enabled == 'yes';
+  argv.host = hostname;
+  argv.type = 'web_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+  web_int_ips = out;
+
+  IF !web_int_ips.size;
+    argv.host = hostname;
+    argv.type = 'web_int';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+    web_int_ips = out;
+  END;
+
+  argv.host = hostname;
+  argv.type = 'api_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+  api_int_ips = out;
+
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+  api_int_ips = out.merge(api_int_ips);
+
+  argv.role = 'mgmt';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_mgmt = out;
+
+  argv.role = 'li';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_li = out;
+  is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enabled == 'yes';
 -%]
+[% PERL -%]
+    my $node_state = qx(ngcp-check_active -v);
+    chomp $node_state;
+
+    $stash->set(node_state => $node_state);
+[% END -%]
 
 command:
 
@@ -158,7 +171,7 @@ command:
     timeout: 30000
 
 
-[% IF www_admin.enabled == 'yes' && (is_mgmt || is_li_enabled) -%]
+[% IF www_admin.enabled == 'yes' && (is_mgmt || is_li_enabled) && node_state == 'active' -%]
   "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/":
     exit-status: 0
     stdout:
