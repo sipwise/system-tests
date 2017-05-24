@@ -1,0 +1,191 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname'; hostname = out -%]
+[% argv.host=hostname; argv.role='proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out
+-%]
+[% argv.host=hostname; argv.role='lb';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_lb = out
+-%]
+[% argv.host=hostname; argv.role='mgmt';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_mgmt = out
+-%]
+[% argv.host=hostname; argv.role='db';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_db = out
+-%]
+[% argv.host=hostname; argv.role='rtp';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_rtp = out
+-%]
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_ngcp_type'; ngcp_type = out -%]
+[% PERL -%]
+    my %states = (
+        '!' => 'active',
+        '.' => 'standby',
+        '?' => 'unknown',
+        '~' => 'transient',
+    );
+    my $node_state = qx(ngcp-check_active -p);
+    chomp $node_state;
+
+    $stash->set(node_state => $states{$node_state});
+[% END -%]
+
+command:
+
+  "pgrep -c -f '[l]ua5.1 /usr/bin/prosody'":
+[% IF prosody.enabled == 'yes' && node_state == 'active' -%]
+    exit-status: 0
+    stdout:
+      - "1"
+[% ELSE -%]
+    exit-status: 1
+    stdout: []
+[% END -%]
+    stderr: []
+
+  "pgrep -c -f '[p]erl-fcgi-pm \\[NGCP::Panel\\]'":
+[% IF www_admin.enabled == 'yes' -%]
+    exit-status: 0
+    stdout:
+      - "1"
+[% ELSE -%]
+    exit-status: 1
+    stdout: []
+[% END -%]
+    stderr: []
+
+  "pgrep -n -f '[k]amailio.*kamailio.proxy.pid'":
+[% IF is_proxy && kamailio.proxy.start == "yes" && node_state == 'active' -%]
+    exit-status: 0
+    stdout:
+      - "/[0-9]+/"
+[% ELSE -%]
+    exit-status: 1
+    stdout: []
+[% END -%]
+    stderr: []
+
+  "pgrep -n -f '[k]amailio.*kamailio.lb.pid'":
+[% IF is_lb && kamailio.lb.start == "yes" && node_state == 'active' -%]
+    exit-status: 0
+    stdout:
+      - "/[0-9]+/"
+[% ELSE -%]
+    exit-status: 1
+    stdout: []
+[% END -%]
+    stderr: []
+
+process:
+  acpid:
+    running: true
+
+  asterisk:
+    running: [% node_state == 'active' ? 'true' : 'false' %]
+
+  cron:
+    running: true
+
+  exim4:
+    running: true
+
+  getty:
+    running: true
+
+[% IF ngcp_type != 'spce' -%]
+  glusterfs:
+    running: true
+
+  hb_watchdog:
+    running: true
+
+  heartbeat:
+    running: true
+
+[% END -%]
+  influxd:
+    running: true
+
+[% IF ngcp_type != 'spce' -%]
+  influxdb-relay:
+    running: true
+
+[% END -%]
+  kamailio:
+    running: [% node_state == 'active' ? 'true' : 'false' %]
+
+  mediator:
+    running: [% node_state == 'active' ? 'true' : 'false' %]
+
+  mysqld:
+    running: true
+
+  mysqld_safe:
+    running: true
+
+[% IF ngcp_type != 'spce' -%]
+  monit:
+    running: true
+
+  ngcp-faxserver:
+    running: [% node_state == 'active' ? 'true' : 'false' %]
+
+[% END -%]
+  ngcp-sems:
+    running: [% node_state == 'active' ? 'true' : 'false' %]
+
+[% IF ngcp_type != 'spce' -%]
+  ngcp-snmp-agent:
+    running: true
+
+[% END -%]
+  ngcp-witnessd:
+    running: true
+
+  nginx:
+    running: true
+
+  ntpd:
+    running: true
+
+  perl-fcgi:
+    running: true
+
+  rate-o-mat:
+    running: [% node_state == 'active' ? 'true' : 'false' %]
+
+  redis-server:
+    running: true
+
+  rsyslogd:
+    running: true
+
+  rtpengine:
+    running: [% node_state == 'active' ? 'true' : 'false' %]
+
+  sshd:
+    running: true
+
+[% IF ngcp_type != 'spce' -%]
+  snmpd:
+    running: true
+
+[% END -%]
+  telegraf:
+    running: true
+
+{{if eq .Env.DEBIAN_RELEASE "8"}}
+  udevd:
+    running: true
+{{else}}
+  systemd-udevd:
+    running: true
+{{end}}
+
+[% IF ngcp_type != 'spce' -%]
+  voisniff-ng:
+    running: [% node_state == 'active' ? 'true' : 'false' %]
+[% END -%]
