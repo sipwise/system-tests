@@ -1,3 +1,5 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_ngcp_type'; ngcp_type = out -%]
+
 command:
   hostname:
     exit-status: 0
@@ -6,23 +8,23 @@ command:
   hostname:
     exit-status: 0
     stdout:
-      - "spce"
+      - [% ngcp_type == 'spce' ? "spce" : "/sp[1,2]/" %]
     stderr: []
 
-  hostname --fqdn:
+  "hostname --fqdn":
     exit-status: 0
     stdout:
-      - "spce."
+      - [% ngcp_type == 'spce' ? "spce." : "/sp[1,2]/" %]
     stderr: []
 
-  hostname --short:
+  "hostname --short":
     exit-status: 0
     stdout:
-      - "spce"
+      - [% ngcp_type == 'spce' ? "spce" : "/sp[1,2]/" %]
     stderr: []
 
 [% END -%]
-  "[ $(hostname --short). = $(hostname --fqdn) ]":
+  "[ $(hostname --short)[% IF ngcp_type == 'spce'; THEN; '.'; END; %] = $(hostname --fqdn) ]":
     title: "short hostname should be the same as fqdn (ignoring trailing dot)"
     exit-status: 0
     stdout: []

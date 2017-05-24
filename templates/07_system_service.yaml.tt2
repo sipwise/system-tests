@@ -27,22 +27,22 @@ service:
     enabled: true
     running: true
 
-[% IF is_proxy && asterisk.enabled == "yes" -%]
+[% IF asterisk.enabled == "yes" -%]
   asterisk:
     enabled: false
-    running: true
+    running: [% is_proxy ? 'true' : 'false' %]
 
 [% END -%]
-[% IF (is_proxy || is_rtp) && intercept.enabled == "yes" -%]
+[% IF intercept.enabled == "yes" -%]
   captagent:
     enabled: false
-    running: true
+    running: [% is_proxy || is_rtp ? 'true' : 'false' %]
 
 [% END -%]
 [% IF turnserver.enabled == 'yes' -%]
   coturn:
     enabled: false
-    running: true
+    running: [% is_rtp ? 'true' : 'false' %]
 
 [% END -%]
   cron:
@@ -52,7 +52,7 @@ service:
 [% IF bootenv.dhcp.enable == 'yes' -%]
   dnsmasq:
     enabled: false
-    running: true
+    running: [% is_mgmt ? 'true' : 'false' %]
 
 [% END -%]
   exim4:
@@ -62,7 +62,7 @@ service:
 [% IF haproxy.enable == "yes" -%]
   haproxy:
     enabled: false
-    running: true
+    running: [% is_lb ? 'true' : 'false' %]
 
 [% END -%]
 [% IF heartbeat.hb_watchdog.enable == 'yes' -%]
@@ -83,32 +83,22 @@ service:
     enabled: true
     running: true
 
-[% IF is_lb && kamailio.lb.start == "yes" -%]
+[% IF kamailio.lb.start == "yes" -%]
   kamailio-lb:
     enabled: false
-    running: true
-
-[% ELSE -%]
-  kamailio-lb:
-    enabled: false
-    running: false
+    running: [% is_lb ? 'true' : 'false' %]
 
 [% END -%]
-[% IF is_proxy && kamailio.proxy.start == "yes" -%]
+[% IF kamailio.proxy.start == "yes" -%]
   kamailio-proxy:
     enabled: false
-    running: true
-
-[% ELSE -%]
-  kamailio-proxy:
-    enabled: false
-    running: false
+    running: [% is_proxy ? 'true' : 'false' %]
 
 [% END -%]
 [% IF mediator.enabled == 'yes' -%]
   mediator:
     enabled: false
-    running: true
+    running: [% is_proxy ? 'true' : 'false' %]
 
 [% END -%]
   motd:
@@ -121,37 +111,31 @@ service:
 
 [% IF www_admin.enabled == 'yes' -%]
   ngcp-panel:
-    enabled: true
-    running: true
+    enabled: [% is_mgmt ? 'true' : 'false' %]
+    running: [% is_mgmt ? 'true' : 'false' %]
 
 [% END -%]
 [% IF rateomat.enable == "yes" -%]
   ngcp-rate-o-mat:
     enabled: false
-    running: true
+    running: [% is_proxy ? 'true' : 'false' %]
 
 [% END -%]
 [% IF rtpproxy.enabled == "yes" -%]
   ngcp-rtpengine-daemon:
     enabled: false
-    running: true
+    running: [% is_rtp ? 'true' : 'false' %]
 
 [% END -%]
 [% IF sems.enabled == "yes" -%]
   ngcp-sems:
     enabled: false
-    running: true
+    running: [% is_proxy ? 'true' : 'false' %]
 
 [% END -%]
-[% IF is_mgmt -%]
   ngcp-snmp-agent:
-    enabled: true
-    running: true
-
-[% ELSE -%]
-  ngcp-snmp-agent:
-    enabled: false
-    running: false
+    enabled: [% is_mgmt ? 'true' : 'false' %]
+    running: [% is_mgmt ? 'true' : 'false' %]
 
 [% END -%]
   ngcp-witnessd:
@@ -160,8 +144,8 @@ service:
 
 [% IF nginx.enabled == 'yes' -%]
   nginx:
-    enabled: true
-    running: true
+    enabled: [% is_mgmt ? 'true' : 'false' %]
+    running: [% is_mgmt ? 'true' : 'false' %]
 
 [% END -%]
   ntp:
@@ -171,25 +155,25 @@ service:
 [% IF prosody.enabled == 'yes' -%]
   prosody:
     enabled: false
-    running: true
+    running: [% is_proxy ? 'true' : 'false' %]
 
 [% END -%]
 [% IF pushd.enable == "yes" -%]
   ngcp-pushd:
     enabled: true
-    running: true
+    running: [% is_lb ? 'true' : 'false' %]
 
 [% END -%]
 [% IF faxserver.enable == "yes" -%]
   ngcp-faxserver:
     enabled: false
-    running: true
+    running: [% is_proxy ? 'true' : 'false' %]
 
 [% END -%]
 [% IF redis.enabled == "yes" -%]
   redis-server:
     enabled: true
-    running: true
+    running: [% (is_rtp || is_proxy || is_db) ? 'true' : 'false' %]
 
 [% END -%]
   rsyslog:
@@ -199,35 +183,35 @@ service:
 [% IF ldap.enabled == "yes" -%]
   slapd:
     enabled: false
-    running: true
+    running: [% is_mgmt ? 'true' : 'false' %]
 
 [% END -%]
 [% IF pbx.enable == "yes" -%]
   sems-pbx:
     enabled: false
-    running: true
+    running: [% is_proxy ? 'true' : 'false' %]
 
 [% END -%]
   snmpd:
     enabled: true
     running: true
 
-[% IF (is_proxy || is_lb || is_rtp) && voisniff.daemon.start == 'yes' -%]
+[% IF voisniff.daemon.start == 'yes' -%]
   voisniff-ng:
     enabled: false
-    running: true
+    running: [% (is_proxy || is_lb || is_rtp) ? 'true' : 'false' %]
 
 [% END -%]
-[% IF ngcp_type == 'carrier' -%]
+[% IF is_mgmt && ngcp_type == 'carrier' -%]
   ngcpcfg-api:
     enabled: false
     running: true
 
 [% END -%]
-[% IF (is_db || is_mgmt) && ngcp_type == 'carrier' -%]
+[% IF ngcp_type == 'carrier' -%]
   elasticsearch:
     enabled: true
-    running: true
+    running: [% (is_db || is_mgmt) ? 'true' : 'false' %]
 
 [% END -%]
   ssh:

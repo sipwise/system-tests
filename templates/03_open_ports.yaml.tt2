@@ -57,6 +57,7 @@
    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
    ha_int_ips = out;
 -%]
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_ngcp_type'; ngcp_type = out -%]
 
 port:
 
@@ -88,21 +89,25 @@ port:
     listening: true
     ip: ["[% hosts.$hostname.$host_ha_iface.ip %]"]
 
+[% IF ngcp_type != 'spce' -%]
   tcp:24009:
     listening: true
     ip: ["0.0.0.0"]
 
+[% END -%]
   tcp:25:
     listening: true
     ip: ["127.0.0.1"]
 
+[% IF ngcp_type != 'spce' -%]
   tcp:2812:
     listening: true
     ip: ["127.0.0.1"]
 
+[% END -%]
   tcp:3306:
     listening: true
-    ip: ["0.0.0.0"]
+    ip: ["[% database.local.dbhost %]"]
 
 [% IF is_lb -%]
   tcp:5060:
@@ -172,10 +177,12 @@ port:
     listening: true
     ip: ["0.0.0.0"]
 
+[% IF ngcp_type != 'spce' -%]
   udp:161:
     listening: true
     ip: ["127.0.0.1"]
 
+[% END -%]
 [% IF is_rtp -%]
   udp:2223:
     listening: true
@@ -190,14 +197,18 @@ port:
     listening: true
     ip: ["::"]
 
+[% IF ngcp_type != 'spce' -%]
   tcp:9096:
     listening: true
     ip: ["127.0.0.1"]
 
+[% END -%]
+[% IF ngcp_type != 'spce' -%]
   udp:[% heartbeat.port ? heartbeat.port : '694' %]:
     listening: true
     ip: ["0.0.0.0"]
 
+[% END -%]
   tcp:22:
     # last record to keep JSON valid
     listening: true
