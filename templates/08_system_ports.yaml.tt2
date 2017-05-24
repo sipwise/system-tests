@@ -1,13 +1,16 @@
 port:
+  # NGCP Panel
   tcp:1443:
     listening: true
 
+  # OpenSSH
   tcp:22:
     listening: true
 
+  # Nginx TLS
   tcp:443:
     listening: true
 
+  # Nginx (IPv6 due to listening on all address families)
   tcp6:80:
-    # why Ipv4 is not here?
     listening: true
