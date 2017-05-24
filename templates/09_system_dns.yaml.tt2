@@ -1,6 +1,15 @@
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_ngcp_type'; ngcp_type = out -%]
+
 dns:
 
 [% IF sipwise.system_tester.skip_dns_check_test != "true" -%]
+[% IF ngcp_type == 'spce' -%]
+  spce:
+    resolveable: true
+    addrs:
+      - 127.0.0.2
+    timeout: 500
+[% ELSE -%]
   sp1:
     resolveable: true
     addrs:
@@ -12,6 +21,7 @@ dns:
     addrs:
       - 192.168.255.252
     timeout: 500
+[% END -%]
 
 [% END -%]
   localhost:
