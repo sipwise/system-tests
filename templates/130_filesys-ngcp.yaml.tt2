@@ -2,7 +2,7 @@ file:
 
   /etc/apt/sources.list.d/sipwise.list:
     exists: true
-    mode: "0444"
+    mode: [% general.ngcp_type == 'spce' ? '"0644"' : '"0444"' %]
     owner: root
     group: root
     filetype: file
@@ -64,14 +64,6 @@ file:
     filetype: file
     contains: []
 
-  /etc/ngcp-config/systems.cfg:
-    exists: true
-    mode: "0644"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-
   /etc/ngcp-config/ssl:
     exists: true
     mode: "0750"
@@ -102,22 +94,6 @@ file:
     owner: root
     group: root
     filetype: file
-    contains: []
-
-  /etc/ngcp-config/shared-files/ssh:
-    exists: true
-    mode: "0755"
-    owner: root
-    group: root
-    filetype: directory
-    contains: []
-
-  /etc/ngcp-config/shared-files/sshd:
-    exists: true
-    mode: "0755"
-    owner: root
-    group: root
-    filetype: directory
     contains: []
 
   /etc/ngcp_version:

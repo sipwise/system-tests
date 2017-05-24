@@ -1,0 +1,41 @@
+[%
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+  hostname = out;
+
+  argv.host = hostname;
+  argv.role = 'mgmt';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_mgmt = out;
+
+  argv.host = hostname;
+  argv.role = 'proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out;
+-%]
+[% PERL -%]
+    my $node_state = qx(ngcp-check_active -v);
+    chomp $node_state;
+
+    $stash->set(node_state => $node_state);
+[% END -%]
+
+service:
+  influxdb-relay:
+    enabled: true
+    running: true
+
+  snmpd:
+    enabled: true
+    running: true
+
+  ngcp-snmp-agent:
+    enabled: [% is_mgmt ? 'true' : 'false' %]
+    running: [% is_mgmt ? 'true' : 'false' %]
+[% IF faxserver.enable == "yes" -%]
+
+  # XXX: This should be moved to the non-pro file, but the faxserver.enable
+  # is incorrectly enabled on spce.
+  ngcp-faxserver:
+    enabled: false
+    running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
+[% END -%]
