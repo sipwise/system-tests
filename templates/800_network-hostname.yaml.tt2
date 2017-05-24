@@ -6,23 +6,23 @@ command:
   hostname:
     exit-status: 0
     stdout:
-      - "spce"
+      - [% general.ngcp_type == 'spce' ? "spce" : "/sp[1,2]/" %]
     stderr: []
 
-  hostname --fqdn:
+  "hostname --fqdn":
     exit-status: 0
     stdout:
-      - "spce."
+      - [% general.ngcp_type == 'spce' ? "spce." : "/sp[1,2]/" %]
     stderr: []
 
-  hostname --short:
+  "hostname --short":
     exit-status: 0
     stdout:
-      - "spce"
+      - [% general.ngcp_type == 'spce' ? "spce" : "/sp[1,2]/" %]
     stderr: []
 
 [% END -%]
-  "[ $(hostname --short). = $(hostname --fqdn) ]":
+  "[ $(hostname --short)[% IF general.ngcp_type == 'spce'; THEN; '.'; END; %] = $(hostname --fqdn) ]":
     title: "short hostname should be the same as fqdn (ignoring trailing dot)"
     exit-status: 0
     stdout: []

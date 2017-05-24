@@ -1,0 +1,53 @@
+[%
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+  hostname = out;
+
+  argv.host = hostname;
+  argv.role = 'proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out;
+
+  argv.host = hostname;
+  argv.role = 'lb';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_lb = out;
+
+  argv.host = hostname;
+  argv.role = 'rtp';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_rtp = out;
+-%]
+[% PERL -%]
+    my $node_state = qx(ngcp-check_active -v);
+    chomp $node_state;
+
+    $stash->set(node_state => $node_state);
+[% END -%]
+
+process:
+  glusterfs:
+    running: true
+
+  hb_watchdog:
+    running: true
+
+  heartbeat:
+    running: true
+
+  influxdb-relay:
+    running: true
+
+  monit:
+    running: true
+
+  ngcp-faxserver:
+    running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
+
+  ngcp-snmp-agent:
+    running: true
+
+  snmpd:
+    running: true
+
+  voisniff-ng:
+    running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' ? 'true' : 'false' %]
