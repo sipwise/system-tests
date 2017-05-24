@@ -1,0 +1,38 @@
+gossfile:
+  000_self-test-command.yaml: {}
+  110_filesys-no-cores.yaml: {}
+  120_filesys-free-space.yaml: {}
+  130_filesys-ngcp.yaml: {}
+[% IF general.ngcp_type != 'spce' -%]
+  131_filesys-ngcp-pro.yaml: {}
+[% END -%]
+  132_filesys-ngcp-templates.yaml: {}
+  200_user-debian.yaml: {}
+  210_user-ngcp.yaml: {}
+  310_package-ngcp.yaml: {}
+  400_process-debian.yaml: {}
+  410_process-ngcp.yaml: {}
+[% IF general.ngcp_type != 'spce' -%]
+  411_process-ngcp-pro.yaml: {}
+[% END -%]
+  500_init-daemons-dabian.yaml: {}
+  510_init-daemons-ngcp.yaml: {}
+[% IF general.ngcp_type != 'spce' -%]
+  511_init-daemons-ngcp-pro.yaml: {}
+[% END -%]
+  800_network-hostname.yaml: {}
+[% IF sipwise.system_tester.skip_dns_check_test != "true" -%]
+  810_network-dns-debian.yaml: {}
+[%   IF general.ngcp_type == 'spce' -%]
+  811_network-dns-ngcp-ce.yaml: {}
+[%   ELSE -%]
+  812_network-dns-ngcp-pro.yaml: {}
+[%   END -%]
+[% END -%]
+  820_network-ports-debian.yaml: {}
+  821_network-ports-ngcp.yaml: {}
+[% IF general.ngcp_type != 'spce' -%]
+  822_network-ports-ngcp-pro.yaml: {}
+[% END -%]
+  900_service-ngcp-api.yaml: {}
+  910_service-influxdb.yaml: {}
