@@ -57,147 +57,183 @@
    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
    ha_int_ips = out;
 -%]
+[% PROCESS '/usr/lib/ngcp-ngcpcfg/get_ngcp_type'; ngcp_type = out -%]
+[% PERL -%]
+    my %states = (
+        '!' => 'active',
+        '.' => 'standby',
+        '?' => 'unknown',
+        '~' => 'transient',
+    );
+    my $node_state = qx(ngcp-check_active -p);
+    chomp $node_state;
+
+    $stash->set(node_state => $states{$node_state});
+[% END -%]
 
 port:
 
 [% IF is_mgmt -%]
+  # Nginx HTTPS
   tcp:443:
     listening: true
-    ip: ["127.0.0.1"]
+    ip: ["[% web_ext_ips.0 -%]"]
 
+  # NGCP Panel Admin HTTPS
   tcp:1443:
     listening: true
-    ip: ["127.0.0.1"]
+    ip: ["[% web_int_ips.0 -%]"]
 
 [% END -%]
 [% IF is_mgmt && pbx.enable == 'yes' -%]
+  # HTTPS PBX autoprovisioning
   tcp:1444:
     listening: true
     ip: ["[% web_ext_ips.0 -%]"]
 
+  # HTTP PBX autoprovisioning
   tcp:1445:
     listening: true
     ip: ["[% web_ext_ips.0 -%]"]
 
 [% END -%]
-  tcp:22:
-    listening: true
-    ip: ["0.0.0.0"]
-
+  # OpenSSH
   tcp:22:
     listening: true
     ip: ["[% hosts.$hostname.$host_ha_iface.ip %]"]
 
+[% IF ngcp_type != 'spce' -%]
+  # glusterfs
   tcp:24009:
     listening: true
     ip: ["0.0.0.0"]
 
-  tcp:25:
-    listening: true
-    ip: ["127.0.0.1"]
-
+[% END -%]
+[% IF ngcp_type != 'spce' -%]
+  # Monit
   tcp:2812:
     listening: true
     ip: ["127.0.0.1"]
 
+[% END -%]
+  # MySQL
   tcp:3306:
     listening: true
-    ip: ["0.0.0.0"]
+    ip: ["[% ngcp_type == 'spce' ? '127.0.0.1' : '0.0.0.0' %]"]
 
 [% IF is_lb -%]
+  # Kamailio load-balancer
   tcp:5060:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 -%]"]
 
 [% END -%]
 [% IF is_proxy -%]
+  # Kamailio proxy
   tcp:5062:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
+  # Prosody
   tcp:5222:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 -%]"]
 
+  # Prosody
   tcp:5269:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 -%]"]
 
+  # Prosody
   tcp:5280:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
+  # Prosody
   tcp:5281:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
+  # Prosody
   tcp:5582:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
+  # SEMS
   tcp:8090:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
+  # Asterisk
   tcp:5038:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
+  # SEMS
   udp:5040:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
+  # Asterisk
   udp:5070:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
+  # SEMS
   udp:5080:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
 [% END -%]
 [% IF is_rtp || is_proxy || is_db -%]
+  # Redis
   tcp:6379:
     listening: true
     ip: ["[% ha_int_ips.0 %]"]
 
 [% END -%]
-  tcp:7777:
-    listening: false
-
-  udp:7777:
-    listening: false
-
-  udp:123:
-    listening: true
-    ip: ["0.0.0.0"]
-
+[% IF ngcp_type != 'spce' -%]
+  # snmpd
   udp:161:
     listening: true
     ip: ["127.0.0.1"]
 
+[% END -%]
 [% IF is_rtp -%]
+  # rtpengine
   udp:2223:
-    listening: true
+    listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
 [% END -%]
+  # InfluxDB Admin
   tcp6:8083:
     listening: true
     ip: ["::"]
 
+  # InfluxDb Query
   tcp6:8086:
     listening: true
     ip: ["::"]
 
+[% IF ngcp_type != 'spce' -%]
+  # InfluxDB Relay
   tcp:9096:
     listening: true
     ip: ["127.0.0.1"]
 
+[% END -%]
+[% IF ngcp_type != 'spce' -%]
+  # Heartbeat
   udp:[% heartbeat.port ? heartbeat.port : '694' %]:
     listening: true
     ip: ["0.0.0.0"]
 
-  tcp:22:
-    # last record to keep JSON valid
-    listening: true
+[% END -%]
+  # Check for a closed port, nothing there.
+  tcp:7777:
+    listening: false
+
+  # Check for a closed port, nothing there.
+  udp:7777:
+    listening: false

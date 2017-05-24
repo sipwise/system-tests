@@ -1,0 +1,22 @@
+gossfile:
+  000_self-test-command.yaml: {}
+  110_filesys-no-cores.yaml: {}
+  120_filesys-free-space.yaml: {}
+  130_filesys-ngcp.yaml: {}
+[% IF ngcp_type != 'spce' -%]
+  131_filesys-ngcp-pro.yaml: {}
+[% END -%]
+  132_filesys-ngcp-templates.yaml: {}
+  200_user-debian.yaml: {}
+  210_user-ngcp.yaml: {}
+  310_package-ngcp.yaml: {}
+  400_process-debian.yaml: {}
+  410_process-ngcp.yaml: {}
+  500_init-daemons-dabian.yaml: {}
+  510_init-daemons-ngcp.yaml: {}
+  800_network-hostname.yaml: {}
+  810_network-dns.yaml: {}
+  820_network-debian-ports.yaml: {}
+  821_network-ngcp-ports.yaml: {}
+  900_service-ngcp-api.yaml: {}
+  910_service-influxdb.yaml: {}
