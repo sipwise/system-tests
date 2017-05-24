@@ -1,0 +1,44 @@
+process:
+  acpid:
+    running: true
+
+  cron:
+    running: true
+
+  exim4:
+    running: true
+
+  getty:
+    running: true
+
+  mysqld:
+    running: true
+
+  mysqld_safe:
+    running: true
+
+  nginx:
+    running: true
+
+  ntpd:
+    running: true
+
+  perl-fcgi:
+    running: true
+
+  redis-server:
+    running: true
+
+  rsyslogd:
+    running: true
+
+  sshd:
+    running: true
+
+{{if eq .Env.DEBIAN_RELEASE "8"}}
+  udevd:
+    running: true
+{{else}}
+  systemd-udevd:
+    running: true
+{{end}}

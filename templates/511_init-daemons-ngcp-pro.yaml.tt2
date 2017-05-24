@@ -1,0 +1,34 @@
+[%
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+  hostname = out;
+
+  argv.host = hostname;
+  argv.role = 'mgmt';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_mgmt = out;
+
+  argv.host = hostname;
+  argv.role = 'proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out;
+-%]
+
+service:
+  influxdb-relay:
+    enabled: true
+    running: true
+
+  snmpd:
+    enabled: true
+    running: true
+
+  ngcp-snmp-agent:
+    enabled: [% is_mgmt ? 'true' : 'false' %]
+    running: [% is_mgmt ? 'true' : 'false' %]
+
+[% IF faxserver.enable == "yes" -%]
+
+  ngcp-faxserver:
+    enabled: false
+    running: [% is_proxy ? 'true' : 'false' %]
+[% END -%]
