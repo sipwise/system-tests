@@ -9,10 +9,6 @@
    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
    web_int_ips = out;
 -%]
-[% argv.host=hostname; argv.type='ha_int';
-   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
-   ha_int_ips = out;
--%]
 port:
   tcp:443:
       listening: true
