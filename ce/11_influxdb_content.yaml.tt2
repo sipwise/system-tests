@@ -1,0 +1,23 @@
+command:
+
+  influx -execute 'show databases' | grep _internal:
+    exit-status: 0
+    stdout:
+    - _internal
+    stderr: []
+    timeout: 10000
+
+  influx -execute 'show databases' | grep ngcp:
+    exit-status: 0
+    stdout:
+    - ngcp
+    stderr: []
+    timeout: 10000
+
+  influx -execute 'show databases' | grep telegraf:
+    exit-status: 0
+    stdout:
+    - telegraf
+    stderr: []
+    timeout: 10000
+

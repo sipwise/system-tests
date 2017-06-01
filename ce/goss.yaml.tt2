@@ -12,4 +12,5 @@ gossfile:
   08_system_ports.yaml: {}
   09_system_dns.yaml: {}
   10_sites_ok.yaml: {}
+  11_influxdb_content.yaml: {}
   99_dummy.yaml: {}
