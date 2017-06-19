@@ -1,3 +1,12 @@
+ngcp-system-tests (5.2.2.1+0~mr5.2.2.1) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [dc6f32c] TT#17002 Add goss tests to check influxdb default content
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 19 Jun 2017 15:11:15 +0200
+
 ngcp-system-tests (5.2.2.0+0~mr5.2.2.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
