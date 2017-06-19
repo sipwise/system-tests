@@ -1,3 +1,17 @@
+ngcp-system-tests (0.13.6.0+0~mr4.5.6.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [a8104d0] TT#5161 sipwise/cdrexport user/group id can be 1000/10000
+  * [8fdcda6] TT#14808 Allow old home '/var/run/sems' for POSIX user sems
+
+  [ Michael Prokop ]
+  * [da9ae87] TT#12307 mysql user on stretch uses /nonexistent as its home
+  * [ea900cb] TT#12307 Check for existing of /var/cores/core.perl-fcgi.sig11* before moving them
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 19 Jun 2017 19:13:51 +0200
+
 ngcp-system-tests (0.13.5.0+0~mr4.5.5.0) unstable; urgency=medium
 
   * New release.
