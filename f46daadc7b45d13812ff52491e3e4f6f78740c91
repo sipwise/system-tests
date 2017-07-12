@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7adec928_45d35938",
+        "filename": "templates/510_init-daemons-ngcp.yaml.tt2",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-07-12T13:10:18Z",
+      "side": 1,
+      "message": "monit on CE will simplify our life a lot :-(",
+      "range": {
+        "startLine": 41,
+        "startChar": 13,
+        "endLine": 41,
+        "endChar": 71
+      },
+      "revId": "f46daadc7b45d13812ff52491e3e4f6f78740c91",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
