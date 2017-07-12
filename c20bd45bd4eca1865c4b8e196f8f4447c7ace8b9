@@ -22,6 +22,30 @@
       "revId": "c20bd45bd4eca1865c4b8e196f8f4447c7ace8b9",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adec928_739f4204",
+        "filename": "templates/goss.yaml.tt2",
+        "patchSetId": 11
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-07-12T10:18:11Z",
+      "side": 1,
+      "message": "Ah, on moment ngcpcfg build.\nthen it should be general.ngcp_type here",
+      "parentUuid": "7adec928_d3fe5638",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "revId": "c20bd45bd4eca1865c4b8e196f8f4447c7ace8b9",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
