@@ -1,3 +1,9 @@
 #!/usr/bin/make -f
 %:
 	dh $@
+
+override_dh_installdeb:
+	dh_installdeb
+	# Do not mark any of the templates as conffiles, we always want them
+	# to be overwritten.
+	sed -i -e '/\/etc\/ngcp-config\/templates/d' debian/*/DEBIAN/conffiles
