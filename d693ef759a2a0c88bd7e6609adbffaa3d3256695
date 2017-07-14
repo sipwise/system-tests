@@ -22,6 +22,30 @@
       "revId": "d693ef759a2a0c88bd7e6609adbffaa3d3256695",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adec928_c80b002a",
+        "filename": "debian/rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-07-14T11:20:42Z",
+      "side": 1,
+      "message": "This is just to avoid marking any templates as conffiles, they will still be marked as owned by this package, and if they overlap with files from other packages we will get overwrite errors from dpkg at install time, so I\u0027m not sure there\u0027s any problem here.",
+      "parentUuid": "7adec928_687e6ce6",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "d693ef759a2a0c88bd7e6609adbffaa3d3256695",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
