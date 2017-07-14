@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7adec928_687e6ce6",
+        "filename": "debian/rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-07-14T09:43:23Z",
+      "side": 1,
+      "message": "shouldn\u0027t here be /etc/ngcp-config/templates/etc/ngcp-tests ?\nas it is about package ngcp-system-tests only.\n\notherwise we can mask some issues by installing/removing ngcp-system-tests",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "d693ef759a2a0c88bd7e6609adbffaa3d3256695",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
