@@ -1,3 +1,25 @@
+ngcp-system-tests (5.5.0.0+0~mr5.5.0.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [e407d37] TT#16315 Update influxdb ports
+  * [247fb98] TT#16315 InfluxDB now listens on all interfaces including IPv6
+  * [2527e88] TT#16315 Remove unused ha_int_ips fetching
+  * [d693ef7] TT#16555 Do not mark template files as conffiles
+  * [9931987] TT#16555 Make the tests universal
+
+  [ Alexander Lutay ]
+  * [f6254f4] TT#16315 Fix influxdb binding check, switch to library get_all_ips_for_host
+  * [2b8cf34] TT#17002 Add goss tests to check influxdb default content
+  * [2a04d50] TT#17834 Update goss to 0.3.2 version
+  * [4e729cb] TT#18360 Update goss to 0.3.3
+
+  [ Sergii Kipot ]
+  * [0017566] Revert "TT#17834 Update goss to 0.3.2 version"
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 17 Jul 2017 22:48:13 +0200
+
 ngcp-system-tests (5.4.0.0+0~mr5.4.0.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
