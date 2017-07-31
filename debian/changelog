@@ -1,3 +1,13 @@
+ngcp-system-tests (5.4.1.1+0~mr5.4.1.1) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [49131d4] TT#18707 Update goss to 0.3.3.git98b44682e to fix process race condition checks
+  * [3536bda] TT#18707 Update goss to 0.3.4 (upstream fix for process check race condition)
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 31 Jul 2017 14:38:20 +0200
+
 ngcp-system-tests (5.4.1.0+0~mr5.4.1.0) unstable; urgency=medium
 
   [ Guillem Jover ]
