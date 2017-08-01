@@ -39,8 +39,8 @@ if [ -n "${SKIP_DNS_CHECK_TEST}" ] || [ -n "${SKIP_STRICT_HOSTNAME_TEST}" ] ; th
 ---
 sipwise:
   system_tester:
-    skip_dns_check_test: ${SKIP_DNS_CHECK_TEST:-false}
-    skip_strict_hostname_test: ${SKIP_STRICT_HOSTNAME_TEST:-false}
+    skip_dns_check_test: '${SKIP_DNS_CHECK_TEST:-false}'
+    skip_strict_hostname_test: '${SKIP_STRICT_HOSTNAME_TEST:-false}'
 EOF
 else
   # remove the file if exist from the previous run
