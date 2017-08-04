@@ -23,3 +23,78 @@ file:
     group: root
     filetype: file
     contains: []
+
+  /mnt/glusterfs:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/home:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/home/jail:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/mgmt-share:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/mgmt-share/approx:
+    exists: true
+    mode: "0755"
+    owner: approx
+    group: approx
+    filetype: directory
+
+  /mnt/glusterfs/mgmt-share/ipxe.cfg:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/mgmt-share/tftp:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/mgmt-share/tftp/undionly.kpxe:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /usr/share/ngcp-pxe-boot-images/images/undionly.kpxe
+    filetype: symlink
+
+  /mnt/glusterfs/ngcpcfg-share:
+    exists: true
+    mode: "0700"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/shared_config:
+    exists: false
+
+  /var/cache/approx:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /mnt/glusterfs/mgmt-share/approx/
+    filetype: symlink
