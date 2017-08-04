@@ -23,3 +23,41 @@ file:
     group: root
     filetype: file
     contains: []
+
+  /mnt/glusterfs:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/home:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/home/jail:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/mgmt-share:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/ngcpcfg-share:
+    exists: true
+    mode: "0700"
+    owner: root
+    group: root
+    filetype: directory
+
+  /mnt/glusterfs/shared_config:
+    exists: false
