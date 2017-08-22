@@ -1,3 +1,9 @@
+ngcp-system-tests (0.7.11.1+0~mr3.8.11.1) unstable; urgency=medium
+
+  * New release.
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 22 Aug 2017 11:03:10 +0200
+
 ngcp-system-tests (0.7.11.0+0~mr3.8.11.0) unstable; urgency=medium
 
   * New release.
