@@ -1,0 +1,21 @@
+package:
+  ngcp-ngcp-ce:
+    installed: 'true'
+
+  ngcp-ngcp-pro:
+    installed: 'false'
+
+  ngcp-ngcp-carrier:
+    installed: 'false'
+
+  ngcp-sems:
+    installed: 'true'
+
+  ngcp-sems-pbx:
+    installed: 'false'
+
+  ngcp-sems-app:
+    installed: 'false'
+
+  ngcp-sems-ha:
+    installed: 'false'

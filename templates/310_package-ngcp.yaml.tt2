@@ -1,9 +1,0 @@
-package:
-  ngcp-ngcp-ce:
-    installed: [% general.ngcp_type == 'spce' ? 'true' : 'false' %]
-
-  ngcp-ngcp-pro:
-    installed: [% general.ngcp_type == 'sppro' ? 'true' : 'false' %]
-
-  ngcp-ngcp-carrier:
-    installed: [% general.ngcp_type == 'carrier' ? 'true' : 'false' %]
