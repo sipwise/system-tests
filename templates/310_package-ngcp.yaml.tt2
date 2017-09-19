@@ -7,3 +7,15 @@ package:
 
   ngcp-ngcp-carrier:
     installed: [% general.ngcp_type == 'carrier' ? 'true' : 'false' %]
+
+  ngcp-sems:
+    installed: [% general.ngcp_type == 'spce' ? 'true' : 'false' %]
+
+  ngcp-sems-pbx:
+    installed: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
+
+  ngcp-sems-app:
+    installed: 'false'
+
+  ngcp-sems-ha:
+    installed: 'false'
