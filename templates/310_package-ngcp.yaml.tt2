@@ -15,7 +15,7 @@ package:
     installed: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
 
   ngcp-sems-app:
-    installed: 'false'
+    installed: false
 
   ngcp-sems-ha:
-    installed: 'false'
+    installed: false
