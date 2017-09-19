@@ -16,6 +16,24 @@
       "revId": "33e61a18d719d95eb1c3321c41d177311e9615e3",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fab399f4_ce49358d",
+        "filename": "templates/310_package-ngcp.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-09-19T10:56:20Z",
+      "side": 0,
+      "message": "Fixed.",
+      "parentUuid": "fab399f4_eeafd929",
+      "revId": "33e61a18d719d95eb1c3321c41d177311e9615e3",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
