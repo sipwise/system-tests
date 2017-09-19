@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fab399f4_eeafd929",
+        "filename": "templates/310_package-ngcp.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-19T10:30:33Z",
+      "side": 0,
+      "message": "I guess we are back to the duplicated tests vs the possible problem with templates. Also the -app and -ha are now always never to be installed, so it seems like useless duplication too. :)",
+      "revId": "33e61a18d719d95eb1c3321c41d177311e9615e3",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
