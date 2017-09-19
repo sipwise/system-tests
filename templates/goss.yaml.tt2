@@ -9,7 +9,13 @@ gossfile:
   132_filesys-ngcp-templates.yaml: {}
   200_user-debian.yaml: {}
   210_user-ngcp.yaml: {}
-  310_package-ngcp.yaml: {}
+[% IF general.ngcp_type = 'spce' -%]
+  310_process-ngcp-spce.yaml: {}
+[% ELIF general.ngcp_type = 'sppro' -%]
+  310_process-ngcp-sppro.yaml: {}
+[% ELSE -%]
+  310_process-ngcp-carrier.yaml: {}
+[% END -%]
   400_process-debian.yaml: {}
   410_process-ngcp.yaml: {}
 [% IF general.ngcp_type != 'spce' -%]
