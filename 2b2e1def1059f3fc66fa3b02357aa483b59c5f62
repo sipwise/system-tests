@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dab895d6_53f149cc",
+        "filename": "templates/920_service-asterisk-odbc-pro.yaml.tt2",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-16T12:44:02Z",
+      "side": 1,
+      "message": "If you are doing an echo then stdout cannot be empty no? :)",
+      "revId": "2b2e1def1059f3fc66fa3b02357aa483b59c5f62",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
