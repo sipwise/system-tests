@@ -33,7 +33,7 @@
   is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enabled == 'yes';
 -%]
 [% PERL -%]
-    my $node_state = qx(ngcp-check_active -v);
+    my $node_state = qx(ngcp-check-active -v);
     chomp $node_state;
 
     $stash->set(node_state => $node_state);

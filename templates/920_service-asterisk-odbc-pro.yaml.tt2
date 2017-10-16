@@ -8,7 +8,7 @@
   is_proxy = out;
 -%]
 [% PERL -%]
-    my $node_state = qx(ngcp-check_active -v);
+    my $node_state = qx(ngcp-check-active -v);
     chomp $node_state;
 
     $stash->set(node_state => $node_state);
