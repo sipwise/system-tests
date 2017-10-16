@@ -1,0 +1,28 @@
+[%
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+  hostname = out;
+
+  argv.host = hostname;
+  argv.role = 'proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out;
+-%]
+command:
+
+[% IF is_proxy  -%]
+  asterisk -rx "voicemail show users for default":
+    exit-status: 0
+    stdout:
+    - "/Configured Voicemail Users/"
+    stderr: []
+    timeout: 10000
+
+[% ELSE -%]
+  echo "Test for PROXY role only":
+    exit-status: 0
+    stdout:
+    - "/^Test for PROXY role only$/"
+    stderr: []
+    timeout: 10000
+
+[% END -%]
