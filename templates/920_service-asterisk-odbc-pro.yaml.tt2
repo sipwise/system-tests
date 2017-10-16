@@ -1,0 +1,34 @@
+[%
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+  hostname = out;
+
+  argv.host = hostname;
+  argv.role = 'proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out;
+-%]
+[% PERL -%]
+    my $node_state = qx(ngcp-check_active -v);
+    chomp $node_state;
+
+    $stash->set(node_state => $node_state);
+[% END -%]
+
+command:
+
+[% IF is_proxy && asterisk.enabled == "yes" && node_state == 'active' -%]
+  asterisk -rx "voicemail show users for default":
+    exit-status: 0
+    stdout:
+    - "/Configured Voicemail Users/"
+    stderr: []
+    timeout: 10000
+
+[% ELSE -%]
+  echo "The test for active node with enabled asterisk and proxy role only":
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 10000
+
+[% END -%]
