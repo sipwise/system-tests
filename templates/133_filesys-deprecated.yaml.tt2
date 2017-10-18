@@ -1,0 +1,14 @@
+file:
+
+  /etc/default/sems-app:
+    filetype: file
+    exists: false
+
+  /etc/sems-app:
+    filetype: directory
+    exists: false
+
+  /etc/ngcp-config/templates/etc/sems-app/:
+    filetype: directory
+    exists: false
+
