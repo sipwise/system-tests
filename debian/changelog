@@ -1,3 +1,15 @@
+ngcp-system-tests (5.5.2.0+0~mr5.5.2.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [3631095] TT#22018 Add system-test to check asterisk ODBC connection on PRO/Carrier
+  * [080336c] TT#22018 Switch tests from 'ngcp-check_active' to modern 'ngcp-check-active'
+  * [68ba7ea] TT#23557 Ensure sems-app is removed properly
+  * [feeae50] TT#22018 Fix 2b2e1def: use 'odbc show' to check ODBC status
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Fri, 20 Oct 2017 18:21:26 +0200
+
 ngcp-system-tests (5.5.1.0+0~mr5.5.1.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
