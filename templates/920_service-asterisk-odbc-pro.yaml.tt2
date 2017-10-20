@@ -17,10 +17,10 @@
 command:
 
 [% IF is_proxy && asterisk.enabled == "yes" && node_state == 'active' -%]
-  asterisk -rx "voicemail show users for default":
+  asterisk -rx "odbc show":
     exit-status: 0
     stdout:
-    - "/Configured Voicemail Users/"
+    - "/Number of active connections: 1/"
     stderr: []
     timeout: 10000
 
