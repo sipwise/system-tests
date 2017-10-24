@@ -37,3 +37,30 @@ package:
 
   sysvinit-core:
     installed: true
+
+  mariadb-client:
+    installed: true
+
+  mariadb-common:
+    installed: true
+
+  mariadb-connector-odbc:
+    installed: true
+
+  mariadb-server:
+    installed: true
+
+  mysql-client:
+    installed: false
+
+  mysql-common:
+    installed: false
+
+  mysql-server:
+    installed: false
+
+  mysql-server:
+    installed: false
+
+  ngcp-glusterfs-config
+    installed: false
