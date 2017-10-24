@@ -1,3 +1,13 @@
+ngcp-system-tests (5.5.1.2+0~mr5.5.1.2) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [1610e61] TT#23840 TT#23724 Add tests to ensure MariaDB 10.1 configs are identical to old one MySQL 5.5
+  * [6d8881b] TT#23840 Add mr5.5 related packages check to prevent surprises after the upgrade
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 24 Oct 2017 16:03:44 +0200
+
 ngcp-system-tests (5.5.1.1+0~mr5.5.1.1) unstable; urgency=medium
 
   [ Alexander Lutay ]
