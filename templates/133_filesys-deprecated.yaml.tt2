@@ -12,3 +12,18 @@ file:
     filetype: directory
     exists: false
 
+  /etc/mysql/mariadb.conf.d:
+    exists: false
+    filetype: directory
+
+  /etc/mysql/mariadb.cnf:
+    exists: false
+    filetype: file
+
+  /etc/mysql/my.cnf.fallback:
+    exists: false
+    filetype: file
+
+  /etc/mysql/my.cnf.dpkg-dist:
+    exists: false
+    filetype: file
