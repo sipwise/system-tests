@@ -152,54 +152,6 @@ file:
     filetype: file
     contains: []
 
-  /etc/mysql/inc:
-    exists: true
-    mode: "0755"
-    owner: root
-    group: root
-    filetype: directory
-    contains: []
-
-  /etc/mysql/inc/my.client.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-
-  /etc/mysql/inc/my.myisamchk.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-
-  /etc/mysql/inc/my.mysql.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-
-  /etc/mysql/inc/my.safe_mysqld.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-
-  /etc/mysql/inc/my.mysqldump.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-
   /etc/mysql/my.cnf:
     exists: true
     mode: "0444"

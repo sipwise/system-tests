@@ -98,19 +98,3 @@ file:
     group: root
     linked-to: /mnt/glusterfs/mgmt-share/approx/
     filetype: symlink
-
-  /etc/mysql/inc/my.mysqld2.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-
-  /etc/mysql/inc/my.mysqld_multi.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
