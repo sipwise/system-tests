@@ -1,0 +1,24 @@
+[%
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+  hostname = out;
+
+  argv.role = 'mgmt';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_mgmt = out;
+
+  argv.role = 'li';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_li = out;
+  is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enabled == 'yes';
+-%]
+
+command:
+
+[% IF grafana.enabled == 'yes' && (is_mgmt || is_li_enabled) -%]
+  sqlite3 /var/lib/grafana/grafana.db "select name from data_source":
+    exit-status: 0
+    stdout:
+    - "/^ngcp$/"
+    - "/^telegraf$/"
+    stderr: []
+[% END -%]

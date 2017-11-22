@@ -36,3 +36,4 @@ gossfile:
 [% END -%]
   900_service-ngcp-api.yaml: {}
   910_service-influxdb.yaml: {}
+  911_service-grafana.yaml: {}
