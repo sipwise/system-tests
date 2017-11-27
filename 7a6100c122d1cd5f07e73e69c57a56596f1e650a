@@ -34,6 +34,24 @@
       "revId": "7a6100c122d1cd5f07e73e69c57a56596f1e650a",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baada198_e9919a53",
+        "filename": "templates/911_service-grafana.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-11-27T09:39:38Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "baada198_89abbe88",
+      "revId": "7a6100c122d1cd5f07e73e69c57a56596f1e650a",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
