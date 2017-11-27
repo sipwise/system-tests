@@ -1,0 +1,30 @@
+[%
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
+  hostname = out;
+
+  argv.host = hostname;
+  argv.role = 'proxy';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
+  is_proxy = out;
+-%]
+[% PERL -%]
+    my $node_state = qx(ngcp-check-active -v);
+    chomp $node_state;
+
+    $stash->set(node_state => $node_state);
+[% END -%]
+
+command:
+
+  lsmod | grep -Eq "^sunrpc ":
+    exit-status: 0
+    stdout: []
+    stderr: []
+[% IF is_proxy && node_state == 'active' && rtpproxy.enabled == "yes" -%]
+
+  lsmod | grep -c xt_RTPENGINE:
+    exit-status: 0
+    stdout:
+      - '/^2$/'
+    stderr: []
+[% END -%]
