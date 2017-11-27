@@ -16,6 +16,24 @@
       "revId": "7a6100c122d1cd5f07e73e69c57a56596f1e650a",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baada198_89abbe88",
+        "filename": "templates/911_service-grafana.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T09:37:24Z",
+      "side": 1,
+      "message": "Nope, that\u0027s checking the databases in influx, this is about the database sources in grafana.",
+      "parentUuid": "baada198_29ee32ed",
+      "revId": "7a6100c122d1cd5f07e73e69c57a56596f1e650a",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
