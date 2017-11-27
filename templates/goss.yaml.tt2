@@ -21,6 +21,7 @@ gossfile:
 [% IF general.ngcp_type != 'spce' -%]
   511_init-daemons-ngcp-pro.yaml: {}
 [% END -%]
+  610_sysctl-params-check.yaml: {}
   800_network-hostname.yaml: {}
 [% IF sipwise.system_tester.skip_dns_check_test != "true" -%]
   810_network-dns-debian.yaml: {}
