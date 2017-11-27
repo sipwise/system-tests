@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baada198_29ee32ed",
+        "filename": "templates/911_service-grafana.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-11-27T09:14:38Z",
+      "side": 1,
+      "message": "it is NOT a duplicate of templates/910_service-influxdb.yaml.tt2  ? Right?",
+      "revId": "7a6100c122d1cd5f07e73e69c57a56596f1e650a",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
