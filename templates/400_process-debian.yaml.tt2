@@ -35,10 +35,5 @@ process:
   sshd:
     running: true
 
-{{if eq .Env.DEBIAN_RELEASE "8"}}
-  udevd:
-    running: true
-{{else}}
   systemd-udevd:
     running: true
-{{end}}
