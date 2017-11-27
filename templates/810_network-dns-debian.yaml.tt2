@@ -1,6 +1,6 @@
 dns:
   localhost:
-    resolveable: true
+    resolvable: true
     addrs:
       - 127.0.0.1
     timeout: 500

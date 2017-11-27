@@ -21,7 +21,7 @@ if ls /var/cores/core.perl-fcgi.sig11* >/dev/null 2>&1 ; then
   diag "========================== DONE =============================="
 fi
 
-goss="goss-0.3.4-linux-amd64"
+goss="goss-0.3.5-linux-amd64"
 
 if [ ! -x "/usr/sbin/${goss}" ] ; then
   diag "Downloading goss and installing as /usr/sbin/${goss}"

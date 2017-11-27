@@ -1,6 +1,6 @@
 dns:
   spce:
-    resolveable: true
+    resolvable: true
     addrs:
       - 127.0.0.2
     timeout: 500
