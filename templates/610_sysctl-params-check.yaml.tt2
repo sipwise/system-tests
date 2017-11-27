@@ -1,0 +1,31 @@
+kernel-param:
+
+  kernel.core_uses_pid:
+    value: 1
+
+  kernel.core_pattern:
+    value: '/var/cores/core-%e-%s-%u-%g-%p-%t'
+
+  fs.suid_dumpable:
+    value: 2
+
+  kernel.sysrq:
+    value: 1
+
+  net.core.somaxconn:
+    value: 512
+
+  net.ipv4.conf.all.arp_announce:
+    value: 1
+
+  net.ipv4.ip_nonlocal_bind:
+    value: 1
+
+  vm.overcommit_memory:
+    value: 1
+
+  vm.swappiness:
+    value: 10
+
+  sunrpc.min_resvport:
+    value: 700
