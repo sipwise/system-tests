@@ -3,9 +3,8 @@ kernel-param:
   kernel.core_uses_pid:
     value: "1"
 
-  # TT#26104 Disabled for now until the fix in a ticket.
-  # kernel.core_pattern:
-  #   value: "/var/cores/core-%e-%s-%u-%g-%p-%t"
+  kernel.core_pattern:
+    value: "/var/cores/core-%e-%s-%u-%g-%p-%t"
 
   fs.suid_dumpable:
     value: "2"
