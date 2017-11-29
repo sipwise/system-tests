@@ -21,6 +21,9 @@ kernel-param:
   net.ipv4.ip_nonlocal_bind:
     value: "1"
 
+  net.ipv6.ip_nonlocal_bind:
+    value: "1"
+
   vm.overcommit_memory:
     value: "1"
 
