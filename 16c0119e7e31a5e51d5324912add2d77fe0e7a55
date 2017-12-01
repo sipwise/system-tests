@@ -22,6 +22,30 @@
       "revId": "16c0119e7e31a5e51d5324912add2d77fe0e7a55",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baada198_d96c9d39",
+        "filename": "templates/110_filesys-cores.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-01T12:28:40Z",
+      "side": 1,
+      "message": "Yes, that\u0027s handled by the regex, only matching filenames starting with «core.».",
+      "parentUuid": "baada198_391d99be",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "16c0119e7e31a5e51d5324912add2d77fe0e7a55",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
