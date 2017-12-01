@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baada198_391d99be",
+        "filename": "templates/110_filesys-cores.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2017-12-01T12:24:58Z",
+      "side": 1,
+      "message": "please ensure this will work with testrunner workaround for ngcp-panel:\n\nif ls /var/cores/core.perl-fcgi.sig11* \u003e/dev/null 2\u003e\u00261 ; then\n  diag \"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d NOTE: CORE DUMP DETECTED \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\"\n  diag \"\u003d Removing known cores to prevent failing for the known issues:\"\n  diag \"\u003d 1) MT#21791: Renaming ngcp-panel cores /var/cores/core.perl-fcgi.sig11*\"\n  ls -la /var/cores/core.perl-fcgi.sig11*\n  for file in /var/cores/core.perl-fcgi.sig11* ; do\n    mv \"${file}\" /var/cores/RENAMED_\"$(basename \"${file}\")\"\n  done\n  diag \"\u003d New cores names are:\"\n  ls -la /var/cores/RENAMED_core.perl-fcgi.sig11*\n  diag \"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d DONE \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\"\nfi",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "16c0119e7e31a5e51d5324912add2d77fe0e7a55",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
