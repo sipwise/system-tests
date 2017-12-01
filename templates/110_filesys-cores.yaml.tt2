@@ -1,3 +1,12 @@
+file:
+  /var/cores:
+    exists: true
+    mode: "1777"
+    owner: root
+    group: root
+    filetype: directory
+    contains: []
+
 command:
   "ls -la /var/cores/core.*":
     exit-status: 2
