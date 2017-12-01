@@ -1,6 +1,6 @@
 gossfile:
   000_self-test-command.yaml: {}
-  110_filesys-no-cores.yaml: {}
+  110_filesys-cores.yaml: {}
   120_filesys-free-space.yaml: {}
   130_filesys-ngcp.yaml: {}
 [% IF general.ngcp_type != 'spce' -%]
