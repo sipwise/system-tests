@@ -1,3 +1,17 @@
+ngcp-system-tests (5.5.2.1+0~mr5.5.2.1) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [afea357] TT#23840 TT#23724 Add tests to ensure MariaDB 10.1 configs are identical to old one MySQL 5.5
+  * [ae89fd4] TT#23840 Add mr5.5 related packages check to prevent surprises after the upgrade
+  * [dd03122] TT#23840 TT#23724 Fix afea357: /etc/mysql/inc/ was not available in mr5.5*
+
+  [ Guillem Jover ]
+  * [3da0037] TT#24221 Check that grafana has the databases configured
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 04 Dec 2017 11:42:45 +0100
+
 ngcp-system-tests (5.5.2.0+0~mr5.5.2.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
