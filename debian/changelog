@@ -1,3 +1,32 @@
+ngcp-system-tests (6.1.0.0+0~mr6.1.0.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [2b2e1de] TT#22018 Add system-test to check asterisk ODBC connection on PRO/Carrier
+  * [7a81cb3] TT#22018 Switch tests from 'ngcp-check_active' to modern 'ngcp-check-active'
+  * [18a8f64] TT#23557 Ensure sems-app is removed properly
+  * [2bf023f] TT#22018 Fix 2b2e1def: use 'odbc show' to check ODBC status
+  * [bdea9a5] TT#23840 TT#23724 Add tests to ensure MariaDB 10.1 configs are identical to old one MySQL 5.5
+  * [fce09b1] TT#23840 Add mr5.5 related packages check to prevent surprises after the upgrade
+  * [993e863] TT#22828 Check /etc/mysql/cluster.ini availability on Carrier mr6.0+
+  * [4070136] TT#26008 Update goss to 0.3.5 + fix resolveable->resolvable, upstream fix
+  * [cd2e06d] TT#26109 Remove jessie compatibility (trunk is on stretch now)
+  * [ea62990] TT#26103 Check sunrpc and rptengine kernel modules availability
+  * [e201daf] TT#26103 Check necessary sysctl parameters
+  * [01caa35] TT#26104 re-enable kernel param check for 'kernel.core_pattern'
+
+  [ Guillem Jover ]
+  * [f9eed1f] TT#22072 Update packaging
+  * [7a6100c] TT#24221 Check that grafana has the databases configured
+  * [b596569] TT#26103 Move check to the templates directory
+  * [16c0119] TT#26451 Add a check for /var/cores/
+
+  [ Richard Fuchs ]
+  * [6dd64ec] TT#25550 add net.ipv6.ip_nonlocal_bind=1 test
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 06 Dec 2017 00:16:19 +0100
+
 ngcp-system-tests (6.0.0.0+0~mr6.0.0.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
