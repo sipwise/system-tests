@@ -1,10 +1,4 @@
 package:
-  cgmanager:
-    installed: false
-
-  libpam-systemd:
-    installed: false
-
   ngcp-ngcp-ce:
     installed: [% general.ngcp_type == 'spce' ? 'true' : 'false' %]
 
@@ -26,17 +20,35 @@ package:
   ngcp-sems-ha:
     installed: false
 
-  systemd:
+  cgmanager:
     installed: false
 
-  systemd-sysv:
+  libpam-systemd:
     installed: false
+
+  systemd:
+    installed: [% general.init_system == 'systemd' ? 'true' : 'false' %]
+
+  systemd-sysv:
+    installed: [% general.init_system == 'systemd' ? 'true' : 'false' %]
 
   systemd-shim:
     installed: false
 
+  insserv:
+    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
+
+  startpar
+    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
+
+  initscripts:
+    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
+
+  sysv-rc:
+    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
+
   sysvinit-core:
-    installed: true
+    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
 
   mariadb-client:
     installed: true
