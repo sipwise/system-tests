@@ -46,6 +46,30 @@
       "revId": "db196d8fd0659ea41112c76eec421bba3cf7e83f",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da9df570_377ea0e5",
+        "filename": "templates/830_network-interfaces-legacy.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-01-02T14:22:19Z",
+      "side": 1,
+      "message": "without grep it will be slightly faster for sure, due not forking ;-)",
+      "parentUuid": "da9df570_97f74c8c",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "db196d8fd0659ea41112c76eec421bba3cf7e83f",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
