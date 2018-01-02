@@ -1,0 +1,16 @@
+file:
+
+  /etc/default/grub:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+    contains: ['/^GRUB_CMDLINE_LINUX_DEFAULT=".*net.ifnames=0.*"/']
+
+command:
+
+  ip link | grep -q 'eth[0-9]:':
+    exit-status: 0
+    stdout: []
+    stderr: []
