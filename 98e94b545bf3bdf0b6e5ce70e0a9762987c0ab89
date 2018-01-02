@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "da9df570_3a3125a3",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-02T17:30:10Z",
+      "side": 1,
+      "message": "OK, that\u0027s a good point.  I actually thought that wget was part of the base set, but maybe not.  If it works with curl it would be great.",
+      "parentUuid": "da9df570_5a58a9fa",
+      "revId": "98e94b545bf3bdf0b6e5ce70e0a9762987c0ab89",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da9df570_9adcd176",
         "filename": "t/tap-tests-docker/Dockerfile",
         "patchSetId": 1
@@ -119,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "da9df570_faff9da8",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-02T17:30:10Z",
+      "side": 1,
+      "message": "I didn\u0027t propose to *install* the .deb, just to donwload it (without dependencies) and extract the file.\n\nThe problem with anonscm.debian.org is that Debian is going to change to a new \"forge\", and they didn\u0027t plan to migrate the URLs initially.  Maybe they will do it, but it\u0027s also possible that some things are broken or removed after a few months or years.",
+      "parentUuid": "da9df570_3a63e5b2",
+      "revId": "98e94b545bf3bdf0b6e5ce70e0a9762987c0ab89",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da9df570_1ad0e152",
         "filename": "t/tap-tests-docker/Dockerfile",
         "patchSetId": 1
@@ -148,6 +184,24 @@
       "side": 1,
       "message": "You can just press \"UP\" button inside the script and then enter to run the tests... historically we have it and it is useful. IMHO.",
       "parentUuid": "da9df570_1ad0e152",
+      "revId": "98e94b545bf3bdf0b6e5ce70e0a9762987c0ab89",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da9df570_da19f923",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-02T17:30:10Z",
+      "side": 1,
+      "message": "Yeah, I thought that it would be something like that and it\u0027s a good idea, just didn\u0027t think that this container would be used in such a way.\n\nAnyway, fine for me, it was just a comment :)",
+      "parentUuid": "da9df570_7a464d25",
       "revId": "98e94b545bf3bdf0b6e5ce70e0a9762987c0ab89",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
