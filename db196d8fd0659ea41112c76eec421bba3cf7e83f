@@ -70,6 +70,30 @@
       "revId": "db196d8fd0659ea41112c76eec421bba3cf7e83f",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da9df570_172b5cec",
+        "filename": "templates/830_network-interfaces-legacy.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-02T14:43:34Z",
+      "side": 1,
+      "message": "In the Carrier VM 192.168.25.180, with:\n\nstrace -tt -s 5000 -e trace\u003dprocess -f goss --gossfile /tmp/830_network-interfaces-legacy-grub.yaml  validate --format tap |\u0026 less\n\ntakes ~7 milliseconds for both processes forked:\n\n[pid 28756] 15:36:43.021569 execve(\"/sbin/ip\", [\"ip\", \"link\"], [/* 18 vars */] \u003cunfinished ...\u003e\n[pid 28753] 15:36:43.022522 clone( \u003cunfinished ...\u003e\n[pid 28756] 15:36:43.022584 \u003c... execve resumed\u003e ) \u003d 0\nstrace: Process 28757 attached\n[pid 28753] 15:36:43.023457 \u003c... clone resumed\u003e child_stack\u003dNULL, flags\u003dCLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr\u003d0x7f44e39d99d0) \u003d 28757\n[pid 28756] 15:36:43.023543 arch_prctl(ARCH_SET_FS, 0x7f32b06c8700) \u003d 0\n[pid 28757] 15:36:43.024647 execve(\"/bin/grep\", [\"grep\", \"-q\", \"eth[0-9]:\"], [/* 18 vars */] \u003cunfinished ...\u003e\n[pid 28753] 15:36:43.025468 wait4(-1,  \u003cunfinished ...\u003e\n[pid 28757] 15:36:43.025598 \u003c... execve resumed\u003e ) \u003d 0\n[pid 28756] 15:36:43.028184 exit_group(0) \u003d ?\n\n\nI don\u0027t know how to measure the other one.  Perhaps it could be done matching a million times over and dividing, but I am not sure if extra factors like all the program and data being in the fastest caches of the processor will make the benchmark not realistic.",
+      "parentUuid": "da9df570_97f74c8c",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "db196d8fd0659ea41112c76eec421bba3cf7e83f",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
