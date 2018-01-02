@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "da9df570_fae31d31",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-02T17:13:58Z",
+      "side": 1,
+      "message": "I think that it\u0027s possible to move this part to after the addition of repos, and it\u0027ll be faster to have only one \"apt-get update\" and install everything in a single pass.\n\nAlso, you can consider to install \"eatmydata\" if the data is not critical to retain -- not sure if the overhead is worth it.",
+      "revId": "98e94b545bf3bdf0b6e5ce70e0a9762987c0ab89",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da9df570_9adcd176",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-02T17:13:58Z",
+      "side": 1,
+      "message": "This can fail if anonscm.debian.org goes down or is decomissioned, which maybe it happens in the near future.\n\nMaybe it\u0027s better to download the .deb file (from internal repos) and extract the single script from there.",
+      "revId": "98e94b545bf3bdf0b6e5ce70e0a9762987c0ab89",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da9df570_1ad0e152",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-02T17:13:58Z",
+      "side": 1,
+      "message": "Why is this necessary or useful?",
+      "revId": "98e94b545bf3bdf0b6e5ce70e0a9762987c0ab89",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da9df570_bad99585",
         "filename": "t/tap-tests-docker/Dockerfile",
         "patchSetId": 1
