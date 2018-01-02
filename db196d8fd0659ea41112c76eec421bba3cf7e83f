@@ -22,6 +22,30 @@
       "revId": "db196d8fd0659ea41112c76eec421bba3cf7e83f",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da9df570_97f74c8c",
+        "filename": "templates/830_network-interfaces-legacy.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2018-01-02T14:13:06Z",
+      "side": 1,
+      "message": "ACK, actually would be interesting to see how much performance difference we would see between \"ip link\" and goss\u0027 stdout regex matching vs. forking a grep process",
+      "parentUuid": "da9df570_97c90c5d",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "db196d8fd0659ea41112c76eec421bba3cf7e83f",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
