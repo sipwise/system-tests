@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da9df570_bad99585",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000020
+      },
+      "writtenOn": "2018-01-02T17:10:30Z",
+      "side": 1,
+      "message": "Why /code/source is used here while normally we have just /code for our other dockers?",
+      "range": {
+        "startLine": 35,
+        "startChar": 36,
+        "endLine": 35,
+        "endChar": 48
+      },
+      "revId": "98e94b545bf3bdf0b6e5ce70e0a9762987c0ab89",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
