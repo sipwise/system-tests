@@ -37,6 +37,7 @@ gossfile:
 [% IF general.ngcp_type != 'spce' -%]
   822_network-ports-ngcp-pro.yaml: {}
 [% END -%]
+  830_network-interfaces-legacy.yaml: {}
   900_service-ngcp-api.yaml: {}
   910_service-influxdb.yaml: {}
   911_service-grafana.yaml: {}
