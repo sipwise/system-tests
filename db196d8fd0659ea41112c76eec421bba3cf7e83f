@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da9df570_97c90c5d",
+        "filename": "templates/830_network-interfaces-legacy.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-01-02T14:02:30Z",
+      "side": 1,
+      "message": "in theory you do not need grep, you can grep results on stdout. while LGTM.",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "db196d8fd0659ea41112c76eec421bba3cf7e83f",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
