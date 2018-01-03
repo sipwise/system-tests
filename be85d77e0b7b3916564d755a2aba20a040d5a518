@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "da9df570_c5cafa6d",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-03T17:36:53Z",
+      "side": 1,
+      "message": "Hmm, maybe the \\n is interpreted in a special way due to being a Dockerfile.\n\nOK, nevermind then, thanks for checking :)",
+      "parentUuid": "da9df570_252ca64a",
+      "revId": "be85d77e0b7b3916564d755a2aba20a040d5a518",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da9df570_e5545ecc",
         "filename": "t/tap-tests-docker/Dockerfile",
         "patchSetId": 1
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "Can you please sent this as a next review, I like you code, you are the author, improve it! ;-) Tnx!",
       "parentUuid": "da9df570_450a8ad3",
+      "revId": "be85d77e0b7b3916564d755a2aba20a040d5a518",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da9df570_e5c7fe62",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-03T17:36:53Z",
+      "side": 1,
+      "message": "For the record: Sent in https://gerrit.mgm.sipwise.com/#/c/18100/",
+      "parentUuid": "da9df570_050082a9",
       "revId": "be85d77e0b7b3916564d755a2aba20a040d5a518",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
