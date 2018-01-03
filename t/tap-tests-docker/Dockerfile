@@ -28,8 +28,7 @@ RUN apt-get update && apt-get install --assume-yes --no-install-recommends \
 # we need checkbashisms scipt only, providing it manually
 RUN mkdir /tmp/zzz && cd /tmp/zzz && \
 apt-get download devscripts && \
-ar x devscripts_*.deb && \
-tar -C / -p -xvf data.tar.xz ./usr/bin/checkbashisms && \
+dpkg --fsys-tarfile devscripts_*.deb | tar -C / -p -xv ./usr/bin/checkbashisms && \
 rm -rf /tmp/zzz
 
 RUN echo 'SHELL=bash WORKSPACE=/code/ /usr/bin/tap_tool_dispatcher' >>/root/.bash_history
