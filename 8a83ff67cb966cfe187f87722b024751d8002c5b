@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "da9df570_8b03a172",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-05T11:56:48Z",
+      "side": 1,
+      "message": "I would do that, yes.  But I understand that you might be in a hurry, that\u0027s why I gave you the +2 in parallel to my previous comment already, and now again.\n\n(BTW, it might not save us as much time as I expected because of being built in a Docker layer.  Regenerating locales takes a few seconds, it\u0027s relatively expensive, but if doing only on building the layer and not on every execution, it\u0027s not that bad.  But it\u0027ll save some space/bandwidth nonetheless).",
+      "parentUuid": "da9df570_0bc1712e",
+      "revId": "8a83ff67cb966cfe187f87722b024751d8002c5b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da9df570_ab7b0528",
         "filename": "t/tap-tests-docker/Dockerfile",
         "patchSetId": 1
