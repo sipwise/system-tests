@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da9df570_0b73314e",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-05T10:52:55Z",
+      "side": 1,
+      "message": "So maybe you already checked this, but in order to avoid installing a package and regenerating the locale data, did you try something else like se if C.UTF-8 works?\n\n(Don\u0027t know if it will work, just an idea to save some seconds / disk / network bandwidth in every execution.  The github issue linked shows some possible alternatives that you probably tried already).",
+      "revId": "8a83ff67cb966cfe187f87722b024751d8002c5b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da9df570_ab7b0528",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-01-05T10:52:55Z",
+      "side": 1,
+      "message": "fails",
+      "revId": "8a83ff67cb966cfe187f87722b024751d8002c5b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
