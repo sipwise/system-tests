@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "da9df570_0bc1712e",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-01-05T11:12:16Z",
+      "side": 1,
+      "message": "It looks like LC_ALL\u003dC.UTF-8 works:\n\nroot@66e6137cfa89:/code# shellcheck source/tmpl\nsource/tmpl: hGetContents: invalid argument (invalid byte sequence)\nroot@66e6137cfa89:/code# LC_ALL\u003dC.UTF-8 shellcheck source/tmpl\nroot@66e6137cfa89:/code# \n\n\nSo, do you prefer to use:\n\nroot@66e6137cfa89:/code# LC_ALL\u003dC.UTF-8 SHELL\u003dbash WORKSPACE\u003d/code/ /usr/bin/tap_tool_dispatcher\n\n?",
+      "parentUuid": "da9df570_8bb561cf",
+      "revId": "8a83ff67cb966cfe187f87722b024751d8002c5b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da9df570_ab7b0528",
         "filename": "t/tap-tests-docker/Dockerfile",
         "patchSetId": 1
