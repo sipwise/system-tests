@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da9df570_8bb561cf",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-01-05T11:09:18Z",
+      "side": 1,
+      "message": "I was trying to set/use the same locales we have on jenkins-slave. Otherwise we might have new surprises for some other tests/files. The goal is to migrate the current jenkins slave env into the Docker and later sure we can try to experiment with the performance optimizations here. \n\nI am in a bit of rush here, as at the moment no reviews for upgrade.git/templates.git can be done as they fail on shellcheck. Those version does fix them (since locales identical to jenkins-slave nodes).\n\nP.S. I didn\u0027t try C.UTF-8 , you can play with it on your side:\nhttps://paste.mgm.sipwise.com/show/3541/\nHave fun! :-)",
+      "parentUuid": "da9df570_0b73314e",
+      "revId": "8a83ff67cb966cfe187f87722b024751d8002c5b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da9df570_ab7b0528",
         "filename": "t/tap-tests-docker/Dockerfile",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-05T10:52:55Z",
       "side": 1,
       "message": "fails",
+      "revId": "8a83ff67cb966cfe187f87722b024751d8002c5b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da9df570_4bbb79c4",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-01-05T11:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da9df570_ab7b0528",
       "revId": "8a83ff67cb966cfe187f87722b024751d8002c5b",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
