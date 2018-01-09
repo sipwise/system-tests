@@ -1,9 +1,4 @@
 port:
-  # glusterfs
-  tcp:24009:
-    listening: true
-    ip: ["0.0.0.0"]
-
   # Monit
   tcp:2812:
     listening: true
