@@ -21,8 +21,8 @@ service:
     running: true
 
   motd:
-    enabled: true
-    running: true
+    enabled: [% general.init_system == 'systemd' ? 'false' : 'true' %]
+    running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
 
   mysql:
     enabled: true
