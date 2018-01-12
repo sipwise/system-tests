@@ -9,7 +9,7 @@ process:
     running: true
 
   getty:
-    running: true
+    running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
 
   mysqld:
     running: true
