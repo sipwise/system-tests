@@ -38,7 +38,7 @@ package:
   insserv:
     installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
 
-  startpar
+  startpar:
     installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
 
   initscripts:
