@@ -16,6 +16,24 @@
       "revId": "db255962bf477fcb95b6d11c569b9e01f88e6388",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8c0949_2ecc8735",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-15T13:26:24Z",
+      "side": 1,
+      "message": "Actually perhaps you want to amend the commit message to make this clear. :)",
+      "parentUuid": "7a8c0949_ee4a7fab",
+      "revId": "db255962bf477fcb95b6d11c569b9e01f88e6388",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
