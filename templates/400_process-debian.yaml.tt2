@@ -15,7 +15,7 @@ process:
     running: true
 
   mysqld_safe:
-    running: true
+    running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
 
   nginx:
     running: true
