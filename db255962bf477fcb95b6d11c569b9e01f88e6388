@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a8c0949_ee4a7fab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-15T13:25:56Z",
+      "side": 1,
+      "message": "The motd.dynamic stuff is handled by pam. So there\u0027s no need for systemd to do anything here. https://sources.debian.org/src/systemd/236-3/debian/systemd.links/?hl\u003d71#L71",
+      "revId": "db255962bf477fcb95b6d11c569b9e01f88e6388",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
