@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a8c0949_91675eea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-01-15T16:15:51Z",
+      "side": 1,
+      "message": "we need to rewrite carrier approach BTW, reported here\nhttps://sipwise.my.workfront.com/task/view?ID\u003d5a5cd3480047809fa468f75ce651b798",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "d8e82635867070e1d853ecd404a8b79f27b60b96",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
