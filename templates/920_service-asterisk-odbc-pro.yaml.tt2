@@ -16,7 +16,7 @@
 
 command:
 
-[% IF is_proxy && asterisk.enabled == "yes" && node_state == 'active' -%]
+[% IF is_proxy && asterisk.enable == "yes" && node_state == 'active' -%]
   asterisk -rx "odbc show":
     exit-status: 0
     stdout:

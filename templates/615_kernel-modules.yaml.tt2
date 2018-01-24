@@ -20,7 +20,7 @@ command:
     exit-status: 0
     stdout: []
     stderr: []
-[% IF is_proxy && node_state == 'active' && rtpproxy.enabled == "yes" -%]
+[% IF is_proxy && node_state == 'active' && rtpproxy.enable == "yes" -%]
 
   lsmod | grep -c xt_RTPENGINE:
     exit-status: 0

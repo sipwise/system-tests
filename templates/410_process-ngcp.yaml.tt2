@@ -37,7 +37,7 @@
 command:
 
   "pgrep -c -f '[l]ua5.1 /usr/bin/prosody'":
-[% IF is_proxy && prosody.enabled == 'yes' && node_state == 'active' -%]
+[% IF is_proxy && prosody.enable == 'yes' && node_state == 'active' -%]
     exit-status: 0
     stdout:
       - "1"
@@ -48,7 +48,7 @@ command:
     stderr: []
 
   "pgrep -c -f '[p]erl-fcgi-pm \\[NGCP::Panel\\]'":
-[% IF is_mgmt && www_admin.enabled == 'yes' -%]
+[% IF is_mgmt && www_admin.enable == 'yes' -%]
     exit-status: 0
     stdout:
       - "1"
