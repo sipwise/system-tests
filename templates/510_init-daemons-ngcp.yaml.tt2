@@ -30,7 +30,7 @@
   argv.role = 'li';
   PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
   is_li = out;
-  is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enabled == 'yes';
+  is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enable == 'yes';
 -%]
 [% PERL -%]
     my $node_state = qx(ngcp-check-active -v);
@@ -40,19 +40,19 @@
 [% END -%]
 
 service:
-[% IF asterisk.enabled == "yes" -%]
+[% IF asterisk.enable == "yes" -%]
 
   asterisk:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
-[% IF intercept.enabled == "yes" -%]
+[% IF intercept.enable == "yes" -%]
 
   captagent:
     enabled: false
     running: [% is_proxy || is_rtp ? 'true' : 'false' %]
 [% END -%]
-[% IF turnserver.enabled == 'yes' -%]
+[% IF turnserver.enable == 'yes' -%]
 
   coturn:
     enabled: false
@@ -88,13 +88,13 @@ service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
-[% IF mediator.enabled == 'yes' -%]
+[% IF mediator.enable == 'yes' -%]
 
   mediator:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
-[% IF www_admin.enabled == 'yes' -%]
+[% IF www_admin.enable == 'yes' -%]
 
   ngcp-panel:
     enabled: [% is_mgmt ? 'true' : 'false' %]
@@ -106,13 +106,13 @@ service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
-[% IF rtpproxy.enabled == "yes" -%]
+[% IF rtpproxy.enable == "yes" -%]
 
   ngcp-rtpengine-daemon:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_rtp && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
-[% IF sems.enabled == "yes" -%]
+[% IF sems.enable == "yes" -%]
 
   ngcp-sems:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
@@ -122,13 +122,13 @@ service:
   ngcp-witnessd:
     enabled: true
     running: true
-[% IF nginx.enabled == 'yes' -%]
+[% IF nginx.enable == 'yes' -%]
 
   nginx:
     enabled: true
     running: [% (is_mgmt || is_li_enabled) ? 'true' : 'false' %]
 [% END -%]
-[% IF prosody.enabled == 'yes' -%]
+[% IF prosody.enable == 'yes' -%]
 
   prosody:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
@@ -140,13 +140,13 @@ service:
     enabled: true
     running: [% is_lb ? 'true' : 'false' %]
 [% END -%]
-[% IF redis.enabled == "yes" -%]
+[% IF redis.enable == "yes" -%]
 
   redis-server:
     enabled: true
     running: [% (is_rtp || is_proxy || is_db) ? 'true' : 'false' %]
 [% END -%]
-[% IF ldap.enabled == "yes" -%]
+[% IF ldap.enable == "yes" -%]
 
   slapd:
     enabled: false
