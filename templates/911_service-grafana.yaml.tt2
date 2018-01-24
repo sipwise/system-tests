@@ -9,12 +9,12 @@
   argv.role = 'li';
   PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
   is_li = out;
-  is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enabled == 'yes';
+  is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enable == 'yes';
 -%]
 
 command:
 
-[% IF grafana.enabled == 'yes' && (is_mgmt || is_li_enabled) -%]
+[% IF grafana.enable == 'yes' && (is_mgmt || is_li_enabled) -%]
   sqlite3 /var/lib/grafana/grafana.db "select name from data_source":
     exit-status: 0
     stdout:
