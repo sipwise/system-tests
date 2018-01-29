@@ -1,3 +1,41 @@
+ngcp-system-tests (6.2.0.0+0~mr6.2.0.0) unstable; urgency=medium
+
+  [ Manuel Montecelo ]
+  * [4b1bb08] TT#24206 Use of legacy network device names
+  * [edad916] TT#29356 Improve the way to install checkbashisms from devscripts
+  * [4921860] TT#18774 Migrate NGCP from sysv to systemd
+  * [d15e2bd] TT#18774 Migrate NGCP from sysv to systemd, motd
+  * [d8e8263] TT#18774 Migrate NGCP from sysv to systemd, mysqld_safe
+
+  [ Alexander Lutay ]
+  * [6ed9197] TT#29356 Add Jessie based Dockerfile for Jenkins tap-tests
+  * [be85d77] TT#29356 Use pep8 from jessie-backports as requested in TT#23863
+  * [fe76462] TT#29356 Move perlcriticrc with all the history from puppet-sipwise.git to system-tests.git
+  * [96785fc] TT#29621 Set LC_ALL=C.UTF-8 to fix shellcheck error: hGetContents: invalid argument
+  * [f0f6422] TT#29920 Remove glusterfs port check, it fails very often nowadays
+  * [54a4f8a] TT#26266 Fix a390ae4b: add missing ':'
+
+  [ Victor Seva ]
+  * [a165588] MT#2655 jenkins: provide basic .perlcriticrc file on slaves
+
+  [ Michael Prokop ]
+  * [33134ae] MT#2655 Fix usage of perlcriticrc file within puppet
+  * [1d9b459] MT#2655 Adjust perlcriticrc for usage on Debian/wheezy + with perlcritic_tap
+
+  [ Gerhard Jungwirth ]
+  * [b4e76f9] MT#13191 perlcritic RequireUseStrict regard Mojo
+  * [24b806e] TT#14057 add perlcritic POD sections for scripts
+
+  [ Guillem Jover ]
+  * [ba2bd2d] MT#16907 Update perlcritic configuration
+  * [3a0f235] TT#14963 Improve perlcritic output message
+  * [0905e5b] TT#14963 Clarify perlcritic output
+  * [a390ae4] TT#26266 Fix systemd support
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 29 Jan 2018 21:58:08 +0100
+
 ngcp-system-tests (6.1.0.0+0~mr6.1.0.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
