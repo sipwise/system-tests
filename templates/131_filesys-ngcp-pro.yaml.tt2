@@ -107,8 +107,8 @@ file:
     filetype: file
     contains: []
 
-  /etc/mysql/inc/my.mysqld_multi.cnf:
-    exists: true
+  /etc/mysql/conf.d/my2.cnf:
+    exists: [% general.ngcp_type == 'carrier' ? 'true' : 'false' %]
     mode: "0444"
     owner: root
     group: root
