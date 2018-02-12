@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh
 # This script can be called in the following ways:
 #
 # After the package was removed:
@@ -25,6 +25,8 @@
 #
 # If preinst fails during upgrade:
 # <new-postrm> abort-upgrade <old-version>
+
+set -e
 
 case "$1" in
   purge)
