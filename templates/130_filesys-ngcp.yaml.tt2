@@ -120,14 +120,6 @@ file:
     filetype: directory
     contains: []
 
-  /etc/mysql/cluster.ini:
-    exists: [% general.ngcp_type == 'carrier' ? 'true' : 'false' %]
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-
   /etc/mysql/conf.d:
     exists: true
     mode: "0755"
