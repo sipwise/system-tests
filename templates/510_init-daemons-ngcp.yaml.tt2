@@ -176,3 +176,9 @@ service:
     enabled: true
     running: [% (is_db || is_mgmt) ? 'true' : 'false' %]
 [% END -%]
+[% IF general.license_key != '' -%]
+
+  ngcp-license-client:
+    enabled: true
+    running: true
+[% END -%]
