@@ -35,17 +35,19 @@ package:
   systemd-shim:
     installed: false
 
-  insserv:
-    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
-
-  startpar:
-    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
-
-  initscripts:
-    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
-
-  sysv-rc:
-    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
+# Disabled till mr7.0 as the packages will be available after LTS upgrade mr5.5->mr6.5
+# (see the discussion in https://gerrit.mgm.sipwise.com/#/c/19275/ for more details)
+#  insserv:
+#    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
+#
+#  startpar:
+#    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
+#
+#  initscripts:
+#    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
+#
+#  sysv-rc:
+#    installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
 
   sysvinit-core:
     installed: [% general.init_system == 'sysv' ? 'true' : 'false' %]
