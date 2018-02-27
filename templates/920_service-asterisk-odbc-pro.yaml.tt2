@@ -17,10 +17,10 @@
 command:
 
 [% IF is_proxy && asterisk.enabled == "yes" && node_state == 'active' -%]
-  asterisk -rx "odbc show":
+  asterisk -rx "odbc read ODBC_VMGREETUNAVAIL test exec":
     exit-status: 0
     stdout:
-    - "/Number of active connections: 1/"
+    - "/Returned 1 row/"
     stderr: []
     timeout: 10000
 
