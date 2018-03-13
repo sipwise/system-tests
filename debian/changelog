@@ -1,3 +1,13 @@
+ngcp-system-tests (6.0.2.1+0~mr6.0.2.1) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [615f38b] TT#29920 Remove glusterfs port check, it fails very often nowadays
+  * [b69d2f4] TT#33375 Switch asterisk -rx "odbc show" -> "odbc read ODBC_VMGREETUNAVAIL test exec"
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 13 Mar 2018 14:07:37 +0100
+
 ngcp-system-tests (6.0.2.0+0~mr6.0.2.0) unstable; urgency=medium
 
   * New release.
