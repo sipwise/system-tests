@@ -10,10 +10,10 @@ Homepage: https://www.sipwise.com/
 Package: ngcp-system-tests
 Architecture: all
 Depends:
- ${misc:Depends},
  curl,
  net-tools,
  procps,
+ ${misc:Depends},
 Description: run system tests against NGCP systems
  This package provides test scripts to check the system
  state of the SIP based Open Source Class5 VoIP soft-switch platform
