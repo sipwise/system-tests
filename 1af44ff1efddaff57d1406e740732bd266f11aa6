@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_002c0649",
+        "filename": "templates/131_filesys-ngcp-pro.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-04-03T10:02:57Z",
+      "side": 1,
+      "message": "please:\n  \n  /etc/mysql/inc/my.mysqld1.carrier_db.cnf:\n    exists: true\n    mode: \"0444\"\n    owner: root\n    group: root\n    filetype: file\n    contains: []\n[% IF general.ngcp_type \u003d\u003d \u0027sppro\u0027 -%]\n    size: 0\n[% END -%]",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 14
+      },
+      "revId": "1af44ff1efddaff57d1406e740732bd266f11aa6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
