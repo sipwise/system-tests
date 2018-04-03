@@ -1,3 +1,25 @@
+ngcp-system-tests (6.2.1.0+0~mr6.2.1.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [3f53a3a] TT#17987 Migrate 'enableD' options to standard 'enable' (to keep them in sync)
+  * [1ef2ce9] TT#18774 Update system-tests for expected my.cnf files
+  * [c2d51f1] TT#32985 Clean MySQL NDB cluster system tests
+  * [836b6a0] TT#31600 Ensure ngcp-license-client is running if license key is defined
+  * [3b0936b] TT#18774 Do not check sysv related packages till mr7.0
+  * [5005c9b] TT#33375 Switch asterisk -rx "odbc show" -> "odbc read ODBC_VMGREETUNAVAIL test exec"
+  * [149b0e1] TT#33911 Run 'wrap-and-sort -sat'
+
+  [ Guillem Jover ]
+  * [5e61e40] TT#32956 Do not ignore errors from maintscripts
+  * [80018ba] TT#32956 Do not ship empty conffiles control files
+
+  [ Mykola Malkov ]
+  * [b933378] TT#34758 Extend list of existing mysql files
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 03 Apr 2018 22:33:47 +0200
+
 ngcp-system-tests (6.2.0.0+0~mr6.2.0.0) unstable; urgency=medium
 
   [ Manuel Montecelo ]
