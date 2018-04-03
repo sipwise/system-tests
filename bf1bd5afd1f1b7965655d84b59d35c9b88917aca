@@ -16,6 +16,23 @@
       "revId": "bf1bd5afd1f1b7965655d84b59d35c9b88917aca",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_80f936cb",
+        "filename": "templates/131_filesys-ngcp-pro.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-04-03T09:21:17Z",
+      "side": 1,
+      "message": "what about:\n\n[% IF general.ngcp_type \u003d\u003d \u0027sppro\u0027 -%]\n  size: 0\n[% END -%]",
+      "revId": "bf1bd5afd1f1b7965655d84b59d35c9b88917aca",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
