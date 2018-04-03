@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_c00e1ee5",
+        "filename": "templates/131_filesys-ngcp-pro.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-04-03T09:17:16Z",
+      "side": 1,
+      "message": "the file is already pro only, see\nhttps://gerrit.mgm.sipwise.com/gitweb?p\u003dsystem-tests.git;a\u003dblob;f\u003dtemplates/goss.yaml.tt2;h\u003dcc80af7008685cfe4e779b60c2cb12769bc7c85e;hb\u003dbf1bd5afd1f1b7965655d84b59d35c9b88917aca#l6",
+      "revId": "bf1bd5afd1f1b7965655d84b59d35c9b88917aca",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
