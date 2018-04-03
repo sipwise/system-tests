@@ -108,7 +108,7 @@ file:
     contains: []
 
   /etc/mysql/conf.d/my2.cnf:
-    exists: [% general.ngcp_type == 'carrier' ? 'true' : 'false' %]
+    exists: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
     mode: "0444"
     owner: root
     group: root
