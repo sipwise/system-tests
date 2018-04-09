@@ -12,6 +12,14 @@
   is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enable == 'yes';
 -%]
 
+file:
+
+  /var/lib/grafana/grafana.db:
+    exists: true
+    filetype: file
+    size:
+      not: 0
+
 command:
 
 [% IF grafana.enable == 'yes' && (is_mgmt || is_li_enabled) -%]
