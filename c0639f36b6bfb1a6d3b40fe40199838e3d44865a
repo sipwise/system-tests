@@ -34,6 +34,24 @@
       "revId": "c0639f36b6bfb1a6d3b40fe40199838e3d44865a",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_474b3db1",
+        "filename": "templates/911_service-grafana.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-04-09T18:09:12Z",
+      "side": 1,
+      "message": "\u003e it is clear from the test that file must exist and be non-empty,\n \u003e why -\u003e see git blame/show ;-)\n\nAs I said in the previous comment, it\u0027s easy for us to see git-blame, but maybe not for support if on-site trying to debug a problem.\n\n(I don\u0027t know if they never use these tests and if it\u0027s only used by us in the nightly tests, in this case it doesn\u0027t matter).",
+      "parentUuid": "baa041b7_07653544",
+      "revId": "c0639f36b6bfb1a6d3b40fe40199838e3d44865a",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
