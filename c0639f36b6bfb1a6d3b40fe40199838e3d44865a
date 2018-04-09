@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_c7806d49",
+        "filename": "templates/911_service-grafana.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-04-09T12:45:23Z",
+      "side": 1,
+      "message": "I\u0027d add a comment pointing to the problem, something like:\n\n# this is a problem because grafana treats empty files for DB as R/O and further initialisation is impossible\n\nIt\u0027s fine for us if we can look at the commit message, but if the tests happen when somebody is testing out in the field and encounters this problem, they\u0027re a bit in the blind.",
+      "revId": "c0639f36b6bfb1a6d3b40fe40199838e3d44865a",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
