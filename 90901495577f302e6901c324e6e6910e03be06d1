@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_921a9a16",
+        "filename": "templates/500_init-daemons-dabian.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-13T16:34:43Z",
+      "side": 1,
+      "message": "This is inconsistent with the other entries, but I guess makes it more clear among the other acpid entries.",
+      "range": {
+        "startLine": 3,
+        "startChar": 7,
+        "endLine": 3,
+        "endChar": 15
+      },
+      "revId": "90901495577f302e6901c324e6e6910e03be06d1",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
