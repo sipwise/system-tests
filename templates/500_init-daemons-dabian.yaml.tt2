@@ -12,42 +12,42 @@ service:
     enabled: true
     running: true
 
-  cron:
+  cron.service:
     enabled: true
     running: true
 
-  exim4:
+  exim4.service:
     enabled: true
     running: true
 
-  io-scheduler:
+  io-scheduler.service:
     enabled: true
     running: true
 
-  influxdb:
+  influxdb.service:
     enabled: true
     running: true
 
-  motd:
+  motd.service:
     enabled: [% general.init_system == 'systemd' ? 'false' : 'true' %]
     running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
 
-  mysql:
+  mysql.service:
     enabled: true
     running: true
 
-  ntp:
+  ntp.service:
     enabled: true
     running: true
 
-  rsyslog:
+  rsyslog.service:
     enabled: true
     running: true
 
-  ssh:
+  ssh.service:
     enabled: true
     running: true
 
-  telegraf:
+  telegraf.service:
     enabled: true
     running: true
