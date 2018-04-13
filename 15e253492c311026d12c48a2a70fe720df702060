@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_b2923e56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-13T17:23:59Z",
+      "side": 1,
+      "message": "There is no race here, systemd will only assume .service when a service is specified w/o any suffix. To refer to any of the other units, .mount, .path, .socket, etc you always need to be explicit.",
+      "revId": "15e253492c311026d12c48a2a70fe720df702060",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
