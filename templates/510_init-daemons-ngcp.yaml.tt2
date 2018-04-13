@@ -170,12 +170,6 @@ service:
     enabled: false
     running: true
 [% END -%]
-[% IF elasticsearch.enable == 'yes' -%]
-
-  elasticsearch:
-    enabled: true
-    running: [% (is_db || is_mgmt) ? 'true' : 'false' %]
-[% END -%]
 [% IF general.license_key != '' -%]
 
   ngcp-license-client:
