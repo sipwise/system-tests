@@ -1,6 +1,14 @@
 service:
 
-  acpid:
+  acpid.service:
+    enabled: false
+    running: true
+
+  acpid.socket:
+    enabled: true
+    running: true
+
+  acpid.path:
     enabled: true
     running: true
 
