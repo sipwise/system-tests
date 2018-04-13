@@ -20,22 +20,22 @@
 [% END -%]
 
 service:
-  influxdb-relay:
+  influxdb-relay.service:
     enabled: true
     running: true
 
-  snmpd:
+  snmpd.service:
     enabled: true
     running: true
 
-  ngcp-snmp-agent:
+  ngcp-snmp-agent.service:
     enabled: true
     running: true
 [% IF faxserver.enable == "yes" -%]
 
   # XXX: This should be moved to the non-pro file, but the faxserver.enable
   # is incorrectly enabled on spce.
-  ngcp-faxserver:
+  ngcp-faxserver.service:
     enabled: false
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
