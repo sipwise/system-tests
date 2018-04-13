@@ -42,61 +42,61 @@
 service:
 [% IF asterisk.enable == "yes" -%]
 
-  asterisk:
+  asterisk.service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
 [% IF intercept.enable == "yes" -%]
 
-  captagent:
+  captagent.service:
     enabled: false
     running: [% is_proxy || is_rtp ? 'true' : 'false' %]
 [% END -%]
 [% IF turnserver.enable == 'yes' -%]
 
-  coturn:
+  coturn.service:
     enabled: false
     running: [% is_rtp ? 'true' : 'false' %]
 [% END -%]
 [% IF bootenv.dhcp.enable == 'yes' -%]
 
-  dnsmasq:
+  dnsmasq.service:
     enabled: false
     running: [% is_mgmt ? 'true' : 'false' %]
 [% END -%]
 [% IF haproxy.enable == "yes" -%]
 
-  haproxy:
+  haproxy.service:
     enabled: false
     running: [% is_lb ? 'true' : 'false' %]
 [% END -%]
 [% IF heartbeat.hb_watchdog.enable == 'yes' -%]
 
-  hb_watchdog:
+  hb_watchdog.service:
     enabled: true
     running: true
 [% END -%]
 [% IF kamailio.lb.start == "yes" -%]
 
-  kamailio-lb:
+  kamailio-lb.service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_lb && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
 [% IF kamailio.proxy.start == "yes" -%]
 
-  kamailio-proxy:
+  kamailio-proxy.service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
 [% IF mediator.enable == 'yes' -%]
 
-  mediator:
+  mediator.service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
 [% IF www_admin.enable == 'yes' -%]
 
-  ngcp-panel:
+  ngcp-panel.service:
     enabled: [% is_mgmt ? 'true' : 'false' %]
     running: [% is_mgmt ? 'true' : 'false' %]
 [% END -%]
@@ -108,71 +108,71 @@ service:
 [% END -%]
 [% IF rtpproxy.enable == "yes" -%]
 
-  ngcp-rtpengine-daemon:
+  ngcp-rtpengine-daemon.service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_rtp && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
 [% IF sems.enable == "yes" -%]
 
-  ngcp-sems:
+  ngcp-sems.service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
 
-  ngcp-witnessd:
+  ngcp-witnessd.service:
     enabled: true
     running: true
 [% IF nginx.enable == 'yes' -%]
 
-  nginx:
+  nginx.service:
     enabled: true
     running: [% (is_mgmt || is_li_enabled) ? 'true' : 'false' %]
 [% END -%]
 [% IF prosody.enable == 'yes' -%]
 
-  prosody:
+  prosody.service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
 [% IF pushd.enable == "yes" -%]
 
-  ngcp-pushd:
+  ngcp-pushd.service:
     enabled: true
     running: [% is_lb ? 'true' : 'false' %]
 [% END -%]
 [% IF redis.enable == "yes" -%]
 
-  redis-server:
+  redis-server.service:
     enabled: true
     running: [% (is_rtp || is_proxy || is_db) ? 'true' : 'false' %]
 [% END -%]
 [% IF ldap.enable == "yes" -%]
 
-  slapd:
+  slapd.service:
     enabled: false
     running: [% is_mgmt ? 'true' : 'false' %]
 [% END -%]
 [% IF pbx.enable == "yes" -%]
 
-  sems-pbx:
+  sems-pbx.service:
     enabled: false
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
 [% IF voisniff.daemon.start == 'yes' -%]
 
-  voisniff-ng:
+  voisniff-ng.service:
     enabled: false
     running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
 [% IF is_mgmt && general.ngcp_type == 'carrier' -%]
 
-  ngcpcfg-api:
+  ngcpcfg-api.service:
     enabled: false
     running: true
 [% END -%]
 [% IF general.license_key != '' -%]
 
-  ngcp-license-client:
+  ngcp-license-client.service:
     enabled: true
     running: true
 [% END -%]
