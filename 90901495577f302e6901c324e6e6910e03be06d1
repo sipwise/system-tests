@@ -46,6 +46,30 @@
       "revId": "90901495577f302e6901c324e6e6910e03be06d1",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_72eef6ed",
+        "filename": "templates/500_init-daemons-dabian.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-04-13T16:39:28Z",
+      "side": 1,
+      "message": "Improved here https://gerrit.mgm.sipwise.com/#/c/20487/",
+      "parentUuid": "baa041b7_52d3f238",
+      "range": {
+        "startLine": 3,
+        "startChar": 7,
+        "endLine": 3,
+        "endChar": 15
+      },
+      "revId": "90901495577f302e6901c324e6e6910e03be06d1",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
