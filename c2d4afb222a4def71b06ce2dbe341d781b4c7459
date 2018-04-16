@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_5888b322",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-04-16T16:45:57Z",
+      "side": 1,
+      "message": "I cannot parse that phrase very well, do you mean something like: \"To prevent race conditions due to mistakes between .service, .path and .socket\" ?",
+      "revId": "c2d4afb222a4def71b06ce2dbe341d781b4c7459",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
