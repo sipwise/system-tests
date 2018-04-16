@@ -16,6 +16,24 @@
       "revId": "15e253492c311026d12c48a2a70fe720df702060",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_35873863",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-04-16T09:04:20Z",
+      "side": 1,
+      "message": "I mean \"understanding race conditions\".",
+      "parentUuid": "baa041b7_b2923e56",
+      "revId": "15e253492c311026d12c48a2a70fe720df702060",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
