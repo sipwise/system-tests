@@ -1,3 +1,12 @@
+ngcp-system-tests (5.5.4.1+0~mr5.5.4.1) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [e96f6f2] TT#33375 Switch asterisk -rx "odbc show" -> "odbc read ODBC_VMGREETUNAVAIL test exec"
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 16 Apr 2018 16:09:07 +0200
+
 ngcp-system-tests (5.5.4.0+0~mr5.5.4.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
