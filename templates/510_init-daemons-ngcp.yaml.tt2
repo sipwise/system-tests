@@ -56,10 +56,6 @@ service:
     enabled: false
     running: [% is_mgmt && bootenv.dhcp.enable == 'yes' ? 'true' : 'false' %]
 
-  haproxy.service:
-    enabled: false
-    running: [% is_lb && haproxy.enable == "yes" ? 'true' : 'false' %]
-
   hb_watchdog.service:
     enabled: [% heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
     running: [% heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
@@ -145,6 +141,10 @@ service:
     running: false
 
   ngcp-snmp-agent.service:
+    enabled: false
+    running: false
+
+  haproxy.service:
     enabled: false
     running: false
 
