@@ -136,6 +136,18 @@ service:
     enabled: false
     running: [% is_proxy && node_state == 'active' && faxserver.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
 
+  influxdb-relay.service:
+    enabled: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
+    running: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
+
+  snmpd.service:
+    enabled: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
+    running: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
+
+  ngcp-snmp-agent.service:
+    enabled: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
+    running: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
+
 [% IF general.license_key != '' -%]
   ngcp-license-client.service:
     enabled: true
