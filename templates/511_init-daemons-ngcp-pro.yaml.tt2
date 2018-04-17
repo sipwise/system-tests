@@ -39,3 +39,7 @@ service:
   ngcpcfg-api.service:
     enabled: [% is_mgmt ? 'true' : 'false' -%]
     running: [% is_mgmt ? 'true' : 'false' -%]
+
+  haproxy.service:
+    enabled: false
+    running: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
