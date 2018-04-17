@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_df995b21",
+        "filename": "templates/510_init-daemons-ngcp.yaml.tt2",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-17T10:53:58Z",
+      "side": 1,
+      "message": "This is not correct this file is processed on all ngcp types.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 18
+      },
+      "revId": "45cae800014fcfe9e37814e67db8cb3e47be82d5",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
