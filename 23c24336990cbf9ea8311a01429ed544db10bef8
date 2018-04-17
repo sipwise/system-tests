@@ -46,6 +46,30 @@
       "revId": "23c24336990cbf9ea8311a01429ed544db10bef8",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_3faa871a",
+        "filename": "templates/510_init-daemons-ngcp.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-17T11:07:20Z",
+      "side": 1,
+      "message": "This is very confusing :( I\u0027d prefer if you added a CE only file or similar then.",
+      "parentUuid": "9aa53dc9_7f892fca",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 18
+      },
+      "revId": "23c24336990cbf9ea8311a01429ed544db10bef8",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
