@@ -18,9 +18,6 @@ gossfile:
 [% END -%]
   500_init-daemons-dabian.yaml: {}
   510_init-daemons-ngcp.yaml: {}
-[% IF general.ngcp_type != 'spce' -%]
-  511_init-daemons-ngcp-pro.yaml: {}
-[% END -%]
   610_kernel-sysctl-params.yaml: {}
   615_kernel-modules.yaml: {}
   800_network-hostname.yaml: {}
