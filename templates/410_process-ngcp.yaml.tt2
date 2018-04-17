@@ -111,5 +111,8 @@ process:
   rtpengine:
     running: [% is_rtp && node_state == 'active' ? 'true' : 'false' %]
 
+  rtpengine-recording:
+    running: [% is_rtp && node_state == 'active' && rtpproxy.recording.enable == "yes" ? 'true' : 'false' %]
+
   telegraf:
     running: true
