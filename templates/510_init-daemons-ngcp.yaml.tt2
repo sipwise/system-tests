@@ -132,6 +132,10 @@ service:
     enabled: [% is_mgmt && general.ngcp_type != 'spce' ? 'true' : 'false' %]
     running: [% is_mgmt && general.ngcp_type != 'spce' ? 'true' : 'false' %]
 
+  ngcp-faxserver.service:
+    enabled: false
+    running: [% is_proxy && node_state == 'active' && faxserver.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+
 [% IF general.license_key != '' -%]
   ngcp-license-client.service:
     enabled: true

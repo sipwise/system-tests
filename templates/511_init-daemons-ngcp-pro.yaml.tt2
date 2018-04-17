@@ -31,9 +31,3 @@ service:
   ngcp-snmp-agent.service:
     enabled: true
     running: true
-
-  # XXX: This should be moved to the non-pro file, but the faxserver.enable
-  # is incorrectly enabled on spce.
-  ngcp-faxserver.service:
-    enabled: false
-    running: [% is_proxy && node_state == 'active' && faxserver.enable == "yes" ? 'true' : 'false' %]
