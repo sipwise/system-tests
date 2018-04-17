@@ -22,6 +22,30 @@
       "revId": "9281b90f076eef86e382ded8eef72840196457f4",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_bf11f75f",
+        "filename": "templates/511_init-daemons-ngcp-pro.yaml.tt2",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-04-17T11:27:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa53dc9_df671b24",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "9281b90f076eef86e382ded8eef72840196457f4",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
