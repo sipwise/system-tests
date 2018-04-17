@@ -136,6 +136,18 @@ service:
     enabled: false
     running: false
 
+  influxdb-relay.service:
+    enabled: false
+    running: false
+
+  snmpd.service:
+    enabled: false
+    running: false
+
+  ngcp-snmp-agent.service:
+    enabled: false
+    running: false
+
 [% IF general.license_key != '' -%]
   ngcp-license-client.service:
     enabled: true
