@@ -106,6 +106,12 @@ service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
+[% IF rtpproxy.recording.enable == "yes" -%]
+
+  ngcp-rtpengine-recording-daemon.service:
+    enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
+    running: [% is_rtp && node_state == 'active' ? 'true' : 'false' %]
+[% END -%]
 [% IF rtpproxy.enable == "yes" -%]
 
   ngcp-rtpengine-daemon.service:
