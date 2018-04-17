@@ -22,6 +22,30 @@
       "revId": "23c24336990cbf9ea8311a01429ed544db10bef8",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_7f892fca",
+        "filename": "templates/510_init-daemons-ngcp.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-04-17T10:58:51Z",
+      "side": 1,
+      "message": "Right, while goss the predefined order and PRO file is loaded later, so PRO/Carrier will overwrite CE definition here ;-)",
+      "parentUuid": "9aa53dc9_1ff9034e",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 18
+      },
+      "revId": "23c24336990cbf9ea8311a01429ed544db10bef8",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
