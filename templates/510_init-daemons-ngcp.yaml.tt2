@@ -132,6 +132,10 @@ service:
     enabled: false
     running: false
 
+  ngcp-faxserver.service:
+    enabled: false
+    running: false
+
 [% IF general.license_key != '' -%]
   ngcp-license-client.service:
     enabled: true
