@@ -60,7 +60,7 @@ service:
     enabled: false
     running: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
 
-  hb_watchdog.service:
+  ngcp-hb-watchdog.service:
     enabled: [% heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
     running: [% heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
 

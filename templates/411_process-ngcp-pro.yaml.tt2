@@ -28,7 +28,7 @@ process:
   glusterfs:
     running: true
 
-  hb_watchdog:
+  ngcp-hb-watchdog:
     running: true
 
   heartbeat:
