@@ -32,6 +32,10 @@ service:
     enabled: [% general.init_system == 'systemd' ? 'false' : 'true' %]
     running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
 
+  mariadb.service:
+    enabled: true
+    running: true
+
   mysql.service:
     enabled: true
     running: true
