@@ -28,7 +28,9 @@ process:
   glusterfs:
     running: true
 
-  hb_watchdog:
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters).
+  ngcp-hb-watchdo:
     running: true
 
   heartbeat:
