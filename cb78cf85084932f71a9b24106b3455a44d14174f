@@ -22,6 +22,30 @@
       "revId": "cb78cf85084932f71a9b24106b3455a44d14174f",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aaa499b_3273d84f",
+        "filename": "templates/820_network-ports-debian.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-04-26T14:31:26Z",
+      "side": 0,
+      "message": "it can listen something IF ssh is already established... so better remove it here. ACK?",
+      "parentUuid": "7aaa499b_f28c5037",
+      "range": {
+        "startLine": 4,
+        "startChar": 15,
+        "endLine": 4,
+        "endChar": 19
+      },
+      "revId": "cb78cf85084932f71a9b24106b3455a44d14174f",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
