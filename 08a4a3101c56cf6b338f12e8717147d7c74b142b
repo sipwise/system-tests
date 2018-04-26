@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aaa499b_c743d46b",
+        "filename": "templates/500_init-daemons-dabian.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-04-26T11:39:56Z",
+      "side": 0,
+      "message": "maybe keep it as\n\n  ssh.service:\n    enabled: false\n    running: false\n\n\nto ensure there is no dependency on ssh.service in new systemd unit?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "08a4a3101c56cf6b338f12e8717147d7c74b142b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
