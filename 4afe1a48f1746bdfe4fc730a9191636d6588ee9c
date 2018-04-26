@@ -1,0 +1,7 @@
+Verified+1: Jenkins Jenkins
+Code-Review+2: Mykola Malkov <mmalkov@sipwise.com>
+Submitted-by: Alexander Lutay <alutay@sipwise.com>
+Submitted-at: Thu, 26 Apr 2018 16:32:18 +0200
+Reviewed-on: http://gerrit.mgm.sipwise.com/20811
+Project: system-tests
+Branch: refs/heads/master
