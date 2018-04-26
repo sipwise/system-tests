@@ -1,9 +1,4 @@
 port:
-  # OpenSSH
-  tcp:22:
-    listening: true
-    ip: ["0.0.0.0"]
-
   # Exim MTA
   tcp:25:
     listening: true
