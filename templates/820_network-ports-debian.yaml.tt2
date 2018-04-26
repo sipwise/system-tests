@@ -1,8 +1,8 @@
 port:
   # OpenSSH
-  tcp:22:
+  tcp6:22:
     listening: true
-    ip: ["0.0.0.0"]
+    ip: ["::"]
 
   # Exim MTA
   tcp:25:
