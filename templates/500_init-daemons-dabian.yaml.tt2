@@ -48,13 +48,9 @@ service:
     enabled: true
     running: true
 
-  ssh.socket:
+  ssh.service:
     enabled: true
     running: true
-
-  ssh.service:
-    enabled: false
-    running: false
 
   telegraf.service:
     enabled: true
