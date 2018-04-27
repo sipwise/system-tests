@@ -24,7 +24,10 @@ package:
     installed: false
 
   libpam-systemd:
-    installed: false
+    installed: true
+
+  dbus:
+    installed: true
 
   systemd:
     installed: [% general.init_system == 'systemd' ? 'true' : 'false' %]
