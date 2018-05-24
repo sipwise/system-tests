@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_a4f9ebca",
+        "filename": "templates/610_kernel-sysctl-params.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-05-24T09:36:36Z",
+      "side": 1,
+      "message": "BTW, what this magic number means?",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 77
+      },
+      "revId": "5ca9564a49a181d9fa423414be35cd3409f83e07",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
