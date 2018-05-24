@@ -69,6 +69,30 @@
       "revId": "5ca9564a49a181d9fa423414be35cd3409f83e07",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_64f2b39c",
+        "filename": "templates/610_kernel-sysctl-params.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-05-24T11:23:23Z",
+      "side": 1,
+      "message": "\u003e No ideas:\n \u003e \n \u003e root@sp2:~# sysctl kernel.core_pattern\n \u003e kernel.core_pattern \u003d |/lib/systemd/systemd-coredump %P %u %g %s %t\n \u003e 9223372036854775808 %e\n \u003e root@sp2:~#\n\nThis is the predefined value from upstream:\n\n  root@web01a:~# grep core_pattern /usr/lib/sysctl.d/50-coredump.conf                                                                                                         \n  kernel.core_pattern\u003d|/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %e                                                                                    \n\n  root@web01a:~# dpkg -S /usr/lib/sysctl.d/50-coredump.conf                                                                                                                   \n  systemd-coredump: /usr/lib/sysctl.d/50-coredump.conf\n\n\nBasically, it \"filters\" the corefile through systemd-coredump to be able to control sizes and so on, and possibly to do other fancy stuff like logging stack-traces, if we were using journald.\n\nI think that the \"magic number\" is the max size, which is something like MAX_INT (64 bits), but it\u0027s not well documented in manpages so it\u0027s difficult to find the exact answer.",
+      "parentUuid": "fabf19d9_c4af3f93",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "5ca9564a49a181d9fa423414be35cd3409f83e07",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
