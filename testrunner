@@ -9,6 +9,7 @@ diag() {
 }
 
 if ls /var/cores/core.perl-fcgi.sig11* >/dev/null 2>&1 ; then
+  # It has to be improved for systemd-coredump, while I don't know yet how new core will looks like.
   diag "================== NOTE: CORE DUMP DETECTED =================="
   diag "= Removing known cores to prevent failing for the known issues:"
   diag "= 1) MT#21791: Renaming ngcp-panel cores /var/cores/core.perl-fcgi.sig11*"
