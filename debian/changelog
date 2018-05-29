@@ -1,3 +1,32 @@
+ngcp-system-tests (6.4.0.0+0~mr6.4.0.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [c0639f3] TT#26264 Check for empty grafana.db
+  * [734a5c6] TT#35750 Remove obsolete elasticsearch support
+  * [08a4a31] TT#26264 Cleanup ngcp-hb-watchdog systemd service support
+  * [cb78cf8] TT#35912 Switch to a socket activated ssh
+  * [ebd0688] Revert "TT#35912 Remove port 22 check, ssh uses socket activation now"
+  * [d003683] TT#35912 Fix ssh listening address
+
+  [ Alexander Lutay ]
+  * [c1454b7] TT#35201 Switch goss to patched version until upstream accept the fix
+  * [9090149] TT#18774 Fix acpid service status accordingly to mr6.2+ state
+  * [b584e3a] TT#18774 Name services properly in systemd style
+  * [3b61b39] TT#18774 Add ngcp-rtpengine-recording-daemon to system-tests
+  * [5616d61] TT#26264 Test disabled service by goss/system-tests
+  * [994c2f5] TT#26264 Remove confusing comment, faxserver should be not available on CE
+  * [e50dbef] TT#26264 Ensure no PRO services are available and running on CE
+  * [cd8e64b] TT#26264 Ensure haproxy is running on Carrier only (it is not necessary on CE/PRO)
+  * [47f5eab] TT#35502 Check mariadb.service as well as alias mysql.service
+  * [4afe1a4] TT#35912 Remove port 22 check, ssh uses socket activation now
+  * [b8ea8f8] Revert "TT#35912 Fix ssh listening address"
+  * [2c0b062] Revert "TT#35912 Switch to a socket activated ssh"
+  * [5ca9564] TT#34311 Fix systemd-tests after migration to systemd-coredump
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 29 May 2018 10:10:31 +0200
+
 ngcp-system-tests (6.3.0.0+0~mr6.3.0.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
