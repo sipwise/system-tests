@@ -23,8 +23,11 @@ package:
   cgmanager:
     installed: false
 
+  dbus:
+    installed: [% general.init_system == 'systemd' ? 'true' : 'false' %]
+
   libpam-systemd:
-    installed: false
+    installed: [% general.init_system == 'systemd' ? 'true' : 'false' %]
 
   systemd:
     installed: [% general.init_system == 'systemd' ? 'true' : 'false' %]
