@@ -1,3 +1,12 @@
+ngcp-system-tests (6.3.1.2+0~mr6.3.1.2) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [9d9d681] TT#34311 Fix workaround to ignore well known ngcp-panel crashes (new location for mr6.3+)
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 11 Jun 2018 11:39:16 +0200
+
 ngcp-system-tests (6.3.1.1+0~mr6.3.1.1) unstable; urgency=medium
 
   * New release.
