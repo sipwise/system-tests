@@ -17,7 +17,7 @@ severity = 4
 
 # Use Module::Runtime for includes
 [BuiltinFunctions::ProhibitStringyEval]
-allow_includes = 0
+allow_includes = 1
 
 [CodeLayout::ProhibitQuotedWordLists]
 severity = 4
