@@ -1,0 +1,8 @@
+Verified+1: Jenkins Jenkins
+Code-Review+2: Rene Krenn <rkrenn@sipwise.com>
+Code-Review+2: Gerhard Jungwirth <gjungwirth@sipwise.com>
+Submitted-by: Guillem Jover <gjover@sipwise.com>
+Submitted-at: Tue, 19 Jun 2018 15:55:48 +0200
+Reviewed-on: http://gerrit.mgm.sipwise.com/22044
+Project: system-tests
+Branch: refs/heads/master
