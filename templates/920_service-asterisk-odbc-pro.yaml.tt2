@@ -1,11 +1,7 @@
 [%
-  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
-  hostname = out;
+  hostname = ngcp.get_hostname();
 
-  argv.host = hostname;
-  argv.role = 'proxy';
-  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-  is_proxy = out;
+  is_proxy = ngcp.has_role(hostname, 'proxy');
 -%]
 [% PERL -%]
     my $node_state = qx(ngcp-check-active -v);
