@@ -7,7 +7,7 @@
   is_db = ngcp.has_role(hostname, 'db');
   is_rtp = ngcp.has_role(hostname, 'rtp');
   is_li = ngcp.has_role(hostname, 'li');
-  is_li_dist = is_li && cluster_sets.type == 'distributed' && intercept.enable == 'yes';
+  is_li_dist = ngcp.has_role(hostname, 'li_dist');
 -%]
 [% PERL -%]
     my $node_state = qx(ngcp-check-active -v);
