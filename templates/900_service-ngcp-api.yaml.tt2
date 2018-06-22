@@ -1,6 +1,5 @@
 [%
-  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
-  hostname = out;
+  hostname = ngcp.get_hostname();
 
   argv.host = hostname;
   argv.type = 'web_ext';
@@ -34,14 +33,8 @@
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
   api_int_ips = out.merge(api_int_ips);
 
-  argv.role = 'mgmt';
-  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-  is_mgmt = out;
-
-  argv.role = 'li';
-  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-  is_li = out;
-  is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enable == 'yes';
+  is_mgmt = ngcp.has_role(hostname, 'mgmt');
+  is_li_dist = ngcp.has_role(hostname, 'li_dist');
 -%]
 [% PERL -%]
     my $node_state = qx(ngcp-check-active -v);
@@ -171,7 +164,7 @@ command:
     timeout: 30000
 
 
-[% IF www_admin.enable == 'yes' && (is_mgmt || is_li_enabled) && node_state == 'active' -%]
+[% IF www_admin.enable == 'yes' && (is_mgmt || is_li_dist) && node_state == 'active' -%]
   "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/":
     exit-status: 0
     stdout:

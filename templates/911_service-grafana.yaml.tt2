@@ -1,16 +1,8 @@
 [%
-  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
-  hostname = out;
+  hostname = ngcp.get_hostname();
 
-  argv.host = hostname;
-  argv.role = 'mgmt';
-  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-  is_mgmt = out;
-
-  argv.role = 'li';
-  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-  is_li = out;
-  is_li_enabled = is_li && cluster_sets.type == 'distributed' && intercept.enable == 'yes';
+  is_mgmt = ngcp.has_role(hostname, 'mgmt');
+  is_li_dist = ngcp.has_role(hostname, 'li_dist');
 -%]
 
 file:
@@ -23,7 +15,7 @@ file:
 
 command:
 
-[% IF grafana.enable == 'yes' && (is_mgmt || is_li_enabled) -%]
+[% IF grafana.enable == 'yes' && (is_mgmt || is_li_dist) -%]
   sqlite3 /var/lib/grafana/grafana.db "select name from data_source":
     exit-status: 0
     stdout:
