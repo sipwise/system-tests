@@ -1,31 +1,11 @@
 [%
-  PROCESS '/usr/lib/ngcp-ngcpcfg/get_hostname';
-  hostname = out;
+  hostname = ngcp.get_hostname();
 
-  argv.host = hostname;
-  argv.role = 'proxy';
-  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-  is_proxy = out;
-
-  argv.host = hostname;
-  argv.role = 'lb';
-  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-  is_lb = out;
-
-  argv.host = hostname;
-  argv.role = 'mgmt';
-  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-  is_mgmt = out;
-
-  argv.host = hostname;
-  argv.role = 'db';
-  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-  is_db = out;
-
-  argv.host = hostname;
-  argv.role = 'rtp';
-  PROCESS '/usr/lib/ngcp-ngcpcfg/has_role';
-  is_rtp = out;
+  is_proxy = ngcp.has_role(hostname, 'proxy');
+  is_lb = ngcp.has_role(hostname, 'lb');
+  is_mgmt = ngcp.has_role(hostname, 'mgmt');
+  is_db = ngcp.has_role(hostname, 'db');
+  is_rtp = ngcp.has_role(hostname, 'rtp');
 
   argv.host = hostname;
   argv.type = 'sip_ext';
