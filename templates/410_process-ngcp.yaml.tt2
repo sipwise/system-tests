@@ -93,7 +93,7 @@ process:
   mediator:
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 
-[% general.ngcp_type == 'spce' -%]
+[% IF general.ngcp_type == 'spce' -%]
   ngcp-sems:
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 
