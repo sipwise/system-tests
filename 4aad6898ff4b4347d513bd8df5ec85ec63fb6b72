@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ad0253b_7ca6b1c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000020
+      },
+      "writtenOn": "2018-07-12T11:27:57Z",
+      "side": 1,
+      "message": "I think the test is correct and the change we see wasn\u0027t done on purpose and should be fixed.",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "4aad6898ff4b4347d513bd8df5ec85ec63fb6b72",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ad0253b_fce4010e",
         "filename": "templates/130_filesys-ngcp.yaml.tt2",
         "patchSetId": 1
