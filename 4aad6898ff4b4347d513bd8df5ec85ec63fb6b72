@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ad0253b_fce4010e",
+        "filename": "templates/130_filesys-ngcp.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-07-12T10:03:06Z",
+      "side": 1,
+      "message": "I guess we are not using this alternative, but this seems suspect, as we are not using the /etc/mysql/mariadb.cnf file at all AFAICT.",
+      "revId": "4aad6898ff4b4347d513bd8df5ec85ec63fb6b72",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
