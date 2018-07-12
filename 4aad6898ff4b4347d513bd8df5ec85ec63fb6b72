@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ad0253b_3cb039f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T11:44:46Z",
+      "side": 1,
+      "message": "Indeed, it points to an non-existent file, mariadb.cnf does not exist.\n\nWhy\u0027s that, then?  Maybe mariadb was updated in the repo and the update to the new version changes the link?",
+      "parentUuid": "5ad0253b_7ca6b1c2",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "4aad6898ff4b4347d513bd8df5ec85ec63fb6b72",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ad0253b_fce4010e",
         "filename": "templates/130_filesys-ngcp.yaml.tt2",
         "patchSetId": 1
