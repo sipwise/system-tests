@@ -221,6 +221,6 @@ file:
     mode: "0777"
     owner: root
     group: root
-    linked-to: /etc/mysql/my.cnf
+    linked-to: /etc/mysql/mariadb.cnf
     filetype: symlink
     contains: []
