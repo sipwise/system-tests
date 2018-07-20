@@ -197,3 +197,8 @@ port:
   tcp6:8086:
     listening: true
     ip: ["::"]
+
+  # InfluxDb Backup/Restore RPC
+  tcp:8088:
+    listening: true
+    ip: ["127.0.0.1"]
