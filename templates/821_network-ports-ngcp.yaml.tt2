@@ -169,11 +169,16 @@ port:
 
 [% END -%]
   # InfluxDB Admin
-  tcp6:8083:
+  tcp:8083:
     listening: true
-    ip: ["::"]
+    ip: ["127.0.0.1"]
 
   # InfluxDb Query
   tcp6:8086:
     listening: true
     ip: ["::"]
+
+  # InfluxDb Backup/Restore RPC
+  tcp:8088:
+    listening: true
+    ip: ["127.0.0.1"]
