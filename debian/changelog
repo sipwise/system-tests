@@ -1,3 +1,26 @@
+ngcp-system-tests (6.5.0.0+0~mr6.5.0.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [4195916] TT#36228 Fix goss tests to ensure dbus & libpam-systemd are installed on mr6.4+
+  * [708d95d] TT#34311 Fix workaround to ignore well known ngcp-panel crashes (new location for mr6.3+)
+  * [aaf01cb] TT#34311 Fix 9d9d681ab: fix regexp match for known cores
+
+  [ Guillem Jover ]
+  * [99b9b3e] TT#38005 Allow includes within stringy eval in perlcritic
+  * [b995e51] TT#38200 Set missing argv.host for grafana test
+  * [e656d74] TT#38200 Switch to use new ngcp object with methods
+  * [6ace14f] TT#22070 Add missing IF
+  * [3aa4f4e] TT#38200 Switch to use new li_dist role
+  * [c883b41] TT#40700 Do not expose InfluxDB admin and backup/restore RPC service ports
+
+  [ Sergii Kipot ]
+  * [8ee8596] TT#38005 Rebuild docker after perlcritic change
+  * [8bcba5a] TT#39642 Disable title checking for panel subscriber login
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 24 Jul 2018 13:41:58 +0200
+
 ngcp-system-tests (6.4.0.0+0~mr6.4.0.0) unstable; urgency=medium
 
   [ Guillem Jover ]
