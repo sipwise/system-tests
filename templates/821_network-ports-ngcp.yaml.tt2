@@ -196,7 +196,7 @@ port:
   # InfluxDb Query
   tcp6:8086:
     listening: true
-    ip: ["::"]
+    ip: ["[% ha_int_ips.0 %]"]
 
   # InfluxDb Backup/Restore RPC
   tcp:8088:
