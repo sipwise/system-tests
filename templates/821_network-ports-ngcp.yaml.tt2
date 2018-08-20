@@ -189,7 +189,7 @@ port:
 
 [% END -%]
   # InfluxDB Admin
-  tcp6:8083:
+  tcp:8083:
     listening: true
     ip: ["127.0.0.1"]
 
