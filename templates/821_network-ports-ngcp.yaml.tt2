@@ -194,7 +194,7 @@ port:
     ip: ["127.0.0.1"]
 
   # InfluxDb Query
-  tcp6:8086:
+  tcp:8086:
     listening: true
     ip: ["[% ha_int_ips.0 %]"]
 
