@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dae975fb_b1aa4084",
+        "filename": "compare_dbs.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-22T13:06:55Z",
+      "side": 1,
+      "message": "I understand that sometimes is nice to have defaults, but I\u0027d prefer to error-out here if he list cannot be loaded.  Otherwise, there\u0027s a risk that the location of the file changes or env var name changes or, something and that this check keeps using a separate list without raising concerns if noone looks closely at the logs, having in effect a separate list of DBs -- which was a situation that wanted to be avoided when unifying them in this way.\n\nAfter all, this is part of system-tests and not part of a backup or upgrade routines, so failing this test due to not reading the proper file is completely fine and safe, IMO.",
+      "revId": "13194f50157d20cdd0149e9e8da90f1489480839",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
