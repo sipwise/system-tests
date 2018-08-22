@@ -1,2 +1,4 @@
+compare_dbs.pl /usr/share/ngcp-tests/
+compare_dbs.sh /usr/share/ngcp-tests/
 templates/*   /etc/ngcp-config/templates/etc/ngcp-tests/
 testrunner    /usr/share/ngcp-tests/
