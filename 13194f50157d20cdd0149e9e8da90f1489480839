@@ -16,6 +16,24 @@
       "revId": "13194f50157d20cdd0149e9e8da90f1489480839",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_f02560ae",
+        "filename": "compare_dbs.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-08-23T08:00:31Z",
+      "side": 1,
+      "message": "Discussed with Mykola in personal, system test is not proper repo for the test, it will be moved to vmbuilder and is being used as other helpers. Also the test will be used for mr6.4+ only where we have the list of databases to compare.",
+      "parentUuid": "dae975fb_b1aa4084",
+      "revId": "13194f50157d20cdd0149e9e8da90f1489480839",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
