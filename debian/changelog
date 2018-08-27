@@ -1,3 +1,15 @@
+ngcp-system-tests (6.3.3.0+0~mr6.3.3.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [6bf81b1] TT#34311 Fix workaround to ignore well known ngcp-panel crashes (new location for mr6.3+)
+  * [60b5da1] TT#34311 Fix 9d9d681ab: fix regexp match for known cores
+  * [f32f370] TT#40700 Tune InfluxDB listening address (localhost only for now)
+  * [0693408] TT#40700 Fix 6c53cac: check tcp v4 port instead of tcp6
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 27 Aug 2018 16:14:29 +0200
+
 ngcp-system-tests (6.3.2.0+0~mr6.3.2.0) unstable; urgency=medium
 
   * New release.
