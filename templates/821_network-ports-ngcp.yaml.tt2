@@ -170,7 +170,7 @@ port:
 [% END -%]
   # InfluxDB Admin
   tcp:8083:
-    listening: true
+    listening: false
     ip: ["127.0.0.1"]
 
   # InfluxDb Query
@@ -180,5 +180,5 @@ port:
 
   # InfluxDb Backup/Restore RPC
   tcp:8088:
-    listening: true
+    listening: false
     ip: ["127.0.0.1"]
