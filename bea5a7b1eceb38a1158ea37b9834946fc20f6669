@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9af37de9_0373e7b2",
+        "filename": "templates/821_network-ports-ngcp.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-09-24T11:02:11Z",
+      "side": 1,
+      "message": "PRO-trunk\nhttps://jenkins.mgm.sipwise.com/job/system-tester/135472/tapResults/\n\nPort: tcp:8088: listening: doesn\u0027t match, expect: [false] found: [true]",
+      "revId": "bea5a7b1eceb38a1158ea37b9834946fc20f6669",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
