@@ -180,5 +180,5 @@ port:
 
   # InfluxDb Backup/Restore RPC
   tcp:8088:
-    listening: false
+    listening: true
     ip: ["127.0.0.1"]
