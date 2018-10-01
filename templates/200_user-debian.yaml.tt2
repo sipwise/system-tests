@@ -53,6 +53,7 @@ user:
       or:
       - "/var/lib/mysql"
       - "/nonexistent"
+      - "/ngcp-data/mysql"
 
   nobody:
     exists: true
