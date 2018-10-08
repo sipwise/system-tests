@@ -56,6 +56,15 @@ mkdir -p "${REPORT_DIRECTORY}"
 TAP_RESULTS="${REPORT_DIRECTORY}/goss_results.tap"
 
 DEBIAN_RELEASE=$(sed -e 's/\([0-9]*\)\..*/\1/' /etc/debian_version)
+# translate Debian codenames that don't have a version number (yet) into according numbers
+case "${DEBIAN_RELEASE}" in
+  buster*)
+    DEBIAN_RELEASE=10
+    ;;
+  bullseye*)
+    DEBIAN_RELEASE=11
+    ;;
+esac
 DEBIAN_RELEASE=$DEBIAN_RELEASE goss -g "/etc/ngcp-tests/goss.yaml" validate --format tap | tee "${TAP_RESULTS}"
 
 exit "${PIPESTATUS[0]}"
