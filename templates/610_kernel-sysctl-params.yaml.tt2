@@ -9,9 +9,6 @@ kernel-param:
   fs.suid_dumpable:
     value: "2"
 
-  kernel.sysrq:
-    value: "1"
-
   net.core.somaxconn:
     value: "512"
 
