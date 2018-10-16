@@ -1,3 +1,12 @@
+ngcp-system-tests (6.5.1.2+0~mr6.5.1.2) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [c5a29df] TT#42869 Remove kernel.sysrq check from system-tests
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 16 Oct 2018 12:55:50 +0200
+
 ngcp-system-tests (6.5.1.1+0~mr6.5.1.1) unstable; urgency=medium
 
   [ Alexander Lutay ]
