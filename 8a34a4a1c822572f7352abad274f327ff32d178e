@@ -16,6 +16,24 @@
       "revId": "8a34a4a1c822572f7352abad274f327ff32d178e",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ae2911b_b3ceb7b2",
+        "filename": "templates/110_filesys-cores.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T14:10:19Z",
+      "side": 0,
+      "message": "We can merge them if you prefer, but I think that it\u0027s cleaner to have a separate commit to indicate that /var/cores itself was not in use for a while.\n\nAlso in this way, we can merge these now (both parts of removing /var/cores) and not have to wait until we decide the final shape of /var/lib/systemd/coredump and /ngcp-data/coredumps, or don\u0027t have to touch the part of /var/cores if we find that the initial solution is not valid and have to revert, etc.",
+      "parentUuid": "3ae2911b_93af3be3",
+      "revId": "8a34a4a1c822572f7352abad274f327ff32d178e",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
