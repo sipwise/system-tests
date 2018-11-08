@@ -2,7 +2,7 @@ file:
   /var/cores:
     exists: false
 
-  /var/lib/systemd/coredump:
+  /ngcp-data/coredumps:
     exists: true
     mode: "0755"
     owner: root
@@ -10,8 +10,16 @@ file:
     filetype: directory
     contains: []
 
+  /var/lib/systemd/coredump:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    filetype: symlink
+    linked-to: /ngcp-data/coredumps
+
 command:
-  "ls /var/lib/systemd/coredump/":
+  "ls /ngcp-data/coredumps/":
     exit-status: 0
     stdout:
     - "!/^core\\..+/"
