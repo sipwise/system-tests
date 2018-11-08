@@ -1,10 +1,26 @@
 file:
-  /var/lib/systemd/coredump:
+  /ngcp-data/coredumps:
     exists: true
     mode: "0755"
     owner: root
     group: root
     filetype: directory
+    contains: []
+
+command:
+  "ls /ngcp-data/coredumps/":
+    exit-status: 0
+    stdout:
+    - "!/^core\\..+/"
+    stderr: []
+
+file:
+  /var/lib/systemd/coredump:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: symlink
     contains: []
 
 command:
