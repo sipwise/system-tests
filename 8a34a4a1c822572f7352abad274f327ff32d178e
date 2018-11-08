@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ae2911b_93af3be3",
+        "filename": "templates/110_filesys-cores.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-11-08T13:05:34Z",
+      "side": 0,
+      "message": "Maybe you should not remove, but change it to the new behaviour? we are still need to test no cores in /ngcp-data/coredumpts/ Isn\u0027t it?",
+      "revId": "8a34a4a1c822572f7352abad274f327ff32d178e",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
