@@ -34,6 +34,24 @@
       "revId": "8a34a4a1c822572f7352abad274f327ff32d178e",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ae2911b_d398236d",
+        "filename": "templates/110_filesys-cores.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-11-08T17:40:01Z",
+      "side": 0,
+      "message": "Actually shouldn\u0027t this be changed to check whether the dir does *not* exist?",
+      "parentUuid": "3ae2911b_b3ceb7b2",
+      "revId": "8a34a4a1c822572f7352abad274f327ff32d178e",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
