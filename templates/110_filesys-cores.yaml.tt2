@@ -1,20 +1,7 @@
 file:
   /var/cores:
-    exists: true
-    mode: "1777"
-    owner: root
-    group: root
-    filetype: directory
-    contains: []
+    exists: false
 
-command:
-  "ls /var/cores/":
-    exit-status: 0
-    stdout:
-    - "!/^core\\..+/"
-    stderr: []
-
-file:
   /var/lib/systemd/coredump:
     exists: true
     mode: "0755"
