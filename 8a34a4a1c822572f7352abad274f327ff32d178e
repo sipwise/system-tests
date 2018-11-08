@@ -52,6 +52,24 @@
       "revId": "8a34a4a1c822572f7352abad274f327ff32d178e",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ae2911b_53ad5387",
+        "filename": "templates/110_filesys-cores.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T17:43:38Z",
+      "side": 0,
+      "message": "\u003e Actually shouldn\u0027t this be changed to check whether the dir does\n \u003e *not* exist?\n\nWe\u0027ve been not caring about this this for a few releases already, and creating it when it was not needed.\n\nIMO it\u0027s not worth checking for a directory that we don\u0027t really care about, but if you prefer to check for that, we can.",
+      "parentUuid": "3ae2911b_d398236d",
+      "revId": "8a34a4a1c822572f7352abad274f327ff32d178e",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
