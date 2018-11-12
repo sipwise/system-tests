@@ -1,3 +1,25 @@
+ngcp-system-tests (7.0.1.0+0~mr7.0.1.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [9f18e09] TT#28100 Reverted partially bea5a7b1e: enable port 8088 check (InfluxDb Backup/Restore RPC)
+  * [3d0abea] TT#44821 Allow '/ngcp-data/mysql' as home folder for user 'mysql'
+  * [1e6593d] TT#42869 Remove kernel.sysrq check from system-tests
+
+  [ Michael Prokop ]
+  * [d125254] TT#45478 testrunner: translate Debian codenames into version numbers
+  * [a785094] TT#45478 Update kernel.core_pattern check for Debian/buster support
+
+  [ Guillem Jover ]
+  * [8a34a4a] TT#46801 Update for systemd 239-7~bpo9+1
+
+  [ Manuel Montecelo ]
+  * [34c60bb] TT#46902 Check that /var/cores is not there
+  * [fb73dec] TT#46902 Add test for /ngcp-data/coredumps and adapt /var/lib/systemd/coredump
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 12 Nov 2018 22:40:45 +0100
+
 ngcp-system-tests (7.0.0.0+0~mr7.0.0.0) unstable; urgency=medium
 
   [ Guillem Jover ]
