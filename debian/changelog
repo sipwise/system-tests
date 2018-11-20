@@ -1,3 +1,17 @@
+ngcp-system-tests (6.5.3.0+0~mr6.5.3.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [26bc06e] TT#42869 Remove kernel.sysrq check from system-tests
+  * [e706d53] TT#47373 Secure config.yml for root user only
+
+  [ Manuel Montecelo ]
+  * [3182cdf] TT#46902 Check that /var/cores is not there
+  * [d7cdb85] TT#46902 Add test for /ngcp-data/coredumps and adapt /var/lib/systemd/coredump
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 20 Nov 2018 13:29:34 +0100
+
 ngcp-system-tests (6.5.2.0+0~mr6.5.2.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
