@@ -76,5 +76,8 @@ package:
   mysql-server:
     installed: false
 
+  ngcp-captagent:
+    installed: false
+
   ngcp-glusterfs-config:
     installed: false
