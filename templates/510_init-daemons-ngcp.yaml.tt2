@@ -21,10 +21,6 @@ service:
     enabled: [% general.process_handler == 'none' && asterisk.enable == "yes" ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' && asterisk.enable == "yes" ? 'true' : 'false' %]
 
-  captagent.service:
-    enabled: false
-    running: [% ( is_proxy || is_rtp ) && intercept.enable == "yes" ? 'true' : 'false' %]
-
   coturn.service:
     enabled: false
     running: [% is_rtp && turnserver.enable == 'yes' ? 'true' : 'false' %]
