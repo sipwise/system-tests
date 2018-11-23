@@ -16,10 +16,6 @@ file:
     exists: false
     filetype: directory
 
-  /etc/mysql/mariadb.cnf:
-    exists: false
-    filetype: file
-
   /etc/mysql/my.cnf.fallback:
     exists: false
     filetype: file
