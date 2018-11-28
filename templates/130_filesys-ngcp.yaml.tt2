@@ -160,6 +160,17 @@ file:
     filetype: directory
     contains: []
 
+  /etc/mysql/mariadb.cnf:
+    exists: true
+    mode: "0444"
+    owner: root
+    group: root
+    filetype: file
+    contains:
+    - '/^\[mysql\]$/'
+    - '/^\[mysqld\]$/'
+    - '/^\[mysqldump\]$/'
+
   /etc/mysql/inc/my.client.cnf:
     exists: true
     mode: "0444"
@@ -202,10 +213,11 @@ file:
 
   /etc/mysql/my.cnf:
     exists: true
-    mode: "0444"
+    mode: "0777"
     owner: root
     group: root
-    filetype: file
+    linked-to: /etc/alternatives/my.cnf
+    filetype: symlink
     contains: []
 
   /etc/mysql/sipwise.cnf:
@@ -221,6 +233,6 @@ file:
     mode: "0777"
     owner: root
     group: root
-    linked-to: /etc/mysql/my.cnf
+    linked-to: /etc/mysql/mariadb.cnf
     filetype: symlink
     contains: []
