@@ -10,7 +10,8 @@ file:
 
   /etc/ngcp-config/config.yml:
     exists: true
-    mode: "0600"
+    mode:
+      match-regexp: "06[0,4][0,4]"
     owner: root
     group: root
     filetype: file
