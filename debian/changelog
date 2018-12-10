@@ -1,3 +1,13 @@
+ngcp-system-tests (7.0.2.0+0~mr7.0.2.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [c24d2d0] TT#47373 Secure config.yml for root user only
+  * [6d55754] TT#47373 Tune test for config.yml check in <=mr7.0
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 10 Dec 2018 22:12:10 +0100
+
 ngcp-system-tests (7.0.1.0+0~mr7.0.1.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
