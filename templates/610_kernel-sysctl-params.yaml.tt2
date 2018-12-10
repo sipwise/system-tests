@@ -4,7 +4,7 @@ kernel-param:
     value: "1"
 
   kernel.core_pattern:
-    value: "|/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %e"
+    value: "|/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %h %e"
 
   fs.suid_dumpable:
     value: "2"
