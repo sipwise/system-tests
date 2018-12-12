@@ -109,7 +109,7 @@ file:
 
   /etc/mysql/conf.d/my2.cnf:
     exists: true
-    mode: "0444"
+    mode: "0440"
     owner: root
     group: root
     filetype: file
@@ -142,7 +142,7 @@ file:
 
   /etc/mysql/inc/my.client2.cnf:
     exists: true
-    mode: "0444"
+    mode: "0440"
     owner: root
     group: root
     filetype: file
