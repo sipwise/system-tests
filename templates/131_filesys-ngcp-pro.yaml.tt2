@@ -111,7 +111,7 @@ file:
     exists: true
     mode: "0440"
     owner: root
-    group: root
+    group: mysql
     filetype: file
     contains: []
 [% IF general.ngcp_type == 'sppro' -%]
