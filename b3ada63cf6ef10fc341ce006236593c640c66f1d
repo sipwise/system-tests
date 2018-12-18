@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1adf8d57_e3f2169a",
+        "filename": "templates/210_user-ngcp.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2018-12-18T17:19:01Z",
+      "side": 1,
+      "message": "I am affraid both should be possible, I am not sure how to deal with it on upgrade to mr7.1+ as we are siting under sipwise user on customers...",
+      "revId": "b3ada63cf6ef10fc341ce006236593c640c66f1d",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
