@@ -51,4 +51,4 @@ user:
         - 10000
     groups:
       - sipwise
-    home: "/var/sipwise"
+    home: "/ngcp-data/sipwise-user"
