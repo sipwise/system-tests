@@ -1,3 +1,23 @@
+ngcp-system-tests (7.1.1.0+0~mr7.1.1.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [8a7918e] TT#47373 Secure config.yml for root user only
+  * [84e6001] TT#44814 Fix perms on /etc/mysql/grants.yml
+  * [63a6b1f] TT#48304 Fix group for my2.cnf after locking it down
+
+  [ Guillem Jover ]
+  * [f5a18ad] TT#38823 Obsolete captagent project
+  * [1d94c75] TT#48304 Update mysql files to match new locked down templates
+
+  [ Manuel Montecelo ]
+  * [c8cef48] TT#47721 /etc/mysql/mariadb.cnf is needed for upgrades of mariadb
+  * [0fded85] TT#47721 Use mariadb.cnf instead of my.cnf, restore "alternatives" symlinks
+  * [074dfdc] TT#49058 Update home of user "sipwise" to possibly be under ngcp-data partition
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 09 Jan 2019 22:04:45 +0100
+
 ngcp-system-tests (7.1.0.0+0~mr7.1.0.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
