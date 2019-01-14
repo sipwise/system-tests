@@ -1,3 +1,15 @@
+ngcp-system-tests (6.5.4.0+0~mr6.5.4.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [9df5baf] TT#47373 Tune test for config.yml check in <=mr7.0
+
+  [ Manuel Montecelo ]
+  * [b36dc11] TT#47854 With systemd v239 the string changes to include hostname
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 14 Jan 2019 14:22:07 +0100
+
 ngcp-system-tests (6.5.3.0+0~mr6.5.3.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
