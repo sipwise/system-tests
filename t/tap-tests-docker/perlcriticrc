@@ -68,6 +68,9 @@ severity = 4
 # XXX: Perhaps. Enable per project.
 [-InputOutput::RequireBriefOpen]
 
+# Wrong. This recommends using the unsafe <>/<ARGV> operator.
+[-InputOutput::ProhibitExplicitStdin]
+
 # Depends on existing APIs, might break too much code. Enable per project.
 [-Modules::ProhibitAutomaticExportation]
 
