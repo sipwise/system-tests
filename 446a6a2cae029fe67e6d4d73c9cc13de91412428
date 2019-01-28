@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da1255d7_b2ec8190",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-01-28T21:26:08Z",
+      "side": 1,
+      "message": "s/diamon/diamond/",
+      "revId": "446a6a2cae029fe67e6d4d73c9cc13de91412428",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
