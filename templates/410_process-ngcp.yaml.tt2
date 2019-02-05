@@ -70,7 +70,7 @@ process:
   kamailio:
     running: [% (is_lb || is_proxy) && node_state == 'active' ? 'true' : 'false' %]
 
-  mediator:
+  ngcp-mediator:
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 
 [% IF general.ngcp_type == 'spce' -%]
@@ -85,7 +85,7 @@ process:
   ngcp-witnessd:
     running: true
 
-  rate-o-mat:
+  ngcp-rate-o-mat:
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 
   rtpengine:
