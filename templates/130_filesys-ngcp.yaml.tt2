@@ -80,22 +80,6 @@ file:
     filetype: directory
     contains: []
 
-  /etc/ngcp-config/shared-files/mysql:
-    exists: true
-    mode: "0755"
-    owner: root
-    group: root
-    filetype: directory
-    contains: []
-
-  /etc/ngcp-config/shared-files/mysql/sipwise.cnf:
-    exists: true
-    mode: "0600"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-
   /etc/ngcp_version:
     exists: true
     mode: "0644"
@@ -227,6 +211,15 @@ file:
     group: root
     filetype: file
     contains: []
+
+  /etc/mysql/sipwise_extra.cnf:
+    exists: true
+    mode: "0600"
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+
 
   /etc/alternatives/my.cnf:
     exists: true
