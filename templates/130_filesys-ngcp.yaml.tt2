@@ -72,14 +72,6 @@ file:
     filetype: directory
     contains: []
 
-  /etc/ngcp-config/shared-files:
-    exists: true
-    mode: "0755"
-    owner: root
-    group: root
-    filetype: directory
-    contains: []
-
   /etc/ngcp_version:
     exists: true
     mode: "0644"

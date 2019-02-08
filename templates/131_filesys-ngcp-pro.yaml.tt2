@@ -1,5 +1,13 @@
 file:
 
+  /etc/ngcp-config/shared-files:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+    contains: []
+
   /etc/ngcp-config/shared-files/ssh:
     exists: true
     mode: "0755"
