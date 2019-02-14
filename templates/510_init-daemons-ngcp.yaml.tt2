@@ -45,7 +45,7 @@ service:
     enabled: [% general.process_handler == 'none' && kamailio.proxy.start == "yes" ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' && kamailio.proxy.start == "yes" ? 'true' : 'false' %]
 
-  mediator.service:
+  ngcp-mediator.service:
     enabled: [% general.process_handler == 'none' && mediator.enable == 'yes' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' && mediator.enable == 'yes' ? 'true' : 'false' %]
 
@@ -97,7 +97,7 @@ service:
     enabled: false
     running: [% is_proxy && node_state == 'active' && pbx.enable == "yes" ? 'true' : 'false' %]
 
-  voisniff-ng.service:
+  ngcp-voisniff.service:
     enabled: false
     running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' && voisniff.daemon.start == 'yes' ? 'true' : 'false' %]
 
