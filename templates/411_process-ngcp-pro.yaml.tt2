@@ -36,8 +36,8 @@ process:
   ngcp-snmp-agent:
     running: true
 
+  ngcp-voisniff-ng:
+    running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' ? 'true' : 'false' %]
+
   snmpd:
     running: true
-
-  voisniff-ng:
-    running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' ? 'true' : 'false' %]
