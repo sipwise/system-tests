@@ -16,6 +16,24 @@
       "revId": "3282f41f43c66916c59963fdfb1571cd235e539c",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a0c5dc1_706de631",
+        "filename": "templates/510_init-daemons-ngcp.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-03-01T13:36:37Z",
+      "side": 1,
+      "message": "This is cosmetic, we do have a mediator.service alias, so that\u0027s why it\u0027s not really a problem, besides not being uniform. :)",
+      "parentUuid": "9a0c5dc1_f0d2f633",
+      "revId": "3282f41f43c66916c59963fdfb1571cd235e539c",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
