@@ -16,7 +16,7 @@
 
 command:
 
-  "pgrep -c -f '[l]ua5.1 /usr/bin/prosody'":
+  "pgrep -c -f 'lua5\.. /usr/bin/prosody'":
 [% IF is_proxy && prosody.enable == 'yes' && node_state == 'active' -%]
     exit-status: 0
     stdout:
