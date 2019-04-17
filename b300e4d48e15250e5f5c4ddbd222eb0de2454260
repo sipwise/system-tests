@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5afe65bd_ab81adfd",
+        "filename": "templates/410_process-ngcp.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T07:58:59Z",
+      "side": 1,
+      "message": "Why \u0027[l]\u0027 instead of just \u0027l\u0027?  I don\u0027t think that there\u0027s any difference if there\u0027s only one char in the set of possible chars.\n\n(Yeah, I know that it was this way before, just wondering if you know the reason for it).",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "b300e4d48e15250e5f5c4ddbd222eb0de2454260",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
