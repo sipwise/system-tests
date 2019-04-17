@@ -46,6 +46,30 @@
       "revId": "b300e4d48e15250e5f5c4ddbd222eb0de2454260",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5afe65bd_0e31efec",
+        "filename": "templates/410_process-ngcp.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-17T12:55:43Z",
+      "side": 1,
+      "message": "Correct. With such syntax grep will not grep itself.",
+      "parentUuid": "5afe65bd_0b032111",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "b300e4d48e15250e5f5c4ddbd222eb0de2454260",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
