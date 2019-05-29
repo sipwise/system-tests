@@ -1,3 +1,8 @@
+file:
+  /run/systemd/generator.late:
+    exists: false
+    contains: []
+
 service:
 
   acpid.service:
