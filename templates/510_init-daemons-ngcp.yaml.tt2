@@ -45,7 +45,7 @@ service:
     enabled: [% general.process_handler == 'none' && kamailio.proxy.start == "yes" ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' && kamailio.proxy.start == "yes" ? 'true' : 'false' %]
 
-  ngcp-licensed.service:
+  ngcp-license-client.service:
     enabled: [% general.process_handler == 'none' && (general.license_key != '' || general.anonymous_usage_statistics == 'yes') ? 'true' : 'false' %]
     running: [% general.license_key != '' || general.anonymous_usage_statistics == 'yes' ? 'true' : 'false' %]
 
