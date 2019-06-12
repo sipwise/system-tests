@@ -45,6 +45,10 @@ service:
     enabled: [% general.process_handler == 'none' && kamailio.proxy.start == "yes" ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' && kamailio.proxy.start == "yes" ? 'true' : 'false' %]
 
+  ngcp-licensed.service:
+    enabled: [% general.process_handler == 'none' && (general.license_key != '' || general.anonymous_usage_statistics == 'yes') ? 'true' : 'false' %]
+    running: [% general.license_key != '' || general.anonymous_usage_statistics == 'yes' ? 'true' : 'false' %]
+
   ngcp-mediator.service:
     enabled: [% general.process_handler == 'none' && mediator.enable == 'yes' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' && mediator.enable == 'yes' ? 'true' : 'false' %]
