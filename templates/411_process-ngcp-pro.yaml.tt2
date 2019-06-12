@@ -40,6 +40,9 @@ process:
   monit:
     running: true
 
+  ngcp-licensed:
+    running: [% general.license_key != '' || general.anonymous_usage_statistics == 'yes' ? 'true' : 'false' %]
+
   ngcp-faxserver:
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 
