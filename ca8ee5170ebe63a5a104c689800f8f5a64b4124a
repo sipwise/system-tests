@@ -16,6 +16,24 @@
       "revId": "ca8ee5170ebe63a5a104c689800f8f5a64b4124a",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_71f85a7d",
+        "filename": "templates/510_init-daemons-ngcp.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000008
+      },
+      "writtenOn": "2019-06-13T13:54:21Z",
+      "side": 0,
+      "message": "Yes, for anonymous usage statistics",
+      "parentUuid": "3a50d1a3_91cba672",
+      "revId": "ca8ee5170ebe63a5a104c689800f8f5a64b4124a",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
