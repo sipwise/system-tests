@@ -88,12 +88,6 @@ service:
     enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 [% END -%]
-[% IF general.license_key != '' || general.anonymous_usage_statistics == 'yes' -%]
-
-  ngcp-license-client:
-    enabled: [% general.process_handler == 'none' ? 'true' : 'false' %]
-    running: true
-[% END -%]
 [% IF mediator.enabled == 'yes' -%]
 
   mediator:
