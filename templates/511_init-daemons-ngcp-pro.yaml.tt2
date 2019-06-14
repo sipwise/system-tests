@@ -31,12 +31,6 @@ service:
   ngcp-snmp-agent:
     enabled: true
     running: true
-[% IF general.license_key != '' || general.anonymous_usage_statistics == 'yes' -%]
-
-  ngcp-license-client:
-    enabled: true
-    running: true
-[% END -%]
 [% IF faxserver.enable == "yes" -%]
 
   # XXX: This should be moved to the non-pro file, but the faxserver.enable
