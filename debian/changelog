@@ -1,3 +1,12 @@
+ngcp-system-tests (5.5.9.3+0~mr5.5.9.3) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [3cee52d] TT#60062 Mark ngcp-license-client as always enabled
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 17 Jun 2019 13:15:52 +0200
+
 ngcp-system-tests (5.5.9.2+0~mr5.5.9.2) unstable; urgency=medium
 
   [ Guillem Jover ]
