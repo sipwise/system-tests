@@ -25,6 +25,9 @@ group:
   _ngcp-api:
     exists: true
 
+  _ngcp-li:
+    exists: true
+
   _ngcp-odbc:
     exists: true
 
