@@ -5,6 +5,10 @@ group:
       or:
         - 1001
         - 10001
+
+  ngcp-backup:
+    exists: true
+
   sems:
     exists: true
 
@@ -14,6 +18,18 @@ group:
       or:
         - 1000
         - 10000
+
+  _ngcp-admin:
+    exists: true
+
+  _ngcp-api:
+    exists: true
+
+  _ngcp-odbc:
+    exists: true
+
+  _ngcp-vmnotify:
+    exists: true
 
 user:
   cdrexport:
@@ -28,6 +44,8 @@ user:
         - 10001
     groups:
       - cdrexport
+      - _ngcp-api
+      - _ngcp-admin
     home: "/home/jail/home/cdrexport"
 
   sems:
