@@ -62,7 +62,7 @@ package:
     installed: true
 
   mariadb-connector-odbc:
-    installed: true
+    installed: false
 
   mariadb-server:
     installed: true
@@ -81,3 +81,6 @@ package:
 
   ngcp-glusterfs-config:
     installed: false
+
+  odbc-mariadb:
+    installed: true
