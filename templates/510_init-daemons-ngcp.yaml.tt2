@@ -142,3 +142,14 @@ service:
   janus.service:
     enabled: false
     running: [% node_state == 'active' && janus.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+
+[% IF general.ngcp_type != 'spce' -%]
+  monit.service:
+    enabled: true
+    running: true
+
+  heartbeat.service:
+    enabled: true
+    running: true
+
+[% END -%]
