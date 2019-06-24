@@ -44,3 +44,28 @@ process:
 
   snmpd:
     running: true
+
+  janus:
+    running: [% IF janus.enable == "yes" && node_state == 'active' ? 'true' : 'false' %]
+
+command:
+  "pgrep -n -f '[r]tcengine.js'":
+[% IF rtcengine.enable == "yes" && node_state == 'active' -%]
+    exit-status: 0
+    stdout:
+      - "1"
+[% ELSE -%]
+    exit-status: 1
+    stdout: []
+[% END -%]
+    stderr: []
+
+  "pgrep -n -f '[c]omx-fileshare.js'":
+[% IF fileshare.enable == "yes" && node_state == 'active' -%]
+    exit-status: 0
+    stdout:
+      - "1"
+[% ELSE -%]
+    exit-status: 1
+    stdout: []
+[% END -%]

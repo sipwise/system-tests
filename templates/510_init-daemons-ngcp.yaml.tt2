@@ -129,4 +129,16 @@ service:
   ngcp-license-client.service:
     enabled: true
     running: true
+
 [% END -%]
+  ngcp-rtcengine.service:
+    enabled: false
+    running: [% node_state == 'active' && rtcengine.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+
+  ngcp-comx-fileshare-service.service:
+    enabled: false
+    running: [% node_state == 'active' && fileshare.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+
+  janus.service:
+    enabled: false
+    running: [% node_state == 'active' && janus.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
