@@ -28,7 +28,7 @@ process:
     running: true
 
   monit:
-    running: true
+    running: [% general.process_handler == 'monit' ? 'true' : 'false' %]
 
   ngcp-licensed:
     running: [% general.license_key != '' || general.anonymous_usage_statistics == 'yes' ? 'true' : 'false' %]
