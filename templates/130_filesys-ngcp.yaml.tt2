@@ -221,3 +221,11 @@ file:
     linked-to: /etc/mysql/mariadb.cnf
     filetype: symlink
     contains: []
+
+
+  /var/backup/:
+    exists: true
+    mode: "0700"
+    owner: root
+    group: root
+    filetype: directory
