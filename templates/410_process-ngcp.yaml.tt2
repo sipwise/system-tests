@@ -73,15 +73,9 @@ process:
   ngcp-mediator:
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 
-[% IF general.ngcp_type == 'spce' -%]
   ngcp-sems:
     running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
 
-[% ELSE -%]
-  sems-pbx:
-    running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
-
-[% END -%]
   ngcp-witnessd:
     running: true
 
