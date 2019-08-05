@@ -1,3 +1,26 @@
+ngcp-system-tests (8.0.0.0+0~mr8.0.0.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [fab2480] TT#55162 Fix system-tests accordingly to the current defaults
+  * [d3982cb] TT#55162 Check current NGCP groups + sipwise must be member of _ngcp-api/_ngcp-admin
+  * [45df78f] TT#61205 Add rtcengine/fileshare/janus to system-tests
+  * [c12c7e0] TT#61205 Add missing monit/heartbeat to system-tools (init status)
+
+  [ Guillem Jover ]
+  * [4ce6d33] TT#60971 Update mariadb-connector-odbc binary package names
+  * [708c20c] TT#60750 Assume monit is running and enabled based on general.process_handler
+  * [11d1e8e] TT#61954 Set debhelper compat level in Build-Depends instead of debian/compat
+
+  [ Richard Fuchs ]
+  * [c53dc35] TT#55162 add check for _ngcp-li group
+
+  [ Sergii Kipot ]
+  * [8d602e2] TT#61953 Fix tests for ngcp-sems process
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 05 Aug 2019 21:01:05 +0200
+
 ngcp-system-tests (7.5.0.0+0~mr7.5.0.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
