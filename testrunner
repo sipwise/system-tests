@@ -18,6 +18,14 @@ if ls /var/lib/systemd/coredump/core.perl-fcgi* >/dev/null 2>&1 ; then
   done
   diag "= New cores names are:"
   ls -la /var/lib/systemd/coredump/RENAMED_core.perl-fcgi*
+  diag "=============================================================="
+  diag "= 2) TT#65100: Renaming ngcp-rtpengine cores /var/lib/systemd/coredump/core.rtpengine"
+  ls -la /var/lib/systemd/coredump/core.rtpengine*
+  for file in /var/lib/systemd/coredump/core.rtpengine* ; do
+    mv "${file}" /var/lib/systemd/coredump/RENAMED_"$(basename "${file}")"
+  done
+  diag "= New cores names are:"
+  ls -la /var/lib/systemd/coredump/RENAMED_core.rtpengine*
   diag "========================== DONE =============================="
 fi
 
