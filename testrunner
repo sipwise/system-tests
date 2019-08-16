@@ -21,6 +21,18 @@ if ls /var/lib/systemd/coredump/core.perl-fcgi* >/dev/null 2>&1 ; then
   diag "========================== DONE =============================="
 fi
 
+if ls /var/lib/systemd/coredump/core.rtpengine* >/dev/null 2>&1 ; then
+  diag "================== NOTE: CORE DUMP DETECTED =================="
+  diag "= 2) TT#65100: Renaming ngcp-rtpengine cores /var/lib/systemd/coredump/core.rtpengine"
+  ls -la /var/lib/systemd/coredump/core.rtpengine*
+  for file in /var/lib/systemd/coredump/core.rtpengine* ; do
+    mv "${file}" /var/lib/systemd/coredump/RENAMED_"$(basename "${file}")"
+  done
+  diag "= New cores names are:"
+  ls -la /var/lib/systemd/coredump/RENAMED_core.rtpengine*
+  diag "========================== DONE =============================="
+fi
+
 goss="goss-0.3.5-e6140f90+patch_319-linux-amd64"
 
 if [ ! -x "/usr/sbin/${goss}" ] ; then
