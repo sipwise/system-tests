@@ -46,7 +46,7 @@ process:
     running: true
 
   janus:
-    running: [% janus.enable == "yes" && node_state == 'active' ? 'true' : 'false' %]
+    running: [% (node_state == 'active' && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus'))) ? 'true' : 'false' %]
 
 command:
   "pgrep -c -n -f '[r]tcengine.js'":
