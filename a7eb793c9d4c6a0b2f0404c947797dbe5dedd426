@@ -22,6 +22,29 @@
       "revId": "a7eb793c9d4c6a0b2f0404c947797dbe5dedd426",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ee8dbcb_c5affca2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-08-23T13:21:35Z",
+      "side": 1,
+      "message": "Ouh... rush rush",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "a7eb793c9d4c6a0b2f0404c947797dbe5dedd426",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
