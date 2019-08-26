@@ -1,3 +1,12 @@
+ngcp-system-tests (7.4.1.2+0~mr7.4.1.2) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [a91854a] TT#63466 Ensure sp1<->sp2 and db->prx replications are using GTID
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 26 Aug 2019 16:00:40 +0200
+
 ngcp-system-tests (7.4.1.1+0~mr7.4.1.1) unstable; urgency=medium
 
   * New release.
