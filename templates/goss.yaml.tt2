@@ -40,4 +40,5 @@ gossfile:
   911_service-grafana.yaml: {}
 [% IF general.ngcp_type != 'spce' -%]
   920_service-asterisk-odbc-pro.yaml: {}
+  930_service-mariadb.yaml: {}
 [% END -%]
