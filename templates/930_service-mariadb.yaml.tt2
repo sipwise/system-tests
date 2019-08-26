@@ -1,0 +1,23 @@
+[%
+  hostname = ngcp.get_hostname();
+
+  is_proxy = ngcp.has_role(hostname, 'proxy');
+-%]
+command:
+
+  grep using_gtid=2 /ngcp-data/mysql/master.info:
+    exit-status: 0
+    stdout:
+    - "/using_gtid=2/"
+    stderr: []
+    timeout: 10000
+
+[% IF general.ngcp_type == 'carrier' && is_proxy -%]
+  grep using_gtid=2 /ngcp-data/mysql2/master-db01*.info:
+    exit-status: 0
+    stdout:
+    - "/using_gtid=2/"
+    stderr: []
+    timeout: 10000
+
+[% END -%]
