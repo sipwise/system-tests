@@ -1,3 +1,15 @@
+ngcp-system-tests (7.5.2.0+0~mr7.5.2.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [9401bc6] TT#65100 Temporary disable rtpegine cores, until it is fixed.
+  * [00f0887] TT#63466 TT#26264 Fix janus.service check test on PRO
+  * [893c951] Revert "TT#65100 Temporary disable rtpegine cores, until it is fixed."
+  * [062f666] TT#63466 Ensure sp1<->sp2 and db->prx replications are using GTID
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Sun, 01 Sep 2019 21:53:59 +0200
+
 ngcp-system-tests (7.5.1.0+0~mr7.5.1.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
