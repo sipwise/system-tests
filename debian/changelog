@@ -1,3 +1,12 @@
+ngcp-system-tests (7.5.1.2+0~mr7.5.1.2) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [fd5d8f7] TT#66582 Ensure proper/old version of prosody is installed
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 16 Sep 2019 14:35:46 +0200
+
 ngcp-system-tests (7.5.1.1+0~mr7.5.1.1) unstable; urgency=medium
 
   [ Alexander Lutay ]
