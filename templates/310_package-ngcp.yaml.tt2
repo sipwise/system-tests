@@ -84,3 +84,8 @@ package:
 
   odbc-mariadb:
     installed: true
+
+  prosody:
+    installed: true
+    versions:
+    - 0.9.12-2+deb9u2+bpo10+1
