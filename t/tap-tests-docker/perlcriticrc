@@ -2,7 +2,7 @@
 
 # NOTE: When switching the output format we also need to adjust perlcritic_tap
 # accordingly:
-verbose = at l%l:c%c [severity %s] %p = %m (with Sipwise overrides from <https://gerrit.mgm.sipwise.com/gitweb?p=puppet-sipwise.git;a=blob;f=modules/jenkins/files/perlcriticrc>) near '%r'\n
+verbose = at l%l:c%c [severity %s] %p = %m (with Sipwise overrides from <https://gerrit.mgm.sipwise.com/gitweb?p=system-tests.git;a=blob;f=t/tap-tests-docker/perlcriticrc>) near '%r'\n
 
 severity  = 4
 
