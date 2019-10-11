@@ -197,12 +197,8 @@ file:
     contains: []
 
   /etc/mysql/sipwise.cnf:
-    exists: true
-    mode: "0400"
-    owner: root
-    group: root
+    exists: false
     filetype: file
-    contains: []
 
   /etc/mysql/sipwise_extra.cnf:
     exists: true
