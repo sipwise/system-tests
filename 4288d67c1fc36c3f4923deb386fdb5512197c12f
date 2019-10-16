@@ -16,6 +16,24 @@
       "revId": "4288d67c1fc36c3f4923deb386fdb5512197c12f",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ea2dc21_0a82943f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-10-16T10:54:33Z",
+      "side": 1,
+      "message": "\u003e I think that we cannot say that it produces no harm\n\nand it produces no harm *AFAIK*\nIn fact it is crashes on motd, so some mod doesn\u0027t have swap usage in one call. IMHO it produce no harm.\n\n\n\u003e  in the same places (that is, is NOT ramdom)\n\nIn the same place but reproduced randomly. There is no steps-to-reproduce.",
+      "parentUuid": "f8a92134_941d4b51",
+      "revId": "4288d67c1fc36c3f4923deb386fdb5512197c12f",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
     }
   ]
 }
