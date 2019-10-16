@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8a92134_941d4b51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-10-16T10:18:13Z",
+      "side": 1,
+      "message": "I think that we cannot say that it produces no harm, we simply don\u0027t know, and in fact it likely avoids to provide a value in a place where it\u0027s expected (typical usage of \"awk {print $2}\", etc).\n\nThe only case in which this would harmless is if it happens always in the same places (that is, is NOT ramdom), and the action is retried, or in cases in which the absence of a value leads to a safe situation/action (e.g. overwriting the same value that it\u0027s already there).\n\nBut also, in the case of bad luck, it can be very destructive.\n\nSo maybe we cannot do anything about it, and I am fine with the change as it is, but I don\u0027t think that we should describe it as \"probably harmless\".",
+      "revId": "4288d67c1fc36c3f4923deb386fdb5512197c12f",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    }
+  ]
+}
