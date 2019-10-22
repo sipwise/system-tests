@@ -43,7 +43,10 @@ user:
     groups:
       - kamailio
       - ssl-cert
-    home: "/var/run/kamailio"
+    home:
+      or:
+        - "/var/run/kamailio"
+        - "/run/kamailio"
 
   mysql:
     exists: true

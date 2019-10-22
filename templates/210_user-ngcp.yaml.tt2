@@ -57,6 +57,8 @@ user:
       or:
         - "/var/run/ngcp-sems"
         - "/var/run/sems"
+        - "/run/ngcp-sems"
+        - "/run/sems"
 
   sipwise:
     exists: true
