@@ -1,3 +1,13 @@
+ngcp-system-tests (7.5.2.1+0~mr7.5.2.1) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [5da0bde] TT#66582 Ensure proper/old version of prosody is installed
+  * [4288d67] TT#68720 Mute awk cores on upgrade stretch->buster
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 18 Nov 2019 14:48:24 +0100
+
 ngcp-system-tests (7.5.2.0+0~mr7.5.2.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
