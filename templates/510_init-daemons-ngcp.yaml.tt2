@@ -27,7 +27,7 @@ service:
 
   dnsmasq.service:
     enabled: false
-    running: [% is_mgmt && bootenv.dhcp.enable == 'yes' ? 'true' : 'false' %]
+    running: [% is_mgmt && node_state == 'active' && bootenv.dhcp.enable == 'yes' ? 'true' : 'false' %]
 
   haproxy.service:
     enabled: false
