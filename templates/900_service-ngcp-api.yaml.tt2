@@ -46,59 +46,14 @@
 
 command:
 
-  "curl --insecure -L http://[% web_ext_ips.0 -%]/":
+  "curl --insecure -L http://[% web_ext_ips.0 %]/":
     exit-status: 0
     stdout:
       - <title></title>
     stderr: []
     timeout: 30000
 
-  "curl --insecure -L https://[% web_ext_ips.0 -%]/":
-    exit-status: 0
-    stdout:
-      - <title></title>
-    stderr: []
-    timeout: 30000
-
-
-  "curl --insecure -L http://[% web_int_ips.0 -%]/login/admin":
-    exit-status: 0
-    stdout:
-      - "/Admin Sign In/"
-    stderr: []
-    timeout: 30000
-
-  "curl --insecure -L https://[% web_int_ips.0 -%]/login/admin":
-    exit-status: 0
-    stdout:
-      - "/Admin Sign In/"
-    stderr: []
-    timeout: 30000
-
-
-  "curl --insecure -L http://[% web_int_ips.0 -%]:1443":
-    exit-status: 0
-    stdout:
-      - "/Admin Sign In/"
-    stderr: []
-    timeout: 30000
-
-  "curl --insecure -L https://[% web_int_ips.0 -%]:1443":
-    exit-status: 0
-    stdout:
-      - "/Admin Sign In/"
-    stderr: []
-    timeout: 30000
-
-
-  "curl --insecure -L http://[% web_ext_ips.0 -%]:1443/login/subscriber":
-    exit-status: 0
-    stdout:
-      - <title></title>
-    stderr: []
-    timeout: 30000
-
-  "curl --insecure -L https://[% web_ext_ips.0 -%]:1443/login/subscriber":
+  "curl --insecure -L https://[% web_ext_ips.0 %]/":
     exit-status: 0
     stdout:
       - <title></title>
@@ -106,28 +61,73 @@ command:
     timeout: 30000
 
 
-  "curl --insecure -L http://[% web_int_ips.0 -%]:1443/api/":
+  "curl --insecure -L http://[% web_int_ips.0 %]/login/admin":
+    exit-status: 0
+    stdout:
+      - "/Admin Sign In/"
+    stderr: []
+    timeout: 30000
+
+  "curl --insecure -L https://[% web_int_ips.0 %]/login/admin":
+    exit-status: 0
+    stdout:
+      - "/Admin Sign In/"
+    stderr: []
+    timeout: 30000
+
+
+  "curl --insecure -L http://[% web_int_ips.0 %]:1443":
+    exit-status: 0
+    stdout:
+      - "/Admin Sign In/"
+    stderr: []
+    timeout: 30000
+
+  "curl --insecure -L https://[% web_int_ips.0 %]:1443":
+    exit-status: 0
+    stdout:
+      - "/Admin Sign In/"
+    stderr: []
+    timeout: 30000
+
+
+  "curl --insecure -L http://[% web_ext_ips.0 %]:1443/login/subscriber":
+    exit-status: 0
+    stdout:
+      - <title></title>
+    stderr: []
+    timeout: 30000
+
+  "curl --insecure -L https://[% web_ext_ips.0 %]:1443/login/subscriber":
+    exit-status: 0
+    stdout:
+      - <title></title>
+    stderr: []
+    timeout: 30000
+
+
+  "curl --insecure -L http://[% web_int_ips.0 %]:1443/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
 
-  "curl --insecure -L https://[% web_int_ips.0 -%]:1443/api/":
+  "curl --insecure -L https://[% web_int_ips.0 %]:1443/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
 
-  "curl --insecure -L http://administrator:administrator@[% web_int_ips.0 -%]:1443/api/":
+  "curl --insecure -L http://administrator:administrator@[% web_int_ips.0 %]:1443/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
 
-  "curl --insecure -L https://administrator:administrator@[% web_int_ips.0 -%]:1443/api/":
+  "curl --insecure -L https://administrator:administrator@[% web_int_ips.0 %]:1443/api/":
     exit-status: 0
     stdout:
       - "/Sipwise NGCP HTTP API documentation/"
@@ -135,14 +135,14 @@ command:
     timeout: 30000
 
 
-  "curl --insecure -L http://[% web_ext_ips.0 -%]/api/":
+  "curl --insecure -L http://[% web_ext_ips.0 %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
 
-  "curl --insecure -L https://[% web_ext_ips.0 -%]/api/":
+  "curl --insecure -L https://[% web_ext_ips.0 %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
@@ -150,14 +150,14 @@ command:
     timeout: 30000
 
 
-  "curl --insecure -L http://administrator:administrator@[% web_int_ips.0 -%]/api/":
+  "curl --insecure -L http://administrator:administrator@[% web_int_ips.0 %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
 
-  "curl --insecure -L https://administrator:administrator@[% web_int_ips.0 -%]/api/":
+  "curl --insecure -L https://administrator:administrator@[% web_int_ips.0 %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
@@ -166,42 +166,42 @@ command:
 
 
 [% IF www_admin.enable == 'yes' && (is_mgmt || is_li_dist) && node_state == 'active' -%]
-  "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/":
+  "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 %]:[% www_admin.http_system.port %]/api/":
     exit-status: 0
     stdout:
       - "/Sipwise NGCP HTTP API documentation/"
     stderr: []
     timeout: 30000
 
-  "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L http://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/":
+  "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L http://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 %]:[% www_admin.http_system.port %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
 
-  "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://fakeuser:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/":
+  "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://fakeuser:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 %]:[% www_admin.http_system.port %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
 
-  "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% credentials.rest_api.auth_system.u %]:wrongpassword@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/":
+  "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% credentials.rest_api.auth_system.u %]:wrongpassword@[% api_int_ips.0 %]:[% www_admin.http_system.port %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
 
-  "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://administrator:administrator@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/":
+  "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://administrator:administrator@[% api_int_ips.0 %]:[% www_admin.http_system.port %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
 
-  "curl --insecure -L https://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 -%]:[% www_admin.http_system.port %]/api/":
+  "curl --insecure -L https://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 %]:[% www_admin.http_system.port %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
