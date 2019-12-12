@@ -40,17 +40,17 @@ process:
     running: true
 
   ngcp-voisniff:
-    running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' ? 'true' : 'false' %]
+    running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' && voisniff.daemon.start == 'yes' ? 'true' : 'false' %]
 
   snmpd:
     running: true
 
   janus:
-    running: [% (node_state == 'active' && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus'))) ? 'true' : 'false' %]
+    running: [% is_proxy && (node_state == 'active' && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus'))) ? 'true' : 'false' %]
 
 command:
   "pgrep -c -n -f '[r]tcengine.js'":
-[% IF rtcengine.enable == "yes" && node_state == 'active' -%]
+[% IF is_proxy && rtcengine.enable == "yes" && node_state == 'active' -%]
     exit-status: 0
     stdout:
       - "1"
@@ -61,7 +61,7 @@ command:
     stderr: []
 
   "pgrep -c -n -f '[c]omx-fileshare.js'":
-[% IF fileshare.enable == "yes" && node_state == 'active' -%]
+[% IF is_proxy && fileshare.enable == "yes" && node_state == 'active' -%]
     exit-status: 0
     stdout:
       - "1"

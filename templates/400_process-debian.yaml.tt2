@@ -17,13 +17,7 @@ process:
   mysqld_safe:
     running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
 
-  nginx:
-    running: true
-
   ntpd:
-    running: true
-
-  perl-fcgi:
     running: true
 
   redis-server:
