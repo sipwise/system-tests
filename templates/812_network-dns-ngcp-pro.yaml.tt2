@@ -1,12 +1,15 @@
 dns:
-  sp1:
+[% FOR hostname in hosts.keys -%]
+  [% host %]:
     resolvable: true
     addrs:
-      - 192.168.255.251
+[%-
+  argv.host = hostname;
+  argv.type = 'ha_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+  ha_ip = out;
+%]
+      - [% ha_ip.0 %]
     timeout: 500
 
-  sp2:
-    resolvable: true
-    addrs:
-      - 192.168.255.252
-    timeout: 500
+[% END -%]
