@@ -78,8 +78,8 @@ service:
     running: true
 
   nginx.service:
-    enabled: [% (is_mgmt || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
-    running: [% (is_mgmt || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
+    enabled: [% (is_mgmt || is_lb || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
+    running: [% (is_mgmt || is_lb || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
 
   prosody.service:
     enabled: [% general.process_handler == 'none' && prosody.enable == 'yes' ? 'true' : 'false' %]
@@ -91,7 +91,7 @@ service:
 
   redis-server.service:
     enabled: [% redis.enable == "yes" ? 'true' : 'false' %]
-    running: [% (is_rtp || is_proxy || is_db) && redis.enable == "yes" ? 'true' : 'false' %]
+    running: [% redis.enable == "yes" ? 'true' : 'false' %]
 
   slapd.service:
     enabled: [% is_mgmt && ldap.enable == "yes" ? 'true' : 'false' %]
@@ -133,15 +133,15 @@ service:
 [% END -%]
   ngcp-rtcengine.service:
     enabled: false
-    running: [% node_state == 'active' && rtcengine.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+    running: [% is_proxy && node_state == 'active' && rtcengine.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
 
   ngcp-comx-fileshare-service.service:
     enabled: false
-    running: [% node_state == 'active' && fileshare.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+    running: [% is_proxy && node_state == 'active' && fileshare.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
 
   janus.service:
     enabled: false
-    running: [% (node_state == 'active' && general.ngcp_type != 'spce' && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus'))) ? 'true' : 'false' %]
+    running: [% is_proxy && node_state == 'active' && general.ngcp_type != 'spce' && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus')) ? 'true' : 'false' %]
 
   monit.service:
     enabled: [% general.process_handler == 'monit' ? 'true' : 'false' %]
