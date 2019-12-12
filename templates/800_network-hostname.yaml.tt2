@@ -1,3 +1,16 @@
+[%-
+IF general.ngcp_type == 'spce';
+  host_match = "spce";
+  fqdn_match = "spce.";
+ELSIF general.ngcp_type == 'sppro';
+  host_match = "/sp[1,2]/";
+  fqdn_match = "/sp[1,2]/";
+ELSE;
+  host_match = "/[a-z]+([0-9]{2}[ab]/";
+  fqdn_match = "//[a-z]+([0-9]{2}[ab]/";
+END;
+-%]
+
 command:
   hostname:
     exit-status: 0
@@ -6,19 +19,19 @@ command:
   hostname:
     exit-status: 0
     stdout:
-      - [% general.ngcp_type == 'spce' ? "spce" : "/sp[1,2]/" %]
+      - "[% host_match %]"
     stderr: []
 
   "hostname --fqdn":
     exit-status: 0
     stdout:
-      - [% general.ngcp_type == 'spce' ? "spce." : "/sp[1,2]/" %]
+      - "[% fqdn_match %]"
     stderr: []
 
   "hostname --short":
     exit-status: 0
     stdout:
-      - [% general.ngcp_type == 'spce' ? "spce" : "/sp[1,2]/" %]
+      - "[% host_match %]"
     stderr: []
 
 [% END -%]
