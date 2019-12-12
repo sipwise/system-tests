@@ -31,6 +31,12 @@
     sip_int_ips = out;
   END;
 
+  IF haproxy.enable == 'yes';
+    sip_proxy_ip = sip_int_ips.0;
+  ELSE;
+    sip_proxy_ip = sip_ext_ips.0;
+  END;
+
   argv.host = hostname;
   argv.type = 'web_ext';
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
@@ -108,6 +114,26 @@ port:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 %]"]
 
+  # HAProxy
+  tcp:5222:
+    listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 %]"]
+
+  # HAProxy
+  tcp:5269:
+    listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 %]"]
+
+  # HAProxy
+  tcp:5281:
+    listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 %]"]
+
+  # HAProxy
+  tcp:8080:
+    listening: [% haproxy.enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 %]"]
+
 [% END -%]
 [% IF is_proxy -%]
   # Kamailio proxy
@@ -118,12 +144,12 @@ port:
   # Prosody
   tcp:5222:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 %]"]
+    ip: ["[% sip_proxy_ip %]"]
 
   # Prosody
   tcp:5269:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 %]"]
+    ip: ["[% sip_proxy_ip %]"]
 
   # Prosody
   tcp:5280:
