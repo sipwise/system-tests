@@ -1,9 +1,11 @@
 [%
   hostname = ngcp.get_hostname();
 
+  is_mgmt = ngcp.has_role(hostname, 'mgmt');
   is_proxy = ngcp.has_role(hostname, 'proxy');
   is_lb = ngcp.has_role(hostname, 'lb');
   is_rtp = ngcp.has_role(hostname, 'rtp');
+  is_li_dist = ngcp.has_role(hostname, 'li_dist');
 -%]
 [% PERL -%]
     my $node_state = qx(ngcp-check-active -v);
@@ -40,7 +42,13 @@ process:
     running: true
 
   ngcp-voisniff:
-    running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' ? 'true' : 'false' %]
+    running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' && voisniff.daemon.start == 'yes' ? 'true' : 'false' %]
+
+  nginx:
+    running: [% (is_mgmt || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
+
+  perl-fcgi:
+    running: [% is_mgmt ? 'true' : 'false' %]
 
   snmpd:
     running: true
@@ -50,7 +58,7 @@ process:
 
 command:
   "pgrep -c -n -f '[r]tcengine.js'":
-[% IF rtcengine.enable == "yes" && node_state == 'active' -%]
+[% IF general.ngcp_type != 'spce' ? 'true' : 'false' && is_proxy && rtcengine.enable == "yes" && node_state == 'active' -%]
     exit-status: 0
     stdout:
       - "1"
@@ -61,7 +69,7 @@ command:
     stderr: []
 
   "pgrep -c -n -f '[c]omx-fileshare.js'":
-[% IF fileshare.enable == "yes" && node_state == 'active' -%]
+[% IF general.ngcp_type != 'spce' ? 'true' : 'false' && is_proxy && fileshare.enable == "yes" && node_state == 'active' -%]
     exit-status: 0
     stdout:
       - "1"

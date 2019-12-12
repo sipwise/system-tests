@@ -91,7 +91,7 @@ service:
 
   redis-server.service:
     enabled: [% redis.enable == "yes" ? 'true' : 'false' %]
-    running: [% (is_rtp || is_proxy || is_db) && redis.enable == "yes" ? 'true' : 'false' %]
+    running: [% redis.enable == "yes" ? 'true' : 'false' %]
 
   slapd.service:
     enabled: [% is_mgmt && ldap.enable == "yes" ? 'true' : 'false' %]
@@ -133,11 +133,11 @@ service:
 [% END -%]
   ngcp-rtcengine.service:
     enabled: false
-    running: [% node_state == 'active' && rtcengine.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+    running: [% is_proxy && node_state == 'active' && rtcengine.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
 
   ngcp-comx-fileshare-service.service:
     enabled: false
-    running: [% node_state == 'active' && fileshare.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+    running: [% is_proxy && node_state == 'active' && fileshare.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
 
   janus.service:
     enabled: false
