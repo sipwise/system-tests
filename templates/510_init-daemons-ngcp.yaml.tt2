@@ -22,7 +22,7 @@ service:
     running: [% is_proxy && node_state == 'active' && asterisk.enable == "yes" ? 'true' : 'false' %]
 
   coturn.service:
-    enabled: false
+    enabled: [% is_rtp && turnserver.enable == 'yes' ? 'true' : 'false' %]
     running: [% is_rtp && turnserver.enable == 'yes' ? 'true' : 'false' %]
 
   dnsmasq.service:
@@ -30,7 +30,7 @@ service:
     running: [% is_mgmt && node_state == 'active' && bootenv.dhcp.enable == 'yes' ? 'true' : 'false' %]
 
   haproxy.service:
-    enabled: false
+    enabled: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
     running: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
 
   ngcp-hb-watchdog.service:
@@ -78,7 +78,7 @@ service:
     running: true
 
   nginx.service:
-    enabled: [% nginx.enable == 'yes' ? 'true' : 'false' %]
+    enabled: [% (is_mgmt || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
     running: [% (is_mgmt || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
 
   prosody.service:
@@ -86,7 +86,7 @@ service:
     running: [% is_proxy && node_state == 'active' && prosody.enable == 'yes' ? 'true' : 'false' %]
 
   ngcp-pushd.service:
-    enabled: [% pushd.enable == "yes" ? 'true' : 'false' %]
+    enabled: [% is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
     running: [% is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
 
   redis-server.service:
@@ -94,7 +94,7 @@ service:
     running: [% (is_rtp || is_proxy || is_db) && redis.enable == "yes" ? 'true' : 'false' %]
 
   slapd.service:
-    enabled: false
+    enabled: [% is_mgmt && ldap.enable == "yes" ? 'true' : 'false' %]
     running: [% is_mgmt && ldap.enable == "yes" ? 'true' : 'false' %]
 
   sems-pbx.service:
