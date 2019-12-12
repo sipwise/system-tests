@@ -65,24 +65,24 @@ port:
   # Nginx HTTPS (NGCP Panel)
   tcp:443:
     listening: true
-    ip: ["[% web_ext_ips.0 -%]"]
+    ip: ["[% web_ext_ips.0 %]"]
 
   # Nginx HTTPS (NGCP Panel Admin)
   tcp:1443:
     listening: true
-    ip: ["[% web_int_ips.0 -%]"]
+    ip: ["[% web_int_ips.0 %]"]
 
 [% END -%]
 [% IF is_mgmt && pbx.enable == 'yes' -%]
   # HTTPS PBX autoprovisioning
   tcp:1444:
     listening: true
-    ip: ["[% web_ext_ips.0 -%]"]
+    ip: ["[% web_ext_ips.0 %]"]
 
   # HTTP PBX autoprovisioning
   tcp:1445:
     listening: true
-    ip: ["[% web_ext_ips.0 -%]"]
+    ip: ["[% web_ext_ips.0 %]"]
 
 [% END -%]
   # MySQL
@@ -94,7 +94,7 @@ port:
   # Kamailio load-balancer
   tcp:5060:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 -%]"]
+    ip: ["[% sip_ext_ips.0 %]"]
 
 [% END -%]
 [% IF is_proxy -%]
@@ -106,12 +106,12 @@ port:
   # Prosody
   tcp:5222:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 -%]"]
+    ip: ["[% sip_ext_ips.0 %]"]
 
   # Prosody
   tcp:5269:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 -%]"]
+    ip: ["[% sip_ext_ips.0 %]"]
 
   # Prosody
   tcp:5280:
