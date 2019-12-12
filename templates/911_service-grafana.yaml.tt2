@@ -5,6 +5,7 @@
   is_li_dist = ngcp.has_role(hostname, 'li_dist');
 -%]
 
+[% IF grafana.enable == 'yes' && (is_mgmt || is_li_dist) -%]
 file:
 
   /var/lib/grafana/grafana.db:
@@ -15,7 +16,6 @@ file:
 
 command:
 
-[% IF grafana.enable == 'yes' && (is_mgmt || is_li_dist) -%]
   sqlite3 /var/lib/grafana/grafana.db "select name from data_source":
     exit-status: 0
     stdout:
