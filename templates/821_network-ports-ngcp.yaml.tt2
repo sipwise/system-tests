@@ -20,6 +20,18 @@
   END;
 
   argv.host = hostname;
+  argv.type = 'sip_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+  sip_int_ips = out;
+
+  IF !sip_int_ips.size;
+    argv.host = hostname;
+    argv.type = 'sip_int';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+    sip_int_ips = out;
+  END;
+
+  argv.host = hostname;
   argv.type = 'web_ext';
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
   web_ext_ips = out;
@@ -101,7 +113,7 @@ port:
   # Kamailio proxy
   tcp:5062:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["127.0.0.1"]
+    ip: ["[% sip_int_ips.0 -%]"]
 
   # Prosody
   tcp:5222:
@@ -116,22 +128,22 @@ port:
   # Prosody
   tcp:5280:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["127.0.0.1"]
+    ip: ["[% sip_int_ips.0 -%]"]
 
   # Prosody
   tcp:5281:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["127.0.0.1"]
+    ip: ["[% sip_int_ips.0 -%]"]
 
   # Prosody
   tcp:5582:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["127.0.0.1"]
+    ip: ["[% sip_int_ips.0 -%]"]
 
   # SEMS
   tcp:8090:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["127.0.0.1"]
+    ip: ["[% sip_int_ips.0 -%]"]
 
   # Asterisk
   tcp:5038:
@@ -141,17 +153,17 @@ port:
   # SEMS
   udp:5040:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["127.0.0.1"]
+    ip: ["[% sip_int_ips.0 -%]"]
 
   # Asterisk
   udp:5070:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["127.0.0.1"]
+    ip: ["[% sip_int_ips.0 -%]"]
 
   # SEMS
   udp:5080:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["127.0.0.1"]
+    ip: ["[% sip_int_ips.0 -%]"]
 
 [% END -%]
 [% IF is_rtp || is_proxy || is_db -%]
@@ -165,7 +177,7 @@ port:
   # rtpengine
   udp:2223:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["127.0.0.1"]
+    ip: ["[% sip_int_ips.0 %]"]
 
 [% END -%]
   # InfluxDB Admin
