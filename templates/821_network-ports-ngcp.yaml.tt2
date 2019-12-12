@@ -108,6 +108,33 @@ port:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 %]"]
 
+[%-
+  IF haproxy.enable == 'yes';
+    sip_proxy_ip = sip_int_ips.0;
+  ELSE;
+    sip_proxy_ip = sip_ext_ips.0;
+  END;
+-%]
+  # Prosody/HAProxy
+  tcp:5222:
+    listening: [% haproxy.enable == 'yes' ? 'true' : node_state == 'active' ? 'true' : 'false' %]
+    ip: ["[% sip_proxy_ip %]"]
+
+  # Prosody/HAProxy
+  tcp:5269:
+    listening: [% haproxy.enable == 'yes' ? 'true' : node_state == 'active' ? 'true' : 'false' %]
+    ip: ["[% sip_proxy_ip %]"]
+
+  # Prosody/HAProxy
+  tcp:5281:
+    listening: [% haproxy.enable == 'yes' ? 'true' : node_state == 'active' ? 'true' : 'false' %]
+    ip: ["[% sip_proxy_ip %]"]
+
+  # HAProxy
+  tcp:8080:
+    listening: [% haproxy.enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 %]"]
+
 [% END -%]
 [% IF is_proxy -%]
   # Kamailio proxy
@@ -118,12 +145,12 @@ port:
   # Prosody
   tcp:5222:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 %]"]
+    ip: ["[% sip_int_ips.0 %]"]
 
   # Prosody
   tcp:5269:
     listening: [% node_state == 'active' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 %]"]
+    ip: ["[% sip_int_ips.0 %]"]
 
   # Prosody
   tcp:5280:
