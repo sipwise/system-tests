@@ -1,12 +1,30 @@
+[%-
+  # Hardcode the list of hosts, so that we can ignore any issue in major
+  # network.yml due to missing entries.
+  IF general.ngcp_type == 'carrier';
+    # On a CARRIER we assume at least these host must be present.
+    hostlist = [
+      'web01a', 'web01b', 'db01a', 'db01b',
+      'prx01a', 'prx01b', 'lb01a', 'lb01b',
+    ];
+  ELSIF general.ngcp_type == 'sppro';
+    hostlist = [ 'sp1', 'sp2' ];
+  END;
+-%]
 dns:
-  sp1:
+[% FOR hostname IN hostlist -%]
+  [% hostname %]:
     resolvable: true
     addrs:
-      - 192.168.255.251
+[%-
+  # If this library function is broken, we will get at worst an empty value
+  # which should also make the check fail.
+  argv.host = hostname;
+  argv.type = 'ha_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+  ha_ip = out;
+%]
+      - [% ha_ip.0 %]
     timeout: 500
 
-  sp2:
-    resolvable: true
-    addrs:
-      - 192.168.255.252
-    timeout: 500
+[% END -%]
