@@ -94,6 +94,30 @@
       "revId": "d690fcb2aa345e49c69531adcaae0557605e61bc",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "981ac4db_951c8729",
+        "filename": "templates/812_network-dns-ngcp-pro.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-13T16:58:29Z",
+      "side": 1,
+      "message": "IMHO yes. ALE uses default names AFAIK, but they do not use tests now, as tests are not ready for production (like administartor password hardcoded for some URLs, etc).",
+      "parentUuid": "9acb7344_aa4b2750",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 76
+      },
+      "revId": "d690fcb2aa345e49c69531adcaae0557605e61bc",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
