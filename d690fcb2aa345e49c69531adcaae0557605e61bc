@@ -46,6 +46,30 @@
       "revId": "d690fcb2aa345e49c69531adcaae0557605e61bc",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2cee621_672f2e48",
+        "filename": "templates/812_network-dns-ngcp-pro.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-13T16:54:18Z",
+      "side": 1,
+      "message": "On customers we have already slb01a, etc...\nI would focus this tests for internal needs for now, to control regressions. We for sure will need to adopt them for production usage, as ALE want to have them, they are fast and reliable. But for production I would create \"LIVE\u003dtrue\" mode where hosts will be shoosen from network.yml and some tests are skipped... \n\n\nWhat do you think?",
+      "parentUuid": "4cac445a_cee657c3",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 76
+      },
+      "revId": "d690fcb2aa345e49c69531adcaae0557605e61bc",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
