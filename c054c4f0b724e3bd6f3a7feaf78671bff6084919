@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a19b0e0_05689e36",
+        "filename": "templates/821_network-ports-ngcp.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-12-13T07:34:50Z",
+      "side": 1,
+      "message": "Port 5281 isn\u0027t defined in system/net_services yet (while all the others mentioned in this review are), is that intentional?",
+      "revId": "c054c4f0b724e3bd6f3a7feaf78671bff6084919",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    }
+  ]
+}
