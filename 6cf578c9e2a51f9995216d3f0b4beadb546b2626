@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c880f49_e03a231e",
+        "filename": "templates/812_network-dns-ngcp-pro.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-13T13:26:58Z",
+      "side": 1,
+      "message": "TL;DR: LGTM.\n\nbut you are pushing the test in a huge dependency to ngcpcfg code. While it must be independent as match as possible.\n\nFor example, if bug in /usr/lib/ngcp-ngcpcfg/get_all_ips_for_host returns no IPs at all, goss here will be happy, and we miss the bug.\n\n\nIMHO goss test must NOT use ngcpcfg modules to consider how to test NGCP. Sure we still need to check if component is enabled, etc...",
+      "revId": "6cf578c9e2a51f9995216d3f0b4beadb546b2626",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
