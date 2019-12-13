@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9584ae80_49b69481",
+        "filename": "templates/411_process-ngcp-pro.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-13T13:20:10Z",
+      "side": 1,
+      "message": "the file 411_process-ngcp-pro.yaml.tt2 is for PRO only.\nIt is always true, isn\u0027t it?",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 33
+      },
+      "revId": "378b065557f99ca3084c6ed3e62e84d7da000d29",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c6020c3_b5b54cd2",
+        "filename": "templates/510_init-daemons-ngcp.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-13T13:20:10Z",
+      "side": 1,
+      "message": "Uff... I didn\u0027t know nginx is running on LB.\nChecked on carrier-trunk... really running. OK.",
+      "range": {
+        "startLine": 81,
+        "startChar": 28,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "378b065557f99ca3084c6ed3e62e84d7da000d29",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}

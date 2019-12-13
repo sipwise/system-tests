@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59460e38_3d6e1fd2",
+        "filename": "templates/400_process-debian.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-13T13:20:10Z",
+      "side": 0,
+      "message": "As I can see you moved it to 411_process-ngcp-pro.yaml.tt2  which is for PRO only. Are we not going to test them for CE?",
+      "revId": "018033f7eefb8e08d4d13d404c28274857d5bc5e",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
