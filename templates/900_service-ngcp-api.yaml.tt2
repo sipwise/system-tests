@@ -91,14 +91,14 @@ command:
     timeout: 30000
 
 
-  "curl --insecure -L http://[% web_ext_ips.0 %]:1443/login/subscriber":
+  "curl --insecure -L http://[% web_int_ips.0 %]:1443/login/subscriber":
     exit-status: 0
     stdout:
       - <title></title>
     stderr: []
     timeout: 30000
 
-  "curl --insecure -L https://[% web_ext_ips.0 %]:1443/login/subscriber":
+  "curl --insecure -L https://[% web_int_ips.0 %]:1443/login/subscriber":
     exit-status: 0
     stdout:
       - <title></title>
@@ -135,14 +135,14 @@ command:
     timeout: 30000
 
 
-  "curl --insecure -L http://[% web_ext_ips.0 %]/api/":
+  "curl --insecure -L http://[% web_int_ips.0 %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
 
-  "curl --insecure -L https://[% web_ext_ips.0 %]/api/":
+  "curl --insecure -L https://[% web_int_ips.0 %]/api/":
     exit-status: 0
     stdout:
       - "/Authorization required/"
