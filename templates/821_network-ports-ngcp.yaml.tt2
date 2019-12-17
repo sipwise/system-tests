@@ -130,7 +130,7 @@ port:
     ip: ["[% sip_ext_ips.0 %]"]
 
   # HAProxy
-  tcp:8080:
+  tcp:5580:
     listening: [% haproxy.enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 %]"]
 
