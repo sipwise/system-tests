@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb239d11_05494e79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-12-17T09:30:16Z",
+      "side": 1,
+      "message": "I parse this as \"do not check on non-mgmt, do not check on li_dist nodes\", what about \"Check nginx and ngcp-panel only on mgmt + li_dist nodes\" instead of the double negation and non-precise list_dist situation? :)",
+      "revId": "a1647311162c31fe19a41304000ee2c47ca30320",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    }
+  ]
+}
