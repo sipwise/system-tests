@@ -43,6 +43,7 @@
     $stash->set(node_state => $node_state);
 [% END -%]
 
+[% IF is_mgmt || is_li_dist -%]
 command:
 
   "curl --insecure -L http://[% web_ext_ips.0 %]/":
@@ -164,7 +165,7 @@ command:
     timeout: 30000
 
 
-[% IF www_admin.enable == 'yes' && (is_mgmt || is_li_dist) && node_state == 'active' -%]
+[% IF www_admin.enable == 'yes' && node_state == 'active' -%]
   "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 %]:[% www_admin.http_system.port %]/api/":
     exit-status: 0
     stdout:
@@ -215,3 +216,4 @@ command:
       - "/Active connections: [0-9]+/"
     stderr: []
     timeout: 10000
+[% END -%]
