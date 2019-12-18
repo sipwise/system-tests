@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14a93019_6addcef1",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-18T16:48:59Z",
+      "side": 1,
+      "message": "it was a shell script itself, why do we need prove here?\n\nBTW, I have just recalled, goss is missing... right now we wget it inside testrunner from deb.sipwise.com, which is not acceptible for NGCP in production :-(\n\n\nany ideas here? upload goss package to Debian... Ufff..\nanyway we need to build it locally from sources... and do not trust binaries from GitHub, isn\u0027t it?",
+      "range": {
+        "startLine": 5,
+        "startChar": 14,
+        "endLine": 5,
+        "endChar": 51
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
