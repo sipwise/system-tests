@@ -22,6 +22,30 @@
       "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a89e242a_d990e935",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-18T16:56:56Z",
+      "side": 1,
+      "message": "Prove prints a nice summary, and on failure it will output only the failing cases which is nicer than the raw script output.\n\nAbout goss, right. I\u0027m not sure it should be a blocker right now. But indeed, what I\u0027d do is build an actual .deb that we can install and depend on, even if it\u0027s a fake one taking the upstream blob, as Mika has done in the past with grafana or other similar monsters. I think Mika has more experience with those, so it might make sense for him to handle.",
+      "parentUuid": "14a93019_6addcef1",
+      "range": {
+        "startLine": 5,
+        "startChar": 14,
+        "endLine": 5,
+        "endChar": 51
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
