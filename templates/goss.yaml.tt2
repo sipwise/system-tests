@@ -8,6 +8,7 @@ gossfile:
 [% END -%]
   132_filesys-ngcp-templates.yaml: {}
   133_filesys-deprecated.yaml: {}
+  134_filesys-voisniff.yaml.tt2: {}
   200_user-debian.yaml: {}
   210_user-ngcp.yaml: {}
   310_package-ngcp.yaml: {}
