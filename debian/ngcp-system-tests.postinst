@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -e
-
-# Remove obsolete files generated from templates.
-rm -rf /etc/ngcp-tests/ce
-rm -rf /etc/ngcp-tests/pro
-
-#DEBHELPER#
