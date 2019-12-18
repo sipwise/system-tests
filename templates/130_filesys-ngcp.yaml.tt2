@@ -221,3 +221,10 @@ file:
     linked-to: /etc/mysql/mariadb.cnf
     filetype: symlink
     contains: []
+
+  /ngcp-data/backup:
+    exists: true
+    mode: "0700"
+    owner: root
+    group: root
+    filetype: directory
