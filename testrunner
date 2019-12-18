@@ -8,19 +8,6 @@ diag() {
   echo "$@" 2>&1
 }
 
-if ls /var/lib/systemd/coredump/core.perl-fcgi* >/dev/null 2>&1 ; then
-  diag "================== NOTE: CORE DUMP DETECTED =================="
-  diag "= Removing known cores to prevent failing for the known issues:"
-  diag "= 1) MT#21791: Renaming ngcp-panel cores /var/lib/systemd/coredump/core.perl-fcgi*"
-  ls -la /var/lib/systemd/coredump/core.perl-fcgi*
-  for file in /var/lib/systemd/coredump/core.perl-fcgi* ; do
-    mv "${file}" /var/lib/systemd/coredump/RENAMED_"$(basename "${file}")"
-  done
-  diag "= New cores names are:"
-  ls -la /var/lib/systemd/coredump/RENAMED_core.perl-fcgi*
-  diag "========================== DONE =============================="
-fi
-
 goss="goss-0.3.5-e6140f90+patch_319-linux-amd64"
 
 if [ ! -x "/usr/sbin/${goss}" ] ; then
