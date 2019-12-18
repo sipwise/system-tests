@@ -22,6 +22,30 @@
       "revId": "666c880292777ef1ecf69504f336c544f3893987",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfe3d683_522b4433",
+        "filename": "templates/goss.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000008
+      },
+      "writtenOn": "2019-12-18T15:47:13Z",
+      "side": 1,
+      "message": "It is, but installer creates the directory unconditionally, doesn\u0027t it?",
+      "parentUuid": "80a6aef7_bb4fc603",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "666c880292777ef1ecf69504f336c544f3893987",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
