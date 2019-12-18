@@ -22,6 +22,30 @@
       "revId": "87550a165fdffb48fcd9280af74b7da09b3a9805",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f57404c7_d4f25863",
+        "filename": "debian/ngcp-system-tests.preinst",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-18T16:51:53Z",
+      "side": 1,
+      "message": "Well it was still installable, and I\u0027d rather be on the safe side here. We can remove this after the next LTS.",
+      "parentUuid": "55b72ec8_58f5d97f",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "87550a165fdffb48fcd9280af74b7da09b3a9805",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
