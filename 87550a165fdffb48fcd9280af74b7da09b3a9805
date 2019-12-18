@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55b72ec8_58f5d97f",
+        "filename": "debian/ngcp-system-tests.preinst",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-18T16:47:15Z",
+      "side": 1,
+      "message": "are you sure it is necessary?\n1) the old packages was never installed in production\n2) /etc/... is comming from tt2 templates. So new one will be generated on ngcpcfg apply.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "87550a165fdffb48fcd9280af74b7da09b3a9805",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
