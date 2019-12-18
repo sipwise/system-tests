@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "095bb7d8_58025927",
+        "filename": "templates/134_filesys-voisniff-ng.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-18T16:13:30Z",
+      "side": 1,
+      "message": "Yeah see commit eb52ce8d5bf7c70b4b6f256aeaf8b976c0dd4be0 in voisniff-ng (we didn\u0027t rename the repo because that was too much trouble though).",
+      "parentUuid": "0a5cd859_8630be6c",
+      "range": {
+        "startLine": 2,
+        "startChar": 21,
+        "endLine": 2,
+        "endChar": 24
+      },
+      "revId": "666c880292777ef1ecf69504f336c544f3893987",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12e53b89_260b7d65",
         "filename": "templates/134_filesys-voisniff-ng.yaml.tt2",
         "patchSetId": 1
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "The chown was removed as per https://gerrit.mgm.sipwise.com/c/installer/+/36360",
       "parentUuid": "12e53b89_260b7d65",
+      "revId": "666c880292777ef1ecf69504f336c544f3893987",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5e1b785_e66bc135",
+        "filename": "templates/134_filesys-voisniff-ng.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-18T16:13:30Z",
+      "side": 1,
+      "message": "Ah, right I\u0027ve seen that change now.",
+      "parentUuid": "67ecaa8c_2e08e21b",
       "revId": "666c880292777ef1ecf69504f336c544f3893987",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
