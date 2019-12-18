@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a5cd859_8630be6c",
+        "filename": "templates/134_filesys-voisniff-ng.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000008
+      },
+      "writtenOn": "2019-12-18T15:53:52Z",
+      "side": 1,
+      "message": "Were we? I still see it pretty much everywhere. But can remove it here if that\u0027s preferable?",
+      "parentUuid": "c9275e41_e42940c1",
+      "range": {
+        "startLine": 2,
+        "startChar": 21,
+        "endLine": 2,
+        "endChar": 24
+      },
+      "revId": "666c880292777ef1ecf69504f336c544f3893987",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12e53b89_260b7d65",
         "filename": "templates/134_filesys-voisniff-ng.yaml.tt2",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-12-18T15:51:17Z",
       "side": 1,
       "message": "Also in the installer code path, there\u0027s a chown involved, even if as Mykola reported it\u0027s currently failing. :)",
+      "revId": "666c880292777ef1ecf69504f336c544f3893987",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67ecaa8c_2e08e21b",
+        "filename": "templates/134_filesys-voisniff-ng.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000008
+      },
+      "writtenOn": "2019-12-18T15:53:52Z",
+      "side": 1,
+      "message": "The chown was removed as per https://gerrit.mgm.sipwise.com/c/installer/+/36360",
+      "parentUuid": "12e53b89_260b7d65",
       "revId": "666c880292777ef1ecf69504f336c544f3893987",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
