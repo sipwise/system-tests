@@ -1,2 +1,2 @@
-templates/*   /etc/ngcp-config/templates/etc/ngcp-tests/
-testrunner    /usr/share/ngcp-tests/
+templates/*   /etc/ngcp-config/templates/etc/ngcp-system-tests/
+testrunner    /usr/share/ngcp-system-tests/

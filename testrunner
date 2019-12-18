@@ -34,8 +34,8 @@ else
   rm -f "${host_yml_file}"
 fi
 
-diag "Rebuilding test configs in /etc/ngcp-test/"
-ngcpcfg build /etc/ngcp-test/* 2>&1
+diag "Rebuilding test configs in /etc/ngcp-system-tests/"
+ngcpcfg build /etc/ngcp-system-tests/* 2>&1
 rm -f "${host_yml_file}"
 
 rm -rf "${REPORT_DIRECTORY}"
@@ -52,6 +52,6 @@ case "${DEBIAN_RELEASE}" in
     DEBIAN_RELEASE=11
     ;;
 esac
-DEBIAN_RELEASE=$DEBIAN_RELEASE goss -g "/etc/ngcp-tests/goss.yaml" validate --format tap | tee "${TAP_RESULTS}"
+DEBIAN_RELEASE=$DEBIAN_RELEASE goss -g "/etc/ngcp-system-tests/goss.yaml" validate --format tap | tee "${TAP_RESULTS}"
 
 exit "${PIPESTATUS[0]}"
