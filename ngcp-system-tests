@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+prove "$@" -f /usr/share/ngcp-system-tests/testrunner
