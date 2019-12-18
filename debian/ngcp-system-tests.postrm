@@ -30,6 +30,8 @@ set -e
 
 case "$1" in
   purge)
+    rm -rf /etc/ngcp-system-tests/
+    # Remove old location too.
     rm -rf /etc/ngcp-tests/
   ;;
 
