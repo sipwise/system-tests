@@ -52,6 +52,24 @@
       "revId": "2a0385bbcf3fbf384229d0893890c5e74d7eac18",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22e0c678_a387857c",
+        "filename": "templates/130_filesys-ngcp.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-12-19T18:28:54Z",
+      "side": 1,
+      "message": "\u003e \u003e In any case, the intention is that the system-tests take these into account, since they seem to be present in new systems, and will also be in upgraded systems.\n\u003e \n\u003e But system-test will just fail, due to missing folder on Jenkins for new installations. This is why I am asking here.\n\nAs I said, it\u0027s created in root@pro-trunk, I just didn\u0027t know who.\n\nSilly me, I didn\u0027t do the most basic, I didn\u0027t need to check in installer but with \"dpkg -S\", so the owner is:\n\n  root@sp1:~# dpkg -S /ngcp-data/backup/\n  ngcp-cleanup-tools-pro: /ngcp-data/backup\n  root@sp1:~# ls -ld /ngcp-data/backup\n  drwxr-xr-x 3 root root 4096 Dec 19 12:16 /ngcp-data/backup\n\nAs it is, though, it will fail due to permissions, though.",
+      "parentUuid": "581b0020_4451b38f",
+      "revId": "2a0385bbcf3fbf384229d0893890c5e74d7eac18",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
