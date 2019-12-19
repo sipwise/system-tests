@@ -22,14 +22,14 @@ gossfile:
   610_kernel-sysctl-params.yaml: {}
   615_kernel-modules.yaml: {}
   800_network-hostname.yaml: {}
-[% IF sipwise.system_tester.skip_dns_check_test != "true" -%]
+{{if ne .Env.SKIP_DNS_CHECK_TEST "true"}}
   810_network-dns-debian.yaml: {}
 [%   IF general.ngcp_type == 'spce' -%]
   811_network-dns-ngcp-ce.yaml: {}
 [%   ELSE -%]
   812_network-dns-ngcp-pro.yaml: {}
 [%   END -%]
-[% END -%]
+{{end}}
   820_network-ports-debian.yaml: {}
   821_network-ports-ngcp.yaml: {}
 [% IF general.ngcp_type != 'spce' -%]
