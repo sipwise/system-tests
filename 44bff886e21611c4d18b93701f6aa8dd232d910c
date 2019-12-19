@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11d0b3d8_f6aad11b",
+        "filename": "testrunner",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T22:11:57Z",
+      "side": 1,
+      "message": "$(lsb_release -r -s)\n\n?",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "44bff886e21611c4d18b93701f6aa8dd232d910c",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
