@@ -15,7 +15,7 @@ command:
   hostname:
     exit-status: 0
 
-[% IF sipwise.system_tester.skip_strict_hostname_test != "true" %]
+{{if ne .Env.SKIP_STRICT_HOSTNAME_TEST "true"}}
   hostname:
     exit-status: 0
     stdout:
@@ -34,7 +34,7 @@ command:
       - "[% host_match %]"
     stderr: []
 
-[% END -%]
+{{end}}
 [% IF general.ngcp_type == 'spce' -%]
   "[ $(hostname --short). = $(hostname --fqdn) ]":
     title: "short hostname should be the same as fqdn (ignoring trailing dot)"
