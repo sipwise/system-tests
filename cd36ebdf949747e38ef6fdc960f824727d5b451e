@@ -34,6 +34,24 @@
       "revId": "cd36ebdf949747e38ef6fdc960f824727d5b451e",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52b960ec_bb7fdb9c",
+        "filename": "testrunner",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T22:48:27Z",
+      "side": 1,
+      "message": "I am not 100% it is exported there/evruwhere, I noticed only:\n\njenkins-configs/jobs/daily-build/scripts/system_tester.sh\n15:      ssh \"${testhost}\" \"SKIP_DNS_CHECK_TEST\u003dtrue /usr/share/ngcp-tests/testrunner /usr/share/ngcp-tests/${vmtype,,}/\" || RC\u003d$?\n\n\njenkins-configs/jobs/daily-build/netinstall-test-ngcp-installer.yaml\n48:          SKIP_DNS_CHECK_TEST\u003dtrue\n\n\nbut LGTM if you are sure it is OK.",
+      "parentUuid": "b44bd325_81cc3264",
+      "revId": "cd36ebdf949747e38ef6fdc960f824727d5b451e",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
