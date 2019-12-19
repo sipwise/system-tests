@@ -70,6 +70,30 @@
       "revId": "87550a165fdffb48fcd9280af74b7da09b3a9805",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71e844e4_f3ee2faf",
+        "filename": "debian/ngcp-system-tests.preinst",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-19T13:31:28Z",
+      "side": 1,
+      "message": "I thought about that, but that really seems very unlikely, as we have actually never installed anything on that directory before, and the first time we do we will have already moved the old stuff. But I can add handling for that case just for defensive purposes. Although I\u0027d probably just remove the old one and leave the new alone.",
+      "parentUuid": "45853d08_ebc37c54",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "87550a165fdffb48fcd9280af74b7da09b3a9805",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
