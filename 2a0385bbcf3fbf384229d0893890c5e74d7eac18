@@ -34,6 +34,24 @@
       "revId": "2a0385bbcf3fbf384229d0893890c5e74d7eac18",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "581b0020_4451b38f",
+        "filename": "templates/130_filesys-ngcp.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T17:21:25Z",
+      "side": 1,
+      "message": "\u003e In any case, the intention is that the system-tests take these into account, since they seem to be present in new systems, and will also be in upgraded systems.\n\nBut system-test will just fail, due to missing folder on Jenkins for new installations. This is why I am asking here.\n\n\u003e Not sure, I tried to find it but it\u0027s not in installer.git, but it\u0027s actually there (for example in pro-trunk.mgm server).\n\nACK. let\u0027s see.",
+      "parentUuid": "b3b17230_d4a4e775",
+      "revId": "2a0385bbcf3fbf384229d0893890c5e74d7eac18",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
