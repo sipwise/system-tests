@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fd3df1f_8f03e884",
+        "filename": "templates/130_filesys-ngcp.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T12:04:28Z",
+      "side": 1,
+      "message": "LGTM, but who will create it for newly installed systems?",
+      "revId": "2a0385bbcf3fbf384229d0893890c5e74d7eac18",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
