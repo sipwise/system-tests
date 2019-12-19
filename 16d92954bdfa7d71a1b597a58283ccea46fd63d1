@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e694bf1_e39b81f8",
+        "filename": "testrunner",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T23:36:17Z",
+      "side": 1,
+      "message": "Ammm.... I still believe we need:\n\n\u003e export SKIP_DNS_CHECK_TEST\u003d${SKIP_DNS_CHECK_TEST:-false}\n\u003e export SKIP_STRICT_HOSTNAME_TEST\u003d${SKIP_STRICT_HOSTNAME_TEST:-false}\n\n\notherwise you are exporting empty variable and the same story:\n\nroot@spce:~# export SKIP_STRICT_HOSTNAME_TEST\nroot@spce:~# /usr/share/ngcp-system-tests/testrunner \n2019/12/19 23:53:49 template: test:6:12: executing \"test\" at \u003c.Env.SKIP_STRICT_HOSTNAME_TEST\u003e: map has no entry for key \"SKIP_STRICT_HOSTNAME_TEST\"\nroot@spce:~# export SKIP_STRICT_HOSTNAME_TEST\u003dfalse\nroot@spce:~# /usr/share/ngcp-system-tests/testrunner \n1..521",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 32
+      },
+      "revId": "16d92954bdfa7d71a1b597a58283ccea46fd63d1",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
