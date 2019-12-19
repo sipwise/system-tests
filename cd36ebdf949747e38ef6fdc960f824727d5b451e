@@ -52,6 +52,24 @@
       "revId": "cd36ebdf949747e38ef6fdc960f824727d5b451e",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16917776_9ddd08b1",
+        "filename": "testrunner",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T22:59:37Z",
+      "side": 1,
+      "message": "‎[11:53:21 PM] ‎Alex Lutay‎: P.S. ce-trunk.mgm installed PPA:\n\nroot@spce:~# /usr/share/ngcp-system-tests/testrunner \n2019/12/19 23:53:03 template: test:19:12: executing \"test\" at \u003c.Env.SKIP_DNS_CHECK_TEST\u003e: map has no entry for key \"SKIP_DNS_CHECK_TEST\"\nroot@spce:~# \n\n‎[11:54:31 PM] ‎Guillem Jover‎: ok so I guess I\u0027ll need to export it explicitly so that we get an empty variable\n‎[11:55:14 PM] ‎Alex Lutay‎: IMHO, inside testrunner we need\n\u003e export SKIP_DNS_CHECK_TEST\u003d${SKIP_DNS_CHECK_TEST:-false}\n\u003e export SKIP_STRICT_HOSTNAME_TEST\u003d${SKIP_STRICT_HOSTNAME_TEST:-false}",
+      "parentUuid": "52b960ec_bb7fdb9c",
+      "revId": "cd36ebdf949747e38ef6fdc960f824727d5b451e",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
