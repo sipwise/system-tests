@@ -38,6 +38,9 @@ case "${DEBIAN_RELEASE}" in
     DEBIAN_RELEASE=11
     ;;
 esac
-DEBIAN_RELEASE=$DEBIAN_RELEASE goss -g "/etc/ngcp-system-tests/goss.yaml" validate --format tap | tee "${TAP_RESULTS}"
+export DEBIAN_RELEASE
+
+goss -g "/etc/ngcp-system-tests/goss.yaml" validate --format tap \
+  | tee "${TAP_RESULTS}"
 
 exit "${PIPESTATUS[0]}"
