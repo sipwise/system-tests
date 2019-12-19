@@ -237,6 +237,30 @@
       "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9827642b_71723c8b",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T23:49:54Z",
+      "side": 1,
+      "message": "I still do not see prove here.\n\nIMHO, testrunner was a jenkins wrapper.\nNow we need a runner for tests as a part of ngcp -\u003e I line ngcp-system-tests. So we need to rename it and inside ngcp-system-tests should left nothing about \"$RESULTS\" as it is a Jenkins part. Jenkins should call ngcp-system-tests, maybe \"ngcp-system-tests --tap\" to pass to goss tap output and store STDOUT to results by code inside Jenkin job. Nope?",
+      "parentUuid": "3d4f8845_2a2b3f04",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
