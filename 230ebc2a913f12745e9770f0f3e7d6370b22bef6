@@ -141,6 +141,30 @@
       "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd58b16_21a04bcd",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T15:45:08Z",
+      "side": 1,
+      "message": "\u003e Are you running that on a non-existent pathname?\n  \nssh ce-trunk.mgm.sipwise.com\nroot@spce:~# prove \"$@\" -f /usr/share/ngcp-system-tests/testrunner\n\n\u003e I think it should not be a blocker for trunk, \n\nNot a blocker for trunk, yes.\nBlocked for mr8.2, IMHO.\nWe cannot release mr8.2 with ngcp-system-tests installed by default which wget goss. IMHO.\n\nACK to Mika for fast hack package, but is it possible to build it locally from sources to ensure no intrusions into goss binary, as we going to install it into customer\u0027s datacenters.\nHuge security risk for foreign binaries.\n\n\u003e I already started briefly checking this yesterday...\n\nMaybe we can ask goss author to cut unnecessary dependencies to simplify Debian publishing? He is pretty good guy, so maybe he can help us here... Maybe some go libraries he uses can be replaced with 10 lines function :-D\n\n\u003e2Mika: please just file a WF issue for me if you want me to take care of this.\n\nhttps://sipwise.my.workfront.com/task/view?ID\u003d73105",
+      "parentUuid": "0f41600b_1dff1bbc",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
