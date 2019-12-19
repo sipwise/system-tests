@@ -46,6 +46,30 @@
       "revId": "16d92954bdfa7d71a1b597a58283ccea46fd63d1",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea2de766_85a143f8",
+        "filename": "testrunner",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-19T23:40:44Z",
+      "side": 1,
+      "message": "Hmm or apparently not, or perhaps some other change. O_o",
+      "parentUuid": "46a0249b_f4ca5fbb",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 32
+      },
+      "revId": "16d92954bdfa7d71a1b597a58283ccea46fd63d1",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
