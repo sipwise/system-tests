@@ -12,3 +12,8 @@ override_dh_installdeb:
 	    rm -f "$$cf"; \
 	  fi; \
 	done
+
+override_dh_fixperms:
+	dh_fixperms
+	# This file contains passwords.
+	chmod 0600 debian/ngcp-system-tests/etc/ngcp-config/templates/etc/ngcp-tests/900_service-ngcp-api.yaml.tt2
