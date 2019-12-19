@@ -69,6 +69,30 @@
       "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "679046b0_540ecd56",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-12-19T10:29:16Z",
+      "side": 1,
+      "message": "\u003e ACK to add it as backports to trunk.yml (and probably internal-buster, so we will use it internally too). Will you take care here? The problem is: some customers blocks access to deb.sipwise.com, so ngcp-system-tests will fail there if we keep it AS IS.\n\nSo I briefly looked into the actual dependencies of goss in Debian:\n\n  https://paste.mgm.sipwise.com/show/6520/\n\n@Alex: I could provide a \"fake Debian backport package\" for our own needs pretty fast, please just file a WF issue for me if you want me to take care of this.\n\n@Guillem: do you think it\u0027s worth creating an official Debian package in the-Debian-way? If so, do you want to take a closer look at my paste and what work would actually need to be taken care of?",
+      "parentUuid": "22e51f49_a4db1c96",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
