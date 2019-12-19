@@ -93,6 +93,54 @@
       "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f41600b_1dff1bbc",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-19T13:40:38Z",
+      "side": 1,
+      "message": "As I mention on the other comment, I already started briefly checking this yesterday, but «dh-make-golang estimate» crapped out on one of the transitive dependencies due to a wrong path or similar. So, I\u0027d go with the fake package for now, so that we do not end up with a possibly broken release, but we should at least try IMO to package this properly. There was even an ITP at some point in Debian (now demoted to an RFP).",
+      "parentUuid": "679046b0_540ecd56",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5af1116_86a40d54",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-19T13:40:38Z",
+      "side": 1,
+      "message": "Are you running that on a non-existent pathname?\n\nYeah, was already looking into it yesterday. I think it should not be a blocker for trunk, because as Mika mentions we should be able to get a fake package ready pretty quickly, and we can always then check the effort needed for a proper one.",
+      "parentUuid": "22e51f49_a4db1c96",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
