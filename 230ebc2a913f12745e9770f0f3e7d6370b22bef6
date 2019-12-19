@@ -189,6 +189,30 @@
       "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40846ecd_f3845b42",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T17:06:19Z",
+      "side": 1,
+      "message": "ACK, tnx! I am really excited to have systems tests for all nodes and productions, this is really a step forward.",
+      "parentUuid": "83eece72_a31e5b2a",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
