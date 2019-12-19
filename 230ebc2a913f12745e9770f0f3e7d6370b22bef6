@@ -46,6 +46,29 @@
       "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22e51f49_a4db1c96",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T09:27:42Z",
+      "side": 1,
+      "message": "\u003e Prove prints a nice summary, and on failure it will output only the failing cases which is nicer than the raw script output.\n\nBut how it suppose to work? I see: https://paste.mgm.sipwise.com/show/6519/\n\n\u003e But indeed, what I\u0027d do is build an actual .deb that we can install and depend on.\n\nACK to add it as backports to trunk.yml (and probably internal-buster, so we will use it internally too). Will you take care here? The problem is: some customers blocks access to deb.sipwise.com, so ngcp-system-tests will fail there if we keep it AS IS.",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
