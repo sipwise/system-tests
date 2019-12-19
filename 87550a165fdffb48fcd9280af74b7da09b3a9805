@@ -46,6 +46,30 @@
       "revId": "87550a165fdffb48fcd9280af74b7da09b3a9805",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45853d08_ebc37c54",
+        "filename": "debian/ngcp-system-tests.preinst",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T09:35:49Z",
+      "side": 1,
+      "message": "ACK. Maybe you should do:\n\n    if [ -d /etc/ngcp-tests ]; then\n      rm -f /etc/ngcp-system-tests\n      mv /etc/ngcp-tests /etc/ngcp-system-tests\n    fi \n\n\nto be on the safe side? Otherwise you will have a surprise:\n\n10:33:28 ✔ taurus:~$ mkdir /tmp/test1\n10:33:33 ✔ taurus:~$ mkdir /tmp/test2\n10:33:34 ✔ taurus:~$ touch /tmp/test2/aaaa\n10:34:21 ✔ taurus:~$ mv /tmp/test2 /tmp/test1\n10:34:25 ✔ taurus:~$ ls -la /tmp/test1/\ntotal 12\ndrwxrwxr-x  3 taurus taurus 4096 Dec 19 10:34 .\ndrwxrwxrwt 20 root   root   4096 Dec 19 10:34 ..\ndrwxrwxr-x  2 taurus taurus 4096 Dec 19 10:33 test2\n10:34:27 ✔ taurus:~$",
+      "parentUuid": "f57404c7_d4f25863",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "87550a165fdffb48fcd9280af74b7da09b3a9805",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
