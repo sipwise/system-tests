@@ -16,6 +16,24 @@
       "revId": "cd36ebdf949747e38ef6fdc960f824727d5b451e",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b44bd325_81cc3264",
+        "filename": "testrunner",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-19T22:27:47Z",
+      "side": 1,
+      "message": "No, it gets exported by the calling program, and then sh should honor those exports to all its children.",
+      "parentUuid": "95bc63c5_56a7c85b",
+      "revId": "cd36ebdf949747e38ef6fdc960f824727d5b451e",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
