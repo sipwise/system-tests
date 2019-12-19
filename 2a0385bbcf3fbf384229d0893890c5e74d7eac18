@@ -16,6 +16,24 @@
       "revId": "2a0385bbcf3fbf384229d0893890c5e74d7eac18",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3b17230_d4a4e775",
+        "filename": "templates/130_filesys-ngcp.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-12-19T12:55:15Z",
+      "side": 1,
+      "message": "\u003e LGTM, but who will create it for newly installed systems?\n\nNot sure, I tried to find it but it\u0027s not in installer.git, but it\u0027s actually there (for example in pro-trunk.mgm server).\n\nIn any case, the intention is that the system-tests take these into account, since they seem to be present in new systems, and will also be in upgraded systems.",
+      "parentUuid": "6fd3df1f_8f03e884",
+      "revId": "2a0385bbcf3fbf384229d0893890c5e74d7eac18",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
