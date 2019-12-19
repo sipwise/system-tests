@@ -213,6 +213,30 @@
       "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d4f8845_2a2b3f04",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-19T17:14:44Z",
+      "side": 1,
+      "message": "See my comment here https://gerrit.mgm.sipwise.com/#/c/jenkins-configs/+/36363/4/jobs/daily-build/scripts/system_tester.sh@184\n\nIMHO it is a way to go here.",
+      "parentUuid": "40846ecd_f3845b42",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
