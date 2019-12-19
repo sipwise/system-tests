@@ -19,8 +19,10 @@ fi
 rm -f /usr/sbin/goss
 ln -s "/usr/sbin/${goss}" /usr/sbin/goss
 
-diag "Rebuilding test configs in /etc/ngcp-system-tests/"
-ngcpcfg build /etc/ngcp-system-tests/* 2>&1
+if ! [ -d /etc/ngcp-system-tests/ ]; then
+  diag "Missing system test suite files, please run 'ngcpcfg build'"
+  exit 1
+fi
 
 rm -rf "${REPORT_DIRECTORY}"
 mkdir -p "${REPORT_DIRECTORY}"
