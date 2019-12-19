@@ -19,24 +19,8 @@ fi
 rm -f /usr/sbin/goss
 ln -s "/usr/sbin/${goss}" /usr/sbin/goss
 
-host_yml_file="/etc/ngcp-config/config.$(hostname).yml"
-if [ -n "${SKIP_DNS_CHECK_TEST}" ] || [ -n "${SKIP_STRICT_HOSTNAME_TEST}" ] ; then
-  diag "Configuring host specific YML config: ${host_yml_file}"
-  cat > "${host_yml_file}" << EOF
----
-sipwise:
-  system_tester:
-    skip_dns_check_test: '${SKIP_DNS_CHECK_TEST:-false}'
-    skip_strict_hostname_test: '${SKIP_STRICT_HOSTNAME_TEST:-false}'
-EOF
-else
-  # remove the file if exist from the previous run
-  rm -f "${host_yml_file}"
-fi
-
 diag "Rebuilding test configs in /etc/ngcp-system-tests/"
 ngcpcfg build /etc/ngcp-system-tests/* 2>&1
-rm -f "${host_yml_file}"
 
 rm -rf "${REPORT_DIRECTORY}"
 mkdir -p "${REPORT_DIRECTORY}"
@@ -53,6 +37,10 @@ case "${DEBIAN_RELEASE}" in
     ;;
 esac
 export DEBIAN_RELEASE
+
+# We need to export these, so that goss gets at least empty variables.
+export SKIP_DNS_CHECK_TEST
+export SKIP_STRICT_HOSTNAME_TEST
 
 goss -g "/etc/ngcp-system-tests/goss.yaml" validate --format tap \
   | tee "${TAP_RESULTS}"
