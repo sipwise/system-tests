@@ -261,6 +261,30 @@
       "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf7d4c4a_289fb669",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-19T23:58:32Z",
+      "side": 1,
+      "message": "The problem is, my preferred output is the one synthetized by prove, which is a summary of the TAP output. If we ask prove the full TAP output (with -v for example) it\u0027s almost the same as just running goss w/o prove, except for the colors and the summary. Also that means we cannot get the full output as prove requires the requires to run the commands itself. If your main concern is about having two commands, I guess I can merge them together and make the jenkins execution conditional on a new argument.\n\nLet me prepare a review for that.",
+      "parentUuid": "9827642b_71723c8b",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "230ebc2a913f12745e9770f0f3e7d6370b22bef6",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
