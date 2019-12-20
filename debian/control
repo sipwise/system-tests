@@ -12,6 +12,7 @@ Architecture: all
 Depends:
  asterisk,
  curl,
+ goss,
  influxdb-client,
  iproute2,
  kmod,
