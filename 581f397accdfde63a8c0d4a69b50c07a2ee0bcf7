@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fbf99e0_028eeff9",
+        "filename": "debian/control",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-20T14:21:41Z",
+      "side": 1,
+      "message": "ngcp-system-tests : Depends: influx-client but it is not installable",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "581f397accdfde63a8c0d4a69b50c07a2ee0bcf7",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
