@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0eda8934_861cbe11",
+        "filename": "debian/control",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-20T15:12:59Z",
+      "side": 1,
+      "message": "Right, all nodes are identical on NGCP from packages list view.\n\nI really do not know how to be \"correct\" here from Debian point of view.\n\nIMHO dependency it is something you need to acomplish your work. goss is a real dependency. Curl is questionable, IMHO it is too a dependency as we use curl to test ngcp-panel.\n\nWhen we call \"asterisk -rx\" we are testing asterisk itself, using asterisk interface. IMHO it is not a dependency here.\nIf it is missing, we will have non-zero exit code -\u003e expected behavior. Adding asterisk here will hide a wrong system configuration. Which is fail for complete system-tests.\n\nre: influx-client, mariadb-server same as asterisk.\n\niproute2 is really a dependency as we use some tolls to check networking.\n\nsnpm/kmod - I am not sure, but IMHO not install them.\n\nTalk to Debian developers Mika/Manuel here.\nIMHO the list here is too big.\n\n\nP.S. we can copy ngcp-installer approach. No Debian dependency at all, but ngcp-system-tests can check list of packages and fail if some missing before calling goss. What do you think?",
+      "parentUuid": "4b2b342c_ac62937d",
+      "revId": "581f397accdfde63a8c0d4a69b50c07a2ee0bcf7",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fbf99e0_028eeff9",
         "filename": "debian/control",
         "patchSetId": 1
