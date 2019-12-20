@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d8c2f6_c44db037",
+        "filename": "testrunner",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-20T13:25:45Z",
+      "side": 1,
+      "message": "as discussed, shuld be deleted in the separate commit, as must not create folder reports randomly in a places where the script was called from.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 27
+      },
+      "revId": "a1d06097c2acc6651737d17861d0be053bf35dbe",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da237e02_76abc321",
+        "filename": "testrunner",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-20T13:25:45Z",
+      "side": 1,
+      "message": "BTW, delete as used in one place where we can use echo directly?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "a1d06097c2acc6651737d17861d0be053bf35dbe",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}

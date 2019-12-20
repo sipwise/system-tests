@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9e4e1a3_26828ddd",
+        "filename": "debian/control",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-20T13:25:45Z",
+      "side": 0,
+      "message": "still necessary:\n\ntemplates/900_service-ngcp-api.yaml.tt2\n49:  \"curl --insecure -L http://[% web_ext_ips.0 %]/\":\n56:  \"curl --insecure -L https://[% web_ext_ips.0 %]/\":\n64:  \"curl --insecure -L http://[% web_int_ips.0 %]/login/admin\":\n71:  \"curl --insecure -L https://[% web_int_ips.0 %]:1443/login/admin\":\n79:  \"curl --insecure -L http://[% web_int_ips.0 %]:1443\":\n86:  \"curl --insecure -L https://[% web_int_ips.0 %]:1443\":",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "e84dabd7275dcd43ed67de224a6e4461c2ca74c9",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
