@@ -10,9 +10,16 @@ Homepage: https://www.sipwise.com/
 Package: ngcp-system-tests
 Architecture: all
 Depends:
+ asterisk,
  curl,
+ influx-client,
+ iproute2,
+ kmod,
+ mariadb-server,
  net-tools,
  procps,
+ snmp,
+ sqlite3,
  ${misc:Depends},
 Description: run system tests against NGCP systems
  This package provides test scripts to check the system
