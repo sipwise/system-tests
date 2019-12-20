@@ -11,6 +11,7 @@ Package: ngcp-system-tests
 Architecture: all
 Depends:
  curl,
+ goss,
  iproute2,
  kmod,
  net-tools,
