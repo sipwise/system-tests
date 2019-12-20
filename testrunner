@@ -8,17 +8,6 @@ diag() {
   echo "$@" 2>&1
 }
 
-goss="goss-0.3.9-linux-amd64"
-
-if [ ! -x "/usr/sbin/${goss}" ] ; then
-  diag "Downloading goss and installing as /usr/sbin/${goss}"
-  curl -L "https://deb.sipwise.com/files/${goss}" > "/usr/sbin/${goss}"
-  chmod +x "/usr/sbin/${goss}"
-fi
-
-rm -f /usr/sbin/goss
-ln -s "/usr/sbin/${goss}" /usr/sbin/goss
-
 if ! [ -d /etc/ngcp-system-tests/ ]; then
   diag "Missing system test suite files, please run 'ngcpcfg build'"
   exit 1
