@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "88c86a86_522689fe",
+        "filename": "debian/control",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-12-20T14:24:20Z",
+      "side": 1,
+      "message": "Do we introduce another problem here:\n - in the past system-tests was able to report about e.g. missing asterisk on the system, and now asterisk will be installed as a dependency of the test and hides missing dependency somewhere :-D",
+      "revId": "581f397accdfde63a8c0d4a69b50c07a2ee0bcf7",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fbf99e0_028eeff9",
         "filename": "debian/control",
         "patchSetId": 1
