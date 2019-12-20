@@ -10,7 +10,7 @@ Homepage: https://www.sipwise.com/
 Package: ngcp-system-tests
 Architecture: all
 Depends:
- curl,
+ goss,
  net-tools,
  procps,
  ${misc:Depends},
