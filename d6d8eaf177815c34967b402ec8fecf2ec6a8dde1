@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a701c59c_b1685e06",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-20T13:55:25Z",
+      "side": 1,
+      "message": "Because prove only takes pathnames w/o arguments as test to run.",
+      "parentUuid": "04f18d31_c9c1d825",
+      "revId": "d6d8eaf177815c34967b402ec8fecf2ec6a8dde1",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2035438f_adececae",
         "filename": "ngcp-system-tests",
         "patchSetId": 12
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "53101fb3_23547739",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 12
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-20T13:55:25Z",
+      "side": 1,
+      "message": "I can remove it I guess yes, will queue another commit.",
+      "parentUuid": "2035438f_adececae",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "d6d8eaf177815c34967b402ec8fecf2ec6a8dde1",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8547c62_2870d665",
         "filename": "ngcp-system-tests",
         "patchSetId": 12
@@ -53,6 +95,30 @@
       "writtenOn": "2019-12-20T13:48:57Z",
       "side": 1,
       "message": "NGCP_TESTS_MODE\u003d${NGCP_TESTS_MODE:\u003dprove}\n\n\nroot@web01a:~#     goss -g \"${PLAN}\" validate --format prove\ngoss: Bad output format: prove\n\n\n\nP.S. How Jenkins/users should execute the script?",
+      "range": {
+        "startLine": 92,
+        "startChar": 40,
+        "endLine": 92,
+        "endChar": 60
+      },
+      "revId": "d6d8eaf177815c34967b402ec8fecf2ec6a8dde1",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff28c03e_d83bc8cb",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2019-12-20T13:55:25Z",
+      "side": 1,
+      "message": "If you specify this the case will catch it and do the right thing. Check the jenkins-config change for how I see this could be driven.",
+      "parentUuid": "d8547c62_2870d665",
       "range": {
         "startLine": 92,
         "startChar": 40,
