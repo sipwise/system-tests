@@ -11,9 +11,17 @@ Package: ngcp-system-tests
 Architecture: all
 Depends:
  curl,
+ iproute2,
+ kmod,
  net-tools,
  procps,
  ${misc:Depends},
+Suggests:
+ asterisk,
+ influxdb-client,
+ mariadb-server,
+ snmp,
+ sqlite3,
 Description: run system tests against NGCP systems
  This package provides test scripts to check the system
  state of the SIP based Open Source Class5 VoIP soft-switch platform
