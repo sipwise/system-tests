@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c16de18_71b3c362",
+        "filename": "debian/ngcp-system-tests.install",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-12-20T08:24:43Z",
+      "side": 1,
+      "message": "wrap-and-sort?",
+      "revId": "979eadc2041b471b764002e4f28c468d975f4a43",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    }
+  ]
+}
