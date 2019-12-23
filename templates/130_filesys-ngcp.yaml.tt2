@@ -233,9 +233,9 @@ file:
     filetype: directory
 
   /var/backup:
-     exists: true
-     mode: "0777"
-     owner: root
-     group: root
-     linked-to: /ngcp-data/backup
-     filetype: symlink
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /ngcp-data/backup
+    filetype: symlink
