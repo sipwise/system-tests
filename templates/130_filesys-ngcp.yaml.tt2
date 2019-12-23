@@ -236,10 +236,10 @@ file:
     group: root
     filetype: directory
 
-  /var/backup/cdr:
+  /var/backup:
     exists: true
     mode: "0777"
     owner: root
     group: root
-    linked-to: /ngcp-data/backup/cdr
+    linked-to: /ngcp-data/backup
     filetype: symlink
