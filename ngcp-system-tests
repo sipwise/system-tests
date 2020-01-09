@@ -27,7 +27,7 @@ HELP
 }
 
 get_options() {
-  local _cmdline_opts="mode:"
+  local _cmdline_opts="help,mode:"
 
   local _opt_temp
   _opt_temp=$(getopt -n "${ME}" -o 'h' -l "${_cmdline_opts}" -- "${OPTS[@]}")
