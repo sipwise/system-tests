@@ -1,3 +1,12 @@
+ngcp-system-tests (8.0.3.0+0~mr8.0.3.0) unstable; urgency=medium
+
+  [ Manuel Montecelo ]
+  * [0dfe14b] TT#56053 Make sure that /ngcp-data/backup exists and has the right permissions
+  * [185c122] TT#72908 Check for /ngcp-data/backup/cdr and compat symlink from /var/backup/cdr
+  * [06b437e] TT#72908 Change compat symlink check from /var/backup/cdr to /var/backup
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 13 Jan 2020 15:22:21 +0100
+
 ngcp-system-tests (8.0.2.0+0~mr8.0.2.0) unstable; urgency=medium
 
   * New release.
