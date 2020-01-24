@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -euo pipefail
+
+DB_BACKUP_LIST='/etc/ngcp-backup-tools/db-backup.conf'
+if [[ ! -r "${DB_BACKUP_LIST}" ]]; then
+  echo "Cannot read mandatory config file ${DB_BACKUP_LIST}" 2>&1
+  exit 1
+fi
+
+MYSQL_CREDENTIALS='/etc/mysql/sipwise_extra.cnf'
+if [[ ! -r "${MYSQL_CREDENTIALS}" ]]; then
+  echo "Cannot read mandatory config file '${MYSQL_CREDENTIALS}'" 2>&1
+  exit 1
+fi
+
+mkdir -p results
+. "${DB_BACKUP_LIST}"
+for db in "${NGCP_DB_BACKUP_FINAL_LIST[@]}"; do
+  /usr/share/ngcp-system-tests/ngcp-compare-dbs.pl \
+    --connect_db1="DBI:mysql:database=${db};host=sp1;mysql_read_default_file=${MYSQL_CREDENTIALS}" \
+    --connect_db2="DBI:mysql:database=${db};host=sp2;mysql_read_default_file=${MYSQL_CREDENTIALS}" \
+    --result="results/compare-db-${db}.tap"
+    || true
+done
