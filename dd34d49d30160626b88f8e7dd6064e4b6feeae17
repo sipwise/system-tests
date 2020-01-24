@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "59d94294_9eb1c4ba",
+        "filename": "debian/ngcp-system-tests.install",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-01-24T13:24:30Z",
+      "side": 1,
+      "message": "del, otherwise:\n\nroot@sp1:~# ls -la /usr/sbin/ngcp-co\u003cTAB\u003e\nngcp-collective-check  ngcp-compare-dbs/      \n\nroot@sp1:~# /usr/sbin/ngcp-compare-dbs/compare_dbs",
+      "range": {
+        "startLine": 3,
+        "startChar": 27,
+        "endLine": 3,
+        "endChar": 43
+      },
+      "revId": "dd34d49d30160626b88f8e7dd6064e4b6feeae17",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4891bc1a_893d5acf",
+        "filename": "debian/ngcp-system-tests.install",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-01-24T13:24:30Z",
+      "side": 1,
+      "message": "del",
+      "range": {
+        "startLine": 4,
+        "startChar": 50,
+        "endLine": 4,
+        "endChar": 70
+      },
+      "revId": "dd34d49d30160626b88f8e7dd6064e4b6feeae17",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "622c4a8f_721df33f",
         "filename": "sbin/compare_dbs",
         "patchSetId": 3
