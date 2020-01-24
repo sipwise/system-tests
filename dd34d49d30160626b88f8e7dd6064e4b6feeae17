@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "622c4a8f_721df33f",
+        "filename": "sbin/compare_dbs",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-01-24T13:20:51Z",
+      "side": 1,
+      "message": "we will create tons of garbage in a random locations where users call the script. Is it necessary for Jenkins only?\n\nIMHO users should have just answer to STDOUT, nope?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "dd34d49d30160626b88f8e7dd6064e4b6feeae17",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    }
+  ]
+}
