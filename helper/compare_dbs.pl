@@ -9,9 +9,12 @@ use Getopt::Long;
 use Carp;
 
 my $argv = {
-    result   => 'result.tap',
-    pass_db1 => '',
-    pass_db2 => '',
+  formatter => '',
+  schemes   => '',
+  pass_db1  => '',
+  pass_db2  => '',
+  user_db1  => '',
+  user_db2  => '',
 };
 get_options();
 
@@ -128,54 +131,60 @@ __SQL__
 
 my @objs_list = qw( tables columns indexes constraints triggers views routines );
 
-my $dbh1 = DBI->connect( $argv->{connect_db1}, $argv->{user_db1}, $argv->{pass_db1},
+if ( $argv->{schemes} eq '' ) {
+  print {*STDERR} "    --schemes is empty\n\n";
+  print_usage();
+  exit 1;
+}
+
+my $dbh1 = DBI->connect(
+  "DBI:mysql:;host=sp1;mysql_read_default_file=/etc/mysql/sipwise_extra.cnf",
+  $argv->{user_db1},
+  $argv->{pass_db1},
   { RaiseError => 1 } ) or
-    croak("Can't connect to db1: $argv->{connect_db1}, $argv->{user_db1}, $argv->{pass_db1} ");
+  croak("Can't connect to db1: DBI:mysql:;host=sp1;mysql_read_default_file=/etc/mysql/sipwise_extra.cnf, $argv->{user_db1}, $argv->{pass_db1} ");
 
-my $dbh2 = DBI->connect( $argv->{connect_db2}, $argv->{user_db2}, $argv->{pass_db2},
- { RaiseError => 1 } ) or
-    croak("Can't connect to db2: $argv->{connect_db2}, $argv->{user_db2}, $argv->{pass_db2} ");
+my $dbh2 = DBI->connect(
+  "DBI:mysql:;host=sp2;mysql_read_default_file=/etc/mysql/sipwise_extra.cnf",
+  $argv->{user_db2},
+  $argv->{pass_db2},
+  { RaiseError => 1 } ) or
+  croak("Can't connect to db2: DBI:mysql:;host=sp2;mysql_read_default_file=/etc/mysql/sipwise_extra.cnf, $argv->{user_db2}, $argv->{pass_db2} ");
 
-my $exit = 0;
-
-my ($sth1, $sth2);
-my ($struct1, $struct2);
 my $res = [];
-foreach my $obj ( @objs_list ) {
+my $exit = 0;
+foreach my $schema ( split( / /, $argv->{schemes} ) ) {
+  $dbh1->do("USE $schema");
+  $dbh2->do("USE $schema");
+
+  my ($sth1, $sth2);
+  my ($struct1, $struct2);
+  foreach my $obj ( @objs_list ) {
     $struct1 = $dbh1->selectall_hashref( $queries->{$obj}, 'key_col' );
     $struct2 = $dbh2->selectall_hashref( $queries->{$obj}, 'key_col' );
 
     unless ( Compare($struct1, $struct2) ) {
-        $exit = 1;
-        print_diff($struct1, $struct2, $obj, $res);
+      $exit = 1;
+      print_diff($struct1, $struct2, $obj, $res, $schema);
     }
+  }
 }
 
-my $number = scalar(@{$res});
-my $counter = 1;
-
-open( my $fh, '>', $argv->{result} );
-if ( $number > 0 ) {
-    print {$fh} "1..$number\n";
-    foreach my $err ( @{$res} ) {
-        print {$fh} "not ok $counter $err\n";
-        $counter++;
-    }
+if ( $argv->{formatter} eq 'tap' ) {
+  tap_output();
 }
 else {
-    print {$fh} "1..1\n";
-    print {$fh} "ok 1 Schemes are equal\n";
+  human_output();
 }
-close($fh);
+
 exit $exit;
 
 sub get_options {
     GetOptions(
-        'result=s'              => \$argv->{'result'},
-        'connect_db1=s'         => \$argv->{'connect_db1'},
+        'formatter=s'           => \$argv->{'formatter'},
+        'schemes=s'             => \$argv->{'schemes'},
         'user_db1=s'            => \$argv->{'user_db1'},
         'pass_db1=s'            => \$argv->{'pass_db1'},
-        'connect_db2=s'         => \$argv->{'connect_db2'},
         'user_db2=s'            => \$argv->{'user_db2'},
         'pass_db2=s'            => \$argv->{'pass_db2'},
         'help|h'                => sub{ print_usage(); exit(0); },
@@ -184,12 +193,14 @@ sub get_options {
 
 sub print_usage {
     my $usage =<<__USAGE__
-    This script compares two databases by structure and prints result in TAP format.
+    This script compares two databases by structure and prints result.
     compare_db.pl [options]
 
     OPTIONS
-    --result               TAP file with results
-    --connect_db1          DSN of the 1st schema
+    --formatter=[tap]      The format of output.
+                           Supported values:
+                             tap   - print in a TAP format.
+    --schemes              List of schemes which should be compared.
     --user_db1             User of the 1st schema
     --pass_db1             Password of the 1st schema
     --connect_db2          DSN of the 2nd schema
@@ -205,16 +216,16 @@ __USAGE__
 }
 
 sub print_diff {
-    my ($obj1, $obj2, $object_name, $result) = @_;
+    my ($obj1, $obj2, $object_name, $result, $schema) = @_;
 
     foreach my $key ( sort( keys( %{$obj1} ) ) ) {
         unless ( exists($obj2->{$key}) ) {
-            push( @{$result}, "$object_name element: $key is missing in Schema2" );
+            push( @{$result}, "Schema $schema, $object_name element: $key is missing in Schema2" );
             next;
         }
         foreach my $c_name ( sort( keys( %{ $obj1->{$key} } ) ) ) {
             unless ( exists($obj2->{$key}->{$c_name}) ) {
-                push( @{$result}, "$object_name element: $key.$c_name is missing in Schema2" );
+                push( @{$result}, "Schema $schema, $object_name element: $key.$c_name is missing in Schema2" );
                 next;
             }
 
@@ -225,24 +236,54 @@ sub print_diff {
             $obj2->{$key}->{$c_name} = 'NULL' if ( ! defined($obj2->{$key}->{$c_name}) );
 
             if ( $obj1->{$key}->{$c_name} ne $obj2->{$key}->{$c_name} ) {
-                push( @{$result}, "$object_name elements: $key.$c_name are not equal: "
-                  . "Schema1=$obj1->{$key}->{$c_name} vs Schema2=$obj2->{$key}->{$c_name}" );
+                push( @{$result}, "Schema $schema, $object_name elements: $key.$c_name are not equal:\n  ---\n"
+                  . "  Schema1: $obj1->{$key}->{$c_name}\n"
+                  . "  Schema2: $obj2->{$key}->{$c_name}" );
             }
         }
     }
 
     foreach my $key ( sort( keys( %{$obj2} ) ) ) {
         unless ( exists($obj1->{$key}) ) {
-            push( @{$result}, "$object_name element: $key is missing in Schema1" );
+            push( @{$result}, "Schema $schema, $object_name element: $key is missing in Schema1" );
             next;
         }
         foreach my $c_name ( sort( keys( %{ $obj2->{$key} } ) ) ) {
             unless ( exists($obj1->{$key}->{$c_name}) ) {
-                push( @{$result}, "$object_name element: $key.$c_name is missing in Schema1" );
+                push( @{$result}, "Schema $schema, $object_name element: $key.$c_name is missing in Schema1" );
                 next;
             }
         }
     }
 
     return 1;
+}
+
+sub tap_output {
+  my $number = scalar(@{$res});
+  my $counter = 1;
+  if ( $number > 0 ) {
+      print "1..$number\n";
+      foreach my $err ( @{$res} ) {
+          print "not ok $counter $err\n";
+          $counter++;
+      }
+  }
+  else {
+      print "1..1\n";
+      print "ok 1 All schemes are equal\n";
+  }
+}
+
+sub human_output {
+  my $number = scalar(@{$res});
+  if ( $number > 0 ) {
+    print "The following errors were found:\n\n";
+    foreach my $err ( @{$res} ) {
+      print "$err\n";
+    }
+  }
+  else {
+    print "All schemes $argv->{schemes} are equal\n";
+  }
 }
