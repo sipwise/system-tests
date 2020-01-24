@@ -2,48 +2,61 @@
 
 set -euo pipefail
 
-rm -rf results
-mkdir results
+usage() {
+  cat - <<__USAGE__
+$(basename "$0") used to compare mysql schemes between two hosts.
 
-if ! [[ -r /etc/ngcp-backup-tools/db-backup.conf ]]; then
-  echo "Cannot read mandatory config file /etc/ngcp-backup-tools/db-backup.conf" 2>&1
-  exit 1
-fi
-. /etc/ngcp-backup-tools/db-backup.conf
+Usage: $(basename "$0") [options]
 
-location="$(dirname "$0")"
-version="$(cat /etc/ngcp_version)"
-case "${version}" in
-    2.8|3.*|mr[3-7].*|mr8.0.*)
-      if [[ ! -r /etc/mysql/sipwise.cnf ]]; then
-        echo "Cannot read mandatory config file /etc/mysql/sipwise.cnf" 2>&1
-        exit 1
-      fi
-      . /etc/mysql/sipwise.cnf
-      for db in "${NGCP_DB_BACKUP_FINAL_LIST[@]}"; do
-        "${location}/compare_dbs.pl" \
-          --result="results/result_${db}.tap" \
-          --connect_db1="DBI:mysql:database=${db};host=sp1" \
-          --user_db1='sipwise' \
-          --pass_db1="${SIPWISE_DB_PASSWORD}" \
-          --connect_db2="DBI:mysql:database=${db};host=sp2" \
-          --user_db2='sipwise' \
-          --pass_db2="${SIPWISE_DB_PASSWORD}" \
-          || true
-      done
+Options:
+
+    --formatter=[tap]        - Specify the output format.
+                               Skip it to get human readable output. 
+
+    -h|--help                - Show this message.
+
+__USAGE__
+}
+
+FORMATTER=''
+
+args=$(getopt -n "$(basename "$0")" -o h -l help,formatter: -- "$@")
+eval set -- "${args}"
+while true; do
+  case "${1}" in
+    --formatter)
+      FORMATTER="${2}"
+      shift 2
+    ;;
+    -h|--help)
+      usage
+      exit 0
+    ;;
+    --)
+      shift
+      break
     ;;
     *)
-      MYSQL_CREDENTIALS='/etc/mysql/sipwise_extra.cnf'
-      if [[ ! -r "${MYSQL_CREDENTIALS}" ]]; then
-        echo "Cannot read mandatory config file '${MYSQL_CREDENTIALS}'" 2>&1
-        exit 1
-      fi
-      for db in "${NGCP_DB_BACKUP_FINAL_LIST[@]}"; do
-        "${location}/compare_dbs.pl" \
-          --result="results/result_${db}.tap" \
-          --connect_db1="DBI:mysql:database=${db};host=sp1;mysql_read_default_file=${MYSQL_CREDENTIALS}" \
-          --connect_db2="DBI:mysql:database=${db};host=sp2;mysql_read_default_file=${MYSQL_CREDENTIALS}" \
-          || true
-      done
+      log_error "Unknown parameter '${1}'"
+      exit 1
     ;;
-esac
+  esac
+done
+
+DB_BACKUP_LIST='/etc/ngcp-backup-tools/db-backup.conf'
+if [[ ! -r "${DB_BACKUP_LIST}" ]]; then
+  echo "Cannot read mandatory config file ${DB_BACKUP_LIST}" 2>&1
+  exit 1
+fi
+
+MYSQL_CREDENTIALS='/etc/mysql/sipwise_extra.cnf'
+if [[ ! -r "${MYSQL_CREDENTIALS}" ]]; then
+  echo "Cannot read mandatory config file '${MYSQL_CREDENTIALS}'" 2>&1
+  exit 1
+fi
+
+. "${DB_BACKUP_LIST}"
+/usr/share/ngcp-system-tests/compare_dbs.pl \
+  --formatter="${FORMATTER}" \
+  --schemes="${NGCP_DB_BACKUP_FINAL_LIST[*]}" \
+  || true
