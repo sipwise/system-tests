@@ -1,0 +1,65 @@
+#!/bin/bash
+
+set -euo pipefail
+
+usage() {
+  cat - <<__USAGE__
+$(basename "$0") used to compare mysql schemes between two hosts.
+
+Usage: $(basename "$0") [options]
+
+Options:
+
+    --formatter=[tap]        - Specify the output format.
+                               Skip it to get human readable output.
+
+    -h|--help                - Show this message.
+
+__USAGE__
+}
+
+FORMATTER=''
+
+args=$(getopt -n "$(basename "$0")" -o h -l help,formatter: -- "$@")
+eval set -- "${args}"
+while true; do
+  case "${1}" in
+    --formatter)
+      FORMATTER="${2}"
+      shift 2
+    ;;
+    -h|--help)
+      usage
+      exit 0
+    ;;
+    --)
+      shift
+      break
+    ;;
+    *)
+      log_error "Unknown parameter '${1}'"
+      exit 1
+    ;;
+  esac
+done
+
+DB_BACKUP_LIST='/etc/ngcp-backup-tools/db-backup.conf'
+if [[ ! -r "${DB_BACKUP_LIST}" ]]; then
+  echo "Cannot read mandatory config file ${DB_BACKUP_LIST}" 2>&1
+  exit 1
+fi
+
+MYSQL_CREDENTIALS='/etc/mysql/sipwise_extra.cnf'
+if [[ ! -r "${MYSQL_CREDENTIALS}" ]]; then
+  echo "Cannot read mandatory config file '${MYSQL_CREDENTIALS}'" 2>&1
+  exit 1
+fi
+
+. "${DB_BACKUP_LIST}"
+declare -a opts
+if [[ -n "${FORMATTER}" ]]; then
+  opts+=(--formatter="${FORMATTER}")
+fi
+/usr/share/ngcp-system-tests/compare_dbs.pl \
+  --schemes="${NGCP_DB_BACKUP_FINAL_LIST[*]}" \
+  "${opts[@]}" || true
