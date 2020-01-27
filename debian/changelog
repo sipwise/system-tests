@@ -1,3 +1,54 @@
+ngcp-system-tests (8.3.0.0+0~mr8.3.0.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [f677e7e] TT#71550 Add a test for SNMP output
+  * [a4356e0] TT#71550 Fix SNMP test
+  * [fd6a788] TT#72351 Do not expect dnsmasq to be running on standby nodes
+  * [3c11de0] TT#72351 Do not expect the grafana db on non-mgmt or li_dist nodes
+  * [018033f] TT#72351 Match enabled and running for services that are not HA-handled
+  * [7a78733] TT#72351 Match service and process running to ngcp-service definitions
+  * [443bbc0] TT#72351 Fix hostname matches for CARRIER
+  * [69ab4b1] TT#72351 Remove ‘-’ from Template Toolkit tag markers when not on EOL
+  * [ba3ac8b] TT#72351 Fix snmpwalk check on CARRIER
+  * [256510c] TT#72351 Fix DNS match on CARRIER
+  * [dd26bb9] TT#72351 Fix SIP address usage on CARRIER
+  * [7a2ee0b] TT#72351 Fix and improve Prosody/HAProxy port checks on CARRIER
+  * [58fd5aa] TT#72351 Remove unused is_li role predicate
+  * [f1d7953] TT#72351 Check nginx and ngcp-panel only on mgmt or li_dist nodes
+  * [eda236a] TT#72351 Fix checks for /login/ and /api/ endpoints on CARRIER
+  * [07774e6] TT#72351 Remove obsolete conffile handling code
+  * [c4a020d] TT#72351 Move installed files under ngcp-system-tests instead of ngcp-tests
+  * [8700755] TT#72351 Restrict permissions for template to protect passwords
+  * [85d1db0] TT#72351 Cleanup goss execution
+  * [f806fb4] TT#72351 Stop using a host-specific config.yml for customizations
+  * [e84dabd] TT#72351 Stop running ngcpcfg within the testrunner
+  * [6f6b481] TT#72351 Add missing dependencies
+  * [3da0a05] TT#72351 Switch to packaged goss
+  * [6ea0a4b] TT#72351 Remove buster special handling
+  * [62a2332] TT#72351 Add a new helper program to run the tests
+  * [cf1abb5] TT#72351 Remove compat /etc/ngcp-tests symlink
+
+  [ Alexander Lutay ]
+  * [41056c7] TT#72807 Let's remove OLD ngcp-panel core muting in trunk/mr8.2+
+  * [4d1052e] TT#72807 Upgrade goss from locally patched 0.3.5 to 0.3.9
+  * [2aada59] TT#72351 Fix 62a2332: remove symlink /usr/share/ngcp-tests -> /usr/share/ngcp-system-tests
+  * [8959327] TT#66583 Update prosody version for mr8.2+ (to ensure new/upstream prosody is in use)
+  * [1043fb0] TT#72351 Fix 62a2332: allow '--help' option for ngcp-system-tests
+
+  [ Richard Fuchs ]
+  * [8618308] TT#72851 add test for voisniff data directory
+
+  [ Mykola Malkov ]
+  * [e31d8dd] TT#72851 Fix filesys-voisniff test
+
+  [ Manuel Montecelo ]
+  * [3718957] TT#56053 Make sure that /ngcp-data/backup exists and has the right permissions
+  * [00f68a5] TT#72908 Check for /ngcp-data/backup/cdr and compat symlink from /var/backup/cdr
+  * [25d4f5e] TT#72908 Change compat symlink check from /var/backup/cdr to /var/backup
+  * [0e80b9c] TT#72908 Fix whitespace in previous commit
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 27 Jan 2020 12:26:46 +0100
+
 ngcp-system-tests (8.2.0.0+0~mr8.2.0.0) unstable; urgency=medium
 
   [ Alexander Lutay ]
