@@ -40,6 +40,7 @@ RUN mkdir /tmp/zzz && \
   rm -rf /tmp/zzz
 
 COPY t/tap-tests-docker/perlcriticrc /root/.perlcriticrc
+COPY t/tap-tests-docker/perlcompilation /root/perlcompilation
 
 # Set LC_ALL, otherwise shellcheck before v0.4.7 fails:
 # source/somefile: hGetContents: invalid argument (invalid byte sequence)
