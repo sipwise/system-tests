@@ -1,0 +1,64 @@
+#!/bin/bash
+
+set -euo pipefail
+
+changes_file=''
+args=$(getopt -n "$(basename "$0")" -o f: -- "$@")
+eval set -- "${args}"
+while true; do
+  case "${1}" in
+    -f)
+      changes_file="${2}"
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      log_error "Unknown parameter '${1}'"
+      exit 1
+      ;;
+  esac
+done
+
+file_list=''
+if [[ -n "${changes_file}" ]]; then
+  if [[ ! -f "${changes_file}" ]]; then
+    echo "ERROR: file '${changes_file}' does not exist" >&2
+    exit 1
+  fi
+  file_list="$( cat ${file_list} )"
+else
+  file_list="$( find sources -type f ! -path '*.git/*' ! -name '.gitignore' )"
+fi
+
+mkdir -p reports
+for file in ${file_list}; do
+  if ! file -b "${file}" | grep -qE '^Perl'; then
+    echo "File ${file} does not look like perl one,skipping"
+    continue
+  fi
+
+  declare -a output
+  while read -r line; do
+    output+=("${line}")
+  done < <(perl -c "${file}" 2>&1 || true)
+
+  if [[ "${#output[@]}" -eq 1 ]]; then
+    echo -e "1..1\nok 1 ${output[*]}" > "reports/${file////_}.tap"
+  else
+    # the last line is '$file had compilation errors.' so skip it
+    max_num=${#output[@]}
+    max_num=$(( max_num - 1 ))
+    echo "1..${max_num}" > "reports/${file////_}.tap"
+    counter=1
+    for line in "${output[@]}"; do
+      echo "not ok ${counter} ${line}" >> "reports/${file////_}.tap"
+      ((counter++))
+      if [[ "${counter}" -eq ${#output[@]} ]]; then
+        break
+      fi
+    done
+  fi
+done
