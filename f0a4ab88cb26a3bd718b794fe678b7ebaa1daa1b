@@ -16,6 +16,24 @@
       "revId": "f0a4ab88cb26a3bd718b794fe678b7ebaa1daa1b",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd44cfb_17d38c1c",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-01-30T12:29:44Z",
+      "side": 1,
+      "message": "IMHO not necessary, it changes nothing, no need to rebuild Docker here.",
+      "parentUuid": "73b32389_6d75297c",
+      "revId": "f0a4ab88cb26a3bd718b794fe678b7ebaa1daa1b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
     }
   ]
 }
