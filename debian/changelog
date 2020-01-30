@@ -489,7 +489,7 @@ ngcp-system-tests (0.12.0.0+0~mr4.4.0.0) unstable; urgency=medium
   * [f72490b] MT#16429 Disable ngcp-panel port check 443/1443 for web_ext IP
   * [d29bdbb] MT#16429 Add goss based sites-ok check
   * [3f68481] MT#17055 voisniff supports action status now, re-enabe tests
-  * [f697561] MT#16273 Fix tests after spliting ngcp-panel and REST API
+  * [f697561] MT#16273 Fix tests after splitting ngcp-panel and REST API
   * [6e97e15] MT#16429 MT#8041 Disable cores check test until sems is not fixed
   * [bdf0d12] MT#16755 Add support SKIP_DNS_CHECK_TEST and SKIP_STRICT_HOSTNAME_TEST env variables
   * [eaf3b9d] MT#17213 Update goss to 0.0.22
@@ -567,7 +567,7 @@ ngcp-system-tests (0.6.0.0+0~mr3.7.0.0) unstable; urgency=low
   [ Alexander Lutay ]
   * [517ae12] MT#9677 Removed old selfcare availability check since mr3.6+
   * [80abeab] MT#9837 Updated tests accordingly to trunk changes
-  * [cdf84d7] MT#9837 Removed Apache and ossbss deamons since mr3.6+
+  * [cdf84d7] MT#9837 Removed Apache and ossbss daemons since mr3.6+
   * [1e1d0ff] MT#7505 Add .gitreview file for system-tests
 
   [ Victor Seva ]

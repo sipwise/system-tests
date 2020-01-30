@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install --assume-yes --no-install-recommends \
   apt-get clean
 
 # The package devscripts has a huge list of dependencies and
-# we need checkbashisms scipt only, providing it manually
+# we need checkbashisms script only, providing it manually
 RUN mkdir /tmp/zzz && cd /tmp/zzz && \
 apt-get download devscripts && \
 dpkg --fsys-tarfile devscripts_*.deb | tar -C / -p -xv ./usr/bin/checkbashisms && \
