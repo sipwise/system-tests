@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73b32389_6d75297c",
+        "filename": "t/tap-tests-docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2020-01-30T12:28:10Z",
+      "side": 1,
+      "message": "not sure if you need to refresh this date, maybe unnecessary because it doesn\u0027t have any practical effect and can go with next review, but just as a matter of keeping it consistent \"touch every time that the file is modified\"?",
+      "revId": "f0a4ab88cb26a3bd718b794fe678b7ebaa1daa1b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    }
+  ]
+}
