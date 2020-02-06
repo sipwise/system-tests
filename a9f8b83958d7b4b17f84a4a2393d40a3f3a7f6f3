@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2aff4ce_d5ad6f9b",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-02-06T16:40:24Z",
+      "side": 1,
+      "message": "Hmm, we actually removed the generation code to avoid all sorts of problems, so I really do not want to go back to that. Instead I\u0027m checking whether we can just make the node-status be passed from the environment, so we can make the yamls files independent from the current node state.",
+      "revId": "a9f8b83958d7b4b17f84a4a2393d40a3f3a7f6f3",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
