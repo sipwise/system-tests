@@ -6,6 +6,7 @@ declare -r ME="$(basename "$0")"
 declare -r OPTS=("$@")
 declare -a PROVE_OPTS=()
 NGCP_TESTS_MODE=${NGCP_TESTS_MODE:=prove}
+FORCE='false'
 
 error() {
   if [ "${NGCP_TESTS_MODE}" = 'tap' ]; then
@@ -21,13 +22,14 @@ usage() {
 Usage: ${ME} [<option>...]
 
 Options:
+      --force         Make commit in /etc even if there are uncommited changes.
       --mode <name>   Operation mode to use. Values: jenkins, tap, prove.
   -h, --help          Print this help message and exit.
 HELP
 }
 
 get_options() {
-  local _cmdline_opts="help,mode:"
+  local _cmdline_opts="help,mode:,force"
 
   local _opt_temp
   _opt_temp=$(getopt -n "${ME}" -o 'h' -l "${_cmdline_opts}" -- "${OPTS[@]}")
@@ -43,6 +45,10 @@ get_options() {
     --mode)
       shift
       NGCP_TESTS_MODE="$1"
+      ;;
+    --force)
+      shift
+      FORCE='true'
       ;;
     --)
       shift
@@ -62,6 +68,21 @@ if ! [ -d /etc/ngcp-system-tests/ ]; then
 fi
 
 get_options "$@"
+
+pushd /etc &>/dev/null
+if [[ -n "$(git status --porcelain=v2)" ]]; then
+  if ! ${force}; then
+    error "There are uncommited changes in /etc, please commit them manually or use --force to do it automatically"
+  fi
+fi
+popd &>/dev/null
+
+ngcpcfg build '/etc/ngcp-system-tests'
+pushd /etc &>/dev/null
+if [[ -n "$(git status --porcelain=v2)" ]]; then
+  etckeeper commit 'Rebuild /etc/ngcp-system-tests'
+fi
+popd &>/dev/null
 
 case "${NGCP_TESTS_MODE}" in
   jenkins)
