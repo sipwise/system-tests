@@ -36,12 +36,6 @@
   is_mgmt = ngcp.has_role(hostname, 'mgmt');
   is_li_dist = ngcp.has_role(hostname, 'li_dist');
 -%]
-[% PERL -%]
-    my $node_state = qx(ngcp-check-active -v);
-    chomp $node_state;
-
-    $stash->set(node_state => $node_state);
-[% END -%]
 
 [% IF is_mgmt || is_li_dist -%]
 command:
@@ -165,7 +159,7 @@ command:
     timeout: 30000
 
 
-[% IF www_admin.enable == 'yes' && node_state == 'active' -%]
+{{if and [% www_admin.enable == 'yes' ? 1 : 0 %] .Env.NODE_ACTIVE}}
   "curl -H 'NGCP-UserAgent: NGCP::API::Client' --insecure -L https://[% credentials.rest_api.auth_system.u %]:[% credentials.rest_api.auth_system.p %]@[% api_int_ips.0 %]:[% www_admin.http_system.port %]/api/":
     exit-status: 0
     stdout:
@@ -207,8 +201,7 @@ command:
       - "/Authorization required/"
     stderr: []
     timeout: 30000
-
-[% END -%]
+{{end}}
 
   "curl -L http://localhost:8081/nginx_status":
     exit-status: 0

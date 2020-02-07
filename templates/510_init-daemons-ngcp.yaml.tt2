@@ -8,17 +8,11 @@
   is_rtp = ngcp.has_role(hostname, 'rtp');
   is_li_dist = ngcp.has_role(hostname, 'li_dist');
 -%]
-[% PERL -%]
-    my $node_state = qx(ngcp-check-active -v);
-    chomp $node_state;
-
-    $stash->set(node_state => $node_state);
-[% END -%]
 
 service:
   asterisk.service:
     enabled: [% general.process_handler == 'none' && asterisk.enable == "yes" ? 'true' : 'false' %]
-    running: [% is_proxy && node_state == 'active' && asterisk.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && asterisk.enable == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   coturn.service:
     enabled: [% is_rtp && turnserver.enable == 'yes' ? 'true' : 'false' %]
@@ -26,7 +20,7 @@ service:
 
   dnsmasq.service:
     enabled: false
-    running: [% is_mgmt && node_state == 'active' && bootenv.dhcp.enable == 'yes' ? 'true' : 'false' %]
+    running: {{if and [% is_mgmt && bootenv.dhcp.enable == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   haproxy.service:
     enabled: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
@@ -38,11 +32,11 @@ service:
 
   kamailio-lb.service:
     enabled: [% general.process_handler == 'none' && kamailio.lb.start == "yes" ? 'true' : 'false' %]
-    running: [% is_lb && node_state == 'active' && kamailio.lb.start == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_lb && kamailio.lb.start == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   kamailio-proxy.service:
     enabled: [% general.process_handler == 'none' && kamailio.proxy.start == "yes" ? 'true' : 'false' %]
-    running: [% is_proxy && node_state == 'active' && kamailio.proxy.start == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && kamailio.proxy.start == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-license-client.service:
     enabled: [% general.process_handler == 'none' && (general.license_key != '' || general.anonymous_usage_statistics == 'yes') ? 'true' : 'false' %]
@@ -50,7 +44,7 @@ service:
 
   ngcp-mediator.service:
     enabled: [% general.process_handler == 'none' && mediator.enable == 'yes' ? 'true' : 'false' %]
-    running: [% is_proxy && node_state == 'active' && mediator.enable == 'yes' ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && mediator.enable == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-panel.service:
     enabled: [% is_mgmt && www_admin.enable == 'yes' ? 'true' : 'false' %]
@@ -58,19 +52,19 @@ service:
 
   ngcp-rate-o-mat.service:
     enabled: [% general.process_handler == 'none' && rateomat.enable == "yes" ? 'true' : 'false' %]
-    running: [% is_proxy && node_state == 'active' && rateomat.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && rateomat.enable == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-rtpengine-recording-daemon.service:
     enabled: [% general.process_handler == 'none' && rtpproxy.recording.enable == "yes" ? 'true' : 'false' %]
-    running: [% is_rtp && node_state == 'active' && rtpproxy.recording.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_rtp && rtpproxy.recording.enable == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-rtpengine-daemon.service:
     enabled: [% general.process_handler == 'none' && rtpproxy.enable == "yes" ? 'true' : 'false' %]
-    running: [% is_rtp && node_state == 'active' && rtpproxy.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_rtp && rtpproxy.enable == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-sems.service:
     enabled: [% general.process_handler == 'none' && sems.enable == "yes" ? 'true' : 'false' %]
-    running: [% is_proxy && node_state == 'active' && sems.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && sems.enable == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-witnessd.service:
     enabled: true
@@ -82,7 +76,7 @@ service:
 
   prosody.service:
     enabled: [% general.process_handler == 'none' && prosody.enable == 'yes' ? 'true' : 'false' %]
-    running: [% is_proxy && node_state == 'active' && prosody.enable == 'yes' ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && prosody.enable == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-pushd.service:
     enabled: [% is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
@@ -98,11 +92,11 @@ service:
 
   sems-pbx.service:
     enabled: false
-    running: [% is_proxy && node_state == 'active' && pbx.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && pbx.enable == "yes" ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-voisniff.service:
     enabled: false
-    running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' && voisniff.daemon.start == 'yes' ? 'true' : 'false' %]
+    running: {{if and [% (is_proxy || is_lb || is_rtp) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcpcfg-api.service:
     enabled: [% is_mgmt && general.ngcp_type != 'spce' ? 'true' : 'false' %]
@@ -110,7 +104,7 @@ service:
 
   ngcp-faxserver.service:
     enabled: false
-    running: [% is_proxy && node_state == 'active' && faxserver.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && faxserver.enable == "yes" && general.ngcp_type != 'spce' ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   influxdb-relay.service:
     enabled: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
@@ -132,15 +126,15 @@ service:
 [% END -%]
   ngcp-rtcengine.service:
     enabled: false
-    running: [% is_proxy && node_state == 'active' && rtcengine.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && rtcengine.enable == "yes" && general.ngcp_type != 'spce' ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-comx-fileshare-service.service:
     enabled: false
-    running: [% is_proxy && node_state == 'active' && fileshare.enable == "yes" && general.ngcp_type != 'spce' ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && fileshare.enable == "yes" && general.ngcp_type != 'spce' ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   janus.service:
     enabled: false
-    running: [% is_proxy && node_state == 'active' && general.ngcp_type != 'spce' && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus')) ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus') && general.ngcp_type != 'spce' ? 1 : 0 %] .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   monit.service:
     enabled: [% general.process_handler == 'monit' ? 'true' : 'false' %]
