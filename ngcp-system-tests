@@ -87,8 +87,17 @@ case "${NGCP_TESTS_MODE}" in
     export SKIP_DNS_CHECK_TEST=${SKIP_DNS_CHECK_TEST:-false}
     export SKIP_STRICT_HOSTNAME_TEST=${SKIP_STRICT_HOSTNAME_TEST:-false}
 
+    # Use an actual variable so that the values do not evaluate as strings,
+    # and thus as always true.
+    if [ "$(ngcp-check-active -v)" = 'active' ]; then
+      NODE_ACTIVE=true
+    else
+      NODE_ACTIVE=false
+    fi
+    GOSS_VARS="NODE_ACTIVE: ${NODE_ACTIVE}"
+
     PLAN='/etc/ngcp-system-tests/goss.yaml'
 
-    goss -g "${PLAN}" validate --format "${NGCP_TESTS_MODE}"
+    goss -g "${PLAN}" --vars <(echo ${GOSS_VARS}) validate --format "${NGCP_TESTS_MODE}"
     ;;
 esac
