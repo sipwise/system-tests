@@ -5,12 +5,6 @@
   is_lb = ngcp.has_role(hostname, 'lb');
   is_rtp = ngcp.has_role(hostname, 'rtp');
 -%]
-[% PERL -%]
-    my $node_state = qx(ngcp-check-active -v);
-    chomp $node_state;
-
-    $stash->set(node_state => $node_state);
-[% END -%]
 
 process:
   glusterfs:
@@ -34,38 +28,38 @@ process:
     running: [% general.license_key != '' || general.anonymous_usage_statistics == 'yes' ? 'true' : 'false' %]
 
   ngcp-faxserver:
-    running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
+    running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-snmp-agent:
     running: true
 
   ngcp-voisniff:
-    running: [% (is_proxy || is_lb || is_rtp) && node_state == 'active' && voisniff.daemon.start == 'yes' ? 'true' : 'false' %]
+    running: {{if and [% (is_proxy || is_lb || is_rtp) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   snmpd:
     running: true
 
   janus:
-    running: [% is_proxy && (node_state == 'active' && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus'))) ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus')) ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
 command:
   "pgrep -c -n -f '[r]tcengine.js'":
-[% IF is_proxy && rtcengine.enable == "yes" && node_state == 'active' -%]
+{{if and [% is_proxy && rtcengine.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}}
     exit-status: 0
     stdout:
       - "1"
-[% ELSE -%]
+{{else}}
     exit-status: 1
     stdout: []
-[% END -%]
+{{end}}
     stderr: []
 
   "pgrep -c -n -f '[c]omx-fileshare.js'":
-[% IF is_proxy && fileshare.enable == "yes" && node_state == 'active' -%]
+{{if and [% is_proxy && fileshare.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}}
     exit-status: 0
     stdout:
       - "1"
-[% ELSE -%]
+{{else}}
     exit-status: 1
     stdout: []
-[% END -%]
+{{end}}
