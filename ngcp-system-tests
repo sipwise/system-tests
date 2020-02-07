@@ -83,11 +83,20 @@ case "${NGCP_TESTS_MODE}" in
     esac
     export DEBIAN_RELEASE
 
+    # Use an actual variable so that the values do not evaluate as strings,
+    # and thus as always true.
+    if [ "$(ngcp-check-active -v)" = 'active' ]; then
+      NODE_ACTIVE=true
+    else
+      NODE_ACTIVE=false
+    fi
+
     VARS=$(mktemp --tmpdir ngcp-system-tests.XXXXXXXXXX)
     trap "rm -f '${VARS}'" EXIT
     cat >"${VARS}" <<-EOF
     SKIP_DNS_CHECK_TEST: ${SKIP_DNS_CHECK_TEST:-false}
     SKIP_STRICT_HOSTNAME_TEST: ${SKIP_STRICT_HOSTNAME_TEST:-false}
+    NODE_ACTIVE: ${NODE_ACTIVE}
     EOF
 
     PLAN='/etc/ngcp-system-tests/goss.yaml'
