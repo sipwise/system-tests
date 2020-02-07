@@ -8,24 +8,18 @@
   is_rtp = ngcp.has_role(hostname, 'rtp');
   is_li_dist = ngcp.has_role(hostname, 'li_dist');
 -%]
-[% PERL -%]
-    my $node_state = qx(ngcp-check-active -v);
-    chomp $node_state;
-
-    $stash->set(node_state => $node_state);
-[% END -%]
 
 command:
 
   "pgrep -c -f 'lua5\\.. /usr/bin/prosody'":
-[% IF is_proxy && prosody.enable == 'yes' && node_state == 'active' -%]
+{{if [% is_proxy && prosody.enable == 'yes' ? 1 : 0 %] and .Env.NODE_ACTIVE}}
     exit-status: 0
     stdout:
       - "1"
-[% ELSE -%]
+{{else}}
     exit-status: 1
     stdout: []
-[% END -%]
+{{end}}
     stderr: []
 
   "pgrep -c -f '[p]erl-fcgi-pm \\[NGCP::Panel\\]'":
@@ -40,48 +34,48 @@ command:
     stderr: []
 
   "pgrep -n -f '[k]amailio.*kamailio.proxy.pid'":
-[% IF is_proxy && kamailio.proxy.start == "yes" && node_state == 'active' -%]
+{{if [% is_proxy && kamailio.proxy.start == "yes" ? 1 : 0 %] and .Env.NODE_ACTIVE}}
     exit-status: 0
     stdout:
       - "/[0-9]+/"
-[% ELSE -%]
+{{else}}
     exit-status: 1
     stdout: []
-[% END -%]
+{{end}}
     stderr: []
 
   "pgrep -n -f '[k]amailio.*kamailio.lb.pid'":
-[% IF is_lb && kamailio.lb.start == "yes" && node_state == 'active' -%]
+{{if [% is_lb && kamailio.lb.start == "yes" %] and .Env.NODE_ACTIVE}}
     exit-status: 0
     stdout:
       - "/[0-9]+/"
-[% ELSE -%]
+{{else}}
     exit-status: 1
     stdout: []
-[% END -%]
+{{end}}
     stderr: []
 
 process:
   asterisk:
-    running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
+    running: {{if [% is_proxy %] and .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   influxd:
     running: true
 
   kamailio:
-    running: [% (is_lb || is_proxy) && node_state == 'active' ? 'true' : 'false' %]
+    running: {{if [% is_lb || is_proxy %] and .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-mediator:
-    running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
+    running: {{if [% is_proxy %] and .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-sems:
-    running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
+    running: {{if [% is_proxy %] and .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-witnessd:
     running: true
 
   ngcp-rate-o-mat:
-    running: [% is_proxy && node_state == 'active' ? 'true' : 'false' %]
+    running: {{if [% is_proxy %] and .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   nginx:
     running: [% (is_mgmt || is_lb || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
@@ -90,10 +84,10 @@ process:
     running: [% is_mgmt ? 'true' : 'false' %]
 
   rtpengine:
-    running: [% is_rtp && node_state == 'active' ? 'true' : 'false' %]
+    running: {{if [% is_rtp %] and .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   rtpengine-recording:
-    running: [% is_rtp && node_state == 'active' && rtpproxy.recording.enable == "yes" ? 'true' : 'false' %]
+    running: {{if [% is_rtp && rtpproxy.recording.enable == "yes" ? 1 : 0 %] and .Env.NODE_ACTIVE}} true {{else}} false {{end}}
 
   telegraf:
     running: true

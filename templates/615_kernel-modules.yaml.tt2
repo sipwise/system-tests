@@ -3,12 +3,6 @@
 
   is_proxy = ngcp.has_role(hostname, 'proxy');
 -%]
-[% PERL -%]
-    my $node_state = qx(ngcp-check-active -v);
-    chomp $node_state;
-
-    $stash->set(node_state => $node_state);
-[% END -%]
 
 command:
 
@@ -16,11 +10,11 @@ command:
     exit-status: 0
     stdout: []
     stderr: []
-[% IF is_proxy && node_state == 'active' && rtpproxy.enable == "yes" -%]
+{{if [% (rtpproxy.enable == "yes" && is_proxy) ? 1 : 0 %] and .Env.NODE_ACTIVE}}
 
   lsmod | grep -c xt_RTPENGINE:
     exit-status: 0
     stdout:
       - '/^2$/'
     stderr: []
-[% END -%]
+{{end}}

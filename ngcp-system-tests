@@ -86,6 +86,12 @@ case "${NGCP_TESTS_MODE}" in
     # We need to export these, so that goss sees existent variables.
     export SKIP_DNS_CHECK_TEST=${SKIP_DNS_CHECK_TEST:-false}
     export SKIP_STRICT_HOSTNAME_TEST=${SKIP_STRICT_HOSTNAME_TEST:-false}
+    if [ "$(ngcp-check-active -v)" = 'active' ]; then
+      NODE_ACTIVE=true
+    else
+      NODE_ACTIVE=false
+    fi
+    export NODE_ACTIVE
 
     PLAN='/etc/ngcp-system-tests/goss.yaml'
 

@@ -66,12 +66,6 @@
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
   ha_int_ips = out;
 -%]
-[% PERL -%]
-    my $node_state = qx(ngcp-check-active -v);
-    chomp $node_state;
-
-    $stash->set(node_state => $node_state);
-[% END -%]
 
 port:
 
@@ -111,7 +105,7 @@ port:
 [% IF is_lb -%]
   # Kamailio load-balancer
   tcp:5060:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_ext_ips.0 %]"]
 
   # HAProxy
@@ -138,57 +132,57 @@ port:
 [% IF is_proxy -%]
   # Kamailio proxy
   tcp:5062:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
   # Prosody
   tcp:5222:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_proxy_ip %]"]
 
   # Prosody
   tcp:5269:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_proxy_ip %]"]
 
   # Prosody
   tcp:5280:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
   # Prosody
   tcp:5281:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
   # Prosody
   tcp:5582:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
   # SEMS
   tcp:8090:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
   # Asterisk
   tcp:5038:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["127.0.0.1"]
 
   # SEMS
   udp:5040:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
   # Asterisk
   udp:5070:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
   # SEMS
   udp:5080:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
 [% END -%]
@@ -202,7 +196,7 @@ port:
 [% IF is_rtp -%]
   # rtpengine
   udp:2223:
-    listening: [% node_state == 'active' ? 'true' : 'false' %]
+    listening: {{.Env.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
 [% END -%]

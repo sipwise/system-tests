@@ -3,28 +3,20 @@
 
   is_proxy = ngcp.has_role(hostname, 'proxy');
 -%]
-[% PERL -%]
-    my $node_state = qx(ngcp-check-active -v);
-    chomp $node_state;
-
-    $stash->set(node_state => $node_state);
-[% END -%]
 
 command:
 
-[% IF is_proxy && asterisk.enable == "yes" && node_state == 'active' -%]
+{{if [% (is_proxy && asterisk.enable == 'yes') ? 1 : 0 %] and .Env.NODE_ACTIVE}}
   asterisk -rx "odbc read ODBC_VMGREETUNAVAIL test exec":
     exit-status: 0
     stdout:
     - "/Returned 1 row/"
     stderr: []
     timeout: 10000
-
-[% ELSE -%]
+{{else}}
   echo "The test for active node with enabled asterisk and proxy role only":
     exit-status: 0
     stdout: []
     stderr: []
     timeout: 10000
-
-[% END -%]
+{{end}}
