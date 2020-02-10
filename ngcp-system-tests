@@ -83,12 +83,16 @@ case "${NGCP_TESTS_MODE}" in
     esac
     export DEBIAN_RELEASE
 
-    # We need to export these, so that goss sees existent variables.
-    export SKIP_DNS_CHECK_TEST=${SKIP_DNS_CHECK_TEST:-false}
-    export SKIP_STRICT_HOSTNAME_TEST=${SKIP_STRICT_HOSTNAME_TEST:-false}
+    VARS=$(mktemp --tmpdir ngcp-system-tests.XXXXXXXXXX.yaml)
+    trap 'rm -f "${VARS}"' EXIT
+    cat >"${VARS}" <<-EOF
+SKIP_DNS_CHECK_TEST: ${SKIP_DNS_CHECK_TEST:-false}
+SKIP_STRICT_HOSTNAME_TEST: ${SKIP_STRICT_HOSTNAME_TEST:-false}
+EOF
 
     PLAN='/etc/ngcp-system-tests/goss.yaml'
 
-    goss -g "${PLAN}" validate --format "${NGCP_TESTS_MODE}"
+    goss --gossfile "${PLAN}" --vars "${VARS}" \
+      validate --format "${NGCP_TESTS_MODE}"
     ;;
 esac
