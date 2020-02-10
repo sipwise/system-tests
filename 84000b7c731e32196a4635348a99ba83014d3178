@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc778021_224df65f",
+        "filename": "ngcp-system-tests",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-02-10T15:45:59Z",
+      "side": 1,
+      "message": "tap-tests are complaining here about unquoted variable",
+      "revId": "84000b7c731e32196a4635348a99ba83014d3178",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
