@@ -105,6 +105,30 @@
     },
     {
       "key": {
+        "uuid": "06415a37_d06354fa",
+        "filename": "helper/compare_dbs.pl",
+        "patchSetId": 11
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-02-10T13:37:21Z",
+      "side": 1,
+      "message": "No, it should be possible to use another user/password then it\u0027s specified in sipwise_extra.cnf",
+      "parentUuid": "f857fff9_84056a58",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 19
+      },
+      "revId": "e0734e43cb4699c32c2c826009eaa9fef072c45b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b16c24c3_5db21fbb",
         "filename": "helper/compare_dbs.pl",
         "patchSetId": 11
