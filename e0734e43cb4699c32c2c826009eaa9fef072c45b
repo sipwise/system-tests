@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ef88aeea_64c9bd51",
+        "filename": "helper/compare_dbs.pl",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-02-13T10:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5c32e6f_3dfefb1c",
+      "revId": "e0734e43cb4699c32c2c826009eaa9fef072c45b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43c0b417_e0bd15bc",
         "filename": "helper/compare_dbs.pl",
         "patchSetId": 11
@@ -30,6 +48,30 @@
       "writtenOn": "2020-02-04T19:30:57Z",
       "side": 1,
       "message": "No spaces within the enclosed parenthesis.",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 5
+      },
+      "revId": "e0734e43cb4699c32c2c826009eaa9fef072c45b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aac62cc9_f4a026e3",
+        "filename": "helper/compare_dbs.pl",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-02-13T10:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c0b417_e0bd15bc",
       "range": {
         "startLine": 134,
         "startChar": 4,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1f023082_8c0ad5bc",
+        "filename": "helper/compare_dbs.pl",
+        "patchSetId": 11
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-02-13T10:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b31c4d2_a5725bdf",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "e0734e43cb4699c32c2c826009eaa9fef072c45b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef245038_677854c8",
         "filename": "helper/compare_dbs.pl",
         "patchSetId": 11
@@ -76,6 +142,24 @@
       "writtenOn": "2020-02-04T19:30:57Z",
       "side": 1,
       "message": "Would be nice to place this in a variable, so that we do not repeat it. Perhaps even the cnf file part, or a function that takes the hostname and returns the formatted dsn.",
+      "revId": "e0734e43cb4699c32c2c826009eaa9fef072c45b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77ba9db3_ea0d6c1c",
+        "filename": "helper/compare_dbs.pl",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-02-13T10:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef245038_677854c8",
       "revId": "e0734e43cb4699c32c2c826009eaa9fef072c45b",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
@@ -140,6 +224,24 @@
       "writtenOn": "2020-02-04T19:30:57Z",
       "side": 1,
       "message": "This should disappear I guess?",
+      "revId": "e0734e43cb4699c32c2c826009eaa9fef072c45b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5be009a6_a6f06a90",
+        "filename": "helper/compare_dbs.pl",
+        "patchSetId": 11
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-02-13T10:32:02Z",
+      "side": 1,
+      "message": "See comment above",
+      "parentUuid": "b16c24c3_5db21fbb",
       "revId": "e0734e43cb4699c32c2c826009eaa9fef072c45b",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
