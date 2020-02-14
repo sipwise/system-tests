@@ -8,6 +8,12 @@ use Data::Compare;
 use Getopt::Long;
 use Carp;
 
+# Format type(table, trigger, etc)/schema name/element name/element
+# f.e. views/ldap/ldap_entries/view_definition
+my @exceptions = qw(
+    views/ldap/ldap_entries/view_definition
+);
+
 my $credentials_file = '/etc/mysql/sipwise_extra.cnf';
 my $argv = {
     formatter => '',
@@ -236,7 +242,21 @@ sub print_diff {
             $obj1->{$key}->{$c_name} = 'NULL' if ( ! defined($obj1->{$key}->{$c_name}) );
             $obj2->{$key}->{$c_name} = 'NULL' if ( ! defined($obj2->{$key}->{$c_name}) );
 
+            my $exception_found = 0;
             if ( $obj1->{$key}->{$c_name} ne $obj2->{$key}->{$c_name} ) {
+                foreach my $exception (@exceptions) {
+                  # 'views/ldap/ldap_entries/view_definition'
+                  my ($e_type, $e_schema, $e_element, $e_attr) = split( /\//, $exception );
+                    if ( lc($key) eq lc($e_element)
+                        and lc($object_name) eq lc($e_type)
+                        and lc($schema) eq lc($e_schema)
+                        and lc($c_name) eq lc($e_attr) ) {
+                        print {*STDERR} "Exception found: $e_type/$e_schema/$e_element/$e_attr\n";
+                        $exception_found = 1;
+                    }
+                }
+                next if ($exception_found == 1);
+
                 push( @{$result}, "Schema $schema, $object_name elements: $key.$c_name are not equal:\n  ---\n"
                   . "  Schema1: $obj1->{$key}->{$c_name}\n"
                   . "  Schema2: $obj2->{$key}->{$c_name}" );
