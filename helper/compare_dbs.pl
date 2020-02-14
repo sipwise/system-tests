@@ -8,6 +8,14 @@ use Data::Compare;
 use Getopt::Long;
 use Carp;
 
+# Format type(table, trigger, etc)/schema name/element name/element
+# f.e. views/ldap/ldap_entries/view_definition
+my @diff_exceptions = qw(
+    views/ldap/ldap_entries/view_definition
+);
+my @missing_sp1_exceptions = qw();
+my @missing_sp2_exceptions = qw();
+
 my $credentials_file = '/etc/mysql/sipwise_extra.cnf';
 my $argv = {
     formatter => '',
@@ -216,16 +224,36 @@ __USAGE__
     return 1;
 }
 
+sub is_exception {
+    my ($exceptions, $type, $schema, $element, attr) = @_;
+
+    foreach my $exception (@{$exceptions}) {
+        # 'views/ldap/ldap_entries/view_definition'
+        my ($e_type, $e_schema, $e_element, $e_attr) = split( /\//, $exception );
+        if (    lc($element) eq lc($e_element)
+            and lc($type)    eq lc($e_type)
+            and lc($schema)  eq lc($e_schema)
+            and lc($attr)    eq lc($e_attr) ) {
+            print {*STDERR} "Exception found: $e_type/$e_schema/$e_element/$e_attr\n";
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
 sub print_diff {
     my ($obj1, $obj2, $object_name, $result, $schema) = @_;
 
     foreach my $key ( sort( keys( %{$obj1} ) ) ) {
         unless ( exists($obj2->{$key}) ) {
+            next if ( is_exception(\@missing_sp2_exceptions, $object_name, $schema, $key) );
             push( @{$result}, "Schema $schema, $object_name element: $key is missing in Schema2" );
             next;
         }
         foreach my $c_name ( sort( keys( %{ $obj1->{$key} } ) ) ) {
             unless ( exists($obj2->{$key}->{$c_name}) ) {
+                next if ( is_exception(\@missing_sp2_exceptions, $object_name, $schema, $key, $c_name) );
                 push( @{$result}, "Schema $schema, $object_name element: $key.$c_name is missing in Schema2" );
                 next;
             }
@@ -237,6 +265,7 @@ sub print_diff {
             $obj2->{$key}->{$c_name} = 'NULL' if ( ! defined($obj2->{$key}->{$c_name}) );
 
             if ( $obj1->{$key}->{$c_name} ne $obj2->{$key}->{$c_name} ) {
+                next if ( is_exception(\@diff_exceptions, $object_name, $schema, $key, $c_name) );
                 push( @{$result}, "Schema $schema, $object_name elements: $key.$c_name are not equal:\n  ---\n"
                   . "  Schema1: $obj1->{$key}->{$c_name}\n"
                   . "  Schema2: $obj2->{$key}->{$c_name}" );
@@ -246,11 +275,13 @@ sub print_diff {
 
     foreach my $key ( sort( keys( %{$obj2} ) ) ) {
         unless ( exists($obj1->{$key}) ) {
+            next if ( is_exception(\@missing_sp1_exceptions, $object_name, $schema, $key) );
             push( @{$result}, "Schema $schema, $object_name element: $key is missing in Schema1" );
             next;
         }
         foreach my $c_name ( sort( keys( %{ $obj2->{$key} } ) ) ) {
             unless ( exists($obj1->{$key}->{$c_name}) ) {
+                next if ( is_exception(\@missing_sp2_exceptions, $object_name, $schema, $key, $c_name) );
                 push( @{$result}, "Schema $schema, $object_name element: $key.$c_name is missing in Schema1" );
                 next;
             }
