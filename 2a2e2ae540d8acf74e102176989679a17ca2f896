@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b034ae9b_854395da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-02-18T12:52:21Z",
+      "side": 1,
+      "message": "Hmm maybe format this in some other way, as it was not obvious to me what the actual format was w/o reading the code. Perhaps something like:\n\n\"\"\"\n  \u003ctype\u003e/\u003cschema-name\u003e/\u003celement-name\u003e/\u003celement-attribute\u003e\n\n  where \u003ctype\u003e is the table, trigger, etc.\n  and \u003celement-attribute\u003e is the engine for the table, column_type for the column.\n\n\"\"\"\n\n?\n\n(same for the code comment explaining the format)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "2a2e2ae540d8acf74e102176989679a17ca2f896",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea519817_e0442b2a",
+        "filename": "helper/compare_dbs.pl",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-02-18T12:52:21Z",
+      "side": 1,
+      "message": "shouldn\u0027t this perhaps be in a config file instead?",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "2a2e2ae540d8acf74e102176989679a17ca2f896",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7e27d15_c49d27c1",
+        "filename": "helper/compare_dbs.pl",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-02-18T12:52:21Z",
+      "side": 1,
+      "message": "You can instead just use something like qr{/} which might be more clear? :)",
+      "range": {
+        "startLine": 236,
+        "startChar": 62,
+        "endLine": 236,
+        "endChar": 66
+      },
+      "revId": "2a2e2ae540d8acf74e102176989679a17ca2f896",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49a6e0b1_2f2b7f2c",
+        "filename": "helper/compare_dbs.pl",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-02-18T12:52:21Z",
+      "side": 1,
+      "message": "You can use warn here.",
+      "range": {
+        "startLine": 243,
+        "startChar": 12,
+        "endLine": 243,
+        "endChar": 27
+      },
+      "revId": "2a2e2ae540d8acf74e102176989679a17ca2f896",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
