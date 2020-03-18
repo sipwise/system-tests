@@ -19,7 +19,7 @@ Depends:
  ${misc:Depends},
 Suggests:
  asterisk,
- influxdb-client,
+ influxdb-client | prometheus,
  mariadb-server,
  snmp,
  sqlite3,

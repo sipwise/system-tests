@@ -60,7 +60,35 @@ process:
     running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   influxd:
-    running: true
+    running: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
+
+  prometheus:
+    running: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters). Real name: prometheus-mysqld-exporter.
+  prometheus-mysq:
+    running: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters). Real name: prometheus-nginx-exporter.
+  prometheus-ngin:
+    running: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_li_dist) && nginx.enable ? 'true' : 'false' %]
+
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters). Real name: prometheus-node-exporter.
+  prometheus-node:
+    running: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters). Real name: prometheus-process-exporter.
+  prometheus-proc:
+    running: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters). Real name: prometheus-redis-exporter.
+  prometheus-redi:
+    running: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.enable ? 'true' : 'false' %]
 
   kamailio:
     running: {{if and [% is_lb || is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
@@ -95,4 +123,9 @@ process:
     running: {{if and [% is_rtp && rtpproxy.recording.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   telegraf:
-    running: true
+    running: [% monitoring.backend == 'influxdb' ? 'true' : 'false' %]
+
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters). Real name: victoria-metrics.
+  victoria-metric:
+    running: [% monitoring.backend == 'prometheus' && is_mgmt ? 'true' : 'false' %]

@@ -1,3 +1,13 @@
+[%
+  hostname = ngcp.get_hostname();
+
+  is_db = ngcp.has_role(hostname, 'db');
+  is_lb = ngcp.has_role(hostname, 'lb');
+  is_li_dist = ngcp.has_role(hostname, 'li_dist');
+  is_mgmt = ngcp.has_role(hostname, 'mgmt');
+  is_proxy = ngcp.has_role(hostname, 'proxy');
+  is_rtp = ngcp.has_role(hostname, 'rtp');
+-%]
 file:
   /run/systemd/generator.late:
     filetype: directory
@@ -30,8 +40,8 @@ service:
     running: true
 
   influxdb.service:
-    enabled: true
-    running: true
+    enabled: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
 
   motd.service:
     enabled: [% general.init_system == 'systemd' ? 'false' : 'true' %]
@@ -49,6 +59,30 @@ service:
     enabled: true
     running: true
 
+  prometheus.service:
+    enabled: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+
+  prometheus-mysqld-exporter.service:
+    enabled: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+
+  prometheus-nginx-exporter.service:
+    enabled: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_li_dist) && nginx.enable ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_li_dist) && nginx.enable ? 'true' : 'false' %]
+
+  prometheus-node-exporter.service:
+    enabled: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+
+  prometheus-process-exporter.service:
+    enabled: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+
+  prometheus-redis-exporter.service:
+    enabled: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.enable ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.enable ? 'true' : 'false' %]
+
   ssh.service:
     enabled: true
     running: true
@@ -58,5 +92,9 @@ service:
     running: true
 
   telegraf.service:
-    enabled: true
-    running: true
+    enabled: [% monitoring.backend == 'influxdb' ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'influxdb' ? 'true' : 'false' %]
+
+  victoria-metrics.service:
+    enabled: [% monitoring.backend == 'prometheus' && is_mgmt ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' && is_mgmt ? 'true' : 'false' %]

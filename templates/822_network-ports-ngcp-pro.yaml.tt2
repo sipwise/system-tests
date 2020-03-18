@@ -20,7 +20,7 @@ port:
 
   # InfluxDB Relay
   tcp:9096:
-    listening: true
+    listening: [% monitoring.backend == 'influxdb' && general.ngcp_type != 'spce' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
 
   # Corosync
