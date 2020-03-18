@@ -106,10 +106,6 @@ service:
     enabled: false
     running: {{if and [% is_proxy && faxserver.enable == "yes" && general.ngcp_type != 'spce' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
-  influxdb-relay.service:
-    enabled: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
-    running: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
-
   snmpd.service:
     enabled: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
     running: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]

@@ -18,9 +18,6 @@ process:
   heartbeat:
     running: true
 
-  influxdb-relay:
-    running: true
-
   monit:
     running: [% general.process_handler == 'monit' ? 'true' : 'false' %]
 
@@ -35,6 +32,9 @@ process:
 
   ngcp-voisniff:
     running: {{if and [% (is_proxy || is_lb || is_rtp) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+
+  prometheus-haproxy-exporter:
+    running: [% is_lb && haproxy.enable && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
 
   snmpd:
     running: true

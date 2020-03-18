@@ -37,7 +37,7 @@ gossfile:
 [% END -%]
   830_network-interfaces-legacy.yaml: {}
   900_service-ngcp-api.yaml: {}
-  910_service-influxdb.yaml: {}
+  910_service-prometheus.yaml: {}
   911_service-grafana.yaml: {}
 [% IF general.ngcp_type != 'spce' -%]
   915_service-snmp.yaml: {}

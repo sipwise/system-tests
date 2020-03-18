@@ -59,8 +59,23 @@ process:
   asterisk:
     running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
-  influxd:
+  prometheus:
     running: true
+
+  prometheus-mysqld-exporter:
+    running: true
+
+  prometheus-nginx-exporter:
+    running: [% (is_mgmt || is_lb || is_li_dist) && nginx.enable ? 'true' : 'false' %]
+
+  prometheus-node-exporter:
+    running: true
+
+  prometheus-process-exporter:
+    running: true
+
+  prometheus-redis-exporter:
+    running: [% (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.enable ? 'true' : 'false' %]
 
   kamailio:
     running: {{if and [% is_lb || is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
@@ -89,5 +104,5 @@ process:
   rtpengine-recording:
     running: {{if and [% is_rtp && rtpproxy.recording.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
-  telegraf:
-    running: true
+  victoria-metrics:
+    running: [% is_mgmt ? 'true' : 'false' %]

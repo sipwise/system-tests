@@ -1,0 +1,23 @@
+[%
+  hostname = ngcp.get_hostname();
+
+  argv.host = hostname;
+  argv.type = 'ha_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+  ha_ips = out;
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+  ha_ips = out.merge(ha_ips);
+-%]
+command:
+
+  promtool query instant http://[% ha_ips.0 || 'localhost' %]:[% prometheus.port || 9090 %] '{__name__=~".+"}':
+    exit-status: 0
+    stdout:
+    - "/^go_/"
+    - "/^namedprocess_/"
+    - "/^ngcp_/"
+    - "/^node_/"
+    - "/^process_/"
+    - "/^redis_/"
+    stderr: []
+    timeout: 10000

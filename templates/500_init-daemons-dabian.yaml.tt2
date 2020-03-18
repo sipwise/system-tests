@@ -29,10 +29,6 @@ service:
     enabled: true
     running: true
 
-  influxdb.service:
-    enabled: true
-    running: true
-
   motd.service:
     enabled: [% general.init_system == 'systemd' ? 'false' : 'true' %]
     running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
@@ -49,6 +45,30 @@ service:
     enabled: true
     running: true
 
+  prometheus.service:
+    enabled: true
+    running: true
+
+  prometheus-mysqld-exporter.service:
+    enabled: true
+    running: true
+
+  prometheus-nginx-exporter.service:
+    enabled: [% (is_mgmt || is_lb || is_li_dist) && nginx.enable ? 'true' : 'false' %]
+    running: [% (is_mgmt || is_lb || is_li_dist) && nginx.enable ? 'true' : 'false' %]
+
+  prometheus-node-exporter.service:
+    enabled: true
+    running: true
+
+  prometheus-process-exporter.service:
+    enabled: true
+    running: true
+
+  prometheus-redis-exporter.service:
+    enabled: [% (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.enable ? 'true' : 'false' %]
+    running: [% (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.enable ? 'true' : 'false' %]
+
   rsyslog.service:
     enabled: true
     running: true
@@ -57,6 +77,6 @@ service:
     enabled: true
     running: true
 
-  telegraf.service:
+  victoria-metrics.service:
     enabled: true
     running: true
