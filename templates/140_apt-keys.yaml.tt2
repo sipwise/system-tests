@@ -1,0 +1,13 @@
+command:
+  apt-key list 2>&1 | grep -q expired:
+    exit-status: 1
+    stdout: []
+    stderr: []
+    timeout: 10000
+
+  apt-key list --with-colons | grep '^pub' | cut -d':' -f 5 | egrep -o '.{8}$':
+    exit-status: 0
+    stdout:
+    - "!A42C4F2A"
+    stderr: []
+    timeout: 10000
