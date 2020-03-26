@@ -1,0 +1,7 @@
+file:
+  /var/log/syslog:
+    exists: true
+    mode: "0640"
+    owner: test
+    group: adm
+    filetype: file
