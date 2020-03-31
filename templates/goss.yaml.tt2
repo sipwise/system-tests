@@ -23,7 +23,7 @@ gossfile:
   610_kernel-sysctl-params.yaml: {}
   615_kernel-modules.yaml: {}
   800_network-hostname.yaml: {}
-{{if .Vars.SKIP_DNS_CHECK_TEST}}
+{{if ne .Vars.SKIP_DNS_CHECK_TEST}}
   810_network-dns-debian.yaml: {}
 [%   IF general.ngcp_type == 'spce' -%]
   811_network-dns-ngcp-ce.yaml: {}

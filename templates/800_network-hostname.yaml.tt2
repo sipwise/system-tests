@@ -15,7 +15,7 @@ command:
   hostname:
     exit-status: 0
 
-{{if .Vars.SKIP_STRICT_HOSTNAME_TEST}}
+{{if ne .Vars.SKIP_STRICT_HOSTNAME_TEST}}
   hostname:
     exit-status: 0
     stdout:
