@@ -22,6 +22,30 @@
       "revId": "786bf567cea036c9c0f9d2181339564febb5b37b",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70732097_41f319cc",
+        "filename": "templates/800_network-hostname.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-03-31T11:36:47Z",
+      "side": 1,
+      "message": "Well I copied \"ne\" from prev commit https://gerrit.mgm.sipwise.com/c/system-tests/+/37543",
+      "parentUuid": "68d26fcd_643f0fcd",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "786bf567cea036c9c0f9d2181339564febb5b37b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
