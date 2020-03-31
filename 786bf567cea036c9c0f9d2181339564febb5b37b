@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68d26fcd_643f0fcd",
+        "filename": "templates/800_network-hostname.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-03-31T11:30:13Z",
+      "side": 1,
+      "message": "Ugh right inverted logic. But I don\u0027t think ne is right here? Does this even work, as it is supposed to compare against something else with \u003d\u003d. I think this should be \"not\".",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "786bf567cea036c9c0f9d2181339564febb5b37b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
