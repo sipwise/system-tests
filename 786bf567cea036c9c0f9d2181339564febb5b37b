@@ -46,6 +46,30 @@
       "revId": "786bf567cea036c9c0f9d2181339564febb5b37b",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6348f984_ce3bd688",
+        "filename": "templates/800_network-hostname.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-03-31T15:45:01Z",
+      "side": 1,
+      "message": "The difference is that Env will always be a string, but Vars can be a boolean, so in this case it seems more natural to just use not to evaluate these booleans.",
+      "parentUuid": "70732097_41f319cc",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "786bf567cea036c9c0f9d2181339564febb5b37b",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
