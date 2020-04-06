@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09c5d04a_d2d66c8e",
+        "filename": "templates/135_filesys-logfiles.yaml.tt2",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-04-06T16:29:23Z",
+      "side": 0,
+      "message": "Hmm, unfortunately «skip: true» does not do what I\u0027d expect. :/",
+      "revId": "14ec675b623b981f55dd926cd3ebb0f93480f273",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
