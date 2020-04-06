@@ -39,7 +39,7 @@ file:
     exists: true
     mode: "0640"
     owner: root
-    group: root
+    group: adm
     filetype: file
 
   /var/log/debug:
@@ -58,20 +58,6 @@ file:
 
 
 
-  /var/log/ngcp/api.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/cdr-exporter.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
   /var/log/ngcp/cdr.log:
     exists: true
     mode: "0640"
@@ -80,13 +66,6 @@ file:
     filetype: file
 
   /var/log/ngcp/kamailio-lb.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/kamailio-options-lb.log:
     exists: true
     mode: "0640"
     owner: root
@@ -107,13 +86,6 @@ file:
     group: adm
     filetype: file
 
-  /var/log/ngcp/licensed.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
   /var/log/ngcp/ngcpcfg.log:
     exists: true
     mode: "0640"
@@ -128,28 +100,7 @@ file:
     group: adm
     filetype: file
 
-  /var/log/ngcp/panel-debug.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
   /var/log/ngcp/panel-fcgi.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/panel.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/rate-o-mat.log:
     exists: true
     mode: "0640"
     owner: root
@@ -171,13 +122,6 @@ file:
     filetype: file
 
   /var/log/ngcp/sems.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/sems-pbx.log:
     exists: true
     mode: "0640"
     owner: root
@@ -224,7 +168,14 @@ command:
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/ -maxdepth 1 -size +0 -type f ! -group adm":
+  "find /var/log/ngcp/ -maxdepth 1 -size +0 -type f ! -group adm ! -name api.log":
+    exit-status: 0
+    stdout:
+      - '!/./'
+    stderr:
+      - '!/./'
+
+  "find /var/log/ngcp/ -maxdepth 1 -size +0 -type f ! -group _ngcp-li -name api.log":
     exit-status: 0
     stdout:
       - '!/./'
