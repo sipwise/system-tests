@@ -17,9 +17,6 @@ process:
   mysqld_safe:
     running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
 
-  ntpd:
-    running: true
-
   redis-server:
     running: true
 
@@ -27,6 +24,11 @@ process:
     running: true
 
   sshd:
+    running: true
+
+  # XXX: We need to truncate the process name to 15 characters (from the
+  # actual "systemd-timesyncd"), which is the size of the comm string in Linux.
+  systemd-timesyn:
     running: true
 
   systemd-udevd:
