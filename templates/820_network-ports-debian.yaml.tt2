@@ -9,7 +9,7 @@ port:
     listening: true
     ip: ["127.0.0.1"]
 
-  # ntpd
+  # NTP (systemd-timesyncd)
   udp:123:
     listening: true
     ip: ["0.0.0.0"]
