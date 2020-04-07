@@ -9,10 +9,9 @@ port:
     listening: true
     ip: ["127.0.0.1"]
 
-  # ntpd
+  # NTP (systemd-timesyncd does not listen)
   udp:123:
-    listening: true
-    ip: ["0.0.0.0"]
+    listening: false
 
   # Check for a closed port, nothing there.
   tcp:7777:

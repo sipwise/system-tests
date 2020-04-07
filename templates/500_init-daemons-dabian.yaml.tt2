@@ -45,15 +45,15 @@ service:
     enabled: true
     running: true
 
-  ntp.service:
-    enabled: true
-    running: true
-
   rsyslog.service:
     enabled: true
     running: true
 
   ssh.service:
+    enabled: true
+    running: true
+
+  systemd-timesyncd.service:
     enabled: true
     running: true
 

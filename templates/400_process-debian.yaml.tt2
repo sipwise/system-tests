@@ -17,9 +17,6 @@ process:
   mysqld_safe:
     running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
 
-  ntpd:
-    running: true
-
   redis-server:
     running: true
 
@@ -27,6 +24,9 @@ process:
     running: true
 
   sshd:
+    running: true
+
+  systemd-timesyncd:
     running: true
 
   systemd-udevd:

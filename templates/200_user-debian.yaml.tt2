@@ -9,9 +9,6 @@ group:
   mysql:
     exists: true
 
-  ntp:
-    exists: true
-
   prosody:
     exists: true
 
