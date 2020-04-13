@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "872898d6_4d2d8604",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000008
+      },
+      "writtenOn": "2020-04-13T14:54:49Z",
+      "side": 1,
+      "message": "Ok, that seems to work. So I could convert the full list of files from rsyslog.conf to a list of individual goss tests.\n\nBut: A catch-all using `find` might still be a good idea, in case someone adds a new log file and doesn\u0027t add it to the goss tests, which is almost guaranteed to happen. And if we have a catch-all, then having individual tests would be kinda redundant.\n\nWhat do you think?",
+      "parentUuid": "8acc3836_06631f6d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "f2eea727647f702cb2e0b81f83cf034c7298b379",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f79984c_4b72ca26",
         "filename": "templates/135_filesys-logfiles.yaml.tt2",
         "patchSetId": 1
