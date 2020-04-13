@@ -57,100 +57,17 @@ file:
     filetype: file
 
 
-
-  /var/log/ngcp/cdr.log:
-    exists: true
+  /var/log/ngcp/api.log:
+    exists:
+      or:
+        - true
+	- false
     mode: "0640"
     owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/kamailio-lb.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/kamailio-options-proxy.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/kamailio-proxy.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/ngcpcfg.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/ntp.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/panel-fcgi.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/redis.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/rtp.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/sems.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/service.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/voicemail.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/xmpp.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
+    group: _ngcp-li
     filetype: file
 
 
-# catch-all for optionally existing log files
 
 command:
 
@@ -175,31 +92,25 @@ command:
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/ -maxdepth 1 -size +0 -type f ! -group _ngcp-li -name api.log":
-    exit-status: 0
-    stdout:
-      - '!/./'
-    stderr:
-      - '!/./'
 
 # optionally existing subdirectories
 
 [% FOR dir IN ['/var/log/ngcp/ngcp-rtcengine/', '/var/log/ngcp/ngcp-comx-fileshare-service/'] -%]
-  "test -e [% dir %] && find [% dir %] -maxdepth 1 -type f -size +0 -perm /o+rwx || true":
+  "if test -e [% dir %]; then find [% dir %] -maxdepth 1 -type f -size +0 -perm /o+rwx; fi":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "test -e [% dir %] && find [% dir %] -maxdepth 1 -size +0 -type f ! -user root || true":
+  "if test -e [% dir %]; then find [% dir %] -maxdepth 1 -size +0 -type f ! -user root; fi":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "test -e [% dir %] && find [% dir %] -maxdepth 1 -size +0 -type f ! -group adm || true":
+  "if test -e [% dir %]; then find [% dir %] -maxdepth 1 -size +0 -type f ! -group adm; fi":
     exit-status: 0
     stdout:
       - '!/./'
@@ -207,42 +118,42 @@ command:
       - '!/./'
 [% END -%]
 
-  "find /var/log/ngcp/nginx/ -type f -size +0 -perm /o+rwx":
+  "if test -e /var/log/ngcp/nginx/; then find /var/log/ngcp/nginx/ -type f -size +0 -perm /o+rwx; fi":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/nginx/ -size +0 -type f ! -user www-data":
+  "if test -e /var/log/ngcp/nginx/; then find /var/log/ngcp/nginx/ -size +0 -type f ! -user www-data; fi":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/nginx/ -size +0 -type f ! -group adm":
+  "if test -e /var/log/ngcp/nginx/; then find /var/log/ngcp/nginx/ -size +0 -type f ! -group adm; fi":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/kannel/ -type f -size +0 -perm /o+rwx":
+  "if test -e /var/log/ngcp/kannel/; then find /var/log/ngcp/kannel/ -type f -size +0 -perm /o+rwx; fi":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/kannel/ -size +0 -type f ! -user kannel":
+  "if test -e /var/log/ngcp/kannel/; then find /var/log/ngcp/kannel/ -size +0 -type f ! -user kannel; fi":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/kannel/ -size +0 -type f ! -group adm":
+  "if test -e /var/log/ngcp/kannel/; then find /var/log/ngcp/kannel/ -size +0 -type f ! -group adm; fi":
     exit-status: 0
     stdout:
       - '!/./'
