@@ -58,100 +58,6 @@ file:
 
 
 
-  /var/log/ngcp/cdr.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/kamailio-lb.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/kamailio-options-proxy.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/kamailio-proxy.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/ngcpcfg.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/ntp.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/panel-fcgi.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/redis.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/rtp.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/sems.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/service.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/voicemail.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/ngcp/xmpp.log:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-
-# catch-all for optionally existing log files
-
 command:
 
   "find /var/log/ngcp/ -maxdepth 1 -type f -size +0 -perm /o+rwx":
@@ -207,42 +113,42 @@ command:
       - '!/./'
 [% END -%]
 
-  "find /var/log/ngcp/nginx/ -type f -size +0 -perm /o+rwx":
+  "test -e /var/log/ngcp/nginx/ && find /var/log/ngcp/nginx/ -type f -size +0 -perm /o+rwx || true":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/nginx/ -size +0 -type f ! -user www-data":
+  "test -e /var/log/ngcp/nginx/ && find /var/log/ngcp/nginx/ -size +0 -type f ! -user www-data || true":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/nginx/ -size +0 -type f ! -group adm":
+  "test -e /var/log/ngcp/nginx/ && find /var/log/ngcp/nginx/ -size +0 -type f ! -group adm || true":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/kannel/ -type f -size +0 -perm /o+rwx":
+  "test -e /var/log/ngcp/kannel/ && find /var/log/ngcp/kannel/ -type f -size +0 -perm /o+rwx || true":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/kannel/ -size +0 -type f ! -user kannel":
+  "test -e /var/log/ngcp/kannel/ && find /var/log/ngcp/kannel/ -size +0 -type f ! -user kannel || true":
     exit-status: 0
     stdout:
       - '!/./'
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/kannel/ -size +0 -type f ! -group adm":
+  "test -e /var/log/ngcp/kannel/ && find /var/log/ngcp/kannel/ -size +0 -type f ! -group adm || true":
     exit-status: 0
     stdout:
       - '!/./'
