@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d53b03a0_dff90254",
+        "filename": "templates/135_filesys-logfiles.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2020-04-13T15:34:39Z",
+      "side": 1,
+      "message": "I\u0027m confused because you added this file and removed a bunch of them, I thought that you would apply this \"or\" logic for \"exists\" to all of those files, provided that it works fine.\n\nSo is this intentional because it will be catched by the \"find\" mechanism, or is it a mistake, or you\u0027re still testing if it works and so this is in flux?",
+      "revId": "41a3acf6fe04573afa2c2851d63358f1fe8bbb80",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    }
+  ]
+}
