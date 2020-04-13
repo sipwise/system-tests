@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8acc3836_06631f6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000008
+      },
+      "writtenOn": "2020-04-13T14:34:26Z",
+      "side": 1,
+      "message": "I wasn\u0027t aware of the `or` semantics. I\u0027ll give it a try.",
+      "parentUuid": "a5bffe1a_32170f7f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "f2eea727647f702cb2e0b81f83cf034c7298b379",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f79984c_4b72ca26",
         "filename": "templates/135_filesys-logfiles.yaml.tt2",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-13T14:23:05Z",
       "side": 1,
       "message": "will this apply to the first test, or can it possibly hidden the failure of the \"find\"?",
+      "range": {
+        "startLine": 116,
+        "startChar": 91,
+        "endLine": 116,
+        "endChar": 99
+      },
+      "revId": "f2eea727647f702cb2e0b81f83cf034c7298b379",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5442a07_3cbd5978",
+        "filename": "templates/135_filesys-logfiles.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000008
+      },
+      "writtenOn": "2020-04-13T14:34:26Z",
+      "side": 1,
+      "message": "It\u0027s meant to apply to the first, but it would also hide a failure of `find`, except that stderr is also required to be empty, and `find` would definitely print something to stderr on failure.",
+      "parentUuid": "1f79984c_4b72ca26",
       "range": {
         "startLine": 116,
         "startChar": 91,
