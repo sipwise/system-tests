@@ -61,7 +61,7 @@ file:
     exists:
       or:
         - true
-	- false
+	    - false
     mode: "0640"
     owner: root
     group: _ngcp-li
