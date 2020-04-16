@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c7e3b23_64099513",
+        "filename": "templates/131_filesys-ngcp-pro.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-04-16T11:48:56Z",
+      "side": 0,
+      "message": "Hmm oh sorry missed that we had those, and thanks for taking care. Perhaps we should replace this with a check for the new merged one? inc/my.mysqld1.cnf",
+      "revId": "7e753005480c7d5a098163992188396cb85c6892",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
