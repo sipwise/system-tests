@@ -107,6 +107,14 @@ file:
     linked-to: /mnt/glusterfs/mgmt-share/approx/
     filetype: symlink
 
+  /etc/mysql/inc/my.mysqld1.cnf:
+    exists: true
+    mode: "0444"
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+
   /etc/mysql/inc/my.mysqld2.cnf:
     exists: true
     mode: "0444"
@@ -120,28 +128,6 @@ file:
     mode: "0440"
     owner: root
     group: mysql
-    filetype: file
-    contains: []
-[% IF general.ngcp_type == 'sppro' -%]
-    size: 0
-[% END -%]
-
-  /etc/mysql/inc/my.mysqld1.carrier_db.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-[% IF general.ngcp_type == 'sppro' -%]
-    size: 0
-[% END -%]
-
-  /etc/mysql/inc/my.mysqld1.carrier_non_db.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
     filetype: file
     contains: []
 [% IF general.ngcp_type == 'sppro' -%]
