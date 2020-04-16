@@ -126,28 +126,6 @@ file:
     size: 0
 [% END -%]
 
-  /etc/mysql/inc/my.mysqld1.carrier_db.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-[% IF general.ngcp_type == 'sppro' -%]
-    size: 0
-[% END -%]
-
-  /etc/mysql/inc/my.mysqld1.carrier_non_db.cnf:
-    exists: true
-    mode: "0444"
-    owner: root
-    group: root
-    filetype: file
-    contains: []
-[% IF general.ngcp_type == 'sppro' -%]
-    size: 0
-[% END -%]
-
   /etc/mysql/inc/my.client2.cnf:
     exists: true
     mode: "0440"
