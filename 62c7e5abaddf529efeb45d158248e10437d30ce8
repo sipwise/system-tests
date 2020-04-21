@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "986a0cdd_2d22c64b",
+        "filename": "templates/135_filesys-logfiles.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-04-21T14:08:31Z",
+      "side": 0,
+      "message": "Right after the configuration the nginx is running but no information in the logs. But still at the same time the files can have correct or wrong ownership/permission. So why don\u0027t we check them?",
+      "parentUuid": "75704aea_f84bceea",
+      "range": {
+        "startLine": 121,
+        "startChar": 76,
+        "endLine": 121,
+        "endChar": 83
+      },
+      "revId": "62c7e5abaddf529efeb45d158248e10437d30ce8",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5376983_5d11b80a",
         "filename": "templates/135_filesys-logfiles.yaml.tt2",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-21T13:09:57Z",
       "side": 0,
       "message": "above the check is for user www-data. So that means that the group will be adm but not root -https://paste.mgm.sipwise.com/show/7106/",
+      "range": {
+        "startLine": 135,
+        "startChar": 93,
+        "endLine": 135,
+        "endChar": 96
+      },
+      "revId": "62c7e5abaddf529efeb45d158248e10437d30ce8",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba54afd_2f42250f",
+        "filename": "templates/135_filesys-logfiles.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-04-21T14:08:31Z",
+      "side": 0,
+      "message": "1. nginx creates files as root:root\n\n2. nginx rotate changes it to www-data:root\n\n3. logrotate creates the new files as www-data:adm\n\nSo what is the current group? :)",
+      "parentUuid": "a5376983_5d11b80a",
       "range": {
         "startLine": 135,
         "startChar": 93,
