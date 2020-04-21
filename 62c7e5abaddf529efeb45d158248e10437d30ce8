@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "dd3fbe03_eabd0dca",
+        "filename": "templates/135_filesys-logfiles.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000020
+      },
+      "writtenOn": "2020-04-21T14:56:38Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "986a0cdd_2d22c64b",
+      "range": {
+        "startLine": 121,
+        "startChar": 76,
+        "endLine": 121,
+        "endChar": 83
+      },
+      "revId": "62c7e5abaddf529efeb45d158248e10437d30ce8",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5376983_5d11b80a",
         "filename": "templates/135_filesys-logfiles.yaml.tt2",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 0,
       "message": "1. nginx creates files as root:root\n\n2. nginx rotate changes it to www-data:root\n\n3. logrotate creates the new files as www-data:adm\n\nSo what is the current group? :)",
       "parentUuid": "a5376983_5d11b80a",
+      "range": {
+        "startLine": 135,
+        "startChar": 93,
+        "endLine": 135,
+        "endChar": 96
+      },
+      "revId": "62c7e5abaddf529efeb45d158248e10437d30ce8",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63bb6c14_c9d59230",
+        "filename": "templates/135_filesys-logfiles.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000020
+      },
+      "writtenOn": "2020-04-21T14:56:38Z",
+      "side": 0,
+      "message": "Ok if we cannot rely on group at the moment even with https://gerrit.mgm.sipwise.com/c/templates/+/39507 applied(because there is still uncontrolled logrotate) so let\u0027s just modify goss check to allow root www-data for user and root or adm for group and not apply https://gerrit.mgm.sipwise.com/c/templates/+/39507 at all? And yes we should remove \u0027-size +0\u0027 then",
+      "parentUuid": "8ba54afd_2f42250f",
       "range": {
         "startLine": 135,
         "startChar": 93,
