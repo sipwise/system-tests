@@ -141,6 +141,30 @@
       "revId": "62c7e5abaddf529efeb45d158248e10437d30ce8",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "246bd1ea_7ce864b6",
+        "filename": "templates/135_filesys-logfiles.yaml.tt2",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-04-22T08:27:34Z",
+      "side": 0,
+      "message": "I\u0027ve updated review https://gerrit.mgm.sipwise.com/c/templates/+/39507 so logrotate creates logs as www-data:root. So the files have the same ownership/permission all the time.",
+      "parentUuid": "63bb6c14_c9d59230",
+      "range": {
+        "startLine": 135,
+        "startChar": 93,
+        "endLine": 135,
+        "endChar": 96
+      },
+      "revId": "62c7e5abaddf529efeb45d158248e10437d30ce8",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
     }
   ]
 }
