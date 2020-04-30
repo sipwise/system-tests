@@ -12,7 +12,10 @@ file:
 
   /var/lib/systemd/coredump:
     exists: true
-    mode: "0777"
+    mode:
+      or:
+        - "0777"
+        - "0755"
     owner: root
     group: root
     filetype: symlink
