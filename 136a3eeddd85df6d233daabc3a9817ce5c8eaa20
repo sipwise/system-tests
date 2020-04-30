@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0adb542_639a1ad4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2020-04-30T14:03:03Z",
+      "side": 1,
+      "message": "I\u0027m sure that the fix helps but not sure about this part. Is there some hidden conditions whether permissions are changed or not?",
+      "range": {
+        "startLine": 11,
+        "startChar": 58,
+        "endLine": 12,
+        "endChar": 71
+      },
+      "revId": "136a3eeddd85df6d233daabc3a9817ce5c8eaa20",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
+    }
+  ]
+}
