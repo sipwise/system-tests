@@ -22,6 +22,30 @@
       "revId": "136a3eeddd85df6d233daabc3a9817ce5c8eaa20",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bd1f5fc_8965990f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-04-30T14:45:21Z",
+      "side": 1,
+      "message": "Yeah that\u0027s the problem I\u0027m not sure. But as I mentioned in the bubble, I\u0027m not sure either investing too much time trying to track this down is worth our time when the symlink perms are not really relevant.\n\nSupposedly systemd-coredump got executed once, and it changed the perms, given that we changed templates so that it could run properly now, but perhaps it was something else in systemd or similar, not sure really.",
+      "parentUuid": "d0adb542_639a1ad4",
+      "range": {
+        "startLine": 11,
+        "startChar": 58,
+        "endLine": 12,
+        "endChar": 71
+      },
+      "revId": "136a3eeddd85df6d233daabc3a9817ce5c8eaa20",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": true
     }
   ]
 }
