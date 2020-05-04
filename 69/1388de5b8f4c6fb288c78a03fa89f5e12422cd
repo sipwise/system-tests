@@ -1,0 +1,10 @@
+Verified+1: Jenkins Jenkins
+Code-Review+1: Manuel Montecelo <mmontecelo@sipwise.com>
+Code-Review+2: Sergii Kipot <skipot@sipwise.com>
+Code-Review+2: Richard Fuchs <rfuchs@sipwise.com>
+Code-Review+2: Guillem Jover <gjover@sipwise.com>
+Submitted-by: Mykola Malkov <mmalkov@sipwise.com>
+Submitted-at: Mon, 04 May 2020 17:36:47 +0200
+Reviewed-on: http://gerrit.mgm.sipwise.com/c/system-tests/+/39833
+Project: system-tests
+Branch: refs/heads/master
