@@ -125,7 +125,7 @@ command:
     stderr:
       - '!/./'
 
-  "if test -e /var/log/ngcp/nginx/; then find /var/log/ngcp/nginx/ -type f ! -user www-data; fi":
+  "if test -e /var/log/ngcp/nginx/; then find /var/log/ngcp/nginx/ -type f ! -user root; fi":
     exit-status: 0
     stdout:
       - '!/./'
