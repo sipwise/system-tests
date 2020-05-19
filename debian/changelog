@@ -1,3 +1,26 @@
+ngcp-system-tests (8.5.0.0+0~mr8.5.0.0) unstable; urgency=medium
+
+  [ Sergii Kipot ]
+  * [d82528c] TT#76668 Add goss check for absence of old dsa1024 sipwise apt key
+  * [051df65] TT#47113 Fix for indentation
+  * [62c7e5a] TT#78202 Fix goss checks for pro mysql config files
+
+  [ Richard Fuchs ]
+  * [a150905] TT#47113 Verify log files readable only by root
+  * [8dc1af2] TT#47113 Amend log files test
+  * [41a3acf] TT#47113 further loosen log files check
+
+  [ Mykola Malkov ]
+  * [14ec675] TT#56053 Fix using of boolean SKIP* variables
+  * [218d5b8] TT#47113 Fix check of nginx logs
+  * [691388d] TT#47113 Change owner of nginx logs
+
+  [ Guillem Jover ]
+  * [77707e3] TT#79157 Switch from ntpd to systemd-timesyncd
+  * [136a3ee] TT#80502 Accept 0777 or 0755 permissions on /var/lib/systemd/coredump
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 19 May 2020 11:13:41 +0200
+
 ngcp-system-tests (8.4.0.0+0~mr8.4.0.0) unstable; urgency=medium
 
   [ Mykola Malkov ]
