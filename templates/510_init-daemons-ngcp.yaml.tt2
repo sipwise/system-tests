@@ -96,7 +96,7 @@ service:
 
   ngcp-voisniff.service:
     enabled: false
-    running: {{if and [% (is_proxy || is_lb || is_rtp) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: {{if and [% (is_proxy || is_li_dist) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcpcfg-api.service:
     enabled: [% is_mgmt && general.ngcp_type != 'spce' ? 'true' : 'false' %]
