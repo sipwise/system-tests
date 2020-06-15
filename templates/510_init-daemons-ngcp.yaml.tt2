@@ -7,6 +7,7 @@
   is_db = ngcp.has_role(hostname, 'db');
   is_rtp = ngcp.has_role(hostname, 'rtp');
   is_li_dist = ngcp.has_role(hostname, 'li_dist');
+  is_li = ngcp.has_role(hostname, 'li');
 -%]
 
 service:
@@ -96,7 +97,7 @@ service:
 
   ngcp-voisniff.service:
     enabled: false
-    running: {{if and [% (is_proxy || is_lb || is_rtp) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: {{if and [% (is_proxy || is_li) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcpcfg-api.service:
     enabled: [% is_mgmt && general.ngcp_type != 'spce' ? 'true' : 'false' %]
