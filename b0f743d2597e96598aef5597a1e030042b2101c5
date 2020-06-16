@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d46b0670_d5b343d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-06-16T11:46:27Z",
+      "side": 1,
+      "message": "Actually from the nsservices file that does not seem to match either. From there I read it\u0027s supposed to only run on proxy and li nodes no?",
+      "revId": "b0f743d2597e96598aef5597a1e030042b2101c5",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
