@@ -22,6 +22,30 @@
       "revId": "78cb6abe5aac3c569aa5d4272bfd749c4919c1b9",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59355ba0_6f70dc6e",
+        "filename": "templates/510_init-daemons-ngcp.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-06-16T13:27:02Z",
+      "side": 1,
+      "message": "Oh hmmm there is apparently, it looks like monit wants it on is_rtp too, I guess that also needs fixing.",
+      "parentUuid": "2d26f8a8_9d0a43d0",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 48
+      },
+      "revId": "78cb6abe5aac3c569aa5d4272bfd749c4919c1b9",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
