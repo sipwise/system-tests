@@ -118,6 +118,30 @@
       "revId": "78cb6abe5aac3c569aa5d4272bfd749c4919c1b9",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a78119c_beb48614",
+        "filename": "templates/510_init-daemons-ngcp.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-06-26T14:41:38Z",
+      "side": 1,
+      "message": "If li_dist is what\u0027s supposed to be then sure, we should use that. But just to clarify, and AFAIK we have things that are supposed to run on li roles and others on li_dist (virtual) roles, so I don\u0027t think it\u0027s always correct to just use li_dist in place of li.",
+      "parentUuid": "aead9c3e_6a7daee8",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 48
+      },
+      "revId": "78cb6abe5aac3c569aa5d4272bfd749c4919c1b9",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
