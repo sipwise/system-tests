@@ -70,6 +70,30 @@
       "revId": "78cb6abe5aac3c569aa5d4272bfd749c4919c1b9",
       "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff67b9cd_0199d133",
+        "filename": "templates/510_init-daemons-ngcp.yaml.tt2",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2020-06-26T12:18:31Z",
+      "side": 1,
+      "message": "Right, but in nsservices.yml it is defined as for roles \"proxy\" and \"li\" (and not li_dist). And in monit/monitrc it is defined once within an is_rtp block and another time within an is_li block (not is_li_dist either). So all of these are inconsistent.\n\nThe inconsistency in nsservices.yml got introduced with commit d2784a84ad6955348152e56d762dce59a16980ff, but that just carried over an inconsistency within the ha monit-services file. :D\n\nSo we need to first check what are the actual roles this should be running on, and then unifying all such instances. :)\n\nIt seems to me, \"li\" is the right one, not sure which one of \"proxy\" or \"rtp\" is the right one though.",
+      "parentUuid": "edad41b2_50977a3a",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 48
+      },
+      "revId": "78cb6abe5aac3c569aa5d4272bfd749c4919c1b9",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
     }
   ]
 }
