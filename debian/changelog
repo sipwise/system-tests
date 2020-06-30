@@ -1,3 +1,10 @@
+ngcp-system-tests (8.3.3.0+0~mr8.3.3.0) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [9edb77e] TT#56053 Fix using of boolean SKIP* variables
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 30 Jun 2020 15:31:42 +0200
+
 ngcp-system-tests (8.3.2.0+0~mr8.3.2.0) unstable; urgency=medium
 
   * New release.
