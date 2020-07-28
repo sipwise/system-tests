@@ -160,8 +160,23 @@ port:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
-  # SEMS
-  tcp:8090:
+  # sems-pbx
+  tcp:5088:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["[% sip_int_ips.0 %]"]
+
+  # sems-pbx
+  tcp:8098:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["[% sip_int_ips.0 %]"]
+
+  # sems-pbx
+  udp:5048:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["[% sip_int_ips.0 %]"]
+
+  # sems-pbx
+  udp:5088:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
@@ -170,18 +185,8 @@ port:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["127.0.0.1"]
 
-  # SEMS
-  udp:5040:
-    listening: {{.Vars.NODE_ACTIVE}}
-    ip: ["[% sip_int_ips.0 %]"]
-
   # Asterisk
   udp:5070:
-    listening: {{.Vars.NODE_ACTIVE}}
-    ip: ["[% sip_int_ips.0 %]"]
-
-  # SEMS
-  udp:5080:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
