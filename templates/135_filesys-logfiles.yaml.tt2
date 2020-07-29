@@ -42,20 +42,6 @@ file:
     group: adm
     filetype: file
 
-  /var/log/debug:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
-  /var/log/messages:
-    exists: true
-    mode: "0640"
-    owner: root
-    group: adm
-    filetype: file
-
 
   /var/log/ngcp/api.log:
     exists:
@@ -154,6 +140,54 @@ command:
       - '!/./'
 
   "if test -e /var/log/ngcp/kannel/; then find /var/log/ngcp/kannel/ -size +0 -type f ! -group adm; fi":
+    exit-status: 0
+    stdout:
+      - '!/./'
+    stderr:
+      - '!/./'
+
+# optionally existing files
+
+  # /var/log/debug
+
+  "find /var/log/ -type f -name debug ! -user root":
+    exit-status: 0
+    stdout:
+      - '!/./'
+    stderr:
+      - '!/./'
+
+  "find /var/log/ -type f -name debug ! -group adm":
+    exit-status: 0
+    stdout:
+      - '!/./'
+    stderr:
+      - '!/./'
+
+  "find /var/log/ -type f -name debug ! -perm 640":
+    exit-status: 0
+    stdout:
+      - '!/./'
+    stderr:
+      - '!/./'
+
+  # /var/log/messages
+
+  "find /var/log/ -type f -name messages ! -user root":
+    exit-status: 0
+    stdout:
+      - '!/./'
+    stderr:
+      - '!/./'
+
+  "find /var/log/ -type f -name messages ! -group adm":
+    exit-status: 0
+    stdout:
+      - '!/./'
+    stderr:
+      - '!/./'
+
+  "find /var/log/ -type f -name messages ! -perm 640":
     exit-status: 0
     stdout:
       - '!/./'
