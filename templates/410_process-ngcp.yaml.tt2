@@ -69,7 +69,10 @@ process:
     running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   sems-b2b:
-    running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: {{if and [% is_proxy && b2b.enable == "yes"? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+
+  ngcp-sems:
+    running: {{if and [% is_proxy && sems.enable == "yes"? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-witnessd:
     running: true

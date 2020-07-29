@@ -159,7 +159,24 @@ port:
   tcp:5582:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
+[%  IF sems.enable == "yes" -%]
+  # SEMS
+  tcp:8090:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["[% sip_int_ips.0 %]"]
 
+  # SEMS
+  udp:5040:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["[% sip_int_ips.0 %]"]
+
+  # SEMS
+  udp:5080:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["[% sip_int_ips.0 %]"]
+
+[%  END -%]
+[%  IF b2b.enable == "yes" -%]
   # sems-pbx
   tcp:5088:
     listening: {{.Vars.NODE_ACTIVE}}
@@ -180,6 +197,7 @@ port:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
+[%  END -%]
   # Asterisk
   tcp:5038:
     listening: {{.Vars.NODE_ACTIVE}}
