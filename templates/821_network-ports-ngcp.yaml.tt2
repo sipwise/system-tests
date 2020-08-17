@@ -161,7 +161,7 @@ port:
     ip: ["[% sip_int_ips.0 %]"]
 [%  IF sems.enable == "yes" -%]
   # SEMS
-  tcp:8090:
+  tcp:[% sems.xmlrpcport %]:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
@@ -171,14 +171,24 @@ port:
     ip: ["[% sip_int_ips.0 %]"]
 
   # SEMS
-  udp:5080:
+  udp:[% sems.bindport %]:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
 [%  END -%]
 [%  IF b2b.enable == "yes" -%]
   # sems-pbx
+  udp:[% b2b.bindport %]:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["[% sip_int_ips.0 %]"]
+
+  # sems-pbx
   tcp:5088:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["[% sip_int_ips.0 %]"]
+
+  # sems-pbx
+  tcp:[% b2b.xmlrpcport %]:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
