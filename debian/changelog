@@ -1,3 +1,10 @@
+ngcp-system-tests (8.4.3.0+0~mr8.4.3.0) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [295cf42] TT#84555 Check debug and messages files as optional
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 25 Aug 2020 16:50:51 +0200
+
 ngcp-system-tests (8.4.2.0+0~mr8.4.2.0) unstable; urgency=medium
 
   * New release.
