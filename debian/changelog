@@ -1,3 +1,18 @@
+ngcp-system-tests (9.0.1.0+0~mr9.0.1.0) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [08eb954] TT#82312 Do not expect voisniff on LB node
+  * [5988a17] TT#87502 Add monitoring of sems-pbx process
+  * [bac90e7] TT#84555 Check debug and messages files as optional
+  * [550f2dc] TT#87502 Use the values from config instead of hardcode
+  * [ab9ad23] TT#87502 Update the list of sems-b2b ports
+  * [9c1e3fe] TT#34758 Merge PRO and Carrier code
+
+  [ Victor Seva ]
+  * [d8865df] TT#87502 Add monitoring of sems-pbx process, take two
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 31 Aug 2020 21:56:18 +0200
+
 ngcp-system-tests (9.0.0.0+0~mr9.0.0.0) unstable; urgency=medium
 
   * New release.
