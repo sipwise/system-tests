@@ -91,9 +91,9 @@ service:
     enabled: [% is_mgmt && ldap.enable == "yes" ? 'true' : 'false' %]
     running: [% is_mgmt && ldap.enable == "yes" ? 'true' : 'false' %]
 
-  sems-pbx.service:
+  sems-b2b.service:
     enabled: false
-    running: {{if and [% is_proxy && pbx.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: {{if and [% is_proxy && (pbx.enable == "yes" || b2b.enable == "yes") ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-voisniff.service:
     enabled: false
