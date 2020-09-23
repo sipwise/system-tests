@@ -1,3 +1,10 @@
+ngcp-system-tests (8.5.1.3+0~mr8.5.1.3) unstable; urgency=medium
+
+  [ Manuel Montecelo ]
+  * [f9ad13d] TT#47113 Change check of /var/log/messages
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 23 Sep 2020 23:36:37 +0200
+
 ngcp-system-tests (8.5.1.2+0~mr8.5.1.2) unstable; urgency=medium
 
   [ Mykola Malkov ]
