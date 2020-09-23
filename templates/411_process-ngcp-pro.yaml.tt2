@@ -13,10 +13,40 @@ process:
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters).
   ngcp-hb-watchdo:
-    running: true
+    running: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' && heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
 
   heartbeat:
-    running: true
+    running: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' ? 'true' : 'false' %]
+
+  corosync:
+    running: [% ha.gcs == 'corosync' ? 'true' : 'false' %]
+
+  pacemakerd:
+    running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
+
+  pacemaker-based:
+    running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
+
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters).
+  pacemaker-fence:
+    running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
+
+  pacemaker-execd:
+    running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
+
+  pacemaker-attrd:
+    running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
+
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters).
+  pacemaker-sched:
+    running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
+
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters).
+  pacemaker-contr:
+    running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
 
   influxdb-relay:
     running: true
