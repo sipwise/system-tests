@@ -1,5 +1,12 @@
 file:
 
+  /var/log/messages:
+    exists: true
+    mode: "0640"
+    owner: root
+    group: adm
+    filetype: file
+
   /var/log/syslog:
     exists: true
     mode: "0640"
@@ -165,29 +172,6 @@ command:
       - '!/./'
 
   "find /var/log/ -type f -name debug ! -perm 640":
-    exit-status: 0
-    stdout:
-      - '!/./'
-    stderr:
-      - '!/./'
-
-  # /var/log/messages
-
-  "find /var/log/ -type f -name messages ! -user root":
-    exit-status: 0
-    stdout:
-      - '!/./'
-    stderr:
-      - '!/./'
-
-  "find /var/log/ -type f -name messages ! -group adm":
-    exit-status: 0
-    stdout:
-      - '!/./'
-    stderr:
-      - '!/./'
-
-  "find /var/log/ -type f -name messages ! -perm 640":
     exit-status: 0
     stdout:
       - '!/./'
