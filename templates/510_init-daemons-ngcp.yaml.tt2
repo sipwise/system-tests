@@ -15,6 +15,10 @@ service:
     enabled: [% general.process_handler == 'none' && asterisk.enable == "yes" ? 'true' : 'false' %]
     running: {{if and [% is_proxy && asterisk.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
+  corosync:
+    enabled: [% ha.gcs == 'corosync' ? 'true' : 'false' %]
+    running: [% ha.gcs == 'corosync' ? 'true' : 'false' %]
+
   coturn.service:
     enabled: [% is_rtp && turnserver.enable == 'yes' ? 'true' : 'false' %]
     running: [% is_rtp && turnserver.enable == 'yes' ? 'true' : 'false' %]
@@ -28,8 +32,8 @@ service:
     running: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
 
   ngcp-hb-watchdog.service:
-    enabled: [% heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
-    running: [% heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
+    enabled: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' && heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
+    running: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' && heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
 
   kamailio-lb.service:
     enabled: [% general.process_handler == 'none' && kamailio.lb.start == "yes" ? 'true' : 'false' %]
@@ -74,6 +78,10 @@ service:
   nginx.service:
     enabled: [% (is_mgmt || is_lb || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
     running: [% (is_mgmt || is_lb || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
+
+  pacemaker.service:
+    enabled: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
+    running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
 
   prosody.service:
     enabled: [% general.process_handler == 'none' && prosody.enable == 'yes' ? 'true' : 'false' %]
@@ -143,7 +151,7 @@ service:
 
 [% IF general.ngcp_type != 'spce' -%]
   heartbeat.service:
-    enabled: true
-    running: true
+    enabled: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' ? 'true' : 'false' %]
+    running: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' ? 'true' : 'false' %]
 
 [% END -%]
