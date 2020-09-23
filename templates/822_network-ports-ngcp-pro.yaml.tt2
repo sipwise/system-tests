@@ -1,3 +1,12 @@
+[%
+  hostname = ngcp.get_hostname();
+  peername = ngcp.get_peername(hostname);
+
+  argv.type = 'ha_int';
+  argv.host = hostname;
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_iface';
+  host_ha_iface = out;
+-%]
 port:
   # Monit
   tcp:2812:
@@ -14,7 +23,12 @@ port:
     listening: true
     ip: ["127.0.0.1"]
 
+  # Corosync
+  udp:5405:
+    listening: [% ha.gcs == 'corosync' ? 'true' : 'false' %]
+    ip: ["[% hosts.$hostname.$host_ha_iface.ip %]"]
+
   # Heartbeat
   udp:[% heartbeat.port ? heartbeat.port : '694' %]:
-    listening: true
+    listening: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' ? 'true' : 'false' %]
     ip: ["0.0.0.0"]
