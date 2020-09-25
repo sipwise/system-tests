@@ -89,7 +89,9 @@ process:
   rtpengine:
     running: {{if and [% is_rtp ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
-  rtpengine-recording:
+  # We have to use a truncated process name because that's the COMM limit
+  # on Linux (15 characters). Real name: rtpengine-recording.
+  rtpengine-recor:
     running: {{if and [% is_rtp && rtpproxy.recording.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   telegraf:
