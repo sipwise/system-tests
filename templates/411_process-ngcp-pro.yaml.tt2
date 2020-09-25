@@ -11,7 +11,7 @@ process:
     running: true
 
   # We have to use a truncated process name because that's the COMM limit
-  # on Linux (15 characters).
+  # on Linux (15 characters). Real name: ngcp-hb-watchdog.
   ngcp-hb-watchdo:
     running: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' && heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
 
@@ -28,7 +28,7 @@ process:
     running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
 
   # We have to use a truncated process name because that's the COMM limit
-  # on Linux (15 characters).
+  # on Linux (15 characters). Real name: pacemaker-fenced.
   pacemaker-fence:
     running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
 
@@ -39,12 +39,12 @@ process:
     running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
 
   # We have to use a truncated process name because that's the COMM limit
-  # on Linux (15 characters).
+  # on Linux (15 characters). Real name: pacemaker-shedulerd.
   pacemaker-sched:
     running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
 
   # We have to use a truncated process name because that's the COMM limit
-  # on Linux (15 characters).
+  # on Linux (15 characters). Real name: pacemaker-controld.
   pacemaker-contr:
     running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
 
