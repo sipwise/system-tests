@@ -43,14 +43,14 @@ command:
   "curl --insecure -L http://[% web_ext_ips.0 %]/":
     exit-status: 0
     stdout:
-      - <title></title>
+      - <title>Customer Self-Care Web Interface</title>
     stderr: []
     timeout: 30000
 
   "curl --insecure -L https://[% web_ext_ips.0 %]/":
     exit-status: 0
     stdout:
-      - <title></title>
+      - <title>Customer Self-Care Web Interface</title>
     stderr: []
     timeout: 30000
 
@@ -88,14 +88,14 @@ command:
   "curl --insecure -L http://[% web_ext_ips.0 %]:443/login/subscriber":
     exit-status: 0
     stdout:
-      - <title></title>
+      - <title>Customer Self-Care Web Interface</title>
     stderr: []
     timeout: 30000
 
   "curl --insecure -L https://[% web_ext_ips.0 %]:443/login/subscriber":
     exit-status: 0
     stdout:
-      - <title></title>
+      - <title>Customer Self-Care Web Interface</title>
     stderr: []
     timeout: 30000
 
