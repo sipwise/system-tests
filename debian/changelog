@@ -1,3 +1,13 @@
+ngcp-system-tests (8.5.3.0+0~mr8.5.3.0) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [ff28cfb] TT#84555 Check debug and messages files as optional
+
+  [ Manuel Montecelo ]
+  * [588da9c] TT#47113 Change check of /var/log/messages
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 19 Oct 2020 14:29:52 +0200
+
 ngcp-system-tests (8.5.2.0+0~mr8.5.2.0) unstable; urgency=medium
 
   * New release.
