@@ -19,8 +19,8 @@ Depends:
  ${misc:Depends},
 Suggests:
  asterisk,
- influxdb-client | prometheus,
  mariadb-server,
+ prometheus | influxdb-client,
  snmp,
  sqlite3,
 Description: run system tests against NGCP systems
