@@ -1,3 +1,20 @@
+ngcp-system-tests (9.1.1.0+0~mr9.1.1.0) unstable; urgency=medium
+
+  [ Manuel Montecelo ]
+  * [743e0d0] TT#78300 sems-pbx.service functionality is now sems-b2b.service
+  * [4cd3d9b] TT#47113 Change check of /var/log/messages
+  * [ad43da6] TT#76658 The title of pages changed to "Customer Self-Care Web Interface"
+  * [3e894eb] TT#47113 Change check of /var/log/debug
+
+  [ Guillem Jover ]
+  * [2947010] TT#79100 Add corosync/pacemaker support
+  * [33eed81] TT#79100 Add real name for truncated pacemaker process checks
+  * [8935b76] TT#95100 Fix rtpengine-recording process check
+  * [15fea52] TT#71030 Add Prometheus support
+  * [a894f2f] TT#71030 Swap prometheus and influxdb dependency alternatives
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 09 Nov 2020 16:27:28 +0100
+
 ngcp-system-tests (9.1.0.0+0~mr9.1.0.0) unstable; urgency=medium
 
   [ Mykola Malkov ]
