@@ -230,10 +230,10 @@ port:
 
   # InfluxDb Query
   tcp:8086:
-    listening: true
+    listening: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
     ip: ["[% ha_int_ips.0 %]"]
 
   # InfluxDb Backup/Restore RPC
   tcp:8088:
-    listening: true
+    listening: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
