@@ -9,8 +9,8 @@
   ha_ips = out.merge(ha_ips);
 -%]
 command:
+[% IF monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' -%]
 
-[% IF monitoring.backend == 'influxdb' -%]
   influx -execute 'show databases':
     exit-status: 0
     stdout:
@@ -20,7 +20,9 @@ command:
     - "/^telegraf$/"
     stderr: []
     timeout: 10000
-[% ELSE -%]
+[% END -%]
+[% IF monitoring.backend == 'prometheus' -%]
+
   promtool query instant http://[% ha_ips.0 || 'localhost' %]:[% prometheus.port || 9090 %] '{__name__=~".+"}':
     exit-status: 0
     stdout:
