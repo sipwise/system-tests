@@ -63,7 +63,7 @@ process:
     running: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
 
   prometheus:
-    running: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'prometheus' ? 'true' : 'false' %]
 
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters). Real name: prometheus-mysqld-exporter.
@@ -128,4 +128,4 @@ process:
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters). Real name: victoria-metrics.
   victoria-metric:
-    running: [% monitoring.backend == 'prometheus' && is_mgmt ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'victoria-metrics' && is_mgmt ? 'true' : 'false' %]
