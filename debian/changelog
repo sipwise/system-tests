@@ -1,3 +1,14 @@
+ngcp-system-tests (9.2.1.0+0~mr9.2.1.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [92029ba] TT#71030 Fix influxdb checks conditionals for when it is present
+  * [ca0cc58] TT#71030 Add prometheus scraper and database server selection support
+
+  [ Michael Prokop ]
+  * [53389f3] TT#105871 Update kernel.core_pattern check for Debian/bullseye support
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 05 Jan 2021 15:34:00 +0100
+
 ngcp-system-tests (9.2.0.0+0~mr9.2.0.0) unstable; urgency=medium
 
   [ Manuel Montecelo ]
