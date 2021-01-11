@@ -4,6 +4,10 @@ port:
     listening: true
     ip: ["0.0.0.0"]
 
+  tcp6:22:
+    listening: true
+    ip: ["::"]
+
   # Exim MTA
   tcp:25:
     listening: true
