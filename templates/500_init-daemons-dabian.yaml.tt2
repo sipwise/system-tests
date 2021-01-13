@@ -51,9 +51,11 @@ service:
     enabled: true
     running: true
 
+{{if lt .Env.DEBIAN_RELEASE "11"}}
   mysql.service:
     enabled: true
     running: true
+{{end}}
 
   rsyslog.service:
     enabled: true
