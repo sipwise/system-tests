@@ -35,10 +35,6 @@ service:
     enabled: true
     running: true
 
-  io-scheduler.service:
-    enabled: true
-    running: true
-
   influxdb.service:
     enabled: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
     running: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
@@ -56,6 +52,10 @@ service:
     enabled: true
     running: true
 {{end}}
+
+  ngcp-io-scheduler.service:
+    enabled: true
+    running: true
 
   rsyslog.service:
     enabled: true
