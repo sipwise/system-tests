@@ -101,7 +101,7 @@ service:
 
   ngcp-sems-b2b.service:
     enabled: false
-    running: {{if and [% is_proxy && (pbx.enable == "yes" || b2b.enable == "yes") ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: {{if and [% is_proxy && b2b.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-voisniff.service:
     enabled: false

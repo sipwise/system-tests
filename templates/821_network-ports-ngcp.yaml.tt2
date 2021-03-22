@@ -177,22 +177,22 @@ port:
 
 [%  END -%]
 [%  IF b2b.enable == "yes" -%]
-  # sems-pbx
+  # sems-b2b
   tcp:[% b2b.bindport %]:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
-  # sems-pbx
+  # sems-b2b
   tcp:[% b2b.xmlrpcport %]:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
-  # sems-pbx
+  # sems-b2b
   udp:5048:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
-  # sems-pbx
+  # sems-b2b
   udp:[% b2b.bindport %]:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
