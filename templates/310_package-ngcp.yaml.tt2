@@ -8,7 +8,7 @@ package:
   ngcp-sems:
     installed: [% general.ngcp_type == 'spce' ? 'true' : 'false' %]
 
-  ngcp-sems-pbx:
+  ngcp-sems-b2b:
     installed: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
 
   ngcp-sems-app:
