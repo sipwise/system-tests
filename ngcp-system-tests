@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -E
 
 declare -r ME="$(basename "$0")"
 declare -r OPTS=("$@")
