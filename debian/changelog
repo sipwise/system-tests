@@ -1,3 +1,18 @@
+ngcp-system-tests (9.4.1.0+0~mr9.4.1.0) unstable; urgency=medium
+
+  [ Manuel Montecelo ]
+  * [816f4e5] TT#106950 Revert "TT#106950 check that sshd is listening on localhost"
+
+  [ Guillem Jover ]
+  * [1164e1b] TT#119058 Use real service name for ngcp-sems-b2b
+  * [ae580e5] TT#94052 Switch from sems-pbx to sems-b2b
+  * [420020e] TT#94052 Rename sems-pbx to sems-b2b
+
+  [ Michael Prokop ]
+  * [ae34398] TT#119602 Properly handle trap also in case of errors in functions
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 20 Apr 2021 12:00:18 +0200
+
 ngcp-system-tests (9.4.0.0+0~mr9.4.0.0) unstable; urgency=medium
 
   [ Guillem Jover ]
