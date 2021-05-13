@@ -98,5 +98,5 @@ service:
     running: [% monitoring.backend == 'influxdb' ? 'true' : 'false' %]
 
   victoria-metrics.service:
-    enabled: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'victoria-metrics' && is_mgmt ? 'true' : 'false' %]
-    running: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'victoria-metrics' && is_mgmt ? 'true' : 'false' %]
+    enabled: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'victoria-metrics' %]
+    running: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'victoria-metrics' %]
