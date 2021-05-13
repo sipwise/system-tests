@@ -114,9 +114,9 @@ file:
 
   /etc/mysql/debian.cnf:
     exists: true
-    mode: "0400"
+    mode: "0440"
     owner: root
-    group: root
+    group: mysql
     filetype: file
     contains: []
 
