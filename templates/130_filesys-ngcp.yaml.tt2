@@ -239,3 +239,106 @@ file:
     group: root
     linked-to: /ngcp-data/backup
     filetype: symlink
+
+  /ngcp-data/influxdb:
+    exists: true
+    mode: "0755"
+    owner: influxdb
+    group: influxdb
+    filetype: directory
+
+  /var/lib/influxdb:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /ngcp-data/influxdb
+    filetype: symlink
+
+  /ngcp-data/prometheus:
+    exists: true
+    mode: "0755"
+    owner: prometheus
+    group: prometheus
+    filetype: directory
+
+  /var/lib/prometheus:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /ngcp-data/prometheus
+    filetype: symlink
+
+  /ngcp-data/victoria-metrics:
+    exists: true
+    mode: "0755"
+    owner: _victoria-metrics
+    group: _victoria-metrics
+    filetype: directory
+
+  /var/lib/victoria-metrics:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /ngcp-data/victoria-metrics
+    filetype: symlink
+
+  /ngcp-data/redis:
+    exists: true
+    mode: "0755"
+    owner: redis
+    group: redis
+    filetype: directory
+
+  /var/lib/redis:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /ngcp-data/redis
+    filetype: symlink
+
+  /ngcp-data/logfs:
+    exists: true
+    mode: "0700"
+    owner: root
+    group: root
+    filetype: directory
+
+  /ngcp-data/logs:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: adm
+    filetype: directory
+
+  /var/log/ngcp:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /ngcp-data/logs
+    filetype: symlink
+
+  /ngcp-data/spool:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /ngcp-data/spool/faxserver:
+    exists: true
+    mode: "2770"
+    owner: faxserver
+    group: faxserver
+    filetype: directory
+
+  /ngcp-data/spool/websocket:
+    exists: true
+    mode: "2770"
+    owner: websocket
+    group: websocket
+    filetype: directory
