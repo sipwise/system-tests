@@ -287,7 +287,7 @@ file:
 
   /ngcp-data/redis:
     exists: true
-    mode: "0755"
+    mode: "0750"
     owner: redis
     group: redis
     filetype: directory
@@ -299,13 +299,6 @@ file:
     group: root
     linked-to: /ngcp-data/redis
     filetype: symlink
-
-  /ngcp-data/logfs:
-    exists: true
-    mode: "0700"
-    owner: root
-    group: root
-    filetype: directory
 
   /ngcp-data/logs:
     exists: true
@@ -321,24 +314,3 @@ file:
     group: root
     linked-to: /ngcp-data/logs
     filetype: symlink
-
-  /ngcp-data/spool:
-    exists: true
-    mode: "0755"
-    owner: root
-    group: root
-    filetype: directory
-
-  /ngcp-data/spool/faxserver:
-    exists: true
-    mode: "2770"
-    owner: faxserver
-    group: faxserver
-    filetype: directory
-
-  /ngcp-data/spool/websocket:
-    exists: true
-    mode: "2770"
-    owner: websocket
-    group: websocket
-    filetype: directory

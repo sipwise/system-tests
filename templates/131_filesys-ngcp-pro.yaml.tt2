@@ -166,3 +166,32 @@ file:
 [% IF general.ngcp_type == 'sppro' -%]
     size: 0
 [% END -%]
+
+
+  /ngcp-data/logfs:
+    exists: true
+    mode: "0700"
+    owner: root
+    group: root
+    filetype: directory
+
+  /ngcp-data/spool:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /ngcp-data/spool/faxserver:
+    exists: true
+    mode: "2770"
+    owner: faxserver
+    group: faxserver
+    filetype: directory
+
+  /ngcp-data/spool/websocket:
+    exists: true
+    mode: "2770"
+    owner: websocket
+    group: websocket
+    filetype: directory
