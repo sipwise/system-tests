@@ -8,7 +8,9 @@ gossfile:
 [% END -%]
   132_filesys-ngcp-templates.yaml: {}
   133_filesys-deprecated.yaml: {}
+[% IF general.ngcp_type != 'spce' -%]
   134_filesys-voisniff.yaml: {}
+[% END -%]
   135_filesys-logfiles.yaml: {}
   140_apt-keys.yaml: {}
   200_user-debian.yaml: {}

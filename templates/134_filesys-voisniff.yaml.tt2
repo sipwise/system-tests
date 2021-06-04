@@ -1,8 +1,15 @@
 file:
   /ngcp-data/voisniff:
     exists: true
-    mode: "0755"
+    mode: "0750"
     owner: root
     group: root
     filetype: directory
-    contains: []
+
+  /var/lib/ngcp-voisniff:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    filetype: symlink
+    linked-to: /ngcp-data/voisniff
