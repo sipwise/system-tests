@@ -12,5 +12,5 @@ command:
 
   ip link:
     exit-status: 0
-    stdout: ['/: eth[0-9]/']
+    stdout: ['/: n?eth[0-9]/']
     stderr: []
