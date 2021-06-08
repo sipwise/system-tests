@@ -1,3 +1,8 @@
+[%
+  hostname = ngcp.get_hostname();
+
+  is_mgmt = ngcp.has_role(hostname, 'mgmt');
+-%]
 file:
 
   /etc/ngcp-config/shared-files:
@@ -90,7 +95,7 @@ file:
     filetype: symlink
 
   /mnt/glusterfs/ngcpcfg-share:
-    exists: true
+    exists: [% is_mgmt ? 'true' : 'false' %]
     mode: "0700"
     owner: root
     group: root
