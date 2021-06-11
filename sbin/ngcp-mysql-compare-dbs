@@ -19,23 +19,13 @@ __USAGE__
 }
 
 FORMATTER=''
-HOST1=''
-HOST2=''
 
-args=$(getopt -n "$(basename "$0")" -o h -l help,formatter:,host1:,host2: -- "$@")
+args=$(getopt -n "$(basename "$0")" -o h -l help,formatter: -- "$@")
 eval set -- "${args}"
 while true; do
   case "${1}" in
     --formatter)
       FORMATTER="${2}"
-      shift 2
-    ;;
-    --host1)
-      HOST1="${2}"
-      shift 2
-    ;;
-    --host2)
-      HOST2="${2}"
       shift 2
     ;;
     -h|--help)
@@ -69,12 +59,6 @@ fi
 declare -a opts
 if [[ -n "${FORMATTER}" ]]; then
   opts+=(--formatter="${FORMATTER}")
-fi
-if [[ -n "${HOST1}" ]]; then
-  opts+=(--host_db1="${HOST1}")
-fi
-if [[ -n "${HOST2}" ]]; then
-  opts+=(--host_db2="${HOST2}")
 fi
 /usr/share/ngcp-system-tests/compare_dbs.pl \
   --schemes="${NGCP_DB_BACKUP_FINAL_LIST[*]}" \

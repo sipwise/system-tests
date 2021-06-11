@@ -6,7 +6,7 @@ file:
     owner: root
     group: root
     filetype: file
-    contains: ['!/^GRUB_CMDLINE_LINUX_DEFAULT=".*net.ifnames=0.*"/']
+    contains: ['/^GRUB_CMDLINE_LINUX_DEFAULT=".*net.ifnames=0.*"/']
 
 command:
 
