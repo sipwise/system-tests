@@ -21,13 +21,31 @@ use Carp;
 my @diff_exceptions = qw(
     views/ldap/ldap_entries/view_definition
 );
-my @missing_sp1_exceptions = qw();
+my @missing_sp1_exceptions = qw(
+    tables/prosody/prosodyarchive
+    columns/prosody/prosodyarchive_host
+    columns/prosody/prosodyarchive_key
+    columns/prosody/prosodyarchive_sort_id
+    columns/prosody/prosodyarchive_store
+    columns/prosody/prosodyarchive_type
+    columns/prosody/prosodyarchive_user
+    columns/prosody/prosodyarchive_value
+    columns/prosody/prosodyarchive_when
+    columns/prosody/prosodyarchive_with
+    indexes/prosody/prosodyarchive_PRIMARY_1
+    indexes/prosody/prosodyarchive_prosodyarchive_index_1
+    indexes/prosody/prosodyarchive_prosodyarchive_index_2
+    indexes/prosody/prosodyarchive_prosodyarchive_index_3
+    indexes/prosody/prosodyarchive_prosodyarchive_index_4
+);
 my @missing_sp2_exceptions = qw();
 
 my $credentials_file = '/etc/mysql/sipwise_extra.cnf';
 my $argv = {
     formatter => '',
     schemes   => '',
+    host_db1  => 'sp1',
+    host_db2  => 'sp2',
     pass_db1  => '',
     pass_db2  => '',
     user_db1  => '',
@@ -155,18 +173,18 @@ if ($argv->{schemes} eq '') {
 }
 
 my $dbh1 = DBI->connect(
-    "DBI:mysql:;host=sp1;mysql_read_default_file=$credentials_file",
+    "DBI:mysql:;host=$argv->{host_db1};mysql_read_default_file=$credentials_file",
     $argv->{user_db1},
     $argv->{pass_db1},
     { RaiseError => 1 } ) or
-    croak("Can't connect to db1: DBI:mysql:;host=sp1;mysql_read_default_file=$credentials_file, $argv->{user_db1}, $argv->{pass_db1} ");
+    croak("Can't connect to db1: DBI:mysql:;host=$argv->{host_db1};mysql_read_default_file=$credentials_file, $argv->{user_db1}, $argv->{pass_db1} ");
 
 my $dbh2 = DBI->connect(
-    "DBI:mysql:;host=sp2;mysql_read_default_file=$credentials_file",
+    "DBI:mysql:;host=$argv->{host_db2};mysql_read_default_file=$credentials_file",
     $argv->{user_db2},
     $argv->{pass_db2},
     { RaiseError => 1 } ) or
-    croak("Can't connect to db2: DBI:mysql:;host=sp2;mysql_read_default_file=$credentials_file, $argv->{user_db2}, $argv->{pass_db2} ");
+    croak("Can't connect to db2: DBI:mysql:;host=$argv->{host_db2};mysql_read_default_file=$credentials_file, $argv->{user_db2}, $argv->{pass_db2} ");
 
 my $res = [];
 my $exit = 0;
@@ -200,6 +218,10 @@ sub get_options {
     GetOptions(
         'formatter=s'           => \$argv->{'formatter'},
         'schemes=s'             => \$argv->{'schemes'},
+        'host_db1=s'            => \$argv->{'host_db1'},
+        'host_db2=s'            => \$argv->{'host_db2'},
+        'host1=s'            => \$argv->{'host_db1'},
+        'host2=s'            => \$argv->{'host_db2'},
         'user_db1=s'            => \$argv->{'user_db1'},
         'pass_db1=s'            => \$argv->{'pass_db1'},
         'user_db2=s'            => \$argv->{'user_db2'},
