@@ -1,3 +1,29 @@
+ngcp-system-tests (10.0.0.0+0~mr10.0.0.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [c4981e3] Revert "TT#94052 Rename sems-pbx to sems-b2b"
+
+  [ Manuel Montecelo ]
+  * [837cde0] TT#122035 Adapt to allow victoria-metrics running
+  * [97fdd09] TT#122035 Fix for "Adapt to allow victoria-metrics running"
+  * [cf9a6c9] TT#104381 Add missing tests of dirs in /ngcp-data/*, symlinks from /var/lib
+  * [b83c53c] TT#104381 Fixes for previous commit about missing tests of dirs in /ngcp-data/*
+  * [c6fbdc2] TT#104381 Add missing tests for voisniff, change in perms, only Pro
+  * [930b1c8] TT#105151 Reverse to check that grub config does *not* contain net.ifnames=0
+  * [2ca68e8] TT#105151 Allow interfaces to be named either "eth*" or "neth*"
+  * [7b34ac6] TT#105151 Revert "TT#105151 Reverse to check that grub config does *not* contain net.ifnames=0"
+  * [a8000f6] TT#105151 Reverse check to ensure that grub config does *not* contain net.ifnames=0
+  * [6b41bd1] TT#105151 Revert "TT#105151 Reverse check to ensure that grub config does *not* contain net.ifnames=0"
+
+  [ Alexander Lutay ]
+  * [3a2c3ba] TT#122035 Update access for /etc/mysql/debian.cnf
+  * [9c3affa] TT#122026 Update test for Customer Self-care
+
+  [ Mykola Malkov ]
+  * [fae6649] TT#123200 Don't check ngcpcfg-share on non-mgmt node
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 14 Jun 2021 16:39:16 +0200
+
 ngcp-system-tests (9.5.0.0+0~mr9.5.0.0) unstable; urgency=medium
 
   [ Manuel Montecelo ]
