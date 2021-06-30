@@ -20,6 +20,7 @@ use Carp;
 #   columns/billing/table1_column1/is_nullable
 my @diff_exceptions = qw(
     views/ldap/ldap_entries/view_definition
+    tables/mysql/global_priv/create_options
 );
 my @missing_sp1_exceptions = qw();
 my @missing_sp2_exceptions = qw();
@@ -259,13 +260,13 @@ sub print_diff {
     foreach my $key ( sort( keys( %{$obj1} ) ) ) {
         unless ( exists($obj2->{$key}) ) {
             next if ( is_exception(\@missing_sp2_exceptions, $object_name, $schema, $key) );
-            push( @{$result}, "Schema $schema, $object_name element: $key is missing in Schema2" );
+            push( @{$result}, "Element: " . lc("$object_name/$schema/$key") . " is missing in Schema2" );
             next;
         }
         foreach my $c_name ( sort( keys( %{ $obj1->{$key} } ) ) ) {
             unless ( exists($obj2->{$key}->{$c_name}) ) {
                 next if ( is_exception(\@missing_sp2_exceptions, $object_name, $schema, $key, $c_name) );
-                push( @{$result}, "Schema $schema, $object_name element: $key.$c_name is missing in Schema2" );
+                push( @{$result}, "Element: " . lc("$object_name/$schema/$key/$c_name") . " is missing in Schema2" );
                 next;
             }
 
@@ -277,7 +278,7 @@ sub print_diff {
 
             if ( $obj1->{$key}->{$c_name} ne $obj2->{$key}->{$c_name} ) {
                 next if ( is_exception(\@diff_exceptions, $object_name, $schema, $key, $c_name) );
-                push( @{$result}, "Schema $schema, $object_name elements: $key.$c_name are not equal:\n  ---\n"
+                push( @{$result}, "Element: " . lc("$object_name/$schema/$key/$c_name") . " are not equal:\n  ---\n"
                   . "  Schema1: $obj1->{$key}->{$c_name}\n"
                   . "  Schema2: $obj2->{$key}->{$c_name}" );
             }
@@ -287,13 +288,13 @@ sub print_diff {
     foreach my $key ( sort( keys( %{$obj2} ) ) ) {
         unless ( exists($obj1->{$key}) ) {
             next if ( is_exception(\@missing_sp1_exceptions, $object_name, $schema, $key) );
-            push( @{$result}, "Schema $schema, $object_name element: $key is missing in Schema1" );
+            push( @{$result}, "Element: " . lc("$object_name/$schema/$key") . " is missing in Schema1" );
             next;
         }
         foreach my $c_name ( sort( keys( %{ $obj2->{$key} } ) ) ) {
             unless ( exists($obj1->{$key}->{$c_name}) ) {
                 next if ( is_exception(\@missing_sp1_exceptions, $object_name, $schema, $key, $c_name) );
-                push( @{$result}, "Schema $schema, $object_name element: $key.$c_name is missing in Schema1" );
+                push( @{$result}, "Element: ". lc("$object_name/$schema/$key/$c_name") ." is missing in Schema1" );
                 next;
             }
         }
