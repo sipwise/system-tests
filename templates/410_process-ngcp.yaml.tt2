@@ -60,7 +60,7 @@ process:
     running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   influxd:
-    running: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
+    running: false
 
   prometheus:
     running: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'prometheus' ? 'true' : 'false' %]
@@ -123,7 +123,7 @@ process:
     running: {{if and [% is_rtp && rtpproxy.recording.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   telegraf:
-    running: [% monitoring.backend == 'influxdb' ? 'true' : 'false' %]
+    running: false
 
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters). Real name: victoria-metrics.

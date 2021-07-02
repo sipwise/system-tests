@@ -20,7 +20,7 @@ Depends:
 Suggests:
  asterisk,
  mariadb-server,
- prometheus | influxdb-client,
+ prometheus,
  snmp,
  sqlite3,
 Description: run system tests against NGCP systems

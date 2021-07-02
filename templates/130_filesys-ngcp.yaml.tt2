@@ -241,14 +241,20 @@ file:
     filetype: symlink
 
   /ngcp-data/influxdb:
-    exists: true
+    exists:
+      or:
+        - true
+        - false
     mode: "0755"
     owner: influxdb
     group: influxdb
     filetype: directory
 
   /var/lib/influxdb:
-    exists: true
+    exists:
+      or:
+        - true
+        - false
     mode: "0777"
     owner: root
     group: root

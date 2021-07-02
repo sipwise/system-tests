@@ -36,8 +36,8 @@ service:
     running: true
 
   influxdb.service:
-    enabled: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
-    running: [% monitoring.backend == 'influxdb' || monitoring.influxdb_migrated == 'no' ? 'true' : 'false' %]
+    enabled: false
+    running: false
 
   motd.service:
     enabled: [% general.init_system == 'systemd' ? 'false' : 'true' %]
@@ -94,8 +94,8 @@ service:
     running: true
 
   telegraf.service:
-    enabled: [% monitoring.backend == 'influxdb' ? 'true' : 'false' %]
-    running: [% monitoring.backend == 'influxdb' ? 'true' : 'false' %]
+    enabled: false
+    running: false
 
   victoria-metrics.service:
     enabled: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'victoria-metrics' ? 'true' : 'false' %]

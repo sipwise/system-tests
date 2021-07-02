@@ -49,7 +49,7 @@ process:
     running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
 
   influxdb-relay:
-    running: [% monitoring.backend == 'influxdb' ? 'true' : 'false' %]
+    running: false
 
   monit:
     running: [% general.process_handler == 'monit' ? 'true' : 'false' %]
