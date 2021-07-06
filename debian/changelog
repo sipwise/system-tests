@@ -1,3 +1,13 @@
+ngcp-system-tests (9.5.1.1+0~mr9.5.1.1) unstable; urgency=medium
+
+  [ Manuel Montecelo ]
+  * [a699e71] TT#105151 Reverse check to ensure that GRUB config does *not* contain net.ifnames=0
+
+  [ Mykola Malkov ]
+  * [aae5281] TT#108653 Add tables/mysql/global_priv/create_options exception
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 06 Jul 2021 14:38:19 +0200
+
 ngcp-system-tests (9.5.1.0+0~mr9.5.1.0) unstable; urgency=medium
 
   [ Guillem Jover ]
