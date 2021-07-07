@@ -19,7 +19,6 @@ command:
   sqlite3 /var/lib/grafana/grafana.db "select name from data_source":
     exit-status: 0
     stdout:
-    - "/^ngcp$/"
-    - "/^telegraf$/"
+    - "/^Prometheus$/"
     stderr: []
 [% END -%]
