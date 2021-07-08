@@ -16,10 +16,18 @@ command:
     stdout:
     - "/^go_/"
     - "/^namedprocess_/"
-    - "/^ngcp_/"
+    - "/^ngcp_cdr_/"
+    - "/^ngcp_kamailio_/"
+    - "/^ngcp_mail_/"
+    - "/^ngcp_mysql_/"
+    - "/^ngcp_node_/"
+    - "/^ngcp_nonit_/"
+    - "/^ngcp_sip_/"
+    - "/^ngcp_tls_/"
     - "/^node_/"
     - "/^process_/"
     - "/^redis_/"
+    - "/^rtpengine_/"
     stderr: []
     timeout: 10000
 [% END -%]
