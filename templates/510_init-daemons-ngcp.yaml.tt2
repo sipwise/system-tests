@@ -56,7 +56,7 @@ service:
     running: [% is_mgmt && www_admin.enable == 'yes' ? 'true' : 'false' %]
 
   ngcp-rate-o-mat.service:
-    enabled: [% general.process_handler == 'none' && rateomat.enable == "yes" ? 'true' : 'false' %]
+    enabled: [% rateomat.enable == "yes" ? 'true' : 'false' %]
     running: [% is_proxy && rateomat.enable == "yes" ? 'true' : 'false' %]
 
   ngcp-rtpengine-recording-daemon.service:
