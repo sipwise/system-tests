@@ -19,7 +19,9 @@ command:
     - "/^ngcp_cdr_/"
     - "/^ngcp_kamailio_/"
     - "/^ngcp_mail_/"
+[% IF general.ngcp_type != 'spce' -%]
     - "/^ngcp_monit_/"
+[% END -%]
     - "/^ngcp_mysql_/"
     - "/^ngcp_node_/"
     - "/^ngcp_sip_/"
