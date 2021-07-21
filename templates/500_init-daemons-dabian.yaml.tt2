@@ -47,6 +47,10 @@ service:
     enabled: true
     running: true
 
+  mariadb@2.service:
+    enabled: [% general.ngcp_type == 'carrier' && (is_proxy || is_li_dist) ? 'true' : 'false' %]
+    running: [% general.ngcp_type == 'carrier' && (is_proxy || is_li_dist) ? 'true' : 'false' %]
+
 {{if lt .Env.DEBIAN_RELEASE "11"}}
   mysql.service:
     enabled: true
