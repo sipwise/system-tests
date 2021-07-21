@@ -11,16 +11,8 @@ process:
   getty:
     running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
 
-{{if eq .Env.DEBIAN_RELEASE "11"}}
   mariadbd:
     running: true
-{{else}}
-  mysqld:
-    running: true
-
-  mysqld_safe:
-    running: [% general.init_system == 'systemd' ? 'false' : 'true' %]
-{{end}}
 
   redis-server:
     running: true
