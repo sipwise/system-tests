@@ -78,8 +78,8 @@ service:
     enabled: [% general.process_handler == 'none' && prosody.enable == 'yes' ? 'true' : 'false' %]
     running: {{if and [% is_proxy && prosody.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
-  ngcp-pushd.service:
-    enabled: [% is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
+  ngcp-pushd.socket:
+    enabled: [% general.process_handler == 'none' && is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
     running: [% is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
 
   redis-server.service:
