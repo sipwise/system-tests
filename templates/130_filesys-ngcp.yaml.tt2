@@ -320,3 +320,24 @@ file:
     group: root
     linked-to: /ngcp-data/logs
     filetype: symlink
+
+  /ngcp-data/tmp:
+    exists: true
+    mode: "1777"
+    owner: root
+    group: root
+    filetype: directory
+
+  /ngcp-data/tmp/mysql:
+    exists: true
+    mode: "0750"
+    owner: mysql
+    group: mysql
+    filetype: directory
+
+  /ngcp-data/tmp/www-data:
+    exists: true
+    mode: "0770"
+    owner: root
+    group: www-data
+    filetype: directory
