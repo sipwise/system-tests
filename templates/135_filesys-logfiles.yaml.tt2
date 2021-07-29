@@ -162,3 +162,24 @@ command:
       - '!/./'
     stderr:
       - '!/./'
+
+  "if test -e /var/log/ngcp/mysql/; then find /var/log/ngcp/mysql/ -type f -size +0 -perm /o+rwx; fi":
+    exit-status: 0
+    stdout:
+      - '!/./'
+    stderr:
+      - '!/./'
+
+  "if test -e /var/log/ngcp/mysql/; then find /var/log/ngcp/mysql/ -size +0 -type f ! -user mysql; fi":
+    exit-status: 0
+    stdout:
+      - '!/./'
+    stderr:
+      - '!/./'
+
+  "if test -e /var/log/ngcp/mysql/; then find /var/log/ngcp/mysql/ -size +0 -type f ! -group adm; fi":
+    exit-status: 0
+    stdout:
+      - '!/./'
+    stderr:
+      - '!/./'
