@@ -70,6 +70,16 @@ file:
     group: _ngcp-li
     filetype: file
 
+  /var/log/ngcp/backup.log:
+    exists:
+      or:
+        - true
+        - false
+    mode: "0640"
+    owner: root
+    group: root
+    filetype: file
+
 
 
 command:
@@ -88,7 +98,7 @@ command:
     stderr:
       - '!/./'
 
-  "find /var/log/ngcp/ -maxdepth 1 -size +0 -type f ! -group adm ! -name api.log":
+  "find /var/log/ngcp/ -maxdepth 1 -size +0 -type f ! -group adm ! -name api.log ! -name backup.log":
     exit-status: 0
     stdout:
       - '!/./'
