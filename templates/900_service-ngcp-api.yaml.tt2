@@ -69,36 +69,47 @@ command:
     stderr: []
     timeout: 30000
 
-
   "curl --insecure -L http://[% web_int_ips.0 %]:1443":
     exit-status: 0
     stdout:
-      - "/Admin Sign In/"
+      - "/Admin Sign In|NGCP Admin UI/"
     stderr: []
     timeout: 30000
 
   "curl --insecure -L https://[% web_int_ips.0 %]:1443":
     exit-status: 0
     stdout:
-      - "/Admin Sign In/"
+      - "/Admin Sign In|NGCP Admin UI/"
     stderr: []
     timeout: 30000
 
+  "curl --insecure -L http://[% web_int_ips.0 %]:1443/v2/":
+    exit-status: 0
+    stdout:
+      - "/NGCP Admin UI/"
+    stderr: []
+    timeout: 30000
+
+  "curl --insecure -L https://[% web_int_ips.0 %]:1443/v2/":
+    exit-status: 0
+    stdout:
+      - "/NGCP Admin UI/"
+    stderr: []
+    timeout: 30000
 
   "curl --insecure -L http://[% web_ext_ips.0 %]/":
     exit-status: 0
     stdout:
-      - <title>Customer Self-Care Web Interface</title>
+      - "/Subscriber Sign In|<title>Customer Self-Care Web Interface</title>/"
     stderr: []
     timeout: 30000
 
   "curl --insecure -L https://[% web_ext_ips.0 %]/":
     exit-status: 0
     stdout:
-      - <title>Customer Self-Care Web Interface</title>
+      - "/Subscriber Sign In|<title>Customer Self-Care Web Interface</title>/"
     stderr: []
     timeout: 30000
-
 
   "curl --insecure -L http://[% web_int_ips.0 %]:1443/api/":
     exit-status: 0
