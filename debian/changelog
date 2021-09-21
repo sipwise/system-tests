@@ -1,3 +1,14 @@
+ngcp-system-tests (9.5.2.1+0~mr9.5.2.1) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [c0a5ac8] TT#132417 Fix ngcp-pushd service test
+
+  [ Sergii Kipot ]
+  * [ae28060] TT#113650 Upgrade pep8 v1.6.2 to pycodestyle from bullseye
+  * [5223fae] TT#113650 Rebuild docker to include newer jenkins-debian-glue package
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 21 Sep 2021 16:29:03 +0200
+
 ngcp-system-tests (9.5.2.0+0~mr9.5.2.0) unstable; urgency=medium
 
   [ Manuel Montecelo ]
