@@ -55,6 +55,10 @@ service:
     enabled: true
     running: true
 
+  ntp.service:
+    enabled: [% ntp.backend == 'ntpd' ? 'true' : 'false ' %]
+    running: [% ntp.backend == 'ntpd' ? 'true' : 'false ' %]
+
   rsyslog.service:
     enabled: true
     running: true
@@ -88,8 +92,8 @@ service:
     running: true
 
   systemd-timesyncd.service:
-    enabled: true
-    running: true
+    enabled: [% ntp.backend == 'timesyncd' ? 'true' : 'false ' %]
+    running: [% ntp.backend == 'timesyncd' ? 'true' : 'false ' %]
 
   telegraf.service:
     enabled: false

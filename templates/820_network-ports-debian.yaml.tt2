@@ -11,7 +11,7 @@ port:
 
   # NTP (systemd-timesyncd does not listen)
   udp:123:
-    listening: false
+    listening: [% ntp.backend == 'timesyncd' ? 'false' : 'true ' %]
 
   # Check for a closed port, nothing there.
   tcp:7777:
