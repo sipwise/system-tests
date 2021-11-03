@@ -1,4 +1,4 @@
-templates/*   /etc/ngcp-config/templates/etc/ngcp-system-tests/
+helper/compare_dbs.pl /usr/share/ngcp-system-tests/
 ngcp-system-tests /usr/bin/
 sbin/ngcp-mysql-compare-dbs /usr/sbin/
-helper/compare_dbs.pl /usr/share/ngcp-system-tests/
+templates/*   /etc/ngcp-config/templates/etc/ngcp-system-tests/
