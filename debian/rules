@@ -2,8 +2,7 @@
 %:
 	dh $@
 
-override_dh_installdeb:
-	dh_installdeb
+execute_after_dh_installdeb:
 	# Do not mark any of the templates as conffiles, we always want them
 	# to be overwritten.
 	for cf in debian/*/DEBIAN/conffiles; do \
@@ -15,7 +14,6 @@ override_dh_installdeb:
 
 D = debian/ngcp-system-tests
 
-override_dh_fixperms:
-	dh_fixperms
+execute_after_dh_fixperms:
 	# The file generated from this template will contain passwords.
 	chmod 0600 $(D)/etc/ngcp-config/templates/etc/ngcp-system-tests/900_service-ngcp-api.yaml.tt2
