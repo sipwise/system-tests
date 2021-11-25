@@ -137,9 +137,9 @@ service:
     enabled: false
     running: {{if and [% is_proxy && rtcengine.enable == "yes" && general.ngcp_type != 'spce' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
-  ngcp-comx-fileshare-service.service:
-    enabled: false
-    running: {{if and [% is_proxy && fileshare.enable == "yes" && general.ngcp_type != 'spce' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+  ngcp-rest-api.service:
+    enabled: [% is_mgmt && rest_api.enable == 'yes' ? 'true' : 'false' %]
+    running: [% is_mgmt && rest_api.enable == 'yes' ? 'true' : 'false' %]
 
   janus.service:
     enabled: false
