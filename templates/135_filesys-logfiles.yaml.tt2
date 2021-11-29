@@ -108,7 +108,7 @@ command:
 
 # optionally existing subdirectories
 
-  [% dir = '/var/log/ngcp/ngcp-rtcengine/' -%]
+[% dir = '/var/log/ngcp/ngcp-rtcengine/' -%]
   "if test -e [% dir %]; then find [% dir %] -maxdepth 1 -type f -size +0 -perm /o+rwx; fi":
     exit-status: 0
     stdout:
