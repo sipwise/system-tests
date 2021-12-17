@@ -197,35 +197,45 @@ else {
 
 exit $exit;
 
+# XXX: Remove after mr10.5.
+sub old_option {
+    my ($name, $value) = @_;
+    my $newname = $name =~ tr/_/-/r;
+    $argv->{$name} = $value;
+    warn "$0: option --$name is deprecated; use --$newname instead\n";
+}
+
 sub get_options {
     GetOptions(
         'formatter=s'           => \$argv->{'formatter'},
         'schemes=s'             => \$argv->{'schemes'},
-        'user_db1=s'            => \$argv->{'user_db1'},
-        'pass_db1=s'            => \$argv->{'pass_db1'},
-        'user_db2=s'            => \$argv->{'user_db2'},
-        'pass_db2=s'            => \$argv->{'pass_db2'},
+        'user_db1=s'            => \&old_option,
+        'user-db1=s'            => \$argv->{'user_db1'},
+        'pass_db1=s'            => \&old_option,
+        'pass-db1=s'            => \$argv->{'pass_db1'},
+        'user_db2=s'            => \&old_option,
+        'user-db2=s'            => \$argv->{'user_db2'},
+        'pass_db2=s'            => \&old_option,
+        'pass-db2=s'            => \$argv->{'pass_db2'},
         'help|h'                => sub{ print_usage(); exit(0); },
     );
 }
 
 sub print_usage {
     my $usage =<<__USAGE__
-    This script compares two databases by structure and prints result.
-    compare_db.pl [options]
+Usage: compare_db.pl [<options>]
 
-    OPTIONS
-    --formatter=[tap]      The format of output.
-                           Supported values:
-                             tap   - print in a TAP format.
-    --schemes              List of schemes which should be compared.
-    --user_db1             User of the 1st schema
-    --pass_db1             Password of the 1st schema
-    --connect_db2          DSN of the 2nd schema
-    --user_db2             User of the 2nd schema
-    --pass_db2             Password of the 2nd schema
+This script compares two databases by structure and prints result.
 
-    --help, -h             Print this message and exit
+Options:
+      --formatter=[tap]         The format of output. Supported values:
+                                    tap   - print in a TAP format.
+      --schemes=<name>          List of schemes which should be compared.
+      --user-db1=<username>     User of the 1st schema
+      --pass-db1=<password>     Password of the 1st schema
+      --user-db2=<username>     User of the 2nd schema
+      --pass-db2=<password>     Password of the 2nd schema.
+  -h, --help                    Print this message and exit.
 __USAGE__
 ;
     print $usage;
