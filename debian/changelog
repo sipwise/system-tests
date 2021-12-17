@@ -1,3 +1,10 @@
+ngcp-system-tests (10.2.1.2+0~mr10.2.1.2) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [cfe08f5] TT#152101 Remove check of ngcp-rest-api process
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Fri, 17 Dec 2021 14:17:30 +0100
+
 ngcp-system-tests (10.2.1.1+0~mr10.2.1.1) unstable; urgency=medium
 
   [ Kirill Solomko ]
