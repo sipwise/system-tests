@@ -61,9 +61,6 @@ process:
   ngcp-faxserver:
     running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
-  ngcp-rest-api:
-    running: [% is_mgmt && rest_api.enable == 'yes' ? 'true' : 'false' %]
-
   ngcp-snmp-agent:
     running: true
 
