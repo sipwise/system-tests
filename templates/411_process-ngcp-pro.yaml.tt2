@@ -61,9 +61,6 @@ process:
   ngcp-faxserver:
     running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
-  ngcp-rest-api:
-    running: [% is_mgmt && rest_api.enable == 'yes' ? 'true' : 'false' %]
-
   ngcp-snmp-agent:
     running: true
 
@@ -91,4 +88,10 @@ command:
     exit-status: 1
     stdout: []
 {{end}}
+    stderr: []
+  # ngcp-rest-api runs under the node binary, so we can't use "process" for checking
+  "pgrep -c -n -f 'ngcp-rest-api'":
+    exit-status: [% is_mgmt && rest_api.enable == 'yes' ? '0' : '1' %]
+    stdout:
+      - "[% is_mgmt && rest_api.enable == 'yes' ? '1' : '0' %]"
     stderr: []
