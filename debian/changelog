@@ -1,3 +1,19 @@
+ngcp-system-tests (10.4.0.0+0~mr10.4.0.0) unstable; urgency=medium
+
+  [ Kirill Solomko ]
+  * [80696a3] TT#152101 replace comx fileshare service with ngcp-rest-api
+  * [d527f99] TT#152101 fix rtcengine template typo
+
+  [ Michael Prokop ]
+  * [6f52ac4] TT#152101 Fix d527f998f346 regarding syntax of 135_filesys-logfiles.yaml
+  * [3352cb0] TT#113051 ngcpcfg-api.service is no longer running by default
+  * [d54de3e] TT#157951 Check for ngcp-rest-api process running under node binary
+
+  [ Guillem Jover ]
+  * [cf7a62f] TT#156156 Switch to «-» as the word separator in CLI options
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 24 Jan 2022 16:58:38 +0100
+
 ngcp-system-tests (10.3.0.0+0~mr10.3.0.0) unstable; urgency=medium
 
   [ Guillem Jover ]
