@@ -306,6 +306,21 @@ file:
     linked-to: /ngcp-data/redis
     filetype: symlink
 
+  /ngcp-data/keydb:
+    exists: true
+    mode: "0750"
+    owner: keydb
+    group: keydb
+    filetype: directory
+
+  /var/lib/keydb:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /ngcp-data/keydb
+    filetype: symlink
+
   /ngcp-data/logs:
     exists: true
     mode: "0755"

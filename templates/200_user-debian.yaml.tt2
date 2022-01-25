@@ -3,6 +3,9 @@ group:
     exists: true
     gid: 1
 
+  keydb:
+    exists: true
+
   kamailio:
     exists: true
 
@@ -44,6 +47,12 @@ user:
       or:
         - "/var/run/kamailio"
         - "/run/kamailio"
+
+  keydb:
+    exists: true
+    groups:
+      - keydb
+    home: "/var/lib/keydb"
 
   mysql:
     exists: true
