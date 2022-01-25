@@ -1,3 +1,10 @@
+ngcp-system-tests (7.5.11.2+0~mr7.5.11.2) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [5045cf1] TT#158502 Change prosody version to check
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 25 Jan 2022 13:43:33 +0100
+
 ngcp-system-tests (7.5.11.1+0~mr7.5.11.1) unstable; urgency=medium
 
   * New release.
