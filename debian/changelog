@@ -1,3 +1,10 @@
+ngcp-system-tests (10.3.1.2+0~mr10.3.1.2) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [62a3440] TT#160551 Remove percona replication check support
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 09 Feb 2022 17:06:00 +0100
+
 ngcp-system-tests (10.3.1.1+0~mr10.3.1.1) unstable; urgency=medium
 
   [ Mykola Malkov ]
