@@ -49,7 +49,6 @@ command:
     - "/::dbSlaveSQLLastErrorDesc\\.\\d\\.\\d = /"
     - "/::dbQueryRate\\.\\d\\.\\d = /"
     - "/::dbReplDelay\\.\\d\\.\\d = /"
-    - "/::dbReplDiff\\.\\d\\.\\d = /"
     - "/::load\\dmin\\.\\d = /"
     - "/::load5min\\.\\d = /"
     - "/::load\\d5min\\.\\d = /"
