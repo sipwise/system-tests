@@ -1,3 +1,11 @@
+ngcp-system-tests (10.4.1.0+0~mr10.4.1.0) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [caa5b54] TT#154255 Add keydb support
+  * [96897cb] TT#160551 Remove percona replication check support
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 31 Mar 2022 00:02:39 +0200
+
 ngcp-system-tests (10.4.0.0+0~mr10.4.0.0) unstable; urgency=medium
 
   [ Kirill Solomko ]
