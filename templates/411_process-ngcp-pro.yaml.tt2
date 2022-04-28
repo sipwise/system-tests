@@ -14,10 +14,10 @@ process:
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters). Real name: ngcp-hb-watchdog.
   ngcp-hb-watchdo:
-    running: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' && heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
+    running: false
 
   heartbeat:
-    running: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' ? 'true' : 'false' %]
+    running: false
 
   corosync:
     running: [% ha.gcs == 'corosync' ? 'true' : 'false' %]

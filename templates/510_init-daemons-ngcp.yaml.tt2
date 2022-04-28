@@ -32,8 +32,8 @@ service:
     running: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
 
   ngcp-hb-watchdog.service:
-    enabled: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' && heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
-    running: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' && heartbeat.hb_watchdog.enable == 'yes' ? 'true' : 'false' %]
+    enabled: false
+    running: false
 
   kamailio-lb.service:
     enabled: [% general.process_handler == 'none' && kamailio.lb.start == "yes" ? 'true' : 'false' %]
@@ -151,7 +151,7 @@ service:
 
 [% IF general.ngcp_type != 'spce' -%]
   heartbeat.service:
-    enabled: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' ? 'true' : 'false' %]
-    running: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' ? 'true' : 'false' %]
+    enabled: false
+    running: false
 
 [% END -%]

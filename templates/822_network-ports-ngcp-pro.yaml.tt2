@@ -27,8 +27,3 @@ port:
   udp:5405:
     listening: [% ha.gcs == 'corosync' ? 'true' : 'false' %]
     ip: ["[% hosts.$hostname.$host_ha_iface.ip %]"]
-
-  # Heartbeat
-  udp:[% heartbeat.port ? heartbeat.port : '694' %]:
-    listening: [% ha.gcs == 'heartbeat-2' || ha.crm == 'heartbeat-2' ? 'true' : 'false' %]
-    ip: ["0.0.0.0"]
