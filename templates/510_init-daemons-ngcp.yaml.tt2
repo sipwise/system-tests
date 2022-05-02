@@ -133,17 +133,19 @@ service:
     running: true
 
 [% END -%]
+  # Obsolete, never running.
   ngcp-rtcengine.service:
     enabled: false
-    running: {{if and [% is_proxy && rtcengine.enable == "yes" && general.ngcp_type != 'spce' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: false
 
   ngcp-rest-api.service:
     enabled: [% is_mgmt && rest_api.enable == 'yes' ? 'true' : 'false' %]
     running: [% is_mgmt && rest_api.enable == 'yes' ? 'true' : 'false' %]
 
+  # Obsolete, never running.
   janus.service:
     enabled: false
-    running: {{if and [% is_proxy && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus')) && general.ngcp_type != 'spce' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: false
 
   monit.service:
     enabled: [% general.process_handler == 'monit' ? 'true' : 'false' %]

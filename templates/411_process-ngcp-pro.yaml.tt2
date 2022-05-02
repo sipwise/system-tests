@@ -75,19 +75,15 @@ process:
   snmpd:
     running: true
 
+  # Obsolete, never running.
   janus:
-    running: {{if and [% is_proxy && (janus.enable == 'yes' || (rtcengine.conference.enable == 'yes' && rtcengine.conference.type == 'janus')) ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: false
 
 command:
+  # Obsolete, never running.
   "pgrep -c -n -f '[r]tcengine.js'":
-{{if and [% is_proxy && rtcengine.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}}
-    exit-status: 0
-    stdout:
-      - "1"
-{{else}}
     exit-status: 1
     stdout: []
-{{end}}
     stderr: []
   # ngcp-rest-api runs under the node binary, so we can't use "process" for checking
   "pgrep -c -n -f 'ngcp-rest-api'":
