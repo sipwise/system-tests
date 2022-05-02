@@ -68,8 +68,8 @@ service:
     running: {{if and [% is_rtp && rtpproxy.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-sems.service:
-    enabled: [% general.process_handler == 'none' && sems.enable == "yes" ? 'true' : 'false' %]
-    running: {{if and [% is_proxy && sems.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    enabled: [% general.process_handler == 'none' && b2b.enable == "yes" && general.ngcp_type == 'spce' ? 'true' : 'false' %]
+    running: [% general.ngcp_type == 'spce' ? 'true' : 'false' %]
 
   ngcp-witnessd.service:
     enabled: true
@@ -101,7 +101,7 @@ service:
 
   ngcp-sems-b2b.service:
     enabled: false
-    running: {{if and [% is_proxy && b2b.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: {{if and [% is_proxy && b2b.enable == "yes" && general.ngcp_type != 'spce' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-voisniff.service:
     enabled: false

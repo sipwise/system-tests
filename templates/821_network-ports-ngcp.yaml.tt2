@@ -159,41 +159,25 @@ port:
   tcp:5582:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
-[%  IF sems.enable == "yes" -%]
-  # SEMS
-  tcp:[% sems.xmlrpcport %]:
-    listening: {{.Vars.NODE_ACTIVE}}
-    ip: ["[% sip_int_ips.0 %]"]
 
-  # SEMS
-  udp:5040:
-    listening: {{.Vars.NODE_ACTIVE}}
-    ip: ["[% sip_int_ips.0 %]"]
-
-  # SEMS
-  udp:[% sems.bindport %]:
-    listening: {{.Vars.NODE_ACTIVE}}
-    ip: ["[% sip_int_ips.0 %]"]
-
-[%  END -%]
 [%  IF b2b.enable == "yes" -%]
-  # sems-b2b
-  tcp:[% b2b.bindport %]:
-    listening: {{.Vars.NODE_ACTIVE}}
-    ip: ["[% sip_int_ips.0 %]"]
-
-  # sems-b2b
+  # SEMS: XMLRPC server of B2B
   tcp:[% b2b.xmlrpcport %]:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
-  # sems-b2b
-  udp:5048:
+  # SEMS: B2B server UDP listener
+  udp:[% b2b.bindport %]:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
-  # sems-b2b
-  udp:[% b2b.bindport %]:
+  # SEMS: B2B server TCP listener
+  tcp:[% b2b.bindport %]:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["[% sip_int_ips.0 %]"]
+
+  # SEMS: Monit UDP port
+  udp:[% general.ngcp_type == 'spce' ? '5040' : '5048' %]:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
