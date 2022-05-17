@@ -60,12 +60,12 @@ service:
     running: [% is_proxy && rateomat.enable == "yes" ? 'true' : 'false' %]
 
   ngcp-rtpengine-recording-daemon.service:
-    enabled: [% general.process_handler == 'none' && rtpproxy.recording.enable == "yes" ? 'true' : 'false' %]
-    running: {{if and [% is_rtp && rtpproxy.recording.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    enabled: [% general.process_handler == 'none' && rtpengine.recording.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_rtp && rtpengine.recording.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-rtpengine-daemon.service:
-    enabled: [% general.process_handler == 'none' && rtpproxy.enable == "yes" ? 'true' : 'false' %]
-    running: {{if and [% is_rtp && rtpproxy.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    enabled: [% general.process_handler == 'none' && rtpengine.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_rtp && rtpengine.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-sems.service:
     enabled: [% general.process_handler == 'none' && b2b.enable == "yes" && general.ngcp_type == 'spce' ? 'true' : 'false' %]

@@ -10,7 +10,7 @@ command:
     exit-status: 0
     stdout: []
     stderr: []
-{{if and [% (rtpproxy.enable == "yes" && is_proxy) ? 1 : 0 %] .Vars.NODE_ACTIVE}}
+{{if and [% (rtpengine.enable == "yes" && is_proxy) ? 1 : 0 %] .Vars.NODE_ACTIVE}}
 
   lsmod | grep -c xt_RTPENGINE:
     exit-status: 0
