@@ -65,6 +65,9 @@ file:
     contains: []
 
   /etc/ngcp-config/ssl:
+    exists: false
+
+  /etc/ngcp-config/shared-files/ssl:
     exists: true
     mode: "0750"
     owner: root
