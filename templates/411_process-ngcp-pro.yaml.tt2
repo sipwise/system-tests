@@ -58,7 +58,7 @@ process:
   ngcp-licensed:
     running: [% general.license_key != '' || general.anonymous_usage_statistics == 'yes' ? 'true' : 'false' %]
 
-  ngcp-faxserver:
+  "ngcp-faxserver ":
     running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-snmp-agent:
