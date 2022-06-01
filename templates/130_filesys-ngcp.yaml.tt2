@@ -57,6 +57,9 @@ file:
     contains: []
 
   /etc/ngcp-config/ngcpcfg.cfg:
+    exists: false
+
+  /etc/ngcp-ngcpcfg/ngcpcfg.cfg:
     exists: true
     mode: "0644"
     owner: root
