@@ -5,6 +5,26 @@
 -%]
 file:
 
+  /etc/ngcp-config/sites:
+    exists:
+      or:
+        - true
+        - false
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+
+  /etc/ngcp-config/sites/current:
+    exists:
+      or:
+        - true
+        - false
+    mode: "0777"
+    owner: root
+    group: root
+    filetype: symlink
+
   /etc/ngcp-config/shared-files:
     exists: true
     mode: "0755"
