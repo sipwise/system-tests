@@ -22,8 +22,10 @@ command:
     - "/::cnAddress\\.\\d\\.\\d = /"
     - "/::cnRoleIndex\\.\\d\\.\\d = /"
     - "/::cnRole\\.\\d\\.\\d = /"
+[% IF snmpagent.trees.collective_check == 'yes' -%]
     - "/::ngcpCollectiveCheckResult = /"
     - "/::ngcpCollectiveCheckOutput = /"
+[% END -%]
 [% IF is_mgmt -%]
     - "/::ngcpClusterProvSubs = /"
     - "/::ngcpClusterRegSubs = /"
