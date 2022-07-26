@@ -70,19 +70,5 @@ command:
     - "/::hbStatusHost\\.\\d = /"
     - "/::hbStatusNode\\.\\d = /"
     - "/::mailQueue\\.\\d = /"
-[% IF is_mgmt -%]
-    - "/::asrCur\\.\\d = /"
-    - "/::nerCur\\.\\d = /"
-[% END -%]
-    - "/::ccCur\\.\\d = /"
-    - "/::ccCur\\.\\d = /"
-[% IF is_mgmt || is_proxy -%]
-    - "/::emCur\\.\\d = /"
-[% END -%]
-    - "/::dialogActiveCur\\.\\d = /"
-    - "/::dialogLocalCur\\.\\d = /"
-    - "/::dialogRelayCur\\.\\d = /"
-    - "/::dialogIncomingCur\\.\\d = /"
-    - "/::dialogOutgoingCur\\.\\d = /"
     stderr: []
     timeout: 10000
