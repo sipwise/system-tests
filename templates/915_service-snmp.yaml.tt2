@@ -70,5 +70,18 @@ command:
     - "/::hbStatusHost\\.\\d = /"
     - "/::hbStatusNode\\.\\d = /"
     - "/::mailQueue\\.\\d = /"
+[% IF is_mgmt -%]
+    - "/::sipAnswerSeizureRatio\\.\\d = /"
+    - "/::sipNetworkEfficiencyRatio\\.\\d = /"
+[% END -%]
+[% IF is_proxy -%]
+    - "/::sipConcurrentCalls\.\\d = /"
+    - "/::sipDialogEarlyMedia\\.\\d = /"
+    - "/::sipDialogActive\\.\\d = /"
+    - "/::sipDialogLocal\\.\\d = /"
+    - "/::sipDialogRelay\\.\\d = /"
+    - "/::sipDialogIncoming\\.\\d = /"
+    - "/::sipDialogOutgoing\\.\\d = /"
+[% END -%]
     stderr: []
     timeout: 10000
