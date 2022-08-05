@@ -14,10 +14,12 @@ use Carp;
 #   schema-name  - name of the schema
 #   element-name - name of the element (table, index, etc)
 #   element-attribute - engine for the table, is_nullable for the column, etc
+# Perl regex can be used here
 # F.e.:
 #   views/ldap/ldap_entries/view_definition
 # For columns: columns/<schema-name>/<table-name>_<column-name>
 #   columns/billing/table1_column1/is_nullable
+#   tables/mysql/.+/create_options
 my @diff_exceptions = qw(
     views/ldap/ldap_entries/view_definition
 );
@@ -233,19 +235,13 @@ __USAGE__
 }
 
 sub is_exception {
-    my ($exceptions, $type, $schema, $element, $attr) = @_;
+    my $exceptions, $type, $schema, $element, $attr) = @_;
 
     $attr //= '';
     foreach my $exception (@{$exceptions}) {
         # 'views/ldap/ldap_entries/view_definition'
-        my ($e_type, $e_schema, $e_element, $e_attr) = split( /\//, $exception );
-        $e_attr //= '';
-        if (    lc($element) eq lc($e_element)
-            and lc($type)    eq lc($e_type)
-            and lc($schema)  eq lc($e_schema)
-            and lc($attr)    eq lc($e_attr) )
-        {
-            print {*STDERR} "Exception found: $e_type/$e_schema/$e_element/$e_attr\n";
+        if ( lc("$type/$schema/$element/$attr") =~ $exception ) {
+            print {*STDERR} "Exception found: $exception\n";
             return 1;
         }
     }
