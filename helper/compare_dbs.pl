@@ -236,7 +236,7 @@ __USAGE__
 }
 
 sub is_exception {
-    my $exceptions, $type, $schema, $element, $attr) = @_;
+    my ($exceptions, $type, $schema, $element, $attr) = @_;
 
     $attr //= '';
     foreach my $exception (@{$exceptions}) {
