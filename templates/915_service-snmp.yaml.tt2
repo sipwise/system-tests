@@ -75,7 +75,7 @@ command:
     - "/::sipNetworkEfficiencyRatio\\.\\d = /"
 [% END -%]
 [% IF is_proxy -%]
-    - "/::sipConcurrentCalls\.\\d = /"
+    - "/::sipConcurrentCalls\\.\\d = /"
     - "/::sipDialogEarlyMedia\\.\\d = /"
     - "/::sipDialogActive\\.\\d = /"
     - "/::sipDialogLocal\\.\\d = /"
