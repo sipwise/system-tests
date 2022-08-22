@@ -1,3 +1,22 @@
+ngcp-system-tests (11.0.1.0+0~mr11.0.1.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [bcd6e12] TT#177600 Move ngcpcfg specific configuration under /etc/ngcp-ngcpcfg
+  * [f6d17a0] TT#182052 Conditionalize SNMP collective-check OIDs
+  * [d6f5861] TT#99002 Add new SNMP SIP metrics
+
+  [ Richard Fuchs ]
+  * [8a99fc1] TT#99002 remove obsoleted OIDs from snmpwalk test
+
+  [ Mykola Malkov ]
+  * [4c8443a] TT#187700 Support regex in exceptions
+  * [ba319d5] TT#187700 Fix typo
+
+  [ Michael Prokop ]
+  * [b539328] TT#99002 SNMP SIP metrics: fix syntax for sipConcurrentCalls
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 22 Aug 2022 20:03:37 +0200
+
 ngcp-system-tests (11.0.0.0+0~mr11.0.0.0) unstable; urgency=medium
 
   [ Guillem Jover ]
