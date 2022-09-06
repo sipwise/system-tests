@@ -199,25 +199,13 @@ else {
 
 exit $exit;
 
-# XXX: Remove after mr10.5.
-sub old_option {
-    my ($name, $value) = @_;
-    my $newname = $name =~ tr/_/-/r;
-    $argv->{$name} = $value;
-    warn "$0: option --$name is deprecated; use --$newname instead\n";
-}
-
 sub get_options {
     GetOptions(
         'formatter=s'           => \$argv->{'formatter'},
         'schemes=s'             => \$argv->{'schemes'},
-        'user_db1=s'            => \&old_option,
         'user-db1=s'            => \$argv->{'user_db1'},
-        'pass_db1=s'            => \&old_option,
         'pass-db1=s'            => \$argv->{'pass_db1'},
-        'user_db2=s'            => \&old_option,
         'user-db2=s'            => \$argv->{'user_db2'},
-        'pass_db2=s'            => \&old_option,
         'pass-db2=s'            => \$argv->{'pass_db2'},
         'help|h'                => sub{ print_usage(); exit(0); },
     );
