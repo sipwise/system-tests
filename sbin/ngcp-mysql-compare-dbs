@@ -62,4 +62,4 @@ if [[ -n "${FORMATTER}" ]]; then
 fi
 /usr/share/ngcp-system-tests/compare_dbs.pl \
   --schemes="${NGCP_DB_BACKUP_FINAL_LIST[*]}" \
-  "${opts[@]}" || true
+  "${opts[@]}"

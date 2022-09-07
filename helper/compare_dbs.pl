@@ -184,13 +184,13 @@ foreach my $schema ( split( / /, $argv->{schemes} ) ) {
         $struct2 = $dbh2->selectall_hashref( $queries->{$obj}, 'key_col' );
 
         unless ( Compare($struct1, $struct2) ) {
-          $exit = 1;
           print_diff($struct1, $struct2, $obj, $res, $schema);
         }
     }
 }
 
 if ( $argv->{formatter} eq 'tap' ) {
+    $exit = 0;
     tap_output();
 }
 else {
@@ -316,6 +316,7 @@ sub tap_output {
 sub human_output {
     my $number = scalar(@{$res});
     if ( $number > 0 ) {
+        $exit = 1;
         print "The following errors were found:\n\n";
         foreach my $err ( @{$res} ) {
             print "$err\n";
