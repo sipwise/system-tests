@@ -5,7 +5,7 @@ command:
     stderr: []
     timeout: 10000
 
-  apt-key list --with-colons | grep '^pub' | cut -d':' -f 5 | egrep -o '.{8}$':
+  apt-key list --with-colons | grep '^pub' | cut -d':' -f 5 | grep -Eo '.{8}$':
     exit-status: 0
     stdout:
     - "!A42C4F2A"
