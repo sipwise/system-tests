@@ -17,6 +17,7 @@ Depends:
  net-tools,
  procps,
  ${misc:Depends},
+ ${perl:Depends},
 Suggests:
  asterisk,
  mariadb-server,

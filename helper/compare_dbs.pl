@@ -4,7 +4,6 @@ use strict;
 use warnings;
 
 use DBI;
-use Data::Compare;
 use Getopt::Long;
 use Carp;
 
@@ -183,9 +182,7 @@ foreach my $schema ( split( / /, $argv->{schemes} ) ) {
         $struct1 = $dbh1->selectall_hashref( $queries->{$obj}, 'key_col' );
         $struct2 = $dbh2->selectall_hashref( $queries->{$obj}, 'key_col' );
 
-        unless ( Compare($struct1, $struct2) ) {
-          print_diff($struct1, $struct2, $obj, $res, $schema);
-        }
+        print_diff($struct1, $struct2, $obj, $res, $schema);
     }
 }
 
