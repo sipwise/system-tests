@@ -1,3 +1,10 @@
+ngcp-system-tests (9.5.5.2+0~mr9.5.5.2) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [978c088] MT#33035 Make user.log optional
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 03 Oct 2022 17:15:14 +0200
+
 ngcp-system-tests (9.5.5.1+0~mr9.5.5.1) unstable; urgency=medium
 
   * New release.
