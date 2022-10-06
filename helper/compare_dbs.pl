@@ -23,17 +23,23 @@ my @diff_exceptions = qw(
     views/ldap/ldap_entries/view_definition
     tables/mysql/.+/create_options
 );
-my @missing_sp1_exceptions = qw();
-my @missing_sp2_exceptions = qw();
+my @local_missing_exceptions = qw();
+my @remote_missing_exceptions = qw();
+
+my $exception_list = {
+  default_diff_exceptions           => \@diff_exceptions,
+  default_local_missing_exceptions  => \@local_missing_exceptions,
+  default_remote_missing_exceptions => \@remote_missing_exceptions,
+};
 
 my $credentials_file = '/etc/mysql/sipwise_extra.cnf';
 my $argv = {
     formatter => '',
     schemes   => '',
+    host_db1  => '',
     pass_db1  => '',
-    pass_db2  => '',
     user_db1  => '',
-    user_db2  => '',
+    port_db1  => '',
 };
 get_options();
 
@@ -46,7 +52,7 @@ SELECT
   CREATE_OPTIONS,
   TABLE_NAME AS key_col
 FROM information_schema.TABLES
-  WHERE TABLE_SCHEMA = DATABASE()
+  WHERE TABLE_SCHEMA = ?
     AND TABLE_TYPE = 'BASE TABLE'
 ORDER BY TABLE_NAME
 __SQL__
@@ -68,8 +74,8 @@ FROM information_schema.COLUMNS c
   INNER JOIN information_schema.TABLES t
     ON c.TABLE_NAME = t.TABLE_NAME
 WHERE t.TABLE_TYPE = 'BASE TABLE'
-  AND c.TABLE_SCHEMA = DATABASE()
-  AND t.TABLE_SCHEMA = DATABASE()
+  AND c.TABLE_SCHEMA = t.TABLE_SCHEMA
+  AND t.TABLE_SCHEMA = ?
 ORDER BY c.TABLE_NAME, c.COLUMN_NAME
 __SQL__
 ,
@@ -87,7 +93,7 @@ SELECT
   INDEX_TYPE,
   CONCAT(TABLE_NAME, '/', INDEX_NAME, '/',  SEQ_IN_INDEX) AS key_col
 FROM information_schema.STATISTICS
-WHERE TABLE_SCHEMA = DATABASE()
+WHERE TABLE_SCHEMA = ?
 ORDER BY TABLE_NAME, INDEX_NAME, COLUMN_NAME
 __SQL__
 ,
@@ -101,14 +107,14 @@ SELECT
   rc.DELETE_RULE,
   cu.REFERENCED_COLUMN_NAME,
   cu.COLUMN_NAME,
-  CONCAT(rc.CONSTRAINT_NAME, '/', rc.TABLE_NAME, '/',
+  CONCAT(  rc.TABLE_NAME, '/', rc.CONSTRAINT_NAME, '/',
     cu.COLUMN_NAME, '/', rc.REFERENCED_TABLE_NAME, '/',
     cu.REFERENCED_COLUMN_NAME) AS key_col
 FROM information_schema.REFERENTIAL_CONSTRAINTS rc
   LEFT JOIN information_schema.KEY_COLUMN_USAGE cu
     ON (rc.CONSTRAINT_NAME=cu.CONSTRAINT_NAME
       AND rc.CONSTRAINT_SCHEMA=cu.CONSTRAINT_SCHEMA)
-WHERE rc.CONSTRAINT_SCHEMA = DATABASE()
+WHERE rc.CONSTRAINT_SCHEMA = ?
 ORDER BY CONSTRAINT_NAME, rc.TABLE_NAME, cu.COLUMN_NAME
 __SQL__
 ,
@@ -123,7 +129,7 @@ SELECT
   EVENT_OBJECT_TABLE,
   CONCAT(TRIGGER_NAME, '/', EVENT_OBJECT_TABLE) AS key_col
 FROM information_schema.TRIGGERS
-WHERE TRIGGER_SCHEMA = DATABASE()
+WHERE TRIGGER_SCHEMA = ?
 ORDER BY EVENT_OBJECT_TABLE, TRIGGER_NAME
 __SQL__
 ,
@@ -133,7 +139,7 @@ SELECT
   TABLE_NAME AS key_col,
   VIEW_DEFINITION
 FROM information_schema.VIEWS
-WHERE TABLE_SCHEMA = DATABASE()
+WHERE TABLE_SCHEMA = ?
 ORDER BY TABLE_NAME
 __SQL__
 ,
@@ -144,47 +150,38 @@ SELECT
   ROUTINE_DEFINITION,
   ROUTINE_TYPE
 FROM information_schema.ROUTINES
-WHERE ROUTINE_SCHEMA = DATABASE()
+WHERE ROUTINE_SCHEMA = ?
 __SQL__
 ,
 };
 
 my @objs_list = qw( tables columns indexes constraints triggers views routines );
 
-if ($argv->{schemes} eq '') {
-    warn "    --schemes is empty\n\n";
-    print_usage();
-    exit 1;
-}
-
+my $schema1 = "DBI:mysql:;host=$argv->{host_db1};port=$argv->{port_db1};mysql_read_default_file=$credentials_file";
 my $dbh1 = DBI->connect(
-    "DBI:mysql:;host=sp1;mysql_read_default_file=$credentials_file",
+    $schema1,
     $argv->{user_db1},
     $argv->{pass_db1},
     { RaiseError => 1 } ) or
-    croak("Can't connect to db1: DBI:mysql:;host=sp1;mysql_read_default_file=$credentials_file, $argv->{user_db1}, $argv->{pass_db1} ");
+    croak("Can't connect to local db: $schema1");
 
-my $dbh2 = DBI->connect(
-    "DBI:mysql:;host=sp2;mysql_read_default_file=$credentials_file",
-    $argv->{user_db2},
-    $argv->{pass_db2},
-    { RaiseError => 1 } ) or
-    croak("Can't connect to db2: DBI:mysql:;host=sp2;mysql_read_default_file=$credentials_file, $argv->{user_db2}, $argv->{pass_db2} ");
-
+my $masters = $dbh1->selectall_hashref('SHOW ALL SLAVES STATUS', 'Master_Host');
 my $res = [];
 my $exit = 0;
-foreach my $schema ( split( / /, $argv->{schemes} ) ) {
-    $dbh1->do("USE $schema");
-    $dbh2->do("USE $schema");
+foreach my $master ( keys( %{$masters} ) ) {
+    $exception_list->{local_missing_exceptions}  = $exception_list->{default_local_missing_exceptions};
+    $exception_list->{remote_missing_exceptions} = $exception_list->{remote_missing_exceptions};
 
-    my ($sth1, $sth2);
-    my ($struct1, $struct2);
-    foreach my $obj ( @objs_list ) {
-        $struct1 = $dbh1->selectall_hashref( $queries->{$obj}, 'key_col' );
-        $struct2 = $dbh2->selectall_hashref( $queries->{$obj}, 'key_col' );
-
-        print_diff($struct1, $struct2, $obj, $res, $schema);
+    my $master_port = $masters->{$master}->{Master_Port};
+    my $schemes = $masters->{$master}->{Replicate_Wild_Do_Table};
+    my $ignore_tables = $masters->{$master}->{Replicate_Ignore_Table};
+    foreach my $entry ( split(/,/, $ignore_tables) ) {
+        foreach my $obj (@objs_list) {
+            push( @{$exception_list->{local_missing_exceptions}}, "$obj/" . $entry =~ s/\./\//r );
+        }
     }
+
+    compare_schemes($master, $master_port, $schemes);
 }
 
 if ( $argv->{formatter} eq 'tap' ) {
@@ -201,28 +198,54 @@ sub get_options {
     GetOptions(
         'formatter=s'           => \$argv->{'formatter'},
         'schemes=s'             => \$argv->{'schemes'},
+        'host-db1=s'            => \$argv->{'host_db1'},
         'user-db1=s'            => \$argv->{'user_db1'},
         'pass-db1=s'            => \$argv->{'pass_db1'},
-        'user-db2=s'            => \$argv->{'user_db2'},
-        'pass-db2=s'            => \$argv->{'pass_db2'},
+        'port-db1=s'            => \$argv->{'port_db1'},
         'help|h'                => sub{ print_usage(); exit(0); },
     );
+}
+
+sub compare_schemes {
+    my ($host, $port, $schemes) = @_;
+    my $schema2 = "DBI:mysql:;host=$host;port=$port;mysql_read_default_file=$credentials_file";
+    my $dbh2 = DBI->connect(
+        $schema2,
+        '',
+        '',
+        { RaiseError => 1 } ) or
+        croak("Can't connect to remote db: $schema2");
+
+    my $connection = "$host:$port";
+    my @schemes = map { s/\..*//r } split(/,/, $schemes);
+
+    foreach my $schema (@schemes) {
+        my ($sth1, $sth2);
+        my ($struct1, $struct2);
+        foreach my $obj (@objs_list) {
+            $struct1 = $dbh1->selectall_hashref( $queries->{$obj}, 'key_col', undef, $schema );
+            $struct2 = $dbh2->selectall_hashref( $queries->{$obj}, 'key_col', undef, $schema );
+
+            print_diff($struct1, $struct2, $obj, $res, $schema, $connection);
+        }
+    }
 }
 
 sub print_usage {
     my $usage =<<__USAGE__
 Usage: compare_db.pl [<options>]
 
-This script compares two databases by structure and prints result.
+This script compares structure of schemes on local mysql instance with
+all configured replica instances and prints result.
 
 Options:
       --formatter=[tap]         The format of output. Supported values:
                                     tap   - print in a TAP format.
       --schemes=<name>          List of schemes which should be compared.
+      --host-db1=<hostname>     Host of the 1st schema
       --user-db1=<username>     User of the 1st schema
       --pass-db1=<password>     Password of the 1st schema
-      --user-db2=<username>     User of the 2nd schema
-      --pass-db2=<password>     Password of the 2nd schema.
+      --port-db1=<password>     Port of the 1st schema
   -h, --help                    Print this message and exit.
 __USAGE__
 ;
@@ -247,18 +270,21 @@ sub is_exception {
 }
 
 sub print_diff {
-    my ($obj1, $obj2, $object_name, $result, $schema) = @_;
+    my ($obj1, $obj2, $object_name, $result, $schema, $connection) = @_;
+
+    my $schema1_name = "$argv->{host_db1}:$argv->{port_db1}";
+    my $schema2_name = $connection;
 
     foreach my $key ( sort( keys( %{$obj1} ) ) ) {
         unless ( exists($obj2->{$key}) ) {
-            next if ( is_exception(\@missing_sp2_exceptions, $object_name, $schema, $key) );
-            push( @{$result}, "Element: " . lc("$object_name/$schema/$key") . " is missing in Schema2" );
+            next if ( is_exception($exception_list->{remote_missing_exceptions}, $object_name, $schema, $key) );
+            push( @{$result}, "Element: " . lc("$object_name/$schema/$key") . " is missing in $schema2_name" );
             next;
         }
         foreach my $c_name ( sort( keys( %{ $obj1->{$key} } ) ) ) {
             unless ( exists($obj2->{$key}->{$c_name}) ) {
-                next if ( is_exception(\@missing_sp2_exceptions, $object_name, $schema, $key, $c_name) );
-                push( @{$result}, "Element: " . lc("$object_name/$schema/$key/$c_name") . " is missing in Schema2" );
+                next if ( is_exception($exception_list->{remote_missing_exceptions}, $object_name, $schema, $key, $c_name) );
+                push( @{$result}, "Element: " . lc("$object_name/$schema/$key/$c_name") . " is missing in $schema2_name" );
                 next;
             }
 
@@ -269,24 +295,24 @@ sub print_diff {
             $obj2->{$key}->{$c_name} = 'NULL' if ( ! defined($obj2->{$key}->{$c_name}) );
 
             if ( $obj1->{$key}->{$c_name} ne $obj2->{$key}->{$c_name} ) {
-                next if ( is_exception(\@diff_exceptions, $object_name, $schema, $key, $c_name) );
+                next if ( is_exception($exception_list->{diff_exceptions}, $object_name, $schema, $key, $c_name) );
                 push( @{$result}, "Element: " . lc("$object_name/$schema/$key/$c_name") . " are not equal:\n  ---\n"
-                  . "  Schema1: $obj1->{$key}->{$c_name}\n"
-                  . "  Schema2: $obj2->{$key}->{$c_name}" );
+                  . "  $schema1_name: $obj1->{$key}->{$c_name}\n"
+                  . "  $schema2_name: $obj2->{$key}->{$c_name}" );
             }
         }
     }
 
     foreach my $key ( sort( keys( %{$obj2} ) ) ) {
         unless ( exists($obj1->{$key}) ) {
-            next if ( is_exception(\@missing_sp1_exceptions, $object_name, $schema, $key) );
-            push( @{$result}, "Element: " . lc("$object_name/$schema/$key") . " is missing in Schema1" );
+            next if ( is_exception($exception_list->{local_missing_exceptions}, $object_name, $schema, $key) );
+            push( @{$result}, "Element: " . lc("$object_name/$schema/$key") . " is missing in $schema1_name" );
             next;
         }
         foreach my $c_name ( sort( keys( %{ $obj2->{$key} } ) ) ) {
             unless ( exists($obj1->{$key}->{$c_name}) ) {
-                next if ( is_exception(\@missing_sp1_exceptions, $object_name, $schema, $key, $c_name) );
-                push( @{$result}, "Element: ". lc("$object_name/$schema/$key/$c_name") ." is missing in Schema1" );
+                next if ( is_exception($exception_list->{local_missing_exceptions}, $object_name, $schema, $key, $c_name) );
+                push( @{$result}, "Element: ". lc("$object_name/$schema/$key/$c_name") ." is missing in $schema1_name" );
                 next;
             }
         }

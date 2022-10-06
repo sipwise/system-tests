@@ -18,6 +18,13 @@ Options:
 __USAGE__
 }
 
+get_local_instances() {
+  local_instances+=("${NGCP_HOSTNAME}:3306")
+  if [[ "${NGCP_TYPE}" == 'carrier' && "${NGCP_IS_PROXY}" == 'yes' ]]; then
+    local_instances+=("${NGCP_HOSTNAME}:3308")
+  fi
+}
+
 FORMATTER=''
 
 args=$(getopt -n "$(basename "$0")" -o h -l help,formatter: -- "$@")
@@ -43,11 +50,12 @@ while true; do
   esac
 done
 
-DB_BACKUP_LIST='/etc/ngcp-backup-tools/db-backup.conf'
-if [[ ! -r "${DB_BACKUP_LIST}" ]]; then
-  echo "Cannot read mandatory config file ${DB_BACKUP_LIST}" 2>&1
+NGCP_ROLES='/etc/default/ngcp-roles'
+if [[ ! -r "${NGCP_ROLES}" ]]; then
+  echo "Cannot read mandatory config file ${NGCP_ROLES}" 2>&1
   exit 1
 fi
+. "${NGCP_ROLES}"
 
 MYSQL_CREDENTIALS='/etc/mysql/sipwise_extra.cnf'
 if [[ ! -r "${MYSQL_CREDENTIALS}" ]]; then
@@ -55,11 +63,16 @@ if [[ ! -r "${MYSQL_CREDENTIALS}" ]]; then
   exit 1
 fi
 
-. "${DB_BACKUP_LIST}"
 declare -a opts
 if [[ -n "${FORMATTER}" ]]; then
   opts+=(--formatter="${FORMATTER}")
 fi
-/usr/share/ngcp-system-tests/compare_dbs.pl \
-  --schemes="${NGCP_DB_BACKUP_FINAL_LIST[*]}" \
-  "${opts[@]}"
+
+declare -a local_instances=()
+get_local_instances
+for local_mysql in "${local_instances[@]}"; do
+  /usr/share/ngcp-system-tests/compare_dbs.pl \
+    --host-db1="${local_mysql%:*}" \
+    --port-db1="${local_mysql#*:}" \
+    "${opts[@]}"
+done
