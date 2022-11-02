@@ -1,1 +1,1 @@
-ngcp-system-tests: file-in-etc-not-marked-as-conffile etc/ngcp-config/templates/*
+ngcp-system-tests: file-in-etc-not-marked-as-conffile *etc/ngcp-config/templates/*
