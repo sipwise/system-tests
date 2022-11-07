@@ -1,3 +1,11 @@
+ngcp-system-tests (9.5.7.0+0~mr9.5.7.0) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [455bd0e] TT#187700 Support regex in exceptions
+  * [0a7bf40] TT#187700 Fix typo
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 07 Nov 2022 15:01:32 +0100
+
 ngcp-system-tests (9.5.6.0+0~mr9.5.6.0) unstable; urgency=medium
 
   * New release.
