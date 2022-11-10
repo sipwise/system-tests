@@ -81,6 +81,9 @@ case "${NGCP_TESTS_MODE}" in
       bullseye*)
         DEBIAN_RELEASE=11
         ;;
+      bookworm*)
+        DEBIAN_RELEASE=12
+        ;;
     esac
     export DEBIAN_RELEASE
 
