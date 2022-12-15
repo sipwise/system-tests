@@ -60,7 +60,7 @@ service:
     enabled: [% rateomat.enable == "yes" ? 'true' : 'false' %]
     running: [% is_proxy && rateomat.enable == "yes" ? 'true' : 'false' %]
 [% ELSE -%]
-    enabled: false
+    enabled: [% general.process_handler == 'none' && asterisk.enable == "yes" ? 'true' : 'false' %]
     running: {{if and [% is_proxy && rateomat.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 [% END -%]
 
