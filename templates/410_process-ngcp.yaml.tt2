@@ -106,7 +106,11 @@ process:
     running: true
 
   ngcp-rate-o-mat:
-    running: [% is_proxy ? 'true' : 'false' %]
+[% IF rateomat.ha_mode == 'active-active' -%]
+    running: [% is_proxy && rateomat.enable == "yes" ? 'true' : 'false' %]
+[% ELSE -%]
+    running: {{if and [% is_proxy && rateomat.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+[% END -%]
 
   nginx:
     running: [% (is_mgmt || is_lb || is_li_dist) && nginx.enable == 'yes' ? 'true' : 'false' %]
