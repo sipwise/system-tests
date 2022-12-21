@@ -1,3 +1,12 @@
+ngcp-system-tests (10.5.2.3+0~mr10.5.2.3) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [92a801f] MT#56187 Fix rate-o-mat service check
+  * [e9af624] MT#56187 Take CE into account for rate-o-mat service check
+  * [1c01588] MT#56187 Fix rate-o-mat process check too
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 21 Dec 2022 14:39:23 +0100
+
 ngcp-system-tests (10.5.2.2+0~mr10.5.2.2) unstable; urgency=medium
 
   [ Mykola Malkov ]
