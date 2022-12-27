@@ -1,6 +1,9 @@
 [%
   hostname = ngcp.get_hostname();
 
+  is_mgmt = ngcp.has_role(hostname, 'mgmt');
+  is_rtp = ngcp.has_role(hostname, 'rtp');
+
   argv.host = hostname;
   argv.type = 'ha_int';
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
@@ -29,7 +32,9 @@ command:
     - "/^node_/"
     - "/^process_/"
     - "/^redis_/"
+[% IF is_mgmt || is_rtp -%]
     - "/^rtpengine_/"
+[% END -%]
     stderr: []
     timeout: 10000
 [% END -%]
