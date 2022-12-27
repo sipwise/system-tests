@@ -4,7 +4,6 @@
   is_mgmt = ngcp.has_role(hostname, 'mgmt');
   is_proxy = ngcp.has_role(hostname, 'proxy');
   is_lb = ngcp.has_role(hostname, 'lb');
-  is_rtp = ngcp.has_role(hostname, 'rtp');
 -%]
 
 process:
@@ -65,7 +64,7 @@ process:
     running: true
 
   ngcp-voisniff:
-    running: {{if and [% (is_proxy || is_lb || is_rtp) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: {{if and [% (is_proxy || is_lb) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters). Real name: prometheus-haproxy-exporter.
