@@ -85,7 +85,7 @@ command:
     stdout: []
     stderr: []
   # ngcp-rest-api runs under the node binary, so we can't use "process" for checking
-  "pgrep -c -n -f 'ngcp-rest-api'":
+  "pgrep -c -n -f '^ngcp-rest-api'":
     exit-status: [% is_mgmt && rest_api.enable == 'yes' ? '0' : '1' %]
     stdout:
       - "[% is_mgmt && rest_api.enable == 'yes' ? '1' : '0' %]"
