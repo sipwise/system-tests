@@ -113,8 +113,8 @@ service:
     running: {{if and [% (is_proxy || is_li) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcpcfg-api.service:
-    enabled: false
-    running: false
+    enabled: [% is_mgmt && bootenv.ngcpcfg_api.enable == "yes" ? 'true' : 'false' %]
+    running: [% is_mgmt && bootenv.ngcpcfg_api.enable == "yes" ? 'true' : 'false' %]
 
   ngcp-faxserver.service:
     enabled: false
