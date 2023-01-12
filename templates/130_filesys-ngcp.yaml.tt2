@@ -24,6 +24,14 @@ file:
     filetype: file
     contains: []
 
+  /etc/ngcp-config/maintenance.yml:
+    exists: true
+    mode: "0660"
+    owner: root
+    group: _ngcp-admin
+    filetype: file
+    contains: []
+
   /etc/ngcp-config/network.yml:
     exists: true
     mode: "0660"
