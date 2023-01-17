@@ -1,3 +1,28 @@
+ngcp-system-tests (11.3.0.0+0~mr11.3.0.0) unstable; urgency=medium
+
+  [ Michael Prokop ]
+  * [4640714] MT#55524 Update lintian overrides for new lintian behavior
+  * [0905c18] MT#55898 User tests: recent openssh versions use _ssh group name
+
+  [ Mykola Malkov ]
+  * [eed034b] MT#55554 Compare local schemes with master hosts
+  * [4d1a17e] MT#56090 Add maintenance.yml to system tests
+
+  [ Guillem Jover ]
+  * [6e46a9c] MT#56187 Fix rate-o-mat service check
+  * [d03cb1f] MT#56187 Take CE into account for rate-o-mat service check
+  * [14a3162] MT#56187 Fix rate-o-mat process check too
+  * [c7b8887] MT#56292 Fix SNMP checks to support indices larger than 9
+  * [c2dd8c8] MT#56292 If enabled expect victoria-metrics to run on all cluster nodes
+  * [1682cda] MT#56292 Only expect rtpengine prometheus metrics on mgmt and rtp nodes
+  * [a63127a] MT#56292 Do not expect ngcp-voisniff to be running on RTP nodes
+  * [a0a3cf8] MT#56292 Fix expected ngcpcfg-api service state
+  * [9513e14] MT#56292 Fix expected kamailio and sip prometheus metrics
+  * [d5c39d1] MT#56292 Fix ngcp-rest-api match to not match on check processes
+  * [20e3d5a] MT#56292 Expect ngcp-voisniff to run on li instead of lb roles
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 17 Jan 2023 17:45:53 +0100
+
 ngcp-system-tests (11.2.0.0+0~mr11.2.0.0) unstable; urgency=medium
 
   [ Michael Prokop ]
