@@ -68,11 +68,27 @@ if [[ -n "${FORMATTER}" ]]; then
   opts+=(--formatter="${FORMATTER}")
 fi
 
+declare -a schemes=()
+while IFS=  read -r -d $'\0'; do
+    schemes+=("${REPLY}")
+done < <(find '/usr/share/ngcp-db-schema/schema/' -name "*.json" -print0)
+
 declare -a local_instances=()
 get_local_instances
+rc=0
 for local_mysql in "${local_instances[@]}"; do
-  /usr/share/ngcp-system-tests/compare_dbs.pl \
-    --host-db1="${local_mysql%:*}" \
-    --port-db1="${local_mysql#*:}" \
-    "${opts[@]}"
+  for schema in "${schemes[@]}"; do
+    schema_name="${schema##*/}"
+    schema_name="${schema_name%.json}"
+    if ! /usr/share/ngcp-system-tests/compare_dbs.pl \
+        --host-db1="${local_mysql%:*}" \
+        --port-db1="${local_mysql#*:}" \
+        --schema-file="${schema}" \
+        --schema-name="${schema_name}" \
+        "${opts[@]}"; then
+      rc=1
+    fi
+  done
 done
+
+exit ${rc}

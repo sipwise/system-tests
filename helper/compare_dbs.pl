@@ -6,6 +6,7 @@ use warnings;
 use DBI;
 use Getopt::Long;
 use Carp;
+use JSON::XS;
 
 # Format: <element-type>/<schema-name>/<element-name>/<element-attribute>
 # Where:
@@ -23,23 +24,16 @@ my @diff_exceptions = qw(
     views/ldap/ldap_entries/view_definition
     tables/mysql/.+/create_options
 );
-my @local_missing_exceptions = qw();
-my @remote_missing_exceptions = qw();
-
-my $exception_list = {
-  default_diff_exceptions           => \@diff_exceptions,
-  default_local_missing_exceptions  => \@local_missing_exceptions,
-  default_remote_missing_exceptions => \@remote_missing_exceptions,
-};
 
 my $credentials_file = '/etc/mysql/sipwise_extra.cnf';
 my $argv = {
-    formatter => '',
-    schemes   => '',
-    host_db1  => '',
-    pass_db1  => '',
-    user_db1  => '',
-    port_db1  => '',
+    formatter   => '',
+    host_db1    => 'localhost',
+    pass_db1    => '',
+    port_db1    => '3306',
+    schema_file => '',
+    schema_name => '',
+    user_db1    => '',
 };
 get_options();
 
@@ -155,9 +149,7 @@ __SQL__
 ,
 };
 
-my @objs_list = qw( tables columns indexes constraints triggers views routines );
-
-my $schema1 = "DBI:mysql:;host=$argv->{host_db1};port=$argv->{port_db1};mysql_read_default_file=$credentials_file";
+my $schema1 = "DBI:mysql:$argv->{schema_name};host=$argv->{host_db1};port=$argv->{port_db1};mysql_read_default_file=$credentials_file";
 my $dbh1 = DBI->connect(
     $schema1,
     $argv->{user_db1},
@@ -165,23 +157,23 @@ my $dbh1 = DBI->connect(
     { RaiseError => 1 } ) or
     croak("Can't connect to local db: $schema1");
 
-my $masters = $dbh1->selectall_hashref('SHOW ALL SLAVES STATUS', 'Master_Host');
 my $res = [];
 my $exit = 0;
-foreach my $master ( keys( %{$masters} ) ) {
-    $exception_list->{local_missing_exceptions}  = $exception_list->{default_local_missing_exceptions};
-    $exception_list->{remote_missing_exceptions} = $exception_list->{remote_missing_exceptions};
 
-    my $master_port = $masters->{$master}->{Master_Port};
-    my $schemes = $masters->{$master}->{Replicate_Wild_Do_Table};
-    my $ignore_tables = $masters->{$master}->{Replicate_Ignore_Table};
-    foreach my $entry ( split(/,/, $ignore_tables) ) {
-        foreach my $obj (@objs_list) {
-            push( @{$exception_list->{local_missing_exceptions}}, "$obj/" . $entry =~ s/\./\//r );
-        }
-    }
+my $json;
+{
+    #Enable 'slurp' mode
+    local $/ = '';
+    open my $fh, "<", $argv->{schema_file};
+    $json = <$fh>;
+    close $fh;
+}
+my $json_schema = decode_json($json);
 
-    compare_schemes($master, $master_port, $schemes);
+my @objs_list = qw( tables columns indexes constraints triggers views routines );
+foreach my $obj (@objs_list) {
+    my $db_schema = $dbh1->selectall_hashref( $queries->{$obj}, 'key_col', undef, $argv->{schema_name} );
+    print_diff( $db_schema, $json_schema->{$obj}, $obj, $res, $argv->{schema_name} );
 }
 
 if ( $argv->{formatter} eq 'tap' ) {
@@ -197,38 +189,14 @@ exit $exit;
 sub get_options {
     GetOptions(
         'formatter=s'           => \$argv->{'formatter'},
-        'schemes=s'             => \$argv->{'schemes'},
+        'schema-file=s'         => \$argv->{'schema_file'},
+        'schema-name=s'         => \$argv->{'schema_name'},
         'host-db1=s'            => \$argv->{'host_db1'},
         'user-db1=s'            => \$argv->{'user_db1'},
         'pass-db1=s'            => \$argv->{'pass_db1'},
         'port-db1=s'            => \$argv->{'port_db1'},
         'help|h'                => sub{ print_usage(); exit(0); },
     );
-}
-
-sub compare_schemes {
-    my ($host, $port, $schemes) = @_;
-    my $schema2 = "DBI:mysql:;host=$host;port=$port;mysql_read_default_file=$credentials_file";
-    my $dbh2 = DBI->connect(
-        $schema2,
-        '',
-        '',
-        { RaiseError => 1 } ) or
-        croak("Can't connect to remote db: $schema2");
-
-    my $connection = "$host:$port";
-    my @schemes = map { s/\..*//r } split(/,/, $schemes);
-
-    foreach my $schema (@schemes) {
-        my ($sth1, $sth2);
-        my ($struct1, $struct2);
-        foreach my $obj (@objs_list) {
-            $struct1 = $dbh1->selectall_hashref( $queries->{$obj}, 'key_col', undef, $schema );
-            $struct2 = $dbh2->selectall_hashref( $queries->{$obj}, 'key_col', undef, $schema );
-
-            print_diff($struct1, $struct2, $obj, $res, $schema, $connection);
-        }
-    }
 }
 
 sub print_usage {
@@ -270,21 +238,18 @@ sub is_exception {
 }
 
 sub print_diff {
-    my ($obj1, $obj2, $object_name, $result, $schema, $connection) = @_;
-
-    my $schema1_name = "$argv->{host_db1}:$argv->{port_db1}";
-    my $schema2_name = $connection;
+    my ($obj1, $obj2, $object_name, $result, $schema) = @_;
 
     foreach my $key ( sort( keys( %{$obj1} ) ) ) {
         unless ( exists($obj2->{$key}) ) {
-            next if ( is_exception($exception_list->{remote_missing_exceptions}, $object_name, $schema, $key) );
-            push( @{$result}, "Element: " . lc("$object_name/$schema/$key") . " is missing in $schema2_name" );
+            next if ( is_exception(\@diff_exceptions, $object_name, $schema, $key) );
+            push( @{$result}, "Element: " . lc("$object_name/$schema/$key") . " is missing in json file" );
             next;
         }
         foreach my $c_name ( sort( keys( %{ $obj1->{$key} } ) ) ) {
             unless ( exists($obj2->{$key}->{$c_name}) ) {
-                next if ( is_exception($exception_list->{remote_missing_exceptions}, $object_name, $schema, $key, $c_name) );
-                push( @{$result}, "Element: " . lc("$object_name/$schema/$key/$c_name") . " is missing in $schema2_name" );
+                next if ( is_exception(\@diff_exceptions, $object_name, $schema, $key, $c_name) );
+                push( @{$result}, "Element: " . lc("$object_name/$schema/$key/$c_name") . " is missing in json file" );
                 next;
             }
 
@@ -295,24 +260,24 @@ sub print_diff {
             $obj2->{$key}->{$c_name} = 'NULL' if ( ! defined($obj2->{$key}->{$c_name}) );
 
             if ( $obj1->{$key}->{$c_name} ne $obj2->{$key}->{$c_name} ) {
-                next if ( is_exception($exception_list->{diff_exceptions}, $object_name, $schema, $key, $c_name) );
+                next if ( is_exception(\@diff_exceptions, $object_name, $schema, $key, $c_name) );
                 push( @{$result}, "Element: " . lc("$object_name/$schema/$key/$c_name") . " are not equal:\n  ---\n"
-                  . "  $schema1_name: $obj1->{$key}->{$c_name}\n"
-                  . "  $schema2_name: $obj2->{$key}->{$c_name}" );
+                  . "  local db:  $obj1->{$key}->{$c_name}\n"
+                  . "  json file: $obj2->{$key}->{$c_name}" );
             }
         }
     }
 
     foreach my $key ( sort( keys( %{$obj2} ) ) ) {
         unless ( exists($obj1->{$key}) ) {
-            next if ( is_exception($exception_list->{local_missing_exceptions}, $object_name, $schema, $key) );
-            push( @{$result}, "Element: " . lc("$object_name/$schema/$key") . " is missing in $schema1_name" );
+            next if ( is_exception(\@diff_exceptions, $object_name, $schema, $key) );
+            push( @{$result}, "Element: " . lc("$object_name/$schema/$key") . " is missing in local db" );
             next;
         }
         foreach my $c_name ( sort( keys( %{ $obj2->{$key} } ) ) ) {
             unless ( exists($obj1->{$key}->{$c_name}) ) {
-                next if ( is_exception($exception_list->{local_missing_exceptions}, $object_name, $schema, $key, $c_name) );
-                push( @{$result}, "Element: ". lc("$object_name/$schema/$key/$c_name") ." is missing in $schema1_name" );
+                next if ( is_exception(\@diff_exceptions, $object_name, $schema, $key, $c_name) );
+                push( @{$result}, "Element: ". lc("$object_name/$schema/$key/$c_name") ." is missing in local db" );
                 next;
             }
         }
@@ -333,7 +298,7 @@ sub tap_output {
     }
     else {
         print "1..1\n";
-        print "ok 1 All schemes are equal\n";
+        print "ok 1 Schema is ok\n";
     }
 }
 
@@ -347,6 +312,6 @@ sub human_output {
         }
     }
     else {
-        print "All schemes $argv->{schemes} are equal\n";
+        print "Schema $argv->{schema_name} is equal to json file\n";
     }
 }
