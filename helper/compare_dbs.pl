@@ -23,6 +23,7 @@ use JSON::XS;
 my @diff_exceptions = qw(
     views/ldap/ldap_entries/view_definition
     tables/mysql/.+/create_options
+    .+/prosody/prosodyarchive
 );
 
 my $credentials_file = '/etc/mysql/sipwise_extra.cnf';
@@ -148,6 +149,11 @@ WHERE ROUTINE_SCHEMA = ?
 __SQL__
 ,
 };
+
+if ( $argv->{port_db1} eq '3308' ) {
+  push @diff_exceptions, '.+/kamailio/voicemail_spool';
+  push @diff_exceptions, '.+/provisioning/autoprov_firmwares_data';
+}
 
 my $schema1 = "DBI:mysql:$argv->{schema_name};host=$argv->{host_db1};port=$argv->{port_db1};mysql_read_default_file=$credentials_file";
 my $dbh1 = DBI->connect(

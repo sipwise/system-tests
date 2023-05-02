@@ -80,6 +80,14 @@ for local_mysql in "${local_instances[@]}"; do
   for schema in "${schemes[@]}"; do
     schema_name="${schema##*/}"
     schema_name="${schema_name%.json}"
+    if [[ "${local_mysql}" =~ 3308 ]]; then
+      case "${schema_name}" in
+        syslog|stats|fileshare|ldap|accounting|sipstats)
+          echo "Skipping schema ${schema_name} on ${local_mysql} instance"
+          continue
+        ;;
+      esac
+    fi
     if ! /usr/share/ngcp-system-tests/compare_dbs.pl \
         --host-db1="${local_mysql%:*}" \
         --port-db1="${local_mysql#*:}" \
