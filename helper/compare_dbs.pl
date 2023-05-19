@@ -20,6 +20,8 @@ use JSON::XS;
 # For columns: columns/<schema-name>/<table-name>_<column-name>
 #   columns/billing/table1_column1/is_nullable
 #   tables/mysql/.+/create_options
+
+# Remove tables/.+/.+/table_collation when trunk is switched to bookworm
 my @diff_exceptions = qw(
     views/ldap/ldap_entries/view_definition
     tables/mysql/.+/create_options
@@ -44,6 +46,8 @@ my @diff_exceptions = qw(
     .+/accounting/cdr_group_[0-9]{6}/.+
     .+/accounting/cdr_period_costs_[0-9]{6}/.+
     .+/accounting/cdr_[0-9]{6}/.+
+
+    tables/.+/.+/table_collation
 );
 
 my $credentials_file = '/etc/mysql/sipwise_extra.cnf';
