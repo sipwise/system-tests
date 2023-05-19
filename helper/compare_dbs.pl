@@ -24,6 +24,26 @@ my @diff_exceptions = qw(
     views/ldap/ldap_entries/view_definition
     tables/mysql/.+/create_options
     .+/prosody/prosodyarchive
+
+    tables/accounting/cdr_cash_balance_data/create_options
+    tables/accounting/cdr_time_balance_data/create_options
+    tables/accounting/cdr_relation_data/create_options
+    tables/accounting/cdr_tag_data/create_options
+    tables/accounting/cdr_mos_data/create_options
+    tables/accounting/cdr_export_status_data/create_options
+    tables/accounting/cdr_group/create_options
+    tables/accounting/cdr_period_costs/create_options
+    tables/accounting/cdr/create_options
+  
+    .+/accounting/cdr_cash_balance_data_[0-9]{6}/.+
+    .+/accounting/cdr_time_balance_data_[0-9]{6}/.+
+    .+/accounting/cdr_relation_data_[0-9]{6}/.+
+    .+/accounting/cdr_tag_data_[0-9]{6}/.+
+    .+/accounting/cdr_mos_data_[0-9]{6}/.+
+    .+/accounting/cdr_export_status_data_[0-9]{6}/.+
+    .+/accounting/cdr_group_[0-9]{6}/.+
+    .+/accounting/cdr_period_costs_[0-9]{6}/.+
+    .+/accounting/cdr_[0-9]{6}/.+
 );
 
 my $credentials_file = '/etc/mysql/sipwise_extra.cnf';
