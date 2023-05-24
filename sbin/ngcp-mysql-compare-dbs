@@ -19,7 +19,7 @@ __USAGE__
 }
 
 get_local_instances() {
-  local_instances+=("${NGCP_HOSTNAME}:3306")
+  local_instances+=("${NGCP_HOSTNAME:-localhost}:3306")
   if [[ "${NGCP_TYPE}" == 'carrier' && "${NGCP_IS_PROXY}" == 'yes' ]]; then
     local_instances+=("${NGCP_HOSTNAME}:3308")
   fi
