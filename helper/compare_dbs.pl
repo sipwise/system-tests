@@ -48,6 +48,8 @@ my @diff_exceptions = qw(
     .+/accounting/cdr_[0-9]{6}/.+
 
     tables/.+/.+/table_collation
+    columns/.+/.+/.+/collation_name
+    columns/.+/.+/.+/character_set_name
 );
 
 my $credentials_file = '/etc/mysql/sipwise_extra.cnf';
