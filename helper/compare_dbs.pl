@@ -21,7 +21,6 @@ use JSON::XS;
 #   columns/billing/table1_column1/is_nullable
 #   tables/mysql/.+/create_options
 
-# Remove tables/.+/.+/table_collation when trunk is switched to bookworm
 my @diff_exceptions = qw(
     views/ldap/ldap_entries/view_definition
     tables/mysql/.+/create_options
@@ -36,7 +35,7 @@ my @diff_exceptions = qw(
     tables/accounting/cdr_group/create_options
     tables/accounting/cdr_period_costs/create_options
     tables/accounting/cdr/create_options
-  
+
     .+/accounting/cdr_cash_balance_data_[0-9]{6}/.+
     .+/accounting/cdr_time_balance_data_[0-9]{6}/.+
     .+/accounting/cdr_relation_data_[0-9]{6}/.+
@@ -46,10 +45,6 @@ my @diff_exceptions = qw(
     .+/accounting/cdr_group_[0-9]{6}/.+
     .+/accounting/cdr_period_costs_[0-9]{6}/.+
     .+/accounting/cdr_[0-9]{6}/.+
-
-    tables/.+/.+/table_collation
-    columns/.+/.+/.+/collation_name
-    columns/.+/.+/.+/character_set_name
 );
 
 my $credentials_file = '/etc/mysql/sipwise_extra.cnf';
