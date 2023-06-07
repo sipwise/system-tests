@@ -56,6 +56,7 @@ my $argv = {
     schema_file => '',
     schema_name => '',
     user_db1    => '',
+    debug       => 0,
 };
 get_options();
 
@@ -223,6 +224,7 @@ sub get_options {
         'pass-db1=s'            => \$argv->{'pass_db1'},
         'port-db1=s'            => \$argv->{'port_db1'},
         'help|h'                => sub{ print_usage(); exit(0); },
+        'debug'                 => \$argv->{'debug'},
     );
 }
 
@@ -242,6 +244,7 @@ Options:
       --pass-db1=<password>     Password of the 1st schema
       --port-db1=<password>     Port of the 1st schema
   -h, --help                    Print this message and exit.
+      --debug                   Print exception message for known exceptions.
 __USAGE__
 ;
     print $usage;
@@ -256,7 +259,9 @@ sub is_exception {
     foreach my $exception (@{$exceptions}) {
         # 'views/ldap/ldap_entries/view_definition'
         if ( lc("$type/$schema/$element/$attr") =~ $exception ) {
-            print {*STDERR} "Exception found: $exception\n";
+            if ( $argv->{'debug'} ) {
+                print {*STDERR} "Exception found: $exception\n";
+            }
             return 1;
         }
     }
