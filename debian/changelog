@@ -1,3 +1,17 @@
+ngcp-system-tests (11.5.0.0+0~mr11.5.0.0) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [f33a72d] MT#56542 Use json file for checking schema
+  * [0f65e4d] MT#56542 Skip schemes and tables in 3308 instance
+  * [fef69f7] MT#57270 Ignore some accounting.cdr* options
+  * [3e66fbb] MT#57461 Ignore tables' table_collation
+  * [5fc5a72] MT#57270 Use localhost as NGCP_HOSTNAME for CE
+  * [66433be] MT#57461 Ignore columns collation_name and character_set_name
+  * [6cdff34] MT#57461 Remove charset, collation exceptions
+  * [4044607] MT#57461 Add --debug option
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 26 Jun 2023 14:13:17 +0200
+
 ngcp-system-tests (11.4.0.0+0~mr11.4.0.0) unstable; urgency=medium
 
   * New release.
