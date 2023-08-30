@@ -1,3 +1,10 @@
+ngcp-system-tests (11.5.1.0+0~mr11.5.1.0) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [5a933e1] MT#57453 Switch docker image to bookworm
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 30 Aug 2023 18:06:22 +0200
+
 ngcp-system-tests (11.5.0.0+0~mr11.5.0.0) unstable; urgency=medium
 
   [ Mykola Malkov ]
