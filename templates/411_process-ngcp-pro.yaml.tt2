@@ -91,3 +91,19 @@ command:
     stdout:
       - "[% is_mgmt && rest_api.enable == 'yes' ? '1' : '0' %]"
     stderr: []
+
+# monit no longer listens on port 2812 but uses a unix socket:
+file:
+  /run/monit/monit.sock:
+    exists: true
+    mode: "0640"
+    size: 0
+    owner: root
+    group: root
+    filetype: socket
+  /run/monit/monit.pid:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file

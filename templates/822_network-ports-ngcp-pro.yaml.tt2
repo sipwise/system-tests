@@ -8,11 +8,6 @@
   host_ha_iface = out;
 -%]
 port:
-  # Monit
-  tcp:2812:
-    listening: true
-    ip: ["127.0.0.1"]
-
   # snmpd
   udp:161:
     listening: true
