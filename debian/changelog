@@ -1,3 +1,13 @@
+ngcp-system-tests (12.0.2.0+0~mr12.0.2.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [e8459d1] MT#58356 Update packaging for bookworm
+
+  [ Michael Prokop ]
+  * [0a22acc] MT#58511 monit: check for unix socket instead of TCP port
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Sun, 15 Oct 2023 08:25:54 +0200
+
 ngcp-system-tests (12.0.1.0+0~mr12.0.1.0) unstable; urgency=medium
 
   [ Mykola Malkov ]
