@@ -197,7 +197,7 @@ port:
   # Redis
   tcp:6379:
     listening: true
-    ip: ["[% ha_int_ips.0 %]"]
+    ip: ["127.0.0.1", "[% ha_int_ips.0 %]"]
 
 [% END -%]
 [% IF is_rtp -%]
