@@ -79,10 +79,26 @@ port:
     listening: true
     ip: ["[% web_ext_ips.0 %]"]
 
+  # Nginx HTTPS (NGCP Panel API)
+  tcp:1442:
+    listening: true
+    ip: ["127.0.0.1"]
+  tcp6:1442:
+    listening: true
+    ip: ["::1"]
+
   # Nginx HTTPS (NGCP Panel Admin)
   tcp:1443:
     listening: true
     ip: ["[% web_int_ips.0 %]"]
+
+  # Nginx status port
+  tcp:[% nginx.status_port %]:
+    listening: true
+    ip: ["127.0.0.1"]
+  tcp6:[% nginx.status_port %]:
+    listening: true
+    ip: ["::1"]
 
 [% END -%]
 [% IF is_mgmt && pbx.enable == 'yes' -%]

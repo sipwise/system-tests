@@ -8,6 +8,31 @@
   host_ha_iface = out;
 -%]
 port:
+  # dnsmasq (DNS)
+  tcp:53:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["0.0.0.0"]
+  tcp6:53:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["::"]
+  udp:53:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["0.0.0.0"]
+  udp6:53:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["::"]
+  # dnsmasq (DHCPv4)
+  udp:67:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["0.0.0.0"]
+  # dnsmasq (TFTP)
+  udp:69:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["0.0.0.0"]
+  udp6:69:
+    listening: {{.Vars.NODE_ACTIVE}}
+    ip: ["::"]
+
   # snmpd
   udp:161:
     listening: true
