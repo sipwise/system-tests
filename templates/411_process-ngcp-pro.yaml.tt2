@@ -49,9 +49,6 @@ process:
   pacemaker-contr:
     running: [% ha.crm == 'pacemaker' ? 'true' : 'false' %]
 
-  influxdb-relay:
-    running: false
-
   monit:
     running: [% general.process_handler == 'monit' ? 'true' : 'false' %]
 

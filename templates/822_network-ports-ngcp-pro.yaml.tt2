@@ -13,11 +13,6 @@ port:
     listening: true
     ip: ["127.0.0.1"]
 
-  # InfluxDB Relay
-  tcp:9096:
-    listening: false
-    ip: ["127.0.0.1"]
-
   # Corosync
   udp:5405:
     listening: [% ha.gcs == 'corosync' ? 'true' : 'false' %]

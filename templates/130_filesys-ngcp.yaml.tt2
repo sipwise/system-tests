@@ -254,27 +254,6 @@ file:
     linked-to: /ngcp-data/backup
     filetype: symlink
 
-  /ngcp-data/influxdb:
-    exists:
-      or:
-        - true
-        - false
-    mode: "0755"
-    owner: influxdb
-    group: influxdb
-    filetype: directory
-
-  /var/lib/influxdb:
-    exists:
-      or:
-        - true
-        - false
-    mode: "0777"
-    owner: root
-    group: root
-    linked-to: /ngcp-data/influxdb
-    filetype: symlink
-
   /ngcp-data/prometheus:
     exists: true
     mode: "0755"

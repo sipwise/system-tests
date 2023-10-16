@@ -207,17 +207,3 @@ port:
     ip: ["[% sip_int_ips.0 %]"]
 
 [% END -%]
-  # InfluxDB Admin
-  tcp:8083:
-    listening: false
-    ip: ["127.0.0.1"]
-
-  # InfluxDb Query
-  tcp:8086:
-    listening: false
-    ip: ["[% ha_int_ips.0 %]"]
-
-  # InfluxDb Backup/Restore RPC
-  tcp:8088:
-    listening: false
-    ip: ["127.0.0.1"]

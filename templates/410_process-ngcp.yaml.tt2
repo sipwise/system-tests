@@ -59,9 +59,6 @@ process:
   asterisk:
     running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
-  influxd:
-    running: false
-
   prometheus:
     running: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'prometheus' ? 'true' : 'false' %]
 
@@ -125,9 +122,6 @@ process:
   # on Linux (15 characters). Real name: rtpengine-recording.
   rtpengine-recor:
     running: {{if and [% is_rtp && rtpengine.recording.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
-
-  telegraf:
-    running: false
 
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters). Real name: victoria-metrics.
