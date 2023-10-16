@@ -12,6 +12,9 @@ port:
   udp:161:
     listening: true
     ip: ["127.0.0.1"]
+  udp6:161:
+    listening: true
+    ip: ["::1"]
 
   # Corosync
   udp:5405:

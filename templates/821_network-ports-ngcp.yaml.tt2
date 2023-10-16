@@ -78,11 +78,17 @@ port:
   tcp:443:
     listening: true
     ip: ["[% web_ext_ips.0 %]"]
+  tcp6:443:
+    listening: true
+    ip: ["::1"]
 
   # Nginx HTTPS (NGCP Panel Admin)
   tcp:1443:
     listening: true
     ip: ["[% web_int_ips.0 %]"]
+  tcp6:1443:
+    listening: true
+    ip: ["::1"]
 
 [% END -%]
 [% IF is_mgmt && pbx.enable == 'yes' -%]
@@ -198,6 +204,9 @@ port:
   tcp:6379:
     listening: true
     ip: ["127.0.0.1", "[% ha_int_ips.0 %]"]
+  tcp6:6379:
+    listening: true
+    ip: ["::1"]
 
 [% END -%]
 [% IF is_rtp -%]

@@ -3,16 +3,25 @@ port:
   tcp:22:
     listening: true
     ip: ["0.0.0.0"]
+  tcp6:22:
+    listening: true
+    ip: ["::"]
 
   # Exim MTA
   tcp:25:
     listening: true
     ip: ["127.0.0.1"]
+  tcp6:25:
+    listening: true
+    ip: ["::1"]
 
   # NTP (systemd-timesyncd does not listen)
   udp:123:
     listening: [% ntp.backend == 'timesyncd' ? 'false' : 'true ' %]
     ip: ["0.0.0.0", "127.0.0.1"]
+  udp6:123:
+    listening: [% ntp.backend == 'timesyncd' ? 'false' : 'true ' %]
+    ip: ["::", "::1"]
 
   # Check for a closed port, nothing there.
   tcp:7777:
