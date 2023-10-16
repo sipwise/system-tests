@@ -11,14 +11,6 @@ process:
   glusterfs:
     running: true
 
-  # We have to use a truncated process name because that's the COMM limit
-  # on Linux (15 characters). Real name: ngcp-hb-watchdog.
-  ngcp-hb-watchdo:
-    running: false
-
-  heartbeat:
-    running: false
-
   corosync:
     running: [% ha.gcs == 'corosync' ? 'true' : 'false' %]
 

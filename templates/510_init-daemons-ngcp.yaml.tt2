@@ -31,10 +31,6 @@ service:
     enabled: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
     running: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
 
-  ngcp-hb-watchdog.service:
-    enabled: false
-    running: false
-
   kamailio-lb.service:
     enabled: [% general.process_handler == 'none' && kamailio.lb.start == "yes" ? 'true' : 'false' %]
     running: {{if and [% is_lb && kamailio.lb.start == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
@@ -151,10 +147,3 @@ service:
   monit.service:
     enabled: [% general.process_handler == 'monit' ? 'true' : 'false' %]
     running: [% general.process_handler == 'monit' ? 'true' : 'false' %]
-
-[% IF general.ngcp_type != 'spce' -%]
-  heartbeat.service:
-    enabled: false
-    running: false
-
-[% END -%]
