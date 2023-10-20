@@ -1,3 +1,10 @@
+ngcp-system-tests (11.5.1.2+0~mr11.5.1.2) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [fb3a17e] MT#58530 Fix regex to ignore tables
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Fri, 20 Oct 2023 18:27:02 +0200
+
 ngcp-system-tests (11.5.1.1+0~mr11.5.1.1) unstable; urgency=medium
 
   * New release.
