@@ -16,6 +16,16 @@ port:
     listening: true
     ip: ["::1"]
 
+  # Nginx HTTPS (NGCP Panel)
+  tcp6:443:
+    listening: true
+    ip: ["::1"]
+
+  # Nginx HTTPS (NGCP Panel Admin)
+  tcp6:1443:
+    listening: true
+    ip: ["::1"]
+
   # Corosync
   udp:5405:
     listening: [% ha.gcs == 'corosync' ? 'true' : 'false' %]
