@@ -96,9 +96,13 @@ service:
     enabled: [% general.process_handler == 'none' && is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
     running: [% is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
 
-  [% database.key_value.flavor %]-server.service:
+  keydb-server.service:
     enabled: [% redis.enable == "yes" ? 'true' : 'false' %]
     running: [% redis.enable == "yes" ? 'true' : 'false' %]
+
+  redis-server.service:
+    enabled: false
+    running: false
 
   slapd.service:
     enabled: [% is_mgmt && ldap.enable == "yes" ? 'true' : 'false' %]
