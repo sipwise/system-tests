@@ -25,6 +25,9 @@ my @diff_exceptions = qw(
     views/ldap/ldap_entries/view_definition
     tables/mysql/.+/create_options
     .+/prosody/prosodyarchive
+    .+/prosody/status_checks
+    .+/billing/test
+    .+/ngcp/pt_checksums_sp.*
 
     tables/accounting/cdr_cash_balance_data/create_options
     tables/accounting/cdr_time_balance_data/create_options
