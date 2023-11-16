@@ -1,3 +1,10 @@
+ngcp-system-tests (12.0.1.2+0~mr12.0.1.2) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [22464f1] MT#58530 Add exceptions to compare_dbs.pl
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 16 Nov 2023 09:59:04 +0100
+
 ngcp-system-tests (12.0.1.1+0~mr12.0.1.1) unstable; urgency=medium
 
   * New release.
