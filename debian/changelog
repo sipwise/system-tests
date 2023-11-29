@@ -1,3 +1,20 @@
+ngcp-system-tests (12.1.1.0+0~mr12.1.1.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [d9ab0ab] MT#58521 Remove obsolete InfluxDB checks
+  * [28b1bed] MT#58522 Remove obsolete heartbeat checks
+  * [028ca40] MT#58452 Add missing IPv4 listening addresses
+  * [d0d8c1e] MT#58452 Add IPv6 listening checks for existing IPv4 checks
+  * [8d27caa] MT#58452 Do not expect NGINX to listen on web_int for localhost
+  * [716ea65] MT#57982 Switch fully to keydb
+  * [cdd3cd1] MT#58452 Add listening checks for stock services
+
+  [ Mykola Malkov ]
+  * [a8e98fc] MT#58530 Fix regex to ignore tables
+  * [c97f917] MT#58530 Add exceptions to compare_dbs.pl
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 29 Nov 2023 13:38:41 +0100
+
 ngcp-system-tests (12.1.0.0+0~mr12.1.0.0) unstable; urgency=medium
 
   [ Guillem Jover ]
