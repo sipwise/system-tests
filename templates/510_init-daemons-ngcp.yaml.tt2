@@ -32,12 +32,12 @@ service:
     running: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
 
   kamailio-lb.service:
-    enabled: [% general.process_handler == 'none' && kamailio.lb.start == "yes" ? 'true' : 'false' %]
-    running: {{if and [% is_lb && kamailio.lb.start == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    enabled: [% general.process_handler == 'none' && kamailio.lb.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_lb && kamailio.lb.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   kamailio-proxy.service:
-    enabled: [% general.process_handler == 'none' && kamailio.proxy.start == "yes" ? 'true' : 'false' %]
-    running: {{if and [% is_proxy && kamailio.proxy.start == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    enabled: [% general.process_handler == 'none' && kamailio.proxy.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_proxy && kamailio.proxy.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-license-client.service:
     enabled: [% general.process_handler == 'none' && (general.license_key != '' || general.anonymous_usage_statistics == 'yes') ? 'true' : 'false' %]
@@ -110,7 +110,7 @@ service:
 
   ngcp-voisniff.service:
     enabled: false
-    running: {{if and [% (is_proxy || is_li) && voisniff.daemon.start == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
+    running: {{if and [% (is_proxy || is_li) && voisniff.daemon.enable == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcpcfg-api.service:
     enabled: [% is_mgmt && bootenv.ngcpcfg_api.enable == "yes" ? 'true' : 'false' %]

@@ -34,7 +34,7 @@ command:
     stderr: []
 
   "pgrep -n -f '[k]amailio.*kamailio.proxy.pid'":
-{{if and [% is_proxy && kamailio.proxy.start == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}}
+{{if and [% is_proxy && kamailio.proxy.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}}
     exit-status: 0
     stdout:
       - "/[0-9]+/"
@@ -45,7 +45,7 @@ command:
     stderr: []
 
   "pgrep -n -f '[k]amailio.*kamailio.lb.pid'":
-{{if and [% is_lb && kamailio.lb.start == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}}
+{{if and [% is_lb && kamailio.lb.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}}
     exit-status: 0
     stdout:
       - "/[0-9]+/"
