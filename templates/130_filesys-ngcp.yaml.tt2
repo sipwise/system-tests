@@ -284,21 +284,6 @@ file:
     linked-to: /ngcp-data/victoria-metrics
     filetype: symlink
 
-  /ngcp-data/redis:
-    exists: true
-    mode: "0750"
-    owner: redis
-    group: redis
-    filetype: directory
-
-  /var/lib/redis:
-    exists: true
-    mode: "0777"
-    owner: root
-    group: root
-    linked-to: /ngcp-data/redis
-    filetype: symlink
-
   /ngcp-data/keydb:
     exists: true
     mode: "0750"
