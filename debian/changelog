@@ -1,3 +1,10 @@
+ngcp-system-tests (12.3.1.1+0~mr12.3.1.1) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [70cb712] MT#59677 Remove redis directories checks
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 25 Mar 2024 10:58:10 +0100
+
 ngcp-system-tests (12.3.1.0+0~mr12.3.1.0) unstable; urgency=medium
 
   [ Guillem Jover ]
