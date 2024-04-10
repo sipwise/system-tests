@@ -334,3 +334,18 @@ file:
     owner: root
     group: www-data
     filetype: directory
+
+  /ngcp-data/cache/ngcp-sems:
+    exists: true
+    mode: "0755"
+    owner: sems
+    group: sems
+    filetype: directory
+
+  /var/cache/ngcp-sems:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /ngcp-data/cache/ngcp-sems
+    filetype: symlink
