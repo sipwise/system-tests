@@ -215,3 +215,18 @@ file:
     owner: websocket
     group: websocket
     filetype: directory
+
+  /ngcp-data/cache/sems-b2b:
+    exists: true
+    mode: "0755"
+    owner: sems-b2b
+    group: sems-b2b
+    filetype: directory
+
+  /var/cache/sems-b2b:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /ngcp-data/cache/sems-b2b
+    filetype: symlink
