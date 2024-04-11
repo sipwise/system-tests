@@ -1,3 +1,10 @@
+ngcp-system-tests (12.3.1.2+0~mr12.3.1.2) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [7210edc] MT#59444 Add sems directories to the tests
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 11 Apr 2024 11:07:51 +0200
+
 ngcp-system-tests (12.3.1.1+0~mr12.3.1.1) unstable; urgency=medium
 
   [ Mykola Malkov ]
