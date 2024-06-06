@@ -1,3 +1,9 @@
+ngcp-system-tests (12.4.1.1+0~mr12.4.1.1) unstable; urgency=medium
+
+  * New release.
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 06 Jun 2024 12:47:08 +0200
+
 ngcp-system-tests (12.4.1.0+0~mr12.4.1.0) unstable; urgency=medium
 
   [ Mykola Malkov ]
