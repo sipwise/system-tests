@@ -124,22 +124,22 @@ port:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_ext_ips.0 %]"]
 
-  # HAProxy
+  # HAProxy: Prosody (xmpp-client)
   tcp:5222:
     listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 %]"]
 
-  # HAProxy
+  # HAProxy: Prosody (xmpp-server)
   tcp:5269:
     listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 %]"]
 
-  # HAProxy
+  # HAProxy: Prosody (http)
   tcp:5281:
     listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 %]"]
 
-  # HAProxy
+  # HAProxy admin
   tcp:8080:
     listening: [% haproxy.enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 %]"]
@@ -151,27 +151,27 @@ port:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
-  # Prosody
+  # Prosody (xmpp-client)
   tcp:5222:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_proxy_ip %]"]
 
-  # Prosody
+  # Prosody (xmpp-server)
   tcp:5269:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_proxy_ip %]"]
 
-  # Prosody
+  # Prosody (http)
   tcp:5280:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
-  # Prosody
+  # Prosody (https)
   tcp:5281:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
-  # Prosody
+  # Prosody (ctrl)
   tcp:5582:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
