@@ -1,3 +1,10 @@
+ngcp-system-tests (9.5.10.0+0~mr9.5.10.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [68e269e] TT#144703 Restore support for ntp
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 01 Jul 2024 15:45:17 +0200
+
 ngcp-system-tests (9.5.9.0+0~mr9.5.9.0) unstable; urgency=medium
 
   * New release.
