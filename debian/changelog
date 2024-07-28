@@ -1,3 +1,13 @@
+ngcp-system-tests (12.5.1.0+0~mr12.5.1.0) unstable; urgency=medium
+
+  [ Michael Prokop ]
+  * [22a4051] MT#60337 tap-test: update Docker environment to use j-d-g from internal-bookworm
+
+  [ Guillem Jover ]
+  * [300c2c3] MT#59741 Clarify port names
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Sun, 28 Jul 2024 12:04:50 +0200
+
 ngcp-system-tests (12.5.0.0+0~mr12.5.0.0) unstable; urgency=medium
 
   [ Mykola Malkov ]
