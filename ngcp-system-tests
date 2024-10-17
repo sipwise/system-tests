@@ -84,6 +84,9 @@ case "${NGCP_TESTS_MODE}" in
       bookworm*)
         DEBIAN_RELEASE=12
         ;;
+      trixie*)
+        DEBIAN_RELEASE=13
+        ;;
     esac
     export DEBIAN_RELEASE
 
