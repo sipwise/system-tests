@@ -124,26 +124,6 @@ port:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_ext_ips.0 %]"]
 
-  # HAProxy: Prosody (xmpp-client)
-  tcp:5222:
-    listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 %]"]
-
-  # HAProxy: Prosody (xmpp-server)
-  tcp:5269:
-    listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 %]"]
-
-  # HAProxy: Prosody (http)
-  tcp:5281:
-    listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 %]"]
-
-  # HAProxy admin
-  tcp:8080:
-    listening: [% haproxy.enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
-    ip: ["[% sip_ext_ips.0 %]"]
-
 [% END -%]
 [% IF is_proxy -%]
   # Kamailio proxy
@@ -151,31 +131,68 @@ port:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
+[% END -%]
+[% IF is_proxy -%]
   # Prosody (xmpp-client)
   tcp:5222:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_proxy_ip %]"]
 
+[% ELSIF is_lb -%]
+  # HAProxy: Prosody (xmpp-client)
+  tcp:5222:
+    listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 %]"]
+
+[% END -%]
+[% IF is_proxy -%]
   # Prosody (xmpp-server)
   tcp:5269:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_proxy_ip %]"]
 
+[% ELSIF is_lb -%]
+  # HAProxy: Prosody (xmpp-server)
+  tcp:5269:
+    listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 %]"]
+
+[% END -%]
+[% IF is_proxy -%]
   # Prosody (http)
   tcp:5280:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
+[% END -%]
+[% IF is_proxy -%]
   # Prosody (https)
   tcp:5281:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
+[% ELSIF is_lb -%]
+  # HAProxy: Prosody (http)
+  tcp:5281:
+    listening: [% haproxy.enable == 'yes' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 %]"]
+
+[% END -%]
+[% IF is_proxy -%]
   # Prosody (ctrl)
   tcp:5582:
     listening: {{.Vars.NODE_ACTIVE}}
     ip: ["[% sip_int_ips.0 %]"]
 
+[% END -%]
+[% IF is_lb -%]
+  # HAProxy admin
+  tcp:8080:
+    listening: [% haproxy.enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
+    ip: ["[% sip_ext_ips.0 %]"]
+
+[% END -%]
+[% IF is_proxy -%]
 [%  IF b2b.enable == "yes" -%]
   # SEMS: XMLRPC server of B2B
   tcp:[% b2b.xmlrpcport %]:
