@@ -4,7 +4,11 @@ kernel-param:
     value: "1"
 
   kernel.core_pattern:
+{{if eq .Env.DEBIAN_RELEASE "12"}}
     value: "|/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %h"
+{{else}}
+    value: "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"
+{{end}}
 
   fs.suid_dumpable:
     value: "2"
