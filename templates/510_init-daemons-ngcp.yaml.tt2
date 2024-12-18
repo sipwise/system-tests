@@ -128,12 +128,6 @@ service:
     enabled: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
     running: [% general.ngcp_type != 'spce' ? 'true' : 'false' %]
 
-[% IF general.license_key != '' -%]
-  ngcp-license-client.service:
-    enabled: true
-    running: true
-
-[% END -%]
   # Obsolete, never running.
   ngcp-rtcengine.service:
     enabled: false
