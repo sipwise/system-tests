@@ -40,7 +40,7 @@ service:
     running: {{if and [% is_proxy && kamailio.proxy.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   ngcp-license-client.service:
-    enabled: [% general.process_handler == 'none' && (general.license_key != '' || general.anonymous_usage_statistics == 'yes') ? 'true' : 'false' %]
+    enabled: [% general.license_key != '' || general.anonymous_usage_statistics == 'yes' ? 'true' : 'false' %]
     running: [% general.license_key != '' || general.anonymous_usage_statistics == 'yes' ? 'true' : 'false' %]
 
   ngcp-mediator.service:
