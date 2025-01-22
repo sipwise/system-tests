@@ -1,3 +1,10 @@
+ngcp-system-tests (13.1.1.2+0~mr13.1.1.2) unstable; urgency=medium
+
+  [ Richard Fuchs ]
+  * [1c86b96] TT#60062 license-client should always be enabled
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Wed, 22 Jan 2025 13:47:16 +0100
+
 ngcp-system-tests (13.1.1.1+0~mr13.1.1.1) unstable; urgency=medium
 
   * New release.
