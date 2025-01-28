@@ -1,3 +1,13 @@
+ngcp-system-tests (13.3.0.0+0~mr13.3.0.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [e03d4bd] MT#61779 Remove duplicate ngcp-license-client check
+
+  [ Richard Fuchs ]
+  * [9c4de3f] TT#60062 license-client should always be enabled
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 28 Jan 2025 15:17:06 +0100
+
 ngcp-system-tests (13.2.0.0+0~mr13.2.0.0) unstable; urgency=medium
 
   [ Michael Prokop ]
