@@ -36,6 +36,9 @@ group:
   sudo:
     exists: true
 
+  valkey:
+    exists: true
+
   www-data:
     exists: true
 
@@ -102,6 +105,12 @@ user:
       or:
         - "/var/run/sshd"
         - "/run/sshd"
+
+  valkey:
+    exists: true
+    groups:
+      - valkey
+    home: "/var/lib/valkey"
 
   www-data:
     exists: true

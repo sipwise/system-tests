@@ -17,7 +17,7 @@ process:
   ntpd:
     running: [% ntp.backend == 'ntpd' ? 'true' : 'false ' %]
 
-  keydb-server:
+  [% database.key_value.flavor %]-server:
     running: true
 
   redis-server:

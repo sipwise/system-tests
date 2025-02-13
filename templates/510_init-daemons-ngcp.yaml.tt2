@@ -92,7 +92,7 @@ service:
     enabled: [% general.process_handler == 'none' && is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
     running: [% is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
 
-  keydb-server.service:
+  [% database.key_value.flavor %]-server.service:
     enabled: [% redis.enable == "yes" ? 'true' : 'false' %]
     running: [% redis.enable == "yes" ? 'true' : 'false' %]
 

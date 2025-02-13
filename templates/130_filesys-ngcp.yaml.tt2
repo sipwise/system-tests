@@ -284,6 +284,21 @@ file:
     linked-to: /ngcp-data/victoria-metrics
     filetype: symlink
 
+  /ngcp-data/valkey:
+    exists: true
+    mode: "0750"
+    owner: valkey
+    group: valkey
+    filetype: directory
+
+  /var/lib/valkey:
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    linked-to: /ngcp-data/valkey
+    filetype: symlink
+
   /ngcp-data/keydb:
     exists: true
     mode: "0750"
