@@ -1,3 +1,4 @@
+helper/check-apt-keyrings /usr/share/ngcp-system-tests/
 helper/compare_dbs.pl /usr/share/ngcp-system-tests/
 ngcp-system-tests /usr/bin/
 sbin/ngcp-mysql-compare-dbs /usr/sbin/
