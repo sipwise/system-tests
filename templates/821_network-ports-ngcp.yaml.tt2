@@ -65,6 +65,9 @@
   argv.type = 'ha_int';
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
   ha_int_ips = out;
+
+  redis_ips = ['127.0.0.1', ha_int_ips.0];
+  redis_ips = redis_ips.sort.unique;
 -%]
 
 port:
@@ -230,7 +233,10 @@ port:
   # Redis
   tcp:6379:
     listening: true
-    ip: ["127.0.0.1", "[% ha_int_ips.0 %]"]
+    ip:
+[% FOREACH ip IN redis_ips -%]
+    - "[% ip %]"
+[% END -%]
   tcp6:6379:
     listening: true
     ip: ["::1"]
