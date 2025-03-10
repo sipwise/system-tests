@@ -22,13 +22,8 @@ group:
     exists: true
     gid: 0
 
-{{if eq .Env.DEBIAN_RELEASE "11"}}
-  ssh:
-    exists: true
-{{else}}
   _ssh:
     exists: true
-{{end}}
 
   ssl-cert:
     exists: true

@@ -78,9 +78,6 @@ case "${NGCP_TESTS_MODE}" in
     # Translate Debian codenames that don't have a version number (yet) into
     # according numbers
     case "${DEBIAN_RELEASE}" in
-      bullseye*)
-        DEBIAN_RELEASE=11
-        ;;
       bookworm*)
         DEBIAN_RELEASE=12
         ;;
