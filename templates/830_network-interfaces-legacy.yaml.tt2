@@ -6,7 +6,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: ['!/^GRUB_CMDLINE_LINUX_DEFAULT=".*net.ifnames=0.*"/']
+{{else}}
     contains: ['!/^GRUB_CMDLINE_LINUX_DEFAULT=".*net.ifnames=0.*"/']
+{{end}}
 
 command:
 

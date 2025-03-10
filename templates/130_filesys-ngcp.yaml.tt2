@@ -6,7 +6,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/ngcp-config/config.yml:
     exists: true
@@ -14,7 +18,11 @@ file:
     owner: root
     group: _ngcp-admin
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/ngcp-config/constants.yml:
     exists: true
@@ -22,7 +30,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/ngcp-config/maintenance.yml:
     exists: true
@@ -30,7 +42,11 @@ file:
     owner: root
     group: _ngcp-admin
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/ngcp-config/network.yml:
     exists: true
@@ -38,7 +54,11 @@ file:
     owner: root
     group: _ngcp-admin
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/ngcp-config/.git:
     exists: true
@@ -46,7 +66,11 @@ file:
     owner: root
     group: root
     filetype: directory
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/ngcp-config/cfg_schema.db:
     exists: true
@@ -54,7 +78,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/ngcp-config/.ngcpcfg_perms:
     exists: true
@@ -62,7 +90,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/ngcp-config/ngcpcfg.cfg:
     exists: false
@@ -73,7 +105,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/ngcp-config/ssl:
     exists: false
@@ -84,7 +120,11 @@ file:
     owner: root
     group: ssl-cert
     filetype: directory
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/ngcp_version:
     exists: true
@@ -92,7 +132,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/sipwise_ngcp_version:
     exists: true
@@ -100,7 +144,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/:
     exists: true
@@ -108,7 +156,11 @@ file:
     owner: root
     group: root
     filetype: directory
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/conf.d:
     exists: true
@@ -116,7 +168,11 @@ file:
     owner: root
     group: root
     filetype: directory
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/debian-start:
     exists: true
@@ -124,7 +180,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/debian.cnf:
     exists: true
@@ -132,7 +192,11 @@ file:
     owner: root
     group: mysql
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/grants.yml:
     exists: true
@@ -140,7 +204,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/inc:
     exists: true
@@ -148,7 +216,11 @@ file:
     owner: root
     group: root
     filetype: directory
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/mariadb.cnf:
     exists: true
@@ -156,7 +228,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents:
+{{else}}
     contains:
+{{end}}
     - '/^\[mysql\]$/'
     - '/^\[mysqld\]$/'
     - '/^\[mysqldump\]$/'
@@ -167,7 +243,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/inc/my.myisamchk.cnf:
     exists: true
@@ -175,7 +255,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/inc/my.mysql.cnf:
     exists: true
@@ -183,7 +267,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/inc/my.safe_mysqld.cnf:
     exists: true
@@ -191,7 +279,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/inc/my.mysqldump.cnf:
     exists: true
@@ -199,7 +291,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/my.cnf:
     exists: true
@@ -208,7 +304,11 @@ file:
     group: root
     linked-to: /etc/alternatives/my.cnf
     filetype: symlink
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /etc/mysql/sipwise.cnf:
     exists: false
@@ -220,8 +320,11 @@ file:
     owner: root
     group: root
     filetype: file
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
-
+{{end}}
 
   /etc/alternatives/my.cnf:
     exists: true
@@ -230,7 +333,11 @@ file:
     group: root
     linked-to: /etc/mysql/mariadb.cnf
     filetype: symlink
+{{if ge .Env.DEBIAN_RELEASE "13"}}
+    contents: []
+{{else}}
     contains: []
+{{end}}
 
   /ngcp-data/backup:
     exists: true
