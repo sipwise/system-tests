@@ -5,7 +5,7 @@ FROM docker.mgm.sipwise.com/sipwise-bookworm:latest
 # is updated with the current date. It will force refresh of all
 # of the base images and things like `apt-get update` won't be using
 # old cached versions when the Dockerfile is built.
-ENV REFRESHED_AT 2024-06-19
+ENV REFRESHED_AT 2025-04-01
 
 # we want to use jenkins-debian-glue from our own internal
 # repository and not from Debian
