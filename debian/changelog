@@ -1,3 +1,20 @@
+ngcp-system-tests (13.4.0.0+0~mr13.4.0.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [72d1a73] MT#61101 Add Valkey support
+  * [d40328b] MT#61541 Swap trixie conditional to list the trixie case first as >=
+  * [7c06ab2] MT#62325 Remove handling for Debian bullseye release
+  * [a15e209] MT#61541 Rename file.contains to file.contents for Debian trixie
+  * [4e065de] MT#61541 Fix redis IP checks
+
+  [ Michael Prokop ]
+  * [b73fea4] MT#62249 Rework apt-key checks to support Debian/trixie
+
+  [ Victor Seva ]
+  * [9c4d4a3] MT#61842 refresh jenkins-tap-test-bookworm
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 10 Apr 2025 08:31:52 +0200
+
 ngcp-system-tests (13.3.0.0+0~mr13.3.0.0) unstable; urgency=medium
 
   [ Guillem Jover ]
