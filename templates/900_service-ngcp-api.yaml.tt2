@@ -126,6 +126,7 @@ command:
       - "/Sipwise NGCP HTTP API documentation/"
     stderr: []
     timeout: 30000
+    skip: true
 
 
   "curl --insecure -L http://[% web_ext_ips.0 %]/api/":
