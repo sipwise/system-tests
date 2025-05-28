@@ -3,7 +3,8 @@
 set -e
 set -E
 
-declare -r ME="$(basename "$0")"
+ME="$(basename "$0")"
+declare -r ME
 declare -r OPTS=("$@")
 declare -a PROVE_OPTS=()
 NGCP_TESTS_MODE=${NGCP_TESTS_MODE:=prove}
