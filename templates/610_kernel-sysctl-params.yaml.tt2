@@ -7,7 +7,7 @@ kernel-param:
 {{if ge .Env.DEBIAN_RELEASE "13"}}
     value: "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"
 {{else}}
-    value: "|/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %h"
+    value: "|/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %h %d"
 {{end}}
 
   fs.suid_dumpable:
