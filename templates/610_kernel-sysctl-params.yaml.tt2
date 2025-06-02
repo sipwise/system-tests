@@ -5,7 +5,7 @@ kernel-param:
 
   kernel.core_pattern:
 {{if ge .Env.DEBIAN_RELEASE "13"}}
-    value: "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"
+    value: "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h %d %F"
 {{else}}
     value: "|/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %h %d"
 {{end}}
