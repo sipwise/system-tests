@@ -52,7 +52,7 @@ for file in "${apt_trusted_dir}"/* ; do
       ;;
     sipwise-archive-2015.gpg|sipwise-autobuilder-2011.gpg)
       ;;
-    sipwise-mr10.5.gpg| sipwise-mr11.5.gpg| sipwise_mr12_5.gpg)
+    sipwise-mr10.5.gpg| sipwise-mr11.5.gpg| sipwise_mr12_5.gpg|sipwise_mr13.4.gpg)
       ;;
      *)
       echo "Error: Unexpected file '${file}' inside '${apt_trusted_dir}'" >&2
@@ -92,7 +92,8 @@ ca9bd1a0b3743495ae45693c6d4e54abadcffb242d72df15eda5b28e4ff385fa  debian-archive
 f00aad42a76ddec341fb2c67b45b41e2d1c19d67bd239196cd52488c4b7da4a0  sipwise-autobuilder-2011.gpg
 06cd0ec90ce6fe35917debde9976e6ccf24350e6db492ab7b1baab450a58b9af  sipwise-mr10.5.gpg
 ff8a919dce361dca2a1a67c7d106ed57159ea362394b2c0f5c622a64382103e0  sipwise-mr11.5.gpg
-e58c32479486501226872a1dc27f41083d636ff21876306f9e35a72c7197dd6a  sipwise_mr12_5.gpg" | sha256sum -c --quiet --ignore-missing
+e58c32479486501226872a1dc27f41083d636ff21876306f9e35a72c7197dd6a  sipwise_mr12_5.gpg
+c504c5a061ad8a8c68898538bfb3f6023fb4b998de183567eb24cbd8a7b37c33  sipwise_mr13.4.gpg" | sha256sum -c --quiet --ignore-missing
     ;;
   # trixie and newer
   *)
@@ -112,7 +113,8 @@ ca9bd1a0b3743495ae45693c6d4e54abadcffb242d72df15eda5b28e4ff385fa  debian-archive
 b64656d5f8fa0a636d46084bda74e16cef502d3d48e8ed101c6386ad8bbcacef  sipwise-autobuilder-2011.gpg
 06cd0ec90ce6fe35917debde9976e6ccf24350e6db492ab7b1baab450a58b9af  sipwise-mr10.5.gpg
 ff8a919dce361dca2a1a67c7d106ed57159ea362394b2c0f5c622a64382103e0  sipwise-mr11.5.gpg
-e58c32479486501226872a1dc27f41083d636ff21876306f9e35a72c7197dd6a  sipwise_mr12_5.gpg" | sha256sum -c --quiet --ignore-missing
+e58c32479486501226872a1dc27f41083d636ff21876306f9e35a72c7197dd6a  sipwise_mr12_5.gpg
+c504c5a061ad8a8c68898538bfb3f6023fb4b998de183567eb24cbd8a7b37c33  sipwise_mr13.4.gpg" | sha256sum -c --quiet --ignore-missing
     ;;
 esac
 popd >/dev/null
