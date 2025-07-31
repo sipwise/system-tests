@@ -1,3 +1,10 @@
+ngcp-system-tests (10.5.9.2+0~mr10.5.9.2) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [6d4c387] MT#62935 Update sysctl kernel.core_pattern for systemd 247.3-7+deb11u7 security update
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 31 Jul 2025 10:35:29 +0200
+
 ngcp-system-tests (10.5.9.1+0~mr10.5.9.1) unstable; urgency=medium
 
   * New release.
