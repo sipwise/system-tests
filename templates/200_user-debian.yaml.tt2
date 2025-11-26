@@ -12,9 +12,6 @@ group:
   mysql:
     exists: true
 
-  prosody:
-    exists: true
-
   redis:
     exists: true
 
@@ -72,13 +69,6 @@ user:
     groups:
       - nogroup
     home: "/nonexistent"
-
-  prosody:
-    exists: true
-    groups:
-      - prosody
-      - ssl-cert
-    home: "/var/lib/prosody"
 
   proxy:
     exists: true

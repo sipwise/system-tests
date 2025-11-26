@@ -83,7 +83,4 @@ package:
     installed: true
 
   prosody:
-    installed: true
-    versions:
-      not:
-        - "0.9.12-2+deb9u2+bpo10+1"
+    installed: false

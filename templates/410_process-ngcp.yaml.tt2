@@ -12,14 +12,8 @@
 command:
 
   "pgrep -c -f 'lua5\\.. /usr/bin/prosody'":
-{{if and [% is_proxy && prosody.enable == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}}
-    exit-status: 0
-    stdout:
-      - "1"
-{{else}}
     exit-status: 1
     stdout: []
-{{end}}
     stderr: []
 
   "pgrep -c -f '[p]erl-fcgi-pm \\[NGCP::Panel\\]'":
