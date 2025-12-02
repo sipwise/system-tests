@@ -12,7 +12,7 @@ command:
     stderr: []
 {{if and [% (rtpengine.enable == "yes" && is_proxy) ? 1 : 0 %] .Vars.NODE_ACTIVE}}
 
-  lsmod | grep -c xt_RTPENGINE:
+  lsmod | grep -Ec "xt_RTPENGINE|nft_rtpengine":
     exit-status: 0
     stdout:
       - '/^2$/'
