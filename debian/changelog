@@ -1,3 +1,20 @@
+ngcp-system-tests (14.2.0.0+0~mr14.2.0.0) unstable; urgency=medium
+
+  [ Richard Fuchs ]
+  * [6307bad] MT#55283 support renamed rtpengine kernel module
+
+  [ Michael Prokop ]
+  * [117fe3b] MT#55283 615_kernel-modules: check for exact match of rtpengine kernel module
+  * [f748141] MT#62249 Refresh docker image
+
+  [ Guillem Jover ]
+  * [71f6ec5] MT#63479 Remove prosody support
+  * [36f9592] MT#62899 Update packaging for Debian trixie
+  * [7fcfdd4] MT#62899 Update copyright holder and license from Artistic + GPL-1+ to GPL-3+
+  * [f65e1fb] MT#62249 Refresh autobuild OpenPGP certificate checksums
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Thu, 05 Feb 2026 10:25:13 +0100
+
 ngcp-system-tests (14.1.0.0+0~mr14.1.0.0) unstable; urgency=medium
 
   * New release.
