@@ -32,7 +32,7 @@ process:
   # XXX: We need to truncate the process name to 15 characters (from the
   # actual "systemd-timesyncd"), which is the size of the comm string in Linux.
   systemd-timesyn:
-    running: [% ntp.backend == 'timesyncd' ? 'true' : 'false ' %]
+    running: false
 
   systemd-udevd:
     running: true

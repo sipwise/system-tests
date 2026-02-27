@@ -88,8 +88,8 @@ service:
     running: true
 
   systemd-timesyncd.service:
-    enabled: [% ntp.backend == 'timesyncd' ? 'true' : 'false ' %]
-    running: [% ntp.backend == 'timesyncd' ? 'true' : 'false ' %]
+    enabled: false
+    running: false
 
   victoria-metrics.service:
     enabled: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'victoria-metrics' ? 'true' : 'false' %]
