@@ -54,7 +54,7 @@ process:
     running: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   prometheus:
-    running: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'prometheus' ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' && prometheus.flavor == 'prometheus' ? 'true' : 'false' %]
 
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters). Real name: prometheus-mysqld-exporter.
@@ -120,4 +120,4 @@ process:
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters). Real name: victoria-metrics.
   victoria-metric:
-    running: [% monitoring.backend == 'prometheus' && monitoring.prometheus_server == 'victoria-metrics' ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' && prometheus.flavor == 'victoria-metrics' ? 'true' : 'false' %]
