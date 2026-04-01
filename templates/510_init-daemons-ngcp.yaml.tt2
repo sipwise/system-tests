@@ -93,8 +93,8 @@ service:
     running: [% is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
 
   [% database.key_value.flavor %]-server.service:
-    enabled: [% redis.enable == "yes" ? 'true' : 'false' %]
-    running: [% redis.enable == "yes" ? 'true' : 'false' %]
+    enabled: [% redis.pair.enable == "yes" ? 'true' : 'false' %]
+    running: [% redis.pair.enable == "yes" ? 'true' : 'false' %]
 
   redis-server.service:
     enabled: false

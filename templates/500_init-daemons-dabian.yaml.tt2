@@ -80,8 +80,8 @@ service:
     running: [% monitoring.backend == 'prometheus' ? 'true' : 'false' %]
 
   prometheus-redis-exporter.service:
-    enabled: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.enable ? 'true' : 'false' %]
-    running: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.enable ? 'true' : 'false' %]
+    enabled: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.pair.enable ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.pair.enable ? 'true' : 'false' %]
 
   ssh.service:
     enabled: true

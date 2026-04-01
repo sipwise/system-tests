@@ -79,7 +79,7 @@ process:
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters). Real name: prometheus-redis-exporter.
   prometheus-redi:
-    running: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.enable ? 'true' : 'false' %]
+    running: [% monitoring.backend == 'prometheus' && (is_mgmt || is_lb || is_proxy || is_db || is_rtp) && redis.pair.enable ? 'true' : 'false' %]
 
   kamailio:
     running: {{if and [% is_lb || is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
