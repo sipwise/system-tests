@@ -59,7 +59,7 @@ process:
   # We have to use a truncated process name because that's the COMM limit
   # on Linux (15 characters). Real name: prometheus-haproxy-exporter.
   prometheus-hapr:
-    running: [% monitoring.backend == 'prometheus' && is_lb && haproxy.enable && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
+    running: false
 
   snmpd:
     running: true
