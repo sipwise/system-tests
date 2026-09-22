@@ -66,8 +66,8 @@
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
   ha_int_ips = out;
 
-  redis_ips = ['127.0.0.1', ha_int_ips.0];
-  redis_ips = redis_ips.sort.unique;
+  int_ips = ['127.0.0.1', ha_int_ips.0];
+  int_ips = int_ips.sort.unique;
 -%]
 
 port:
@@ -117,9 +117,23 @@ port:
 
 [% END -%]
   # MySQL
+[%
+  IF general.ngcp_type == 'spce';
+    ip_list = ['127.0.0.1'];
+  ELSE;
+    IF mariadb.bind_all_interfaces == 'no';
+      ip_list = int_ips;
+    ELSE;
+      ip_list = ['0.0.0.0'];
+    END;
+  END;
+-%]
   tcp:3306:
     listening: true
-    ip: ["[% general.ngcp_type == 'spce' ? '127.0.0.1' : '0.0.0.0' %]"]
+    ip:
+[% FOREACH ip IN ip_list -%]
+    - "[% ip %]"
+[% END -%]
 
 [% IF is_lb -%]
   # Kamailio load-balancer
@@ -234,7 +248,7 @@ port:
   tcp:6379:
     listening: true
     ip:
-[% FOREACH ip IN redis_ips -%]
+[% FOREACH ip IN int_ips -%]
     - "[% ip %]"
 [% END -%]
   tcp6:6379:
