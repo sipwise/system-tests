@@ -85,6 +85,9 @@ case "${NGCP_TESTS_MODE}" in
       trixie*)
         DEBIAN_RELEASE=13
         ;;
+      forky*)
+        DEBIAN_RELEASE=14
+        ;;
     esac
     export DEBIAN_RELEASE
 
