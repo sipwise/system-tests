@@ -272,6 +272,17 @@ sub is_exception {
     return 0;
 }
 
+# MariaDB 11.8.9+ reports values in in SHOW CREATE TABLE and
+# CREATE_OPTIONS under quotes, see MDEV-39776.
+# So e.g. `PAGE_COMPRESSED`=1 became `PAGE_COMPRESSED`='1'.
+# Strip the quotes around simple values so old and new output compare equal.
+sub normalize_options {
+    my ($value) = @_;
+    return $value unless defined $value;
+    $value =~ s/(`\w+`)='(\w+)'/$1=$2/g;
+    return $value;
+}
+
 sub print_diff {
     my ($obj1, $obj2, $object_name, $result, $schema) = @_;
 
@@ -294,7 +305,8 @@ sub print_diff {
             $obj1->{$key}->{$c_name} = 'NULL' if ( ! defined($obj1->{$key}->{$c_name}) );
             $obj2->{$key}->{$c_name} = 'NULL' if ( ! defined($obj2->{$key}->{$c_name}) );
 
-            if ( $obj1->{$key}->{$c_name} ne $obj2->{$key}->{$c_name} ) {
+            if ( normalize_options($obj1->{$key}->{$c_name})
+                ne normalize_options($obj2->{$key}->{$c_name}) ) {
                 next if ( is_exception(\@diff_exceptions, $object_name, $schema, $key, $c_name) );
                 push( @{$result}, "Element: " . lc("$object_name/$schema/$key/$c_name") . " are not equal:\n  ---\n"
                   . "  local db:  $obj1->{$key}->{$c_name}\n"
