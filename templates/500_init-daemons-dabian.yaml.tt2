@@ -91,6 +91,15 @@ service:
     enabled: false
     running: false
 
+  systemd-coredumpd.service:
+{{if ge .Env.DEBIAN_RELEASE "14"}}
+    enabled: true
+    running: true
+{{else}}
+    enabled: false
+    running: false
+{{end}}
+
   victoria-metrics.service:
     enabled: [% monitoring.backend == 'prometheus' && prometheus.flavor == 'victoria-metrics' ? 'true' : 'false' %]
     running: [% monitoring.backend == 'prometheus' && prometheus.flavor == 'victoria-metrics' ? 'true' : 'false' %]
