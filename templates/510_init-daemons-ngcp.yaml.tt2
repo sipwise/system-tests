@@ -90,7 +90,7 @@ service:
 
   ngcp-pushd.socket:
     enabled: [% general.process_handler == 'none' && is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
-    running: [% is_lb && pushd.enable == "yes" ? 'true' : 'false' %]
+    running: {{if and [% is_lb && pushd.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   [% database.key_value.flavor %]-server.service:
     enabled: [% redis.pair.enable == "yes" ? 'true' : 'false' %]
