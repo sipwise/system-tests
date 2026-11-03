@@ -5,6 +5,7 @@
   is_lb = ngcp.has_role(hostname, 'lb');
   is_mgmt = ngcp.has_role(hostname, 'mgmt');
   is_rtp = ngcp.has_role(hostname, 'rtp');
+  is_li_dist  = ngcp.has_role(hostname, 'is_li_dist');
 
   IF sites_enable == 'yes';
     haproxy_enable = haproxy.enable;
@@ -55,6 +56,18 @@
   END;
 
   argv.host = hostname;
+  argv.type = 'web_ext';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_v6ips_for_host';
+  web_ext_v6ips = out;
+
+  IF !web_ext_v6ips.size;
+    argv.host = hostname;
+    argv.type = 'web_ext';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_v6ips_for_host';
+    web_ext_v6ips = out;
+  END;
+
+  argv.host = hostname;
   argv.type = 'web_int';
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
   web_int_ips = out;
@@ -64,6 +77,42 @@
     argv.type = 'web_int';
     PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
     web_int_ips = out;
+  END;
+
+  argv.host = hostname;
+  argv.type = 'web_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_v6ips_for_host';
+  web_int_v6ips = out;
+
+  IF !web_int_v6ips.size;
+    argv.host = hostname;
+    argv.type = 'web_int';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_v6ips_for_host';
+    web_int_v6ips = out;
+  END;
+
+  argv.host = hostname;
+  argv.type = 'api_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+  api_int_ips = out;
+
+  IF !api_int_ips.size;
+    argv.host = hostname;
+    argv.type = 'api_int';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+    api_int_ips = out;
+  END;
+
+  argv.host = hostname;
+  argv.type = 'api_int';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_v6ips_for_host';
+  api_int_v6ips = out;
+
+  IF !api_int_v6ips.size;
+    argv.host = hostname;
+    argv.type = 'api_int';
+    PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_v6ips_for_host';
+    api_int_v6ips = out;
   END;
 
   argv.host = hostname;
@@ -84,38 +133,80 @@ port:
   # Nginx HTTPS (NGCP Panel)
   tcp:443:
     listening: [% is_mgmt ? 'true' : 'false' %]
-    ip: ["[% web_ext_ips.0 %]"]
+    ip:
+[% FOREACH ip IN web_ext_ips -%]
+    - "[% ip %]"
+[% END -%]
+  tcp6:443:
+    listening: [% is_mgmt && web_ext_v6ips.size ? 'true' : 'false' %]
+    ip:
+[% FOREACH ip IN web_ext_v6ips -%]
+    - "[% ip %]"
+[% END -%]
 
   # Nginx HTTPS (NGCP Panel API)
   tcp:1442:
     listening: [% is_mgmt ? 'true' : 'false' %]
-    ip: ["127.0.0.1"]
+    ip:
+[% FOREACH ip IN api_int_ips -%]
+    - "[% ip %]"
+[% END -%]
   tcp6:1442:
-    listening: [% is_mgmt ? 'true' : 'false' %]
-    ip: ["::1"]
+    listening: [% is_mgmt && api_int_v6ips.size ? 'true' : 'false' %]
+    ip:
+[% FOREACH ip IN api_int_v6ips -%]
+    - "[% ip %]"
+[% END -%]
 
   # Nginx HTTPS (NGCP Panel Admin)
   tcp:1443:
     listening: [% is_mgmt ? 'true' : 'false' %]
-    ip: ["[% web_int_ips.0 %]"]
+    ip:
+[% FOREACH ip IN web_int_ips -%]
+    - "[% ip %]"
+[% END -%]
+  tcp6:1443:
+    listening: [% is_mgmt && web_int_v6ips.size ? 'true' : 'false' %]
+    ip:
+[% FOREACH ip IN web_int_v6ips -%]
+    - "[% ip %]"
+[% END -%]
 
   # Nginx status port
   tcp:[% nginx.status_port %]:
-    listening: [% is_mgmt ? 'true' : 'false' %]
+    listening: [% (is_mgmt || is_lb || is_li_dist) ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
   tcp6:[% nginx.status_port %]:
-    listening: [% is_mgmt ? 'true' : 'false' %]
+    listening: [% (is_mgmt || is_lb || is_li_dist) ? 'true' : 'false' %]
     ip: ["::1"]
 
   # HTTPS PBX autoprovisioning
   tcp:1444:
     listening: [% is_mgmt && pbx.enable == 'yes' ? 'true' : 'false' %]
-    ip: ["[% web_ext_ips.0 %]"]
+    ip:
+[% FOREACH ip IN web_ext_ips -%]
+    - "[% ip %]"
+[% END -%]
+  tcp6:1444:
+    listening: [% is_mgmt && pbx.enable == 'yes' && web_ext_v6ips.size ? 'true' : 'false' %]
+    ip:
+[% FOREACH ip IN web_ext_v6ips -%]
+    - "[% ip %]"
+[% END -%]
 
   # HTTP PBX autoprovisioning
   tcp:1445:
     listening: [% is_mgmt && pbx.enable == 'yes' ? 'true' : 'false' %]
-    ip: ["[% web_ext_ips.0 %]"]
+    ip:
+[% FOREACH ip IN web_ext_ips -%]
+    - "[% ip %]"
+[% END -%]
+  tcp6:1445:
+    listening: [% is_mgmt && pbx.enable == 'yes' && web_ext_v6ips.size ? 'true' : 'false' %]
+    ip:
+[% FOREACH ip IN web_ext_v6ips -%]
+    - "[% ip %]"
+[% END -%]
 
   # MySQL
 [%
