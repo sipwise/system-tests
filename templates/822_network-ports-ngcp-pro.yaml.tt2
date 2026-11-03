@@ -2,6 +2,8 @@
   hostname = ngcp.get_hostname();
   peername = ngcp.get_peername(hostname);
 
+  is_mgmt = ngcp.has_role(hostname, 'mgmt');
+
   argv.type = 'ha_int';
   argv.host = hostname;
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_iface';
@@ -10,27 +12,27 @@
 port:
   # dnsmasq (DNS)
   tcp:53:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_mgmt ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["0.0.0.0"]
   tcp6:53:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_mgmt ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["::"]
   udp:53:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_mgmt ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["0.0.0.0"]
   udp6:53:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_mgmt ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["::"]
   # dnsmasq (DHCPv4)
   udp:67:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_mgmt ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["0.0.0.0"]
   # dnsmasq (TFTP)
   udp:69:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_mgmt ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["0.0.0.0"]
   udp6:69:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_mgmt ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["::"]
 
   # snmpd
@@ -43,12 +45,12 @@ port:
 
   # Nginx HTTPS (NGCP Panel)
   tcp6:443:
-    listening: true
+    listening: [% is_mgmt ? 'true' : 'false' %]
     ip: ["::1"]
 
   # Nginx HTTPS (NGCP Panel Admin)
   tcp6:1443:
-    listening: true
+    listening: [% is_mgmt ? 'true' : 'false' %]
     ip: ["::1"]
 
   # Corosync
