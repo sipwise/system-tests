@@ -4,7 +4,6 @@
   is_proxy = ngcp.has_role(hostname, 'proxy');
   is_lb = ngcp.has_role(hostname, 'lb');
   is_mgmt = ngcp.has_role(hostname, 'mgmt');
-  is_db = ngcp.has_role(hostname, 'db');
   is_rtp = ngcp.has_role(hostname, 'rtp');
 
   IF sites_enable == 'yes';
@@ -237,13 +236,13 @@ port:
 
   # Redis
   tcp:6379:
-    listening: [% is_rtp || is_proxy || is_db ? 'true' : 'false' %]
+    listening: [% redis.pair.enable == 'yes' ? 'true' : 'false' %]
     ip:
 [% FOREACH ip IN int_ips -%]
     - "[% ip %]"
 [% END -%]
   tcp6:6379:
-    listening: [% is_rtp || is_proxy || is_db ? 'true' : 'false' %]
+    listening: [% redis.pair.enable == 'yes' ? 'true' : 'false' %]
     ip: ["::1"]
 
   # rtpengine
