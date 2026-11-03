@@ -8,6 +8,12 @@
   is_rtp = ngcp.has_role(hostname, 'rtp');
   is_li_dist = ngcp.has_role(hostname, 'li_dist');
   is_li = ngcp.has_role(hostname, 'li');
+
+  IF sites_enable == 'yes';
+    haproxy_enable = haproxy.enable;
+  ELSE;
+    haproxy_enable = 'no';
+  END;
 -%]
 
 service:
@@ -28,8 +34,8 @@ service:
     running: {{if and [% is_mgmt && bootenv.dhcp.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   haproxy.service:
-    enabled: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
-    running: [% is_lb && haproxy.enable == "yes" && general.ngcp_type == 'carrier' ? 'true' : 'false' %]
+    enabled: [% (is_lb || is_mgmt) && haproxy_enable == "yes" ? 'true' : 'false' %]
+    running: [% (is_lb || is_mgmt) && haproxy_enable == "yes" ? 'true' : 'false' %]
 
   kamailio-lb.service:
     enabled: [% general.process_handler == 'none' && kamailio.lb.enable == "yes" ? 'true' : 'false' %]
