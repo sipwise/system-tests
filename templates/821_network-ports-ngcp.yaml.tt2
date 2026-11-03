@@ -7,6 +7,12 @@
   is_db = ngcp.has_role(hostname, 'db');
   is_rtp = ngcp.has_role(hostname, 'rtp');
 
+  IF sites_enable == 'yes';
+    haproxy_enable = haproxy.enable;
+  ELSE;
+    haproxy_enable = 'no';
+  END;
+
   argv.host = hostname;
   argv.type = 'sip_ext';
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
@@ -31,7 +37,7 @@
     sip_int_ips = out;
   END;
 
-  IF haproxy.enable == 'yes';
+  IF haproxy_enable == 'yes';
     sip_proxy_ip = sip_int_ips.0;
   ELSE;
     sip_proxy_ip = sip_ext_ips.0;
@@ -196,7 +202,7 @@ port:
 [% END -%]
   # HAProxy admin
   tcp:8080:
-    listening: [% is_lb && haproxy.enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
+    listening: [% (is_lb || is_mgmt) && haproxy_enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 %]"]
 
   # SEMS: XMLRPC server of B2B
