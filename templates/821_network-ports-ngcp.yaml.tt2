@@ -72,50 +72,46 @@
 
 port:
 
-[% IF is_mgmt -%]
   # Nginx (IPv6 due to listening on all address families)
   tcp6:80:
-    listening: true
+    listening: [% is_mgmt ? 'true' : 'false' %]
 
   # Nginx HTTPS (NGCP Panel)
   tcp:443:
-    listening: true
+    listening: [% is_mgmt ? 'true' : 'false' %]
     ip: ["[% web_ext_ips.0 %]"]
 
   # Nginx HTTPS (NGCP Panel API)
   tcp:1442:
-    listening: true
+    listening: [% is_mgmt ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
   tcp6:1442:
-    listening: true
+    listening: [% is_mgmt ? 'true' : 'false' %]
     ip: ["::1"]
 
   # Nginx HTTPS (NGCP Panel Admin)
   tcp:1443:
-    listening: true
+    listening: [% is_mgmt ? 'true' : 'false' %]
     ip: ["[% web_int_ips.0 %]"]
 
   # Nginx status port
   tcp:[% nginx.status_port %]:
-    listening: true
+    listening: [% is_mgmt ? 'true' : 'false' %]
     ip: ["127.0.0.1"]
   tcp6:[% nginx.status_port %]:
-    listening: true
+    listening: [% is_mgmt ? 'true' : 'false' %]
     ip: ["::1"]
 
-[% END -%]
-[% IF is_mgmt && pbx.enable == 'yes' -%]
   # HTTPS PBX autoprovisioning
   tcp:1444:
-    listening: true
+    listening: [% is_mgmt && pbx.enable == 'yes' ? 'true' : 'false' %]
     ip: ["[% web_ext_ips.0 %]"]
 
   # HTTP PBX autoprovisioning
   tcp:1445:
-    listening: true
+    listening: [% is_mgmt && pbx.enable == 'yes' ? 'true' : 'false' %]
     ip: ["[% web_ext_ips.0 %]"]
 
-[% END -%]
   # MySQL
 [%
   IF general.ngcp_type == 'spce';
@@ -135,20 +131,16 @@ port:
     - "[% ip %]"
 [% END -%]
 
-[% IF is_lb -%]
   # Kamailio load-balancer
   tcp:5060:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_lb ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["[% sip_ext_ips.0 %]"]
 
-[% END -%]
-[% IF is_proxy -%]
   # Kamailio proxy
   tcp:5062:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["[% sip_int_ips.0 %]"]
 
-[% END -%]
 [% IF is_proxy -%]
   # Prosody (xmpp-client)
   tcp:5222:
@@ -202,64 +194,53 @@ port:
     ip: ["[% sip_int_ips.0 %]"]
 
 [% END -%]
-[% IF is_lb -%]
   # HAProxy admin
   tcp:8080:
-    listening: [% haproxy.enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
+    listening: [% is_lb && haproxy.enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
     ip: ["[% sip_ext_ips.0 %]"]
 
-[% END -%]
-[% IF is_proxy -%]
-[%  IF b2b.enable == "yes" -%]
   # SEMS: XMLRPC server of B2B
   tcp:[% b2b.xmlrpcport %]:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_proxy && b2b.enable == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["[% sip_int_ips.0 %]"]
 
   # SEMS: B2B server UDP listener
   udp:[% b2b.bindport %]:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_proxy && b2b.enable == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["[% sip_int_ips.0 %]"]
 
   # SEMS: B2B server TCP listener
   tcp:[% b2b.bindport %]:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_proxy && b2b.enable == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["[% sip_int_ips.0 %]"]
 
   # SEMS: Monit UDP port
   udp:[% general.ngcp_type == 'spce' ? '5040' : '5048' %]:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_proxy && b2b.enable == 'yes' ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["[% sip_int_ips.0 %]"]
 
-[%  END -%]
   # Asterisk
   tcp:5038:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["127.0.0.1"]
 
   # Asterisk
   udp:5070:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["[% sip_int_ips.0 %]"]
 
-[% END -%]
-[% IF is_rtp || is_proxy || is_db -%]
   # Redis
   tcp:6379:
-    listening: true
+    listening: [% is_rtp || is_proxy || is_db ? 'true' : 'false' %]
     ip:
 [% FOREACH ip IN int_ips -%]
     - "[% ip %]"
 [% END -%]
   tcp6:6379:
-    listening: true
+    listening: [% is_rtp || is_proxy || is_db ? 'true' : 'false' %]
     ip: ["::1"]
 
-[% END -%]
-[% IF is_rtp -%]
   # rtpengine
   udp:2223:
-    listening: {{.Vars.NODE_ACTIVE}}
+    listening: {{if and [% is_rtp ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["[% sip_int_ips.0 %]"]
-
-[% END -%]
