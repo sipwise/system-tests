@@ -31,11 +31,7 @@ file:
     owner: root
     group: root
     filetype: directory
-{{if ge .Env.DEBIAN_RELEASE "13"}}
     contents: []
-{{else}}
-    contains: []
-{{end}}
 
   /etc/ngcp-config/shared-files/ssh:
     exists: true
@@ -43,11 +39,7 @@ file:
     owner: root
     group: root
     filetype: directory
-{{if ge .Env.DEBIAN_RELEASE "13"}}
     contents: []
-{{else}}
-    contains: []
-{{end}}
 
   /etc/ngcp-config/shared-files/sshd:
     exists: true
@@ -55,11 +47,7 @@ file:
     owner: root
     group: root
     filetype: directory
-{{if ge .Env.DEBIAN_RELEASE "13"}}
     contents: []
-{{else}}
-    contains: []
-{{end}}
 
   /etc/ngcp-config/systems.cfg:
     exists: false
@@ -145,11 +133,7 @@ file:
     owner: root
     group: root
     filetype: file
-{{if ge .Env.DEBIAN_RELEASE "13"}}
     contents: []
-{{else}}
-    contains: []
-{{end}}
 
   /etc/mysql/inc/my.mysqld2.cnf:
     exists: true
@@ -157,11 +141,7 @@ file:
     owner: root
     group: root
     filetype: file
-{{if ge .Env.DEBIAN_RELEASE "13"}}
     contents: []
-{{else}}
-    contains: []
-{{end}}
 
   /etc/mysql/conf.d/my2.cnf:
     exists: true
@@ -169,11 +149,7 @@ file:
     owner: root
     group: mysql
     filetype: file
-{{if ge .Env.DEBIAN_RELEASE "13"}}
     contents: []
-{{else}}
-    contains: []
-{{end}}
 [% IF general.ngcp_type == 'sppro' -%]
     size: 0
 [% END -%]
@@ -184,11 +160,7 @@ file:
     owner: root
     group: root
     filetype: file
-{{if ge .Env.DEBIAN_RELEASE "13"}}
     contents: []
-{{else}}
-    contains: []
-{{end}}
 [% IF general.ngcp_type == 'sppro' -%]
     size: 0
 [% END -%]
@@ -199,11 +171,7 @@ file:
     owner: root
     group: root
     filetype: file
-{{if ge .Env.DEBIAN_RELEASE "13"}}
     contents: []
-{{else}}
-    contains: []
-{{end}}
 [% IF general.ngcp_type == 'sppro' -%]
     size: 0
 [% END -%]
@@ -214,11 +182,7 @@ file:
     owner: root
     group: root
     filetype: file
-{{if ge .Env.DEBIAN_RELEASE "13"}}
     contents: []
-{{else}}
-    contains: []
-{{end}}
 [% IF general.ngcp_type == 'sppro' -%]
     size: 0
 [% END -%]
