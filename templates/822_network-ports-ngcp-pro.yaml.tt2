@@ -4,6 +4,25 @@
 
   is_mgmt = ngcp.has_role(hostname, 'mgmt');
 
+  argv.host = hostname;
+  argv.type = 'mon_ext';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_shared_ips_for_host';
+  mon_ips_shared_ext = out;
+
+  argv.role = hostname;
+  argv.type = 'mon_ext';
+  PROCESS '/usr/lib/ngcp-ngcpcfg/get_all_ips_for_host';
+  mon_ips_ext = out;
+
+  mon_ips = [ hosts.$hostname.lo.ip ];
+  mon_ips = mon_ips.import(mon_ips_ext);
+  mon_ips = mon_ips.import(mon_ips_shared_ext);
+
+  mon_v6ips = [];
+  IF hosts.$hostname.lo.v6ip;
+    mon_v6ips.push(hosts.$hostname.lo.v6ip);
+  END;
+
   argv.type = 'ha_int';
   argv.host = hostname;
   PROCESS '/usr/lib/ngcp-ngcpcfg/get_iface';
@@ -38,10 +57,17 @@ port:
   # snmpd
   udp:161:
     listening: true
-    ip: ["127.0.0.1"]
+    ip:
+[% FOREACH ip IN mon_ips.unique.sort -%]
+      - "[% ip %]"
+[% END -%]
+
   udp6:161:
-    listening: true
-    ip: ["::1"]
+    listening: [% mon_v6ips.size ? 'true' : 'false' %]
+    ip:
+[% FOREACH ip IN mon_v6ips -%]
+      - "[% ip %]"
+[% END -%]
 
   # Corosync
   udp:5405:
