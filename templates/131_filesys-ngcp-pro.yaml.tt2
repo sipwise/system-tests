@@ -5,33 +5,63 @@
 -%]
 file:
 
+  /etc/ngcp-config/sites.yml:
+[% IF sites_enable == 'yes' -%]
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+    contents: []
+[% ELSE -%]
+    exists: false
+[% END -%]
+
   /etc/ngcp-config/sites:
-    exists:
-      or:
-        - true
-        - false
+[% IF sites_enable == 'yes' -%]
+    exists: true
+    filetype: directory
     mode: "0755"
     owner: root
     group: root
-    filetype: directory
+    contents: []
+[% ELSE -%]
+    exists: false
+[% END -%]
 
-  /etc/ngcp-config/sites/current:
-    exists:
-      or:
-        - true
-        - false
+[% IF sites_enable == 'yes' -%]
+[%   FOREACH site IN sites.keys -%]
+  /etc/ngcp-config/sites/[% site %]:
+    exists: true
+[%     IF site == 'current' -%]
+    filetype: symlink
     mode: "0777"
+[%     ELSE -%]
+    filetype: directory
+    mode: "0755"
+[%     END -%]
     owner: root
     group: root
-    filetype: symlink
+    contents: []
+[%   END -%]
+[% ELSE -%]
+  /etc/ngcp-config/sites/current:
+    exists: false
+[% END -%]
 
   /etc/ngcp-config/shared-files:
     exists: true
+[% IF sites_enable == 'yes' -%]
+    filetype: symlink
+    linked-to: sites/current/shared-files
+    mode: "0777"
+[% ELSE -%]
+    filetype: directory
     mode: "0755"
+    contents: []
+[% END -%]
     owner: root
     group: root
-    filetype: directory
-    contents: []
 
   /etc/ngcp-config/shared-files/ssh:
     exists: true
