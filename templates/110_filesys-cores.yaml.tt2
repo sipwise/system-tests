@@ -8,11 +8,7 @@ file:
     owner: root
     group: root
     filetype: directory
-{{if ge .Env.DEBIAN_RELEASE "13"}}
     contents: []
-{{else}}
-    contains: []
-{{end}}
 
   /var/lib/systemd/coredump:
     exists: true
