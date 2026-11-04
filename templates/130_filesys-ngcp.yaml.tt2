@@ -10,35 +10,67 @@ file:
 
   /etc/ngcp-config/config.yml:
     exists: true
+[% IF sites_enable == 'yes' -%]
+    mode: "0777"
+    owner: root
+    group: root
+    filetype: symlink
+    linked-to: sites/current/config.yml
+[% ELSE -%]
     mode: "0660"
     owner: root
     group: _ngcp-admin
     filetype: file
     contents: []
+[% END -%]
 
   /etc/ngcp-config/constants.yml:
     exists: true
+[% IF sites_enable == 'yes' -%]
+    mode: "0777"
+    owner: root
+    group: root
+    filetype: symlink
+    linked-to: sites/current/constants.yml
+[% ELSE -%]
     mode: "0600"
     owner: root
     group: root
     filetype: file
     contents: []
+[% END -%]
 
   /etc/ngcp-config/maintenance.yml:
     exists: true
+[% IF sites_enable == 'yes' -%]
+    mode: "0777"
+    owner: root
+    group: root
+    filetype: symlink
+    linked-to: sites/current/maintenance.yml
+[% ELSE -%]
     mode: "0660"
     owner: root
     group: _ngcp-admin
     filetype: file
     contents: []
+[% END -%]
 
   /etc/ngcp-config/network.yml:
     exists: true
+[% IF sites_enable == 'yes' -%]
+    mode: "0777"
+    owner: root
+    group: root
+    filetype: symlink
+    linked-to: sites/current/network.yml
+[% ELSE -%]
     mode: "0660"
     owner: root
     group: _ngcp-admin
     filetype: file
     contents: []
+[% END -%]
 
   /etc/ngcp-config/.git:
     exists: true
@@ -50,11 +82,19 @@ file:
 
   /etc/ngcp-config/cfg_schema.db:
     exists: true
+[% IF sites_enable == 'yes' -%]
+    mode: "0777"
+    owner: root
+    group: root
+    filetype: symlink
+    linked-to: sites/current/cfg_schema.db
+[% ELSE -%]
     mode: "0644"
     owner: root
     group: root
     filetype: file
     contents: []
+[% END -%]
 
   /etc/ngcp-config/.ngcpcfg_perms:
     exists: true
