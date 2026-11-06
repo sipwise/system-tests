@@ -237,59 +237,22 @@ port:
     listening: {{if and [% is_proxy ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
     ip: ["[% sip_int_ips.0 %]"]
 
-[% IF is_proxy -%]
   # Prosody (xmpp-client)
   tcp:5222:
     listening: false
-    ip: ["[% sip_proxy_ip %]"]
-
-[% ELSIF is_lb -%]
-  # HAProxy: Prosody (xmpp-client)
-  tcp:5222:
-    listening: false
-    ip: ["[% sip_ext_ips.0 %]"]
-
-[% END -%]
-[% IF is_proxy -%]
   # Prosody (xmpp-server)
   tcp:5269:
     listening: false
-    ip: ["[% sip_proxy_ip %]"]
-
-[% ELSIF is_lb -%]
-  # HAProxy: Prosody (xmpp-server)
-  tcp:5269:
-    listening: false
-    ip: ["[% sip_ext_ips.0 %]"]
-
-[% END -%]
-[% IF is_proxy -%]
   # Prosody (http)
   tcp:5280:
     listening: false
-    ip: ["[% sip_int_ips.0 %]"]
-
-[% END -%]
-[% IF is_proxy -%]
   # Prosody (https)
   tcp:5281:
     listening: false
-    ip: ["[% sip_int_ips.0 %]"]
-
-[% ELSIF is_lb -%]
-  # HAProxy: Prosody (http)
-  tcp:5281:
-    listening: false
-    ip: ["[% sip_ext_ips.0 %]"]
-
-[% END -%]
-[% IF is_proxy -%]
   # Prosody (ctrl)
   tcp:5582:
     listening: false
-    ip: ["[% sip_int_ips.0 %]"]
 
-[% END -%]
   # HAProxy admin
   tcp:8080:
     listening: [% (is_lb || is_mgmt) && haproxy_enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
