@@ -1,3 +1,10 @@
+ngcp-system-tests (13.5.1.5+0~mr13.5.1.5) unstable; urgency=medium
+
+  [ Michael Prokop ]
+  * [b8b10c0] MT#66199 helper/compare_dbs.pl: normalize options under quotes
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 23 Nov 2026 09:15:31 +0100
+
 ngcp-system-tests (13.5.1.4+0~mr13.5.1.4) unstable; urgency=medium
 
   [ Michael Prokop ]
