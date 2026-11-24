@@ -34,8 +34,8 @@ service:
     running: {{if and [% is_mgmt && bootenv.dhcp.enable == "yes" ? 1 : 0 %] .Vars.NODE_ACTIVE}} true {{else}} false {{end}}
 
   haproxy.service:
-    enabled: [% (is_lb || is_mgmt) && haproxy_enable == "yes" ? 'true' : 'false' %]
-    running: [% (is_lb || is_mgmt) && haproxy_enable == "yes" ? 'true' : 'false' %]
+    enabled: [% (is_db || is_mgmt) && haproxy_enable == "yes" ? 'true' : 'false' %]
+    running: [% (is_db || is_mgmt) && haproxy_enable == "yes" ? 'true' : 'false' %]
 
   kamailio-lb.service:
     enabled: [% general.process_handler == 'none' && kamailio.lb.enable == "yes" ? 'true' : 'false' %]

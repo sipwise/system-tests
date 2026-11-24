@@ -255,7 +255,7 @@ port:
 
   # HAProxy admin
   tcp:8080:
-    listening: [% (is_lb || is_mgmt) && haproxy_enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
+    listening: [% (is_db || is_mgmt) && haproxy_enable == 'yes' && haproxy.admin == 'yes' ? 'true' : 'false' %]
     ip:
 [% FOREACH ip IN web_int_ips, ha_int_ips -%]
       - "[% ip %]"
